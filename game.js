@@ -98,7 +98,7 @@ const game = new Phaser.Game({
     height: office.height,
     parent: 'game-root',
     backgroundColor: '#0b1020',
-    pixelArt: false,
+    pixelArt: true,
     scene: { preload, create, update },
     scale: {
         mode: Phaser.Scale.FIT,
@@ -2355,8 +2355,8 @@ function drawOffice(scene) {
     // Elegant dark floor background with glowing grids
     scene.add.rectangle(office.width / 2, office.height / 2, office.width, office.height, 0x1a2332);
     var floorTextured = scene.add.tileSprite(office.width / 2, office.height / 2, office.width, office.height, 'floor-tile');
-    floorTextured.setBlendMode(Phaser.BlendModes.NORMAL);
-    floorTextured.setAlpha(0.9);
+    floorTextured.setBlendMode(Phaser.BlendModes.SCREEN);
+    floorTextured.setAlpha(0.6);
 
     // Dynamic borders
     var wt = 24;
