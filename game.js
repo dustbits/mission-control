@@ -388,6 +388,7 @@ function createRuntimeAgents(scene) {
 
         var shadow = scene.add.ellipse(desk.x, baseY + 4, 28, 10, 0x000000, 0.35);
         var halo   = scene.add.circle(desk.x, baseY, 22, STATUS_COLORS[agent.status] || STATUS_COLORS.idle, 0.18);
+        var lamp   = state.deskLights[agent.desk];  // overhead lamp for this desk
         var sprite = scene.add.image(desk.x, baseY, 'agent-' + agent.id).setOrigin(0.5, 1).setDepth(baseY);
 
         var bubbleBox  = scene.add.rectangle(desk.x, baseY - 102, 140, 28, 0x0f172a, 0.96)
@@ -462,6 +463,7 @@ function createRuntimeAgents(scene) {
             message: agent.name + ' standing by',
             lastUpdate: Date.now(),
             pulseTween: null,
+            lampTween: null,
             chatHistory: [],
         });
 
@@ -477,6 +479,7 @@ function applyStatusVisuals(runtime) {
     runtime.halo.setFillStyle(dotColor, runtime.status === 'working' ? 0.20 : 0.12);
 
     if (runtime.pulseTween) { runtime.pulseTween.stop(); runtime.pulseTween = null; }
+    if (runtime.lampTween)  { runtime.lampTween.stop();  runtime.lampTween = null; }
 
     if (runtime.status === 'working' && scene) {
         runtime.pulseTween = scene.tweens.add({
@@ -487,6 +490,19 @@ function applyStatusVisuals(runtime) {
             repeat: -1,
             ease: 'Sine.easeInOut',
         });
+        // Sync overhead lamp to pulse with halo
+        if (runtime.lamp) {
+            runtime.lamp.light.setFillStyle(0xf5c842);
+            runtime.lamp.glow.setFillStyle(0xf5c842);
+            runtime.lampTween = scene.tweens.add({
+                targets: [runtime.lamp.light, runtime.lamp.glow],
+                alpha: { from: 0.5, to: 1.0 },
+                duration: 900,
+                yoyo: true,
+                repeat: -1,
+                ease: 'Sine.easeInOut',
+            });
+        }
     }
 
     if (runtime.status === 'error' && scene) {
@@ -498,12 +514,38 @@ function applyStatusVisuals(runtime) {
             repeat: -1,
             ease: 'Sine.easeInOut',
         });
+        // Flash overhead lamp red on error
+        if (runtime.lamp) {
+            runtime.lamp.light.setFillStyle(0xef4444);
+            runtime.lamp.glow.setFillStyle(0xef4444);
+            runtime.lampTween = scene.tweens.add({
+                targets: [runtime.lamp.light, runtime.lamp.glow],
+                alpha: { from: 0.3, to: 1.0 },
+                duration: 400,
+                yoyo: true,
+                repeat: -1,
+                ease: 'Sine.easeInOut',
+            });
+        }
+    }
+
+    if (runtime.status === 'idle' && runtime.lamp) {
+        // Idle — restore desk lamp to ambient day/night colour
+        var lampColor = 0xf5c842;
+        runtime.lamp.light.setFillStyle(lampColor);
+        runtime.lamp.glow.setFillStyle(lampColor);
+        runtime.lamp.light.setAlpha(0.6);
+        runtime.lamp.glow.setAlpha(0.3);
     }
 
     if (runtime.status === 'offline') {
         runtime.sprite.setAlpha(0.3);
         runtime.halo.setAlpha(0.1);
         runtime.nameText.setStyle(textStyle(11, '#475569'));
+        if (runtime.lamp) {
+            runtime.lamp.light.setAlpha(0.1);
+            runtime.lamp.glow.setAlpha(0.05);
+        }
     } else {
         runtime.sprite.setAlpha(1);
         runtime.nameText.setStyle(textStyle(11, '#f8fafc'));
@@ -1678,6 +1720,72 @@ function renderLiveHud(data) {
                 var dot = d.status === 'deployed' ? '<span style="color:#22c55e">\u26a1</span>' : '<span style="color:#64748b">\u25cb</span>';
                 row.innerHTML = dot + ' ' + d.time + ' ago <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
                 depEl.appendChild(row);
+            });
+        }
+    }
+
+    // ── Agent efficiency leaderboard ──
+    var lbEl = document.getElementById('leaderboard-body');
+    if (lbEl && data.leaderboard) {
+        if (!data.leaderboard.length) {
+            lbEl.innerHTML = '<div style="color:#475569;font-size:9px;">No data yet</div>';
+        } else {
+            lbEl.innerHTML = '';
+            data.leaderboard.forEach(function(row) {
+                var div = document.createElement('div');
+                div.style.display = 'flex';
+                div.style.alignItems = 'center';
+                div.style.justifyContent = 'space-between';
+                div.style.marginBottom = '3px';
+                div.style.gap = '4px';
+
+                var nameDiv = document.createElement('div');
+                nameDiv.style.display = 'flex';
+                nameDiv.style.alignItems = 'center';
+                nameDiv.style.gap = '4px';
+                nameDiv.style.minWidth = '0';
+
+                var dot = document.createElement('span');
+                dot.textContent = '\u25cf';
+                dot.style.color = row.color || '#94a3b8';
+                dot.style.fontSize = '8px';
+                dot.style.flexShrink = '0';
+
+                var name = document.createElement('span');
+                name.textContent = row.agent || row.agentKey || '?';
+                name.style.color = row.color || '#94a3b8';
+                name.style.fontWeight = '700';
+                name.style.fontSize = '9px';
+                name.style.overflow = 'hidden';
+                name.style.textOverflow = 'ellipsis';
+                name.style.whiteSpace = 'nowrap';
+
+                nameDiv.appendChild(dot);
+                nameDiv.appendChild(name);
+
+                var statsDiv = document.createElement('div');
+                statsDiv.style.display = 'flex';
+                statsDiv.style.gap = '3px';
+                statsDiv.style.flexShrink = '0';
+
+                var comp = document.createElement('span');
+                comp.textContent = row.completed || 0;
+                comp.style.color = '#22c55e';
+                comp.style.fontSize = '9px';
+                comp.title = 'tasks completed';
+
+                var eff = document.createElement('span');
+                eff.textContent = (row.efficiency || 0) + '%';
+                eff.style.color = (row.efficiency || 0) > 70 ? '#22c55e' : (row.efficiency || 0) > 40 ? '#f59e0b' : '#ef4444';
+                eff.style.fontSize = '9px';
+                eff.title = 'efficiency';
+
+                statsDiv.appendChild(comp);
+                statsDiv.appendChild(eff);
+
+                div.appendChild(nameDiv);
+                div.appendChild(statsDiv);
+                lbEl.appendChild(div);
             });
         }
     }

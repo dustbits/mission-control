@@ -1,37 +1,1453 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Mission Control</title>
-    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
-    <style id="expo-reset">
-      /* These styles make the body full-height */
-      html,
-      body {
-        height: 100%;
-      }
-      /* These styles disable body scrolling if you are using <ScrollView> */
-      body {
-        overflow: hidden;
-      }
-      /* These styles make the root element full-height */
-      #root {
-        display: flex;
-        height: 100%;
-        flex: 1;
-      }
-    </style>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray's AI Office — Mission Control</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
 
-  <body>
-    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <!-- The root element for your Expo app. -->
-    <div id="root"></div>
-  <script src="/_expo/static/js/web/entry-090e5bc87f9866cd6031792e128f91ac.js" defer></script>
+        body {
+            margin: 0; padding: 0;
+            background:
+                radial-gradient(circle at top left, #13203a 0%, transparent 28%),
+                radial-gradient(circle at bottom right, #1d4ed81a 0%, transparent 24%),
+                #020617;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+            color: #f8fafc;
+        }
+
+        #game-root {
+            touch-action: manipulation;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+        }
+
+        #hud {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            pointer-events: none;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        #hud.hud-collapsed #hud-inner { display: none; }
+        #hud.hud-expanded #hud-inner { display: flex; }
+        #hud.hud-collapsed { opacity: 0.7; }
+        #hud.hud-collapsed:hover { opacity: 1; }
+
+        #hud-toggle {
+            pointer-events: auto;
+            background: #08101da0;
+            border: 1px solid #1e293b88;
+            color: #64748b;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 32px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        #hud-toggle:hover { color: #e2e8f0; border-color: #4a9eff; }
+
+        #hud-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            pointer-events: auto;
+        }
+
+        .hud-card {
+            min-width: 180px;
+            max-width: 230px;
+            background: linear-gradient(180deg, #08101da0 0%, #020617b0 100%);
+            border: 1px solid #1e293b88;
+            border-radius: 10px;
+            padding: 6px 8px;
+            box-shadow: 0 4px 16px #00000025;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .hud-title {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .hud-value {
+            font-size: 12px;
+            color: #e2e8f0;
+            line-height: 1.35;
+        }
+
+        .hud-subtle {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .hud-status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .hud-pill {
+            font-size: 10px;
+            padding: 3px 7px;
+            border-radius: 999px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #cbd5e1;
+        }
+
+        .hud-pill.working { color: #86efac; border-color: #166534; }
+        .hud-pill.idle    { color: #cbd5e1; border-color: #475569; }
+        .hud-pill.meeting { color: #c4b5fd; border-color: #6d28d9; }
+        .hud-pill.error   { color: #fca5a5; border-color: #991b1b; }
+        .hud-pill.error.has-errors { animation: errorPulse 1.5s ease-in-out infinite; }
+        @keyframes errorPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        canvas {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        /* ── Detail Panel ── */
+        #panel {
+            position: fixed;
+            top: 0;
+            right: -340px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(180deg, #0b1220ee 0%, #060d18f5 100%);
+            border-left: 3px solid var(--agent-color);
+            box-shadow: -8px 0 40px #000000a0;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            overflow: hidden;
+            --agent-color: #4a9eff;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        .panel-open #panel {
+            right: 0;
+        }
+
+        #panel-header {
+            padding: 14px 16px 12px;
+            border-bottom: 2px solid var(--agent-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Portrait canvas */
+        #portrait-wrap {
+            flex-shrink: 0;
+        }
+
+        #agent-portrait {
+            width: 72px;
+            height: 72px;
+            border-radius: 10px;
+            border: 2px solid var(--agent-color);
+            display: block;
+            background: #0b1929;
+            box-shadow: 0 0 12px color-mix(in srgb, var(--agent-color) 40%, transparent);
+        }
+
+        #portrait-meta {
+            font-size: 9px;
+            color: #64748b;
+            text-align: center;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* Header text stack */
+        #header-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        #agent-name {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -0.02em;
+            color: var(--agent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #agent-bebop {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        #agent-status-pill {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        #header-meta {
+            font-size: 9px;
+            color: #475569;
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+
+        #close-panel {
+            background: none;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        #agent-tooltip {
+            display: none;
+            position: fixed;
+            z-index: 900;
+            background: #0b1220ee;
+            border: 1px solid #4a9eff;
+            border-radius: 6px;
+            padding: 6px 10px;
+            color: #e2e8f0;
+            pointer-events: none;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            min-width: 140px;
+            transform: translateY(-50%);
+        }
+
+        #close-panel:hover { border-color: #64748b; color: #f8fafc; }
+
+        body.panel-open::after, body.cost-panel-open::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, transparent 75%, #02061733 100%);
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* ── Cost Panel ── */
+        #cost-panel {
+            position: fixed;
+            top: 0;
+            left: -340px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(180deg, #0b1220ee 0%, #060d18f5 100%);
+            border-right: 3px solid #10b981;
+            box-shadow: 8px 0 40px #000000a0;
+            display: flex;
+            flex-direction: column;
+            transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cost-panel-open #cost-panel { left: 0; }
+        
+        #cost-panel-header {
+            padding: 14px 16px 12px;
+            border-bottom: 2px solid #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #cost-panel-header h3 {
+            margin: 0;
+            color: #10b981;
+            font-size: 16px;
+            font-weight: 800;
+        }
+        #close-cost-panel {
+            background: none; border: 1px solid #334155; color: #94a3b8; width: 26px; height: 26px; border-radius: 6px; cursor: pointer;
+        }
+        #cost-panel-body {
+            padding: 16px;
+            overflow-y: auto;
+            color: #e2e8f0;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .cost-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .cost-big-number {
+            font-size: 24px;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .cost-row {
+            display: flex; justify-content: space-between; margin-top: 4px; border-bottom: 1px dashed #1e293b; padding-bottom: 4px;
+        }
+        .cost-row:last-child { border-bottom: none; }
+
+        /* Tabs */
+        #panel-tabs {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
+            padding: 10px 12px 0;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: 1px solid #1e293b;
+            color: #64748b;
+            border-radius: 6px;
+            padding: 5px 0;
+            font-size: 9px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .tab-btn.active {
+            background: #0f172a;
+            border-color: var(--agent-color);
+            color: var(--agent-color);
+        }
+
+        .tab-btn:hover:not(.active) { border-color: #334155; color: #94a3b8; }
+
+        /* Panel body */
+        #panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #panel-body::-webkit-scrollbar { width: 4px; }
+        #panel-body::-webkit-scrollbar-track { background: transparent; }
+        #panel-body::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+
+        /* Tab content */
+        #tab-info, #tab-tasks, #tab-logs, #tab-feed, #tab-cron, #tab-board {
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+        }
+        #tab-info.visible, #tab-tasks.visible, #tab-logs.visible, #tab-feed.visible, #tab-cron.visible, #tab-board.visible {
+            display: flex;
+        }
+
+        .info-block {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .info-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: #475569;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 12px;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #475569;
+            margin: 0 0 8px;
+        }
+
+        /* Task cards */
+        .task-card {
+            background: #0b1220;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 8px 9px;
+            margin-bottom: 6px;
+        }
+
+        .task-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .task-title {
+            font-size: 11px;
+            color: #e2e8f0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .task-badge {
+            flex-shrink: 0;
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 999px;
+            border: 1px solid #334155;
+            color: #93c5fd;
+            background: #0f172a;
+        }
+
+        .task-body {
+            font-size: 10px;
+            color: #94a3b8;
+            line-height: 1.45;
+        }
+
+        .task-ts {
+            font-size: 9px;
+            color: #334155;
+            margin-top: 4px;
+        }
+
+
+        .task-comments {
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid #1e293b;
+            display: none;
+        }
+        .task-comments.open { display: block; }
+        .task-comment {
+            font-size: 10px;
+            color: #94a3b8;
+            padding: 3px 0;
+            border-bottom: 1px dashed #1e293b;
+        }
+        .task-comment:last-child { border-bottom: none; }
+        .task-comment .tc-sender { color: #60a5fa; font-weight: 600; }
+        .task-comment .tc-time { color: #334155; font-size: 9px; margin-left: 6px; }
+        .task-comment-form {
+            display: flex;
+            gap: 4px;
+            margin-top: 5px;
+        }
+        .task-comment-input {
+            flex: 1;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 4px;
+            color: #e2e8f0;
+            font-size: 10px;
+            padding: 3px 6px;
+            outline: none;
+        }
+        .task-comment-input:focus { border-color: #3b82f6; }
+        .task-comment-btn {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            border-radius: 4px;
+            font-size: 9px;
+            padding: 3px 8px;
+            cursor: pointer;
+        }
+        .task-comment-btn:hover { background: #334155; color: #e2e8f0; }
+        .task-card.expandable { cursor: pointer; }
+        .task-card .expand-hint {
+            font-size: 9px;
+            color: #334155;
+            float: right;
+            margin-top: 2px;
+        }
+        /* Policy Slider */
+        .slider:before {
+            position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px;
+            background-color: #64748b; transition: 0.3s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--agent-color); }
+        input:checked + .slider:before { transform: translateX(14px); background-color: #fff; }
+
+        .empty-state {
+            font-size: 11px;
+            color: #475569;
+            padding: 14px;
+            border: 1px dashed #1e293b;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Activity / logs */
+        #activity-log {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #activity-log li {
+            font-size: 10px;
+            color: #94a3b8;
+            background: #0b1220;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 5px 8px;
+            line-height: 1.4;
+        }
+
+        /* Feed tab */
+        #feed-log {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #feed-log li {
+            font-size: 10px;
+            color: #94a3b8;
+            background: #0b1220;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 5px 8px;
+            line-height: 1.4;
+        }
+
+        .feed-ts    { color: #334155; margin-right: 5px; font-size: 9px; }
+        .feed-agent { color: var(--agent-color); margin-right: 5px; font-weight: 700; font-size: 9px; }
+
+        /* Chat messages */
+        #chat-messages {
+            flex-shrink: 0;
+            max-height: 160px;
+            overflow-y: auto;
+            padding: 8px 14px 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .chat-msg { font-size: 10.5px; line-height: 1.4; word-break: break-word; }
+        .chat-msg .chat-sender { font-weight: 700; margin-right: 5px; }
+        .chat-msg.from-you .chat-sender { color: #38bdf8; }
+        .chat-msg.from-agent .chat-sender { color: var(--agent-color, #94a3b8); }
+        .chat-msg.from-system .chat-sender { color: #ef4444; }
+
+        /* Chat */
+        #panel-chat {
+            flex-shrink: 0;
+            padding: 10px 14px;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            gap: 8px;
+        }
+
+        #chat-input {
+            flex: 1;
+            background: #0b1220;
+            border: 1px solid #334155;
+            color: #f8fafc;
+            padding: 7px 10px;
+            font-size: 11px;
+            font-family: inherit;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        #chat-input:focus { border-color: var(--agent-color); }
+        #chat-input::placeholder { color: #334155; }
+
+        #send-chat, #create-task {
+            border: none;
+            color: #fff;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-family: inherit;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        #send-chat {
+            background: #1d4ed8;
+        }
+
+        #send-chat:hover { background: #2563eb; }
+
+        #create-task {
+            background: #7c3aed;
+        }
+
+        #create-task:hover { background: #8b5cf6; }
+
+        /* Gateway status bar */
+        #gateway-status {
+            flex-shrink: 0;
+            padding: 4px 14px;
+            background: #060d18;
+            border-top: 1px solid #0f172a;
+            font-size: 9px;
+            color: #1e293b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #gateway-status.connected { color: #22c55e; }
+        #gateway-status.error     { color: #ef4444; }
+
+        /* ── Toast notifications ── */
+        #toast-container {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .toast {
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px solid;
+            font-size: 11px;
+            font-family: 'Courier New', monospace;
+            background: #0b1220ee;
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            animation: toastIn 0.2s ease, toastOut 0.3s ease 3.3s forwards;
+            box-shadow: 0 4px 20px #00000060;
+        }
+
+        @keyframes toastIn  { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes toastOut { to   { opacity:0; transform:translateY(-8px); } }
+
+        /* -- Responsive / Mobile -- */
+        @media (max-width: 900px) {
+            #hud { top: 6px; left: 6px; }
+            .hud-card { min-width: 140px; max-width: 180px; padding: 4px 6px; }
+            .hud-title { font-size: 8px; }
+            .hud-value { font-size: 10px; }
+            .hud-pill { font-size: 8px; padding: 2px 5px; }
+            #panel { width: 100vw; right: -100vw; }
+            .panel-open #panel { right: 0; }
+            #panel-header { padding: 10px 12px 8px; gap: 8px; }
+            #agent-portrait { width: 56px; height: 56px; }
+            #agent-name { font-size: 15px; }
+            .tab-btn { font-size: 8px; padding: 4px 0; }
+            #panel-body { padding: 8px 10px; }
+            #chat-input { font-size: 12px; padding: 8px; }
+            #send-chat, #create-task { padding: 8px 10px; font-size: 12px; }
+        }
+        @media (max-width: 600px) {
+            #hud { display: none; }
+            #game-root canvas { max-height: 35vh; }
+        }
+
+        /* -- Status banner -- */
+        #status-banner {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            background: #060d18;
+            border-bottom: 1px solid #1e293b;
+            padding: 5px 14px;
+            font-size: 10px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Courier New', monospace;
+        }
+        #status-banner .banner-sep { color: #1e293b; }
+
+        /* -- Notification badge -- */
+        #notif-badge {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 200;
+            background: #ef4444;
+            color: #fff;
+            font-size: 10px;
+            font-family: 'Courier New', monospace;
+            padding: 3px 8px;
+            border-radius: 999px;
+            display: none;
+            cursor: pointer;
+            animation: errorPulse 1.5s ease-in-out infinite;
+        }
+
+        /* ── Calendar Modal ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            width: 85vw;
+            max-width: 1000px;
+            height: 85vh;
+            max-height: 800px;
+            background: #0b1220;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 40px #00000080;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            font-size: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .modal-close:hover { background: #334155; color: #fff; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.85.0/dist/phaser.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1d4ed8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+</head>
+<body>
+    <!-- Status banner (top bar) -->
+    <div id="status-banner">
+        <span id="banner-agents">Agents: 9</span>
+        <span class="banner-sep">·</span>
+        <span id="banner-crons">Active Crons: —</span>
+        <span class="banner-sep">·</span>
+        <span id="banner-deploy">Last Deploy: —</span>
+        <span class="banner-sep">·</span>
+        <span id="banner-deploy-status" style="font-weight:700;color:#22c55e;">LIVE</span>
+    </div>
+
+    <!-- HUD overlay (top-left) -->
+    <div id="hud" class="hud-expanded">
+        <button id="hud-toggle" title="Toggle HUD (H)">&#9776;</button>
+        <div id="hud-inner">
+            <div class="hud-card">
+                <div class="hud-title">Mission Control</div>
+                <div class="hud-value" id="hud-summary">9 agents</div>
+                <div class="hud-status-row">
+                    <span class="hud-pill working" id="hud-working">Working 0</span>
+                    <span class="hud-pill meeting" id="hud-meeting">Meeting 0</span>
+                    <span class="hud-pill idle"    id="hud-idle">Idle 0</span>
+                    <span class="hud-pill error"   id="hud-error">Alerts 0</span>
+                </div>
+            </div>
+            <div class="hud-card">
+                <div class="hud-title">Projects</div>
+                <div id="hud-project-dots" class="hud-status-row">
+                    <span class="hud-subtle">Loading…</span>
+                </div>
+            </div>
+            <div class="hud-card">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;">
+                    <div class="hud-title">System · <span id="hud-node">jarvis</span></div>
+                    <div class="hud-subtle" id="hud-uptime">UP: 14d 2h</div>
+                </div>
+                <div id="hud-health-bars" style="margin-top:4px;">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                        <div class="hud-subtle" style="width:24px;margin-top:0;">CPU</div>
+                        <div style="flex:1;height:4px;background:#1e293b;border-radius:2px;overflow:hidden;">
+                            <div id="bar-cpu" style="width:12%;height:100%;background:#3b82f6;transition:width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                        <div class="hud-subtle" style="width:24px;margin-top:0;">RAM</div>
+                        <div style="flex:1;height:4px;background:#1e293b;border-radius:2px;overflow:hidden;">
+                            <div id="bar-ram" style="width:45%;height:100%;background:#10b981;transition:width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <div class="hud-subtle" style="width:24px;margin-top:0;">LAG</div>
+                        <div style="flex:1;height:4px;background:#1e293b;border-radius:2px;overflow:hidden;">
+                            <div id="bar-lag" style="width:8%;height:100%;background:#f59e0b;transition:width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hud-title" style="margin-top:8px;">Cron Operations</div>
+                <div id="hud-cron-list"><div class="hud-subtle">Awaiting sequence…</div></div>
+            </div>
+            <div class="hud-card">
+                <div class="hud-title">Schedule & Cost</div>
+                <button id="hud-calendar-btn" style="width:100%; background:#1d4ed8; color:#fff; border:none; padding:6px; border-radius:6px; cursor:pointer; font-family:inherit; font-size:11px;">📅 Open Calendar</button>
+                <button id="hud-cost-btn" style="width:100%; background:#10b981; color:#fff; border:none; padding:6px; border-radius:6px; cursor:pointer; font-family:inherit; font-size:11px; margin-top:6px;">💰 Cost Dashboard</button>
+            </div>
+            <div class="hud-card" id="hud-kanban-card">
+                <div class="hud-title">Board</div>
+                <button id="hud-kanban-btn" style="width:100%; background:#8b5cf620; color:#c4b5fd; border:1px solid #8b5cf640; padding:6px; border-radius:6px; cursor:pointer; font-family:inherit; font-size:11px;">📋 Kanban <span id="kanban-open-badge" style="background:#ef4444; color:#fff; font-size:9px; padding:1px 5px; border-radius:999px; margin-left:4px; display:none;">0</span></button>
+            </div>
+            <div class="hud-card" id="hud-leaderboard-card">
+                <div class="hud-title">⚡ Efficiency</div>
+                <div id="leaderboard-body" style="font-size:9px; color:#94a3b8; margin-top:4px; max-height:120px; overflow-y:auto;"></div>
+            </div>
+            <div class="hud-card" id="hud-policy-card">
+                <div class="hud-title">Global Policy</div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px;">
+                    <span id="hud-policy-status" class="hud-pill" style="background:#1e293b; color:#94a3b8; font-size:10px; padding:3px 8px;">Restricted</span>
+                    <div id="hud-policy-count" class="hud-subtle" style="font-size:10px; color:#64748b;">0/9 Auto-Approve</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cost dashboard panel -->
+    <div id="cost-panel">
+        <div id="cost-panel-header">
+            <h3>Mission Cost</h3>
+            <button id="close-cost-panel">✕</button>
+        </div>
+        <div id="cost-panel-body">
+            <div style="color:#94a3b8; text-align:center;">Loading cost data...</div>
+        </div>
+    </div>
+
+    <!-- Calendar modal -->
+    <div id="calendar-modal" class="modal-overlay" style="display:none">
+        <div class="modal-content">
+            <button id="calendar-close" class="modal-close" title="Close Calendar">&times;</button>
+            <iframe
+                src="https://calendar.google.com/calendar/embed?src=ops%40ironthread.ai&ctz=America%2FNew_York"
+                style="border:0; width:100%; height:100%;"
+                frameborder="0"
+                scrolling="no">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Kanban board modal -->
+    <div id="kanban-modal" class="modal-overlay" style="display:none">
+        <div class="modal-content" style="max-width:900px;">
+            <button id="kanban-close" class="modal-close" title="Close Board">&times;</button>
+            <div style="padding:14px 16px 0; border-bottom:1px solid #1e293b; display:flex; align-items:center; justify-content:space-between;">
+                <h3 style="margin:0; color:#c4b5fd; font-size:15px;">📋 Mission Board</h3>
+                <div style="font-size:10px; color:#475569;">Live from shared-log · updates every 60s</div>
+            </div>
+            <div style="display:flex; flex:1; overflow:hidden; gap:0;">
+                <!-- Queued column -->
+                <div style="flex:1; display:flex; flex-direction:column; border-right:1px solid #1e293b; min-width:0;">
+                    <div style="padding:10px 12px 8px; border-bottom:1px solid #1e293b;">
+                        <span style="font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:#f59e0b;">⚡ Queued</span>
+                        <span id="kanban-queued-count" style="margin-left:6px; font-size:9px; background:#f59e0b22; color:#f59e0b; padding:1px 6px; border-radius:999px;">0</span>
+                    </div>
+                    <div id="kanban-queued" style="flex:1; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:6px;">
+                        <div class="empty-state" style="font-size:10px;">No queued tasks</div>
+                    </div>
+                </div>
+                <!-- In-Progress column -->
+                <div style="flex:1; display:flex; flex-direction:column; border-right:1px solid #1e293b; min-width:0;">
+                    <div style="padding:10px 12px 8px; border-bottom:1px solid #1e293b;">
+                        <span style="font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:#38bdf8;">🔄 In Progress</span>
+                        <span id="kanban-progress-count" style="margin-left:6px; font-size:9px; background:#38bdf822; color:#38bdf8; padding:1px 6px; border-radius:999px;">0</span>
+                    </div>
+                    <div id="kanban-progress" style="flex:1; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:6px;">
+                        <div class="empty-state" style="font-size:10px;">No tasks in progress</div>
+                    </div>
+                </div>
+                <!-- Done column -->
+                <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+                    <div style="padding:10px 12px 8px; border-bottom:1px solid #1e293b;">
+                        <span style="font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:#22c55e;">✅ Done</span>
+                        <span id="kanban-done-count" style="margin-left:6px; font-size:9px; background:#22c55e22; color:#22c55e; padding:1px 6px; border-radius:999px;">0</span>
+                    </div>
+                    <div id="kanban-done" style="flex:1; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:6px;">
+                        <div class="empty-state" style="font-size:10px;">No completed tasks yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phaser canvas host -->
+    <div id="game-root"></div>
+
+    <!-- Agent Tooltip -->
+    <div id="agent-tooltip" style="display:none; position:fixed; z-index:900; background:#0b1220ee; border:1px solid #4a9eff; border-radius:6px; padding:6px 10px; color:#e2e8f0; pointer-events:none; backdrop-filter:blur(8px); box-shadow:0 4px 12px rgba(0,0,0,0.5); min-width:140px; transform:translateY(-50%);">
+        <div id="tt-name" style="font-weight:700; font-size:11px; margin-bottom:2px;">Name</div>
+        <div id="tt-role" style="font-size:9px; color:#94a3b8; margin-bottom:4px;">Role</div>
+        <div id="tt-model" style="font-size:9px; color:#38bdf8; margin-bottom:6px;">Model</div>
+        <div style="font-size:9px; color:#cbd5e1; border-top:1px solid #1e293b; padding-top:4px;">Status: <span id="tt-status">Idling</span></div>
+        <div style="font-size:9px; color:#cbd5e1; margin-top:2px;">Cost today: <span id="tt-cost" style="color:#6ee7b7;">$0.00</span></div>
+    </div>
+
+    <!-- Task Activity Feed (Bottom Left) -->
+    <div id="live-feed-hud" style="position:fixed; bottom:15px; left:15px; z-index:90; width:280px; display:flex; flex-direction:column; gap:6px; pointer-events:none;">
+        <div style="font-size:9px; color:#64748b; text-transform:uppercase; letter-spacing:0.1em; padding-left:2px; text-shadow: 0 1px 2px #000;">Live Feed</div>
+        <div id="live-feed-items" style="display:flex; flex-direction:column; gap:4px; max-height: 140px; overflow:hidden;">
+            <div style="font-size:10px; color:#475569; font-style:italic; padding-left:2px;">Waiting for activity...</div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- Agent detail panel (slides in from right) -->
+    <div id="panel">
+        <div id="panel-header">
+            <!-- Portrait -->
+            <div id="portrait-wrap">
+                <canvas id="agent-portrait" width="72" height="72"></canvas>
+                <div id="portrait-meta">
+                    <span id="agent-location-mini">—</span><br>
+                    <span id="agent-updated-mini">—</span>
+                </div>
+            </div>
+
+            <!-- Name / meta stack -->
+            <div id="header-text">
+                <h3 id="agent-name">—</h3>
+                <div id="agent-bebop"></div>
+                <span id="agent-status-pill">—</span>
+                <div id="header-meta"></div>
+            </div>
+
+            <button id="close-panel" title="Close (Esc) · Arrow keys to cycle · 1-9 to jump">✕</button>
+        </div>
+
+        <div id="panel-tabs">
+            <button class="tab-btn active" data-tab="info">Info</button>
+            <button class="tab-btn"        data-tab="tasks">Tasks</button>
+            <button class="tab-btn"        data-tab="logs">Logs</button>
+            <button class="tab-btn"        data-tab="feed">Feed</button>
+            <button class="tab-btn"        data-tab="cron">Cron</button>
+            <button class="tab-btn"        data-tab="board">Agents</button>
+        </div>
+
+        <div id="panel-body">
+
+            <!-- Info tab -->
+            <div id="tab-info" class="visible">
+                <div class="info-block">
+                    <div class="info-label">Role</div>
+                    <div class="info-value" id="agent-role">—</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">Model</div>
+                    <div class="info-value" id="agent-model" style="color:#38bdf8;">—</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">Current task</div>
+                    <div class="info-value" id="agent-message">—</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">Location</div>
+                    <div class="info-value" id="agent-location">—</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">Last active</div>
+                    <div class="info-value" id="agent-updated">—</div>
+                </div>
+                <!-- Mini Performance Progress Bar -->
+                <div class="info-block">
+                    <div class="info-label">Efficacy</div>
+                    <div style="width:100%; height:4px; background:#1e293b; border-radius:2px; margin-top:6px; overflow:hidden;">
+                        <div id="agent-perf-bar" style="width:75%; height:100%; background:var(--agent-color); transition: width 0.5s ease;"></div>
+                    </div>
+                </div>
+                <!-- Policy Section -->
+                <div class="info-block" style="border-top:1px solid #1e293b; padding-top:12px; margin-top:12px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                        <div class="info-label" style="margin-bottom:0;">Auto-Approve Policy</div>
+                        <label class="switch" style="position:relative; display:inline-block; width:34px; height:20px;">
+                            <input type="checkbox" id="agent-auto-approve" style="opacity:0; width:0; height:0;">
+                            <span class="slider" style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#1e293b; transition:0.3s; border-radius:20px;"></span>
+                        </label>
+                    </div>
+                    <div class="hud-subtle" style="margin-top:6px; font-size:9px;">When enabled, critical actions (file edits, deployments) are approved without manual gateway confirmation.</div>
+                </div>
+            </div>
+
+            <!-- Tasks tab -->
+            <div id="tab-tasks">
+                <div id="task-list-wrap" class="info-block">
+                    <div class="section-title">Recent activity</div>
+                    <div id="task-list"><div class="empty-state">No activity yet.</div></div>
+                </div>
+            </div>
+
+            <!-- Logs tab -->
+            <div id="tab-logs">
+                <div class="info-block" style="padding:8px;">
+                    <ul id="activity-log"></ul>
+                </div>
+            </div>
+
+            <!-- Cron tab -->
+            <div id="tab-cron">
+                <div class="info-block" style="padding:8px;">
+                    <div class="section-title">SCHEDULED JOBS</div>
+                    <div id="cron-list"><div class="empty-state">Loading cron data...</div></div>
+                </div>
+            </div>
+
+            <!-- Feed tab — shared-log.md (all agents) -->
+            <div id="tab-feed">
+                <div class="info-block" style="padding:8px;">
+                    <div class="section-title">ERRORS &amp; ALERTS</div>
+                    <div id="error-stream"><div class="empty-state">No errors in last 72h</div></div>
+                    <div class="section-title" style="margin-top:10px;">DEPLOY HISTORY</div>
+                    <div id="deploy-history"><div class="empty-state">No deploy history yet</div></div>
+                    <div class="section-title" style="margin-top:10px;">ACTIVITY FEED</div>
+                    <ul id="feed-log"></ul>
+                    <div id="feed-empty" class="empty-state" style="display:none;">Awaiting gateway…</div>
+                </div>
+            </div>
+
+            <!-- Agent Leaderboard tab -->
+            <div id="tab-board">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                    <div style="font-size:9px; text-transform:uppercase; letter-spacing:.1em; color:#475569;">Agent Leaderboard</div>
+                    <button id="lbk-refresh" style="background:#1d4ed8;border:none;color:#fff;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:9px;">&#8635; Refresh</button>
+                </div>
+                <div id="lbk-table-wrap" style="overflow-x:auto;">
+                    <table id="lbk-table" style="width:100%; border-collapse:collapse; font-size:10px;">
+                        <thead>
+                            <tr style="color:#475569; text-transform:uppercase; letter-spacing:.08em;">
+                                <th style="text-align:left; padding:4px 6px; border-bottom:1px solid #1e293b;" data-sort="agent">Agent</th>
+                                <th style="text-align:right; padding:4px 6px; border-bottom:1px solid #1e293b;" data-sort="done">Tasks</th>
+                                <th style="text-align:right; padding:4px 6px; border-bottom:1px solid #1e293b;" data-sort="avgTime">Avg Time</th>
+                                <th style="text-align:right; padding:4px 6px; border-bottom:1px solid #1e293b;" data-sort="blocked">Block%</th>
+                                <th style="text-align:right; padding:4px 6px; border-bottom:1px solid #1e293b;" data-sort="score">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lbk-body">
+                            <tr><td colspan="5" style="color:#475569; text-align:center; padding:16px;">Loading stats…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="font-size:9px; color:#334155; margin-top:8px; text-align:center;">Data from shared-log · parsed in-browser</div>
+            </div>
+
+        </div>
+
+        <div id="chat-messages"></div>
+
+        <div id="panel-chat">
+            <input type="text" id="chat-input" placeholder="Message this agent…">
+            <button type="button" id="create-task">Task</button>
+            <button type="button" id="send-chat">Send</button>
+        </div>
+
+        <div id="gateway-status">Initializing…</div>
+    </div>
+
+    <div id="notif-badge" onclick="this.style.display='none'">0 alerts</div>
+    <script type="module" src="game.js"></script>
+
+    <script>
+        // ── Tab switching ──
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+                document.querySelectorAll('#tab-info, #tab-tasks, #tab-logs, #tab-feed, #tab-cron, #tab-board').forEach(function(t) { t.classList.remove('visible'); });
+                btn.classList.add('active');
+                var tab = document.getElementById('tab-' + btn.dataset.tab);
+                if (tab) tab.classList.add('visible');
+                if (btn.dataset.tab === 'board') refreshLeaderboard();
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.body.classList.remove('panel-open');
+                document.body.classList.remove('cost-panel-open');
+            }
+        });
+
+        // ── Cost Panel Toggle ──
+        document.getElementById('hud-cost-btn')?.addEventListener('click', function() {
+            document.body.classList.add('cost-panel-open');
+        });
+        document.getElementById('close-cost-panel')?.addEventListener('click', function() {
+            document.body.classList.remove('cost-panel-open');
+        });
+
+        // ── Agent accent ──
+        window.setAgentAccent = function(color) {
+            document.getElementById('panel').style.setProperty('--agent-color', color);
+        };
+
+        // ── Toast notifications ──
+        window.showToast = function(msg, color) {
+            var container = document.getElementById('toast-container');
+            if (!container) return;
+            var t = document.createElement('div');
+            t.className = 'toast';
+            t.textContent = msg;
+            t.style.color = color || '#e2e8f0';
+            t.style.borderColor = color || '#334155';
+            container.appendChild(t);
+            setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 3600);
+        };
+
+        // ── Crew grid (unused tabs removed, but keep stubs for game.js compat) ──
+        window.buildCrewGrid = function() {};
+        window.updateCrewCard = function() {};
+        window.setSelectedCrewCard = function() {};
+
+        // ── HUD toggle ──
+        (function() {
+            var hudEl = document.getElementById('hud');
+            var hudToggle = document.getElementById('hud-toggle');
+            if (hudToggle && hudEl) {
+                hudToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (hudEl.classList.contains('hud-collapsed')) {
+                        hudEl.classList.remove('hud-collapsed');
+                        hudEl.classList.add('hud-expanded');
+                    } else {
+                        hudEl.classList.remove('hud-expanded');
+                        hudEl.classList.add('hud-collapsed');
+                    }
+                });
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.target && e.target.tagName === 'INPUT') return;
+                if (e.key === 'h' || e.key === 'H') {
+                    if (hudEl.classList.contains('hud-collapsed')) {
+                        hudEl.classList.remove('hud-collapsed');
+                        hudEl.classList.add('hud-expanded');
+                    } else {
+                        hudEl.classList.remove('hud-expanded');
+                        hudEl.classList.add('hud-collapsed');
+                    }
+                }
+            });
+        })();
+
+        // ── Calendar Modal logic ──
+        (function() {
+            var btn = document.getElementById('hud-calendar-btn');
+            var modal = document.getElementById('calendar-modal');
+            var closeBtn = document.getElementById('calendar-close');
+            
+            if (btn && modal && closeBtn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    modal.style.display = 'flex';
+                });
+                
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+                
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        })();
+
+        // ── Kanban Board Modal logic ──
+        (function() {
+            var btn = document.getElementById('hud-kanban-btn');
+            var modal = document.getElementById('kanban-modal');
+            var closeBtn = document.getElementById('kanban-close');
+            var badge = document.getElementById('kanban-open-badge');
+            
+            if (btn && modal && closeBtn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    modal.style.display = 'flex';
+                    if (badge) badge.style.display = 'none';
+                });
+                
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+                
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        })();
+
+        // ── Kanban board renderer (called by game.js) ──
+        (function() {
+            var AGENT_MODELS_INDEX = {
+                spike: 'MiniMax/M2.7-highspeed', jet: 'MiniMax/M2.7', faye: 'Qwen/Qwen2.5-7B',
+                ein: 'MiniMax/M2.7', gren: 'MiniMax/M2.7', ed: 'openai/gpt-4o',
+                julia: 'Qwen/Qwen2.5-7B', rocco: 'MiniMax/M2.7', punch: 'claude-sonnet-4',
+                andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', main: 'MiniMax/M2.7'
+            };
+
+            window.renderKanbanBoard = function(boardData) {
+                var queued   = document.getElementById('kanban-queued');
+                var progress = document.getElementById('kanban-progress');
+                var done     = document.getElementById('kanban-done');
+                if (!queued || !progress || !done) return;
+
+                var badge = document.getElementById('kanban-open-badge');
+
+                function renderCard(item, color) {
+                    var d = document.createElement('div');
+                    d.className = 'task-card';
+                    d.style.borderLeft = '3px solid ' + (color || '#64748b');
+                    var title = document.createElement('div');
+                    title.className = 'task-title';
+                    title.style.fontSize = '11px';
+                    title.textContent = item.text;
+                    var meta = document.createElement('div');
+                    meta.className = 'task-ts';
+                    meta.style.fontSize = '9px';
+                    meta.style.display = 'flex';
+                    meta.style.flexDirection = 'column';
+                    meta.style.gap = '1px';
+                    var agentLower = (item.agent || '').toLowerCase().trim();
+                    var modelName = AGENT_MODELS_INDEX[agentLower] || '';
+                    var agentRow = document.createElement('div');
+                    agentRow.style.display = 'flex';
+                    agentRow.style.alignItems = 'center';
+                    agentRow.style.gap = '4px';
+                    var agentSpan = document.createElement('span');
+                    agentSpan.style.fontWeight = '700';
+                    agentSpan.style.color = color || '#94a3b8';
+                    agentSpan.textContent = item.agent || '—';
+                    agentRow.appendChild(agentSpan);
+                    agentRow.appendChild(document.createTextNode(item.ts || ''));
+                    meta.appendChild(agentRow);
+                    if (modelName) {
+                        var modelSpan = document.createElement('span');
+                        modelSpan.style.fontFamily = 'monospace';
+                        modelSpan.style.fontSize = '8px';
+                        modelSpan.style.color = '#475569';
+                        modelSpan.textContent = modelName;
+                        meta.appendChild(modelSpan);
+                    }
+                    d.appendChild(title);
+                    d.appendChild(meta);
+                    return d;
+                }
+            
+            // Queued
+            var qItems = boardData && boardData.queued ? boardData.queued : [];
+            queued.innerHTML = '';
+            if (qItems.length === 0) {
+                queued.innerHTML = '<div class="empty-state" style="font-size:10px;">No queued tasks</div>';
+            } else {
+                qItems.forEach(function(item) {
+                    queued.appendChild(renderCard(item, '#f59e0b'));
+                });
+            }
+            
+            // In-progress (show queued items as in-progress since they have an owner)
+            var pItems = boardData && boardData.inprogress ? boardData.inprogress : [];
+            progress.innerHTML = '';
+            if (pItems.length === 0) {
+                progress.innerHTML = '<div class="empty-state" style="font-size:10px;">No tasks in progress</div>';
+            } else {
+                pItems.forEach(function(item) {
+                    progress.appendChild(renderCard(item, '#38bdf8'));
+                });
+            }
+            
+            // Done
+            var dItems = boardData && boardData.done ? boardData.done.slice(0, 15) : [];
+            done.innerHTML = '';
+            if (dItems.length === 0) {
+                done.innerHTML = '<div class="empty-state" style="font-size:10px;">No completed tasks yet</div>';
+            } else {
+                dItems.forEach(function(item) {
+                    done.appendChild(renderCard(item, '#22c55e'));
+                });
+            }
+            
+            // Update counts
+            var qCount = document.getElementById('kanban-queued-count');
+            var pCount = document.getElementById('kanban-progress-count');
+            var dCount = document.getElementById('kanban-done-count');
+            if (qCount) qCount.textContent = qItems.length;
+            if (pCount) pCount.textContent = pItems.length;
+            if (dCount) dCount.textContent = dItems.length;
+            
+            // Update HUD badge
+            if (badge && qItems.length > 0) {
+                badge.textContent = qItems.length;
+                badge.style.display = '';
+            } else if (badge) {
+                badge.style.display = 'none';
+            }
+        };
+
+        // ── Agent Leaderboard ──
+        var LBK_COLORS = {
+            spike: '#f97316', jet: '#38bdf8', faye: '#a855f7',
+            ein: '#3b82f6', gren: '#7c3aed', ed: '#22c55e',
+            julia: '#ec4899', rocco: '#64748b', punch: '#64748b',
+            andy: '#06b6d4', andrew: '#06b6d4', main: '#f97316'
+        };
+        var lbkSortKey = 'score';
+        var lbkSortAsc = false;
+
+        document.getElementById('lbk-refresh')?.addEventListener('click', refreshLeaderboard);
+
+        document.querySelectorAll('#lbk-table th[data-sort]').forEach(function(th) {
+            th.style.cursor = 'pointer';
+            th.addEventListener('click', function() {
+                var k = th.dataset.sort;
+                if (lbkSortKey === k) lbkSortAsc = !lbkSortAsc;
+                else { lbkSortKey = k; lbkSortAsc = false; }
+                renderLeaderboard(window._lbkData || [], k, lbkSortAsc);
+            });
+        });
+
+        function refreshLeaderboard() {
+            var tb = document.getElementById('lbk-body');
+            if (tb) tb.innerHTML = '<tr><td colspan="5" style="color:#475569; text-align:center; padding:16px;">Fetching stats…</td></tr>';
+            fetch('mission-control-live.json?t=' + Date.now())
+                .then(function(r) { return r.ok ? r.json() : null; })
+                .then(function(data) {
+                    if (!data) { showLbkEmpty(); return; }
+                    var lbk = data.leaderboard;
+                    if (lbk && lbk.length > 0) {
+                        var formatted = lbk.map(function(row) {
+                            return {
+                                agent: row.agentKey || row.agent,
+                                name: row.agent,
+                                color: LBK_COLORS[(row.agentKey || '').toLowerCase()] || row.color || '#94a3b8',
+                                done: row.completed,
+                                avgTime: (row.avgTimeSec || 0) * 1000,
+                                blocked: row.blockers,
+                                score: row.efficiency
+                            };
+                        });
+                        window._lbkData = formatted;
+                        renderLeaderboard(formatted, lbkSortKey, lbkSortAsc);
+                    } else {
+                        showLbkEmpty();
+                    }
+                })
+                .catch(function() { showLbkEmpty(); });
+        }
+
+        function renderLeaderboard(data, sortKey, asc) {
+            var tb = document.getElementById('lbk-body');
+            if (!tb) return;
+            if (!data || data.length === 0) { showLbkEmpty(); return; }
+            var sorted = data.slice().sort(function(a, b) {
+                var va = a[sortKey] || 0, vb = b[sortKey] || 0;
+                return asc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+            });
+            var html = '';
+            sorted.forEach(function(row) {
+                var avgStr = row.avgTime > 0 ? fmtDur(row.avgTime) : '—';
+                var blkPct = row.done + row.blocked > 0 ? Math.round(row.blocked / (row.done + row.blocked) * 100) + '%' : '0%';
+                var scoreStr = row.score > 0 ? row.score.toLocaleString() : '—';
+                html += '<tr style="border-bottom:1px solid #1e293b;">' +
+                    '<td style="padding:5px 6px;"><span style="font-weight:700; color:' + row.color + ';">' + row.name + '</span></td>' +
+                    '<td style="padding:5px 6px; text-align:right; color:#86efac;">' + row.done + '</td>' +
+                    '<td style="padding:5px 6px; text-align:right; color:#94a3b8;">' + avgStr + '</td>' +
+                    '<td style="padding:5px 6px; text-align:right; color:#fca5a5;">' + blkPct + '</td>' +
+                    '<td style="padding:5px 6px; text-align:right; font-weight:700; color:' + row.color + ';">' + scoreStr + '</td></tr>';
+            });
+            tb.innerHTML = html;
+        }
+
+        function fmtDur(ms) {
+            var m = Math.floor(ms / 60000);
+            var s = Math.floor((ms % 60000) / 1000);
+            if (m === 0) return s + 's';
+            if (m < 60) return m + 'm ' + s + 's';
+            return Math.floor(m / 60) + 'h ' + (m % 60) + 'm';
+        }
+
+        function showLbkEmpty() {
+            var tb = document.getElementById('lbk-body');
+            if (tb) tb.innerHTML = '<tr><td colspan="5" style="color:#475569; text-align:center; padding:16px;">No log data available</td></tr>';
+        }
+    </script>
+    <script>if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function(){});</script>
+    <script src="scripts/cost-dashboard.js"></script>
 </body>
 </html>

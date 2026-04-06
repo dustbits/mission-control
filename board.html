@@ -195,17 +195,35 @@
     .card-meta {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       font-size: 10px;
       color: #475569;
+      gap: 8px;
+    }
+    .card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .card-agent-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
     }
     .card-agent {
       font-weight: 700;
       font-size: 10px;
     }
+    .card-model {
+      font-size: 9px;
+      color: #475569;
+      font-family: monospace;
+    }
     .card-ts {
       font-size: 9px;
       color: #64748b;
+      flex-shrink: 0;
     }
     .card-stale {
       display: inline-block;
@@ -309,6 +327,12 @@
       julia: '#f59e0b', rocco: '#64748b', punch: '#ef4444',
       andy: '#06b6d4', andrew: '#06b6d4', main: '#475569'
     };
+    const AGENT_MODELS = {
+      spike: 'MiniMax/M2.7-highspeed', jet: 'MiniMax/M2.7', faye: 'Qwen/Qwen2.5-7B',
+      ein: 'MiniMax/M2.7', gren: 'MiniMax/M2.7', ed: 'openai/gpt-4o',
+      julia: 'Qwen/Qwen2.5-7B', rocco: 'MiniMax/M2.7', punch: 'claude-sonnet-4',
+      andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', main: 'MiniMax/M2.7'
+    };
     const UNKNOWN = '#94a3b8';
     const POLL_MS = 10000;
 
@@ -380,6 +404,15 @@
         leftMeta.style.flexWrap = 'wrap';
         leftMeta.style.gap = '4px';
 
+        const agentLower = (agent || '').toLowerCase().trim();
+        const modelName = AGENT_MODELS[agentLower] || AGENT_MODELS[agentLower.split('(')[0]?.trim()] || '';
+
+        const leftDiv = document.createElement('div');
+        leftDiv.className = 'card-left';
+
+        const agentRow = document.createElement('div');
+        agentRow.className = 'card-agent-row';
+
         const agentSpan = document.createElement('span');
         agentSpan.className = 'card-agent';
         agentSpan.style.color = color;
@@ -390,17 +423,26 @@
           const staleBadge = document.createElement('span');
           staleBadge.className = 'card-stale ' + stale;
           staleBadge.textContent = stale === 'stale' ? 'stale' : stale === 'old' ? 'old' : '';
-          leftMeta.appendChild(agentSpan);
-          leftMeta.appendChild(staleBadge);
+          agentRow.appendChild(agentSpan);
+          agentRow.appendChild(staleBadge);
         } else {
-          leftMeta.appendChild(agentSpan);
+          agentRow.appendChild(agentSpan);
+        }
+
+        leftDiv.appendChild(agentRow);
+
+        if (modelName) {
+          const modelSpan = document.createElement('span');
+          modelSpan.className = 'card-model';
+          modelSpan.textContent = modelName;
+          leftDiv.appendChild(modelSpan);
         }
 
         const tsSpan = document.createElement('span');
         tsSpan.className = 'card-ts';
         tsSpan.textContent = item.ts || '';
 
-        meta.appendChild(leftMeta);
+        meta.appendChild(leftDiv);
         meta.appendChild(tsSpan);
         card.appendChild(title);
         card.appendChild(meta);

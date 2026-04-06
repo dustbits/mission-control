@@ -237,6 +237,92 @@ function buildBoardData(entries) {
   return { queued, inprogress, done };
 }
 
+// --- Build per-agent efficiency leaderboard ---
+function buildLeaderboard(logContent) {
+  const lines = logContent.split('\n').filter(l => l.trim());
+  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+
+  // Parse all entries for task chains
+  const allParsed = [];
+  for (const line of lines) {
+    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    if (!m) continue;
+    const [, date, time, agent, tag, message] = m;
+    const secs = time.split(':').length === 2 ? ':00' : '';
+    const iso = date + 'T' + time + secs + 'Z';
+    const ts = new Date(iso).getTime();
+    if (isNaN(ts) || ts < cutoff) continue;
+    const tagLower = tag.toLowerCase();
+    allParsed.push({ iso, ts, agent: agent.toLowerCase(), tag, tagLower, message });
+  }
+
+  // Group by task text (first 80 chars as key)
+  const taskMap = new Map();
+  for (const e of allParsed) {
+    const key = e.message.slice(0, 80);
+    if (!taskMap.has(key)) taskMap.set(key, []);
+    taskMap.get(key).push(e);
+  }
+
+  // Per-agent stats
+  const stats = {};
+  const AGENT_LIST = ['spike', 'jet', 'faye', 'ein', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy'];
+  for (const a of AGENT_LIST) {
+    stats[a] = { completed: 0, totalTimeMs: 0, blockers: 0, tasks: [] };
+  }
+
+  for (const [key, evts] of taskMap) {
+    evts.sort((a, b) => a.ts - b.ts);
+
+    let started = null;
+    let completed = null;
+    let owner = null;
+    let wasBlocked = false;
+
+    for (const e of evts) {
+      const tagLower = e.tagLower;
+
+      if (tagLower.startsWith('acknowledged') || tagLower.startsWith('taken')) {
+        if (!started) {
+          started = e;
+          owner = e.agent;
+        }
+      } else if (tagLower.startsWith('done') || tagLower.startsWith('partial')) {
+        if (started && !completed) {
+          completed = e;
+          if (owner && stats[owner]) {
+            const dur = completed.ts - started.ts;
+            stats[owner].completed++;
+            stats[owner].totalTimeMs += dur;
+            stats[owner].tasks.push({ dur, key });
+          }
+        }
+      } else if (tagLower.startsWith('blocked') || tagLower.includes('blocked')) {
+        wasBlocked = true;
+        if (owner && stats[owner]) stats[owner].blockers++;
+      }
+    }
+  }
+
+  const leaderboard = [];
+  for (const [agentKey, s] of Object.entries(stats)) {
+    const avgTime = s.completed > 0 ? Math.round(s.totalTimeMs / s.completed / 1000) : 0;
+    const efficiency = s.completed > 0 ? Math.round((s.completed / Math.max(1, s.completed + s.blockers)) * 100) : 0;
+    leaderboard.push({
+      agent: AGENT_DISPLAY[agentKey] ?? agentKey,
+      agentKey,
+      color: AGENT_COLORS[agentKey] ?? '#94a3b8',
+      completed: s.completed,
+      avgTimeSec: avgTime,
+      blockers: s.blockers,
+      efficiency,
+    });
+  }
+
+  leaderboard.sort((a, b) => b.efficiency - a.efficiency || b.completed - a.completed);
+  return leaderboard;
+}
+
 function getSystemStats() {
   let cpu = 34, memory = 58, disk = 41;
   try {
@@ -284,6 +370,8 @@ function buildJson(entries) {
     };
   });
 
+  const leaderboard = buildLeaderboard(readFileSync(SHARED_LOG, 'utf8'));
+
   return {
     updatedAt: new Date().toISOString(),
     health: {
@@ -309,6 +397,7 @@ function buildJson(entries) {
     ],
     activity,
     board: buildBoardData(allEntries),
+    leaderboard,
     cron: cronHealth,
     errors: errorStream,
   };
@@ -337,6 +426,7 @@ if (json.deploy.history?.length > 0) {
 
 console.log(`  Activity items: ${json.activity.length}`);
 console.log(`  Board: ${json.board.queued.length} queued | ${json.board.inprogress.length} in-progress | ${json.board.done.length} done`);
+console.log(`  Leaderboard: ${json.leaderboard.length} agents`);
 console.log(`  Deploy: ${json.deploy.state}`);
 console.log(`  Cron jobs: ${json.cron.length}`);
 console.log(`  Errors: ${json.errors.length}`);

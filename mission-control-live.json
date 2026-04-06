@@ -1,72 +1,72 @@
 {
-  "updatedAt": "2026-04-06T20:19:52.268Z",
+  "updatedAt": "2026-04-06T21:07:15.172Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 48,
+    "cpu": 3,
     "memory": 25,
     "disk": 1
   },
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-06T20:19:35.000Z",
+    "timestamp": "2026-04-06T21:00:01.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-06T21:00:01.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "time": "7m"
+      },
+      {
+        "timestamp": "2026-04-06T20:52:17.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "time": "14m"
+      },
+      {
+        "timestamp": "2026-04-06T20:50:01.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "time": "17m"
+      },
+      {
+        "timestamp": "2026-04-06T20:20:55.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "time": "46m"
+      },
       {
         "timestamp": "2026-04-06T20:19:35.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "now"
+        "time": "47m"
       },
       {
         "timestamp": "2026-04-06T20:10:01.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "9m"
+        "time": "57m"
       },
       {
         "timestamp": "2026-04-06T20:01:20.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "18m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-06T19:41:17.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "38m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-06T19:45:00.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "34m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-06T19:20:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "time": "59m"
-      },
-      {
-        "timestamp": "2026-04-06T19:04:53.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "time": "1h"
-      },
-      {
-        "timestamp": "2026-04-06T19:00:39.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "time": "1h"
-      },
-      {
-        "timestamp": "2026-04-06T18:53:27.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "time": "1h"
-      },
-      {
-        "timestamp": "2026-04-06T18:50:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "time": "1h"
@@ -113,293 +113,202 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Ed",
-      "line": "MC Board fixes: (1) CRON OPERATIONS now collapsible via ▼/▶ toggle in HUD card (index.html). (2) board.html — right-clic",
-      "time": "4m",
-      "color": "#22c55e"
+      "agent": "mc-auto-deploy",
+      "line": "Auto-deployed Mission Control changes",
+      "time": "7m",
+      "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Andy",
-      "line": "starting: Deploy mc-mobile/ to staging (npm install done, Expo Router project ready at /home/node/.openclaw/workspace/mc",
-      "time": "5m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 3,
       "agent": "Ed",
-      "line": "MC mobile app scaffold: created Expo Router project at mc-mobile/ with 4 tabs (Health, Board, Crons, Feed), TanStack Que",
-      "time": "5m",
+      "line": "MC Agent activity indicators (SURPRISE): game.js — Working=halo+pulse+lamp sync (900ms), Idle=lamp idle (amber), Error=h",
+      "time": "14m",
       "color": "#22c55e"
     },
     {
+      "id": 3,
+      "agent": "mc-auto-deploy",
+      "line": "Auto-deployed Mission Control changes",
+      "time": "17m",
+      "color": "#38bdf8"
+    },
+    {
       "id": 4,
-      "agent": "Spike",
-      "line": "MC Board fixes: (1) left panel \"CRON OPERATIONS\" not minimizable — make it collapsible/toggleable. (2) kanban items show",
-      "time": "7m",
-      "color": "#4a9eff"
+      "agent": "Ed",
+      "line": "MC Agent efficiency leaderboard: sync-live-json.js buildLeaderboard() (f869853) + HUD card + game.js renderer. Committed",
+      "time": "17m",
+      "color": "#22c55e"
     },
     {
       "id": 5,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "9m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "MC Kanban agent colors + model names: board.html (bd72020) + index.html modal (d037ca9) — AGENT_MODELS lookup shows mode",
+      "time": "25m",
+      "color": "#22c55e"
     },
     {
       "id": 6,
-      "agent": "Andy",
-      "line": "Git push + deploy MC: kanban modal upgrade (index.html CSS + JS renderer) — 1. Set up GitHub credentials/token 2. Run `g",
-      "time": "36m",
-      "color": "#38bdf8"
+      "agent": "Spike",
+      "line": "MC Agent activity indicators (SURPRISE): Add animated status indicators around agent desks in office scene: Working=puls",
+      "time": "26m",
+      "color": "#4a9eff"
     },
     {
       "id": 7,
       "agent": "Spike",
-      "line": "Dark screen task already resolved by Ed @ 19:38 (floor blend fix + hover glow). Andy acknowledged separately.",
-      "time": "36m",
+      "line": "MC Kanban agent colors + model names: Update kanban cards in board.html and index.html modal to show per-agent color cod",
+      "time": "29m",
       "color": "#4a9eff"
-    },
-    {
-      "id": 8,
-      "agent": "Andy",
-      "line": "starting: Git push + deploy MC: kanban modal upgrade (index.html CSS + JS renderer)",
-      "time": "38m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 9,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "39m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 10,
-      "agent": "Ed",
-      "line": "Kanban modal upgrade (Aeternis dark CRM): upgraded in-app modal (index.html) — purple gradient header, column bg #111820",
-      "time": "39m",
-      "color": "#22c55e"
-    },
-    {
-      "id": 11,
-      "agent": "Ed",
-      "line": "MC dark screen click fix: floor blend changed SCREEN→NORMAL @ alpha 0.9 (was 0.6 SCREEN), halo alpha 0.18→0.45, added ho",
-      "time": "41m",
-      "color": "#22c55e"
-    },
-    {
-      "id": 12,
-      "agent": "Ed",
-      "line": "Git push + deploy Mission Control dark screen fix (game.js)",
-      "time": "41m",
-      "color": "#22c55e"
-    },
-    {
-      "id": 13,
-      "agent": "Andy",
-      "line": "starting: Mission Control board — Ray's office scene is fully black, no interaction. Priority over all other tasks. Fix ",
-      "time": "43m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 14,
-      "agent": "Spike",
-      "line": "Phaser game — office scene dark screen: clicking dark area does nothing (agent detail panel not sliding in). Issue is ei",
-      "time": "47m",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 15,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "59m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 16,
-      "agent": "Spike",
-      "line": "Prospect data recovery: Restored new-prospects.csv (53 leads) and greenpoint-prospects-backup.csv (50 original leads) fr",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 17,
-      "agent": "Spike",
-      "line": "Git commit all MC staging files + push to DustBits/mission-control + deploy. Use github-pat secret for push auth.",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 18,
-      "agent": "Andy",
-      "line": "Git commit all MC staging files + push to DustBits/mission-control + deploy. Use github-pat secret for push auth. —  **D",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 19,
-      "agent": "Spike",
-      "line": "Build Mission Control mobile app scaffold (Expo + React Native) per Faye research. Tasks: (1) Create Expo project using ",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 20,
-      "agent": "Spike",
-      "line": "Build Board Kanban per Faye spec (memory/kanban-board-spec.md): Create standalone board.html at workspace/mission-contro",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 21,
-      "agent": "Ed",
-      "line": "Fix MC dashboard cron display — idle/unknown/scheduled/disabled crons now show gray (#64748b) instead of red (#ef4444) i",
-      "time": "1h",
-      "color": "#22c55e"
     }
   ],
   "board": {
     "queued": [
       {
-        "id": 1775506320000,
-        "text": "MC Board fixes: (1) left panel \"CRON OPERATIONS\" not minimizable — make it collapsible/toggleable. (",
+        "id": 1775508060000,
+        "text": "MC Agent activity indicators (SURPRISE): Add animated status indicators around agent desks in office",
         "agent": "Spike",
+        "ts": "26m"
+      },
+      {
+        "id": 1775507880000,
+        "text": "MC Kanban agent colors + model names: Update kanban cards in board.html and index.html modal to show",
+        "agent": "Spike",
+        "ts": "29m"
+      }
+    ],
+    "inprogress": [],
+    "done": [
+      {
+        "id": 1775509202000,
+        "text": "Auto-deployed Mission Control changes",
+        "agent": "mc-auto-deploy",
         "ts": "7m"
       },
       {
-        "id": 1775504280000,
-        "text": "Git push + deploy Mission Control dark screen fix (game.js)",
+        "id": 1775508764000,
+        "text": "MC Agent activity indicators (SURPRISE): game.js — Working=halo+pulse+lamp sync (900ms), Idle=lamp i",
         "agent": "Ed",
-        "ts": "41m"
+        "ts": "14m"
       },
       {
-        "id": 1775503920000,
-        "text": "Phaser game — office scene dark screen: clicking dark area does nothing (agent detail panel not slid",
-        "agent": "Spike",
-        "ts": "47m"
-      },
-      {
-        "id": 1775502960000,
-        "text": "Git commit all MC staging files + push to DustBits/mission-control + deploy. Use github-pat secret f",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775502900000,
-        "text": "Build Mission Control mobile app scaffold (Expo + React Native) per Faye research. Tasks: (1) Create",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775502900000,
-        "text": "Build Board Kanban per Faye spec (memory/kanban-board-spec.md): Create standalone board.html at work",
-        "agent": "Spike",
-        "ts": "1h"
-      }
-    ],
-    "inprogress": [
-      {
-        "id": 1775506458000,
-        "text": "starting: Deploy mc-mobile/ to staging (npm install done, Expo Router project ready at /home/node/.o",
-        "agent": "Andy",
-        "ts": "5m"
-      },
-      {
-        "id": 1775504490000,
-        "text": "starting: Git push + deploy MC: kanban modal upgrade (index.html CSS + JS renderer)",
-        "agent": "Andy",
-        "ts": "38m"
-      },
-      {
-        "id": 1775504168000,
-        "text": "starting: Mission Control board — Ray's office scene is fully black, no interaction. Priority over a",
-        "agent": "Andy",
-        "ts": "43m"
-      }
-    ],
-    "done": [
-      {
-        "id": 1775506500000,
-        "text": "MC Board fixes: (1) CRON OPERATIONS now collapsible via ▼/▶ toggle in HUD card (index.html). (2) boa",
-        "agent": "Ed",
-        "ts": "4m"
-      },
-      {
-        "id": 1775506440000,
-        "text": "MC mobile app scaffold: created Expo Router project at mc-mobile/ with 4 tabs (Health, Board, Crons,",
-        "agent": "Ed",
-        "ts": "5m"
-      },
-      {
-        "id": 1775506202000,
+        "id": 1775508603000,
         "text": "Auto-deployed Mission Control changes",
         "agent": "mc-auto-deploy",
-        "ts": "9m"
+        "ts": "17m"
       },
       {
-        "id": 1775504626000,
-        "text": "Git push + deploy MC: kanban modal upgrade (index.html CSS + JS renderer) — 1. Set up GitHub credent",
-        "agent": "Andy",
-        "ts": "36m"
-      },
-      {
-        "id": 1775504580000,
-        "text": "Dark screen task already resolved by Ed @ 19:38 (floor blend fix + hover glow). Andy acknowledged se",
-        "agent": "Spike",
-        "ts": "36m"
-      },
-      {
-        "id": 1775504402000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "39m"
-      },
-      {
-        "id": 1775504400000,
-        "text": "Kanban modal upgrade (Aeternis dark CRM): upgraded in-app modal (index.html) — purple gradient heade",
+        "id": 1775508600000,
+        "text": "MC Agent efficiency leaderboard: sync-live-json.js buildLeaderboard() (f869853) + HUD card + game.js",
         "agent": "Ed",
-        "ts": "39m"
+        "ts": "17m"
       },
       {
-        "id": 1775504280000,
-        "text": "MC dark screen click fix: floor blend changed SCREEN→NORMAL @ alpha 0.9 (was 0.6 SCREEN), halo alpha",
+        "id": 1775508120000,
+        "text": "MC Kanban agent colors + model names: board.html (bd72020) + index.html modal (d037ca9) — AGENT_MODE",
         "agent": "Ed",
-        "ts": "41m"
-      },
-      {
-        "id": 1775503202000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "59m"
-      },
-      {
-        "id": 1775503020000,
-        "text": "Prospect data recovery: Restored new-prospects.csv (53 leads) and greenpoint-prospects-backup.csv (5",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775502902000,
-        "text": "Git commit all MC staging files + push to DustBits/mission-control + deploy. Use github-pat secret f",
-        "agent": "Andy",
-        "ts": "1h"
-      },
-      {
-        "id": 1775502480000,
-        "text": "Fix MC dashboard cron display — idle/unknown/scheduled/disabled crons now show gray (#64748b) instea",
-        "agent": "Ed",
-        "ts": "1h"
+        "ts": "25m"
       }
     ]
   },
+  "leaderboard": [
+    {
+      "agent": "Spike",
+      "agentKey": "spike",
+      "color": "#4a9eff",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Jet",
+      "agentKey": "jet",
+      "color": "#f59e0b",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Faye",
+      "agentKey": "faye",
+      "color": "#a855f7",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Ein",
+      "agentKey": "ein",
+      "color": "#f97316",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Gren",
+      "agentKey": "gren",
+      "color": "#7c3aed",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Ed",
+      "agentKey": "ed",
+      "color": "#22c55e",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Julia",
+      "agentKey": "julia",
+      "color": "#ec4899",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Rocco",
+      "agentKey": "rocco",
+      "color": "#64748b",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Punch",
+      "agentKey": "punch",
+      "color": "#ef4444",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    },
+    {
+      "agent": "Andy",
+      "agentKey": "andy",
+      "color": "#38bdf8",
+      "completed": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "efficiency": 0
+    }
+  ],
   "cron": [
     {
       "id": "morning-briefing",
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "12h",
+      "lastRun": "13h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -409,7 +318,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 23 * * *",
       "next": "now",
-      "lastRun": "21h",
+      "lastRun": "22h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -419,7 +328,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "12h",
+      "lastRun": "13h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -459,7 +368,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "6h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -479,7 +388,7 @@
       "label": "Memory Cold Archive",
       "schedule": "0 23 * * 0",
       "next": "now",
-      "lastRun": "21h",
+      "lastRun": "22h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -489,7 +398,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -509,7 +418,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 1200000,
       "next": "now",
-      "lastRun": "3m",
+      "lastRun": "10m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -529,7 +438,7 @@
       "label": "Dispatch Guard",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "3m",
+      "lastRun": "4m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -539,7 +448,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "23m",
+      "lastRun": "10m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -549,7 +458,7 @@
       "label": "Cost Safeguard",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "2m",
+      "lastRun": "19m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -559,7 +468,7 @@
       "label": "Post-Task Validator",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "2m",
+      "lastRun": "19m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -569,7 +478,7 @@
       "label": "IronThread Site Improvement",
       "schedule": "0 14 * * 1,4",
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "error",
       "errors": 1,
       "enabled": true
@@ -579,7 +488,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 17 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -609,7 +518,7 @@
       "label": "Ed Builder Loop",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "10m",
+      "lastRun": "27m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -619,7 +528,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "59m",
+      "lastRun": "47m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -639,7 +548,7 @@
       "label": "spike-weekly-tale",
       "schedule": "0 13 * * 1",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -659,7 +568,7 @@
       "label": "Spike Task Router",
       "schedule": 300000,
       "next": "now",
-      "lastRun": "now",
+      "lastRun": "4m",
       "state": "ok",
       "errors": 0,
       "enabled": true
