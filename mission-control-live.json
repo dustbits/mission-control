@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-06T21:07:15.172Z",
+  "updatedAt": "2026-04-06T21:17:44.971Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 3,
-    "memory": 25,
+    "cpu": 7,
+    "memory": 26,
     "disk": 1
   },
   "deploy": {
@@ -15,37 +15,37 @@
         "timestamp": "2026-04-06T21:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "7m"
+        "time": "17m"
       },
       {
         "timestamp": "2026-04-06T20:52:17.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "14m"
+        "time": "25m"
       },
       {
         "timestamp": "2026-04-06T20:50:01.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "17m"
+        "time": "27m"
       },
       {
         "timestamp": "2026-04-06T20:20:55.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "46m"
+        "time": "56m"
       },
       {
         "timestamp": "2026-04-06T20:19:35.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "47m"
+        "time": "58m"
       },
       {
         "timestamp": "2026-04-06T20:10:01.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "time": "57m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-06T20:01:20.000Z",
@@ -113,100 +113,153 @@
   "activity": [
     {
       "id": 1,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "7m",
+      "agent": "Andy",
+      "line": "MC office model names deployed to dist (1161dee). Git push to push mission-control/ to origin when ready. — 2. Or use a ",
+      "time": "5m",
       "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Ed",
-      "line": "MC Agent activity indicators (SURPRISE): game.js — Working=halo+pulse+lamp sync (900ms), Idle=lamp idle (amber), Error=h",
-      "time": "14m",
-      "color": "#22c55e"
+      "agent": "Andy",
+      "line": "starting: MC office model names deployed to dist (1161dee). Git push to push mission-control/ to origin when ready.",
+      "time": "5m",
+      "color": "#38bdf8"
     },
     {
       "id": 3,
+      "agent": "Ed",
+      "line": "MC office model names deployed to dist (1161dee). Git push to push mission-control/ to origin when ready.",
+      "time": "7m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 4,
+      "agent": "Ed",
+      "line": "MC Office agent model names: AGENT_MODELS lookup (1161dee) — model name shown in 8px gray monospace below role, bebop sh",
+      "time": "8m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 5,
       "agent": "mc-auto-deploy",
       "line": "Auto-deployed Mission Control changes",
       "time": "17m",
       "color": "#38bdf8"
     },
     {
-      "id": 4,
+      "id": 6,
       "agent": "Ed",
-      "line": "MC Agent efficiency leaderboard: sync-live-json.js buildLeaderboard() (f869853) + HUD card + game.js renderer. Committed",
-      "time": "17m",
-      "color": "#22c55e"
-    },
-    {
-      "id": 5,
-      "agent": "Ed",
-      "line": "MC Kanban agent colors + model names: board.html (bd72020) + index.html modal (d037ca9) — AGENT_MODELS lookup shows mode",
+      "line": "MC Agent activity indicators (SURPRISE): game.js — Working=halo+pulse+lamp sync (900ms), Idle=lamp idle (amber), Error=h",
       "time": "25m",
       "color": "#22c55e"
     },
     {
-      "id": 6,
+      "id": 7,
+      "agent": "mc-auto-deploy",
+      "line": "Auto-deployed Mission Control changes",
+      "time": "27m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 8,
+      "agent": "Ed",
+      "line": "MC Agent efficiency leaderboard: sync-live-json.js buildLeaderboard() (f869853) + HUD card + game.js renderer. Committed",
+      "time": "27m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 9,
+      "agent": "Ed",
+      "line": "MC Kanban agent colors + model names: board.html (bd72020) + index.html modal (d037ca9) — AGENT_MODELS lookup shows mode",
+      "time": "35m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 10,
       "agent": "Spike",
       "line": "MC Agent activity indicators (SURPRISE): Add animated status indicators around agent desks in office scene: Working=puls",
-      "time": "26m",
+      "time": "36m",
       "color": "#4a9eff"
     },
     {
-      "id": 7,
+      "id": 11,
       "agent": "Spike",
       "line": "MC Kanban agent colors + model names: Update kanban cards in board.html and index.html modal to show per-agent color cod",
-      "time": "29m",
+      "time": "39m",
       "color": "#4a9eff"
     }
   ],
   "board": {
     "queued": [
       {
+        "id": 1775509800000,
+        "text": "MC office model names deployed to dist (1161dee). Git push to push mission-control/ to origin when r",
+        "agent": "Ed",
+        "ts": "7m"
+      },
+      {
         "id": 1775508060000,
         "text": "MC Agent activity indicators (SURPRISE): Add animated status indicators around agent desks in office",
         "agent": "Spike",
-        "ts": "26m"
+        "ts": "36m"
       },
       {
         "id": 1775507880000,
         "text": "MC Kanban agent colors + model names: Update kanban cards in board.html and index.html modal to show",
         "agent": "Spike",
-        "ts": "29m"
+        "ts": "39m"
       }
     ],
-    "inprogress": [],
+    "inprogress": [
+      {
+        "id": 1775509938000,
+        "text": "starting: MC office model names deployed to dist (1161dee). Git push to push mission-control/ to ori",
+        "agent": "Andy",
+        "ts": "5m"
+      }
+    ],
     "done": [
+      {
+        "id": 1775509959000,
+        "text": "MC office model names deployed to dist (1161dee). Git push to push mission-control/ to origin when r",
+        "agent": "Andy",
+        "ts": "5m"
+      },
+      {
+        "id": 1775509740000,
+        "text": "MC Office agent model names: AGENT_MODELS lookup (1161dee) — model name shown in 8px gray monospace ",
+        "agent": "Ed",
+        "ts": "8m"
+      },
       {
         "id": 1775509202000,
         "text": "Auto-deployed Mission Control changes",
         "agent": "mc-auto-deploy",
-        "ts": "7m"
+        "ts": "17m"
       },
       {
         "id": 1775508764000,
         "text": "MC Agent activity indicators (SURPRISE): game.js — Working=halo+pulse+lamp sync (900ms), Idle=lamp i",
         "agent": "Ed",
-        "ts": "14m"
+        "ts": "25m"
       },
       {
         "id": 1775508603000,
         "text": "Auto-deployed Mission Control changes",
         "agent": "mc-auto-deploy",
-        "ts": "17m"
+        "ts": "27m"
       },
       {
         "id": 1775508600000,
         "text": "MC Agent efficiency leaderboard: sync-live-json.js buildLeaderboard() (f869853) + HUD card + game.js",
         "agent": "Ed",
-        "ts": "17m"
+        "ts": "27m"
       },
       {
         "id": 1775508120000,
         "text": "MC Kanban agent colors + model names: board.html (bd72020) + index.html modal (d037ca9) — AGENT_MODE",
         "agent": "Ed",
-        "ts": "25m"
+        "ts": "35m"
       }
     ]
   },
@@ -418,7 +471,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 1200000,
       "next": "now",
-      "lastRun": "10m",
+      "lastRun": "now",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -438,7 +491,7 @@
       "label": "Dispatch Guard",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "4m",
+      "lastRun": "now",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -448,7 +501,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "10m",
+      "lastRun": "20m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -458,7 +511,7 @@
       "label": "Cost Safeguard",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "19m",
+      "lastRun": "now",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -468,7 +521,7 @@
       "label": "Post-Task Validator",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "19m",
+      "lastRun": "29m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -518,7 +571,7 @@
       "label": "Ed Builder Loop",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "27m",
+      "lastRun": "7m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -528,7 +581,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "47m",
+      "lastRun": "57m",
       "state": "ok",
       "errors": 0,
       "enabled": true
@@ -568,7 +621,7 @@
       "label": "Spike Task Router",
       "schedule": 300000,
       "next": "now",
-      "lastRun": "4m",
+      "lastRun": "5m",
       "state": "ok",
       "errors": 0,
       "enabled": true

@@ -2,6 +2,18 @@ import { agents, office } from './config.js';
 window._mcAgents = agents;
 
 const WALK_SPEED = 44;
+const AGENT_MODELS = {
+    spike:   'MiniMax-M2.7-highspeed',
+    jet:     'MiniMax-M2.7-highspeed',
+    faye:    'Qwen/Qwen2.5-7B-Instruct',
+    ein:     'MiniMax-M2.7-highspeed',
+    gren:    'MiniMax-M2.7-highspeed',
+    ed:      'openai/gpt-4o',
+    julia:   'Qwen/Qwen2.5-7B-Instruct',
+    rocco:   'MiniMax-M2.7-highspeed',
+    punch:   'anthropic/claude-sonnet-4-6',
+    andy:    'MiniMax-M2.7',
+};
 const STATUS_COLORS = {
     idle:    0x475569,
     working: 0x22c55e,
@@ -399,7 +411,8 @@ function createRuntimeAgents(scene) {
 
         var nameText  = scene.add.text(desk.x, desk.y + 28, agent.emoji + ' ' + agent.name, textStyle(11, '#f8fafc')).setOrigin(0.5, 0);
         var roleText  = scene.add.text(desk.x, desk.y + 43, agent.role, textStyle(9, '#94a3b8')).setOrigin(0.5, 0);
-        var bebopText = scene.add.text(desk.x, desk.y + 56, agent.bebop, textStyle(8, agent.color)).setOrigin(0.5, 0);
+        var modelText = scene.add.text(desk.x, desk.y + 56, AGENT_MODELS[agent.id] || agent.model || '', textStyle(8, '#64748b')).setOrigin(0.5, 0);
+        var bebopText = scene.add.text(desk.x, desk.y + 68, agent.bebop, textStyle(8, agent.color)).setOrigin(0.5, 0);
 
         var dotColor  = STATUS_COLORS[agent.status] || STATUS_COLORS.idle;
         var statusDot = scene.add.circle(desk.x + 14, desk.y + 33, 4, dotColor).setDepth(baseY + 5);
