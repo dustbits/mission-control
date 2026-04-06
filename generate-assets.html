@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Assets</title></head>
+<body>
+<h3>Generating placeholder pixel-art assets...</h3>
+<div id="status"></div>
+<script>
+const TILE = 16;
+const FRAME_W = 12, FRAME_H = 16;
+const DIRS = ['down', 'left', 'right', 'up'];
+
+function createCanvas(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+function download(canvas, name) {
+  const a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = name;
+  a.click();
+}
+
+// ---- Generate character sprite sheet ----
+function genCharacter(bodyColor, hairColor, skinColor, name) {
+  const cols = 3, rows = 4;
+  const sw = FRAME_W * cols, sh = FRAME_H * rows;
+  const c = createCanvas(sw, sh);
+  const ctx = c.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+
+  for (let r = 0; r < 4; r++) {
+    const dir = DIRS[r];
+    for (let frame = 0; frame < cols; frame++) {
+      const ox = frame * FRAME_W, oy = r * FRAME_H;
+      const bob = (frame % 2 === 0) ? 0 : 1; // walk bobble
+
+      // body
+      ctx.fillStyle = bodyColor;
+      if (dir === 'up') {
+        // back view
+        ctx.fillRect(ox + 3, oy + 5 + bob, 6, 6);
+        // hair on back
+        ctx.fillStyle = hairColor;
+        ctx.fillRect(ox + 3, oy + 3 + bob, 6, 3);
+        // legs
+        ctx.fillStyle = '#333';
+        ctx.fillRect(ox + 3, oy + 11 + bob, 2, 4);
+        ctx.fillRect(ox + 7, oy + 11 + bob, 2, 4);
+      } else if (dir === 'left' || dir === 'right') {
+        // side view
+        const xShift = dir === 'left' ? 0 : 0;
+        ctx.fillStyle = bodyColor;
+        ctx.fillRect(ox + 3, oy + 5 + bob, 5, 6);
+        // hair
+        ctx.fillStyle = hairColor;
+        ctx.fillRect(ox + 2, oy + 3 + bob, 5, 3);
+        // face (side)
+        ctx.fillStyle = skinColor;
+        ctx.fillRect(ox + (dir === 'left' ? 2 : 6), oy + 5 + bob, 2, 3);
+        // eye
+        ctx.fillStyle = '#111';
+        ctx.fillRect(ox + (dir === 'left' ? 2 : 7), oy + 6 + bob, 1, 1);
+        // legs
+        ctx.fillStyle = '#333';
+        ctx.fillRect(ox + 3, oy + 11 + bob, 2, 4);
+        ctx.fillRect(ox + 7, oy + 11 + bob, 2, 4);
+      } else {
+        // front view (down)
+        ctx.fillStyle = bodyColor;
+        ctx.fillRect(ox + 3, oy + 5 + bob, 6, 6);
+        // hair
+        ctx.fillStyle = hairColor;
+        ctx.fillRect(ox + 3, oy + 3 + bob, 6, 3);
+        // face
+        ctx.fillStyle = skinColor;
+        ctx.fillRect(ox + 3, oy + 6 + bob, 6, 3);
+        // eyes
+        ctx.fillStyle = '#111';
+        ctx.fillRect(ox + 4, oy + 7 + bob, 1, 1);
+        ctx.fillRect(ox + 7, oy + 7 + bob, 1, 1);
+        // legs
+        ctx.fillStyle = '#333';
+        ctx.fillRect(ox + 3, oy + 11 + bob, 2, 4);
+        ctx.fillRect(ox + 7, oy + 11 + bob, 2, 4);
+      }
+    }
+  }
+  return c;
+}
+
+// ---- Generate tileset ----
+function genTileset() {
+  const cols = 8, rows = 8;
+  const sw = TILE * cols, sh = TILE * rows;
+  const c = createCanvas(sw, sh);
+  const ctx = c.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+
+  // Tile 0: floor (light gray)
+  for (let i = 0; i < cols * rows; i++) {
+    const tx = (i % cols) * TILE, ty = Math.floor(i / cols) * TILE;
+    if (i === 0) {
+      ctx.fillStyle = '#d4c5a9';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      // floor tiles pattern
+      ctx.fillStyle = '#c8b99d';
+      for (let px = 0; px < TILE; px += 4) {
+        for (let py = 0; py < TILE; py += 4) {
+          if ((px + py) % 8 === 0) ctx.fillRect(tx + px, py, 4, 4);
+        }
+      }
+    } else if (i === 1) {
+      // floor variant (carpet-ish)
+      ctx.fillStyle = '#6b8f71';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#5a7d60';
+      ctx.fillRect(tx + 2, ty + 2, 12, 12);
+      ctx.fillStyle = '#6b8f71';
+      ctx.fillRect(tx + 4, ty + 4, 8, 8);
+    } else if (i === 2) {
+      // wall
+      ctx.fillStyle = '#8b7355';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#7a6345';
+      ctx.fillRect(tx, ty, TILE, 2);
+      ctx.fillStyle = '#9b8365';
+      ctx.fillRect(tx, ty + TILE - 2, TILE, 2);
+    } else if (i === 3) {
+      // wall with window
+      ctx.fillStyle = '#8b7355';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#87ceeb';
+      ctx.fillRect(tx + 4, ty + 3, 8, 8);
+      ctx.fillStyle = '#6b5335';
+      ctx.fillRect(tx + 3, ty + 2, 10, 10);
+      ctx.fillStyle = '#87ceeb';
+      ctx.fillRect(tx + 4, ty + 3, 8, 8);
+      ctx.fillStyle = '#6b5335';
+      ctx.fillRect(tx + 7, ty + 3, 2, 8);
+      ctx.fillStyle = '#6b5335';
+      ctx.fillRect(tx + 4, ty + 6, 8, 2);
+    } else if (i === 4) {
+      // desk top view
+      ctx.fillStyle = '#a0784c';
+      ctx.fillRect(tx, ty + 2, TILE, 10);
+      ctx.fillStyle = '#8b6538';
+      ctx.fillRect(tx + 1, ty + 3, 6, 8);
+      // monitor
+      ctx.fillStyle = '#333';
+      ctx.fillRect(tx + 8, ty + 3, 6, 6);
+      ctx.fillStyle = '#88ccff';
+      ctx.fillRect(tx + 9, ty + 4, 4, 4);
+    } else if (i === 5) {
+      // empty desk (no monitor)
+      ctx.fillStyle = '#a0784c';
+      ctx.fillRect(tx, ty + 2, TILE, 10);
+      ctx.fillStyle = '#8b6538';
+      ctx.fillRect(tx + 2, ty + 4, 12, 6);
+    } else if (i === 6) {
+      // chair
+      ctx.fillStyle = '#555';
+      ctx.fillRect(tx + 5, ty + 10, 6, 5);
+      ctx.fillStyle = '#444';
+      ctx.fillRect(tx + 6, ty + 8, 4, 3);
+      // seat
+      ctx.fillStyle = '#c33';
+      ctx.fillRect(tx + 5, ty + 10, 6, 3);
+    } else if (i === 7) {
+      // meeting table
+      ctx.fillStyle = '#6b4c2a';
+      ctx.fillRect(tx + 1, ty + 1, 14, 14);
+      ctx.fillStyle = '#7d5c3a';
+      ctx.fillRect(tx + 2, ty + 2, 12, 12);
+    } else if (i === 8) {
+      // couch
+      ctx.fillStyle = '#5a3e28';
+      ctx.fillRect(tx, ty + 4, TILE, 10);
+      ctx.fillStyle = '#7a5e48';
+      ctx.fillRect(tx + 1, ty + 5, TILE - 2, 8);
+      // back
+      ctx.fillStyle = '#5a3e28';
+      ctx.fillRect(tx, ty + 3, TILE, 2);
+    } else if (i === 9) {
+      // kitchen counter
+      ctx.fillStyle = '#ccc';
+      ctx.fillRect(tx, ty + 2, TILE, 12);
+      ctx.fillStyle = '#bbb';
+      ctx.fillRect(tx + 1, ty + 3, 14, 10);
+    } else if (i === 10) {
+      // door
+      ctx.fillStyle = '#8b7355';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#a08060';
+      ctx.fillRect(tx + 2, ty + 1, 12, 14);
+      // knob
+      ctx.fillStyle = '#da5';
+      ctx.fillRect(tx + 12, ty + 8, 2, 2);
+    } else if (i === 11) {
+      // plant
+      ctx.fillStyle = '#d4c5a9';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(tx + 5, ty + 10, 6, 5);
+      ctx.fillStyle = '#228B22';
+      ctx.fillRect(tx + 3, ty + 3, 10, 8);
+    } else if (i === 12) {
+      // server rack
+      ctx.fillStyle = '#333';
+      ctx.fillRect(tx + 2, ty, 12, TILE);
+      ctx.fillStyle = '#444';
+      for (let r = 0; r < 4; r++) {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(tx + 3, ty + r * 4 + 1, 10, 3);
+        ctx.fillStyle = '#0f0';
+        ctx.fillRect(tx + 4, ty + r * 4 + 2, 2, 1);
+      }
+    } else if (i === 13) {
+      // hallway floor
+      ctx.fillStyle = '#b0a890';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#a09880';
+      ctx.fillRect(tx + 7, ty, 2, TILE);
+    } else if (i === 14) {
+      // whiteboard
+      ctx.fillStyle = '#d4c5a9';
+      ctx.fillRect(tx, ty, TILE, TILE);
+      ctx.fillStyle = '#eee';
+      ctx.fillRect(tx + 2, ty + 2, 12, 12);
+      ctx.fillStyle = '#ddd';
+      ctx.fillRect(tx + 3, ty + 3, 10, 10);
+      // marker lines
+      ctx.fillStyle = '#333';
+      ctx.fillRect(tx + 4, ty + 4, 6, 1);
+      ctx.fillRect(tx + 4, ty + 6, 8, 1);
+    } else {
+      // floor
+      ctx.fillStyle = '#d4c5a9';
+      ctx.fillRect(tx, ty, TILE, TILE);
+    }
+  }
+  return c;
+}
+
+// ---- Generate all ----
+const characters = [
+  { name: 'spike', body: '#2a4a7f', hair: '#1a1a2e', skin: '#e8c39e' },
+  { name: 'jet', body: '#4a3a2a', hair: '#2a2a2a', skin: '#8b6f47' },
+  { name: 'faye', body: '#6a2a8a', hair: '#1a1a1a', skin: '#f5d6b8' },
+  { name: 'ein', body: '#c4782a', hair: '#a06020', skin: '#d49040' },
+  { name: 'gren', body: '#4a1a6a', hair: '#1a1a1a', skin: '#7a5a3a' },
+  { name: 'ed', body: '#2a7a3a', hair: '#e88a20', skin: '#f5d6b8' },
+  { name: 'julia', body: '#2a2a2a', hair: '#1a1a1a', skin: '#f5d6b8' },
+  { name: 'rocco', body: '#3a3a3a', hair: '#e0e0e0', skin: '#e8c39e' },
+];
+
+document.getElementById('status').textContent = `Generating ${characters.length} characters + tileset...`;
+
+setTimeout(() => {
+  // Tileset
+  const tileset = genTileset();
+  download(tileset, 'tileset.png');
+
+  // Characters
+  characters.forEach(ch => {
+    const canvas = genCharacter(ch.body, ch.hair, ch.skin, ch.name);
+    download(canvas, ch.name + '.png');
+  });
+
+  document.getElementById('status').textContent = `Done! ${character
+</think>
