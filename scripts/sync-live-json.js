@@ -207,6 +207,26 @@ function updateDeployHistory(deployTimestamp) {
   };
 
   history.unshift(entry);
+
+  // Compute duration (time since previous deploy) for each entry
+  for (let i = 0; i < history.length; i++) {
+    if (i === 0) {
+      history[i].duration = null; // most recent — no "since previous"
+    } else {
+      const prev = new Date(history[i - 1].timestamp).getTime();
+      const curr = new Date(history[i].timestamp).getTime();
+      const diffMs = prev - curr;
+      const diffMins = Math.round(diffMs / 60000);
+      if (diffMins < 1) history[i].duration = '<1m';
+      else if (diffMins < 60) history[i].duration = diffMins + 'm';
+      else {
+        const h = Math.floor(diffMins / 60);
+        const m = diffMins % 60;
+        history[i].duration = m > 0 ? h + 'h ' + m + 'm' : h + 'h';
+      }
+    }
+  }
+
   return history.slice(0, 10);
 }
 
