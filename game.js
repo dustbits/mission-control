@@ -98,7 +98,7 @@ const game = new Phaser.Game({
     height: office.height,
     parent: 'game-root',
     backgroundColor: '#0b1020',
-    pixelArt: true,
+    pixelArt: false,
     scene: { preload, create, update },
     scale: {
         mode: Phaser.Scale.FIT,
@@ -316,7 +316,7 @@ function updateDayNightLighting() {
     } else if (hour >= 6 && hour < 10) {
         // Dawn: fade from night -> day
         var progress = (hour - 6) / 4;
-        overlayAlpha = 0.15 * (1 - progress);
+        overlayAlpha = 0.05 * (1 - progress);
         deskAlpha = 0.5 * (1 - progress);
         glowAlpha = 0.10 * (1 - progress);
         icon = '\u{1F305}';
@@ -324,14 +324,14 @@ function updateDayNightLighting() {
     } else if (hour >= 17 && hour < 21) {
         // Sunset: fade day -> night
         var sunProgress = (hour - 17) / 4;
-        overlayAlpha = 0.30 * sunProgress;
+        overlayAlpha = 0.10 * sunProgress;
         deskAlpha = 0.5 * sunProgress;
         glowAlpha = 0.10 * sunProgress;
         icon = '\u{1F306}';
         color = '#f59e0b';
     } else {
         // Night: 21:00 -- 06:00 -- dark overlay
-        overlayAlpha = 0.30;
+        overlayAlpha = 0.10;
         deskAlpha = 0.50;
         glowAlpha = 0.12;
         icon = '\u{1F319}';
@@ -387,7 +387,7 @@ function createRuntimeAgents(scene) {
         var baseY = desk.y + 6;
 
         var shadow = scene.add.ellipse(desk.x, baseY + 4, 28, 10, 0x000000, 0.35);
-        var halo   = scene.add.circle(desk.x, baseY, 22, STATUS_COLORS[agent.status] || STATUS_COLORS.idle, 0.18);
+        var halo   = scene.add.circle(desk.x, baseY, 22, STATUS_COLORS[agent.status] || STATUS_COLORS.idle, 0.45);
         var sprite = scene.add.image(desk.x, baseY, 'agent-' + agent.id).setOrigin(0.5, 1).setDepth(baseY);
 
         var bubbleBox  = scene.add.rectangle(desk.x, baseY - 102, 140, 28, 0x0f172a, 0.96)
@@ -417,6 +417,8 @@ function createRuntimeAgents(scene) {
         }
         sprite.on('pointerover', function(pointer, localX, localY, event) { 
             bubbleBox.setFillStyle(0x172554, 0.98); 
+            halo.setFillStyle(STATUS_COLORS[agent.status] || STATUS_COLORS.idle, 0.75);
+            sprite.setScale(1.1);
             var tt = document.getElementById('agent-tooltip');
             if (tt && event) {
                 tt.style.display = 'block';
@@ -434,6 +436,8 @@ function createRuntimeAgents(scene) {
         });
         sprite.on('pointerout', function() { 
             bubbleBox.setFillStyle(0x0f172a, 0.96); 
+            halo.setFillStyle(STATUS_COLORS[agent.status] || STATUS_COLORS.idle, 0.45);
+            sprite.setScale(1);
             var tt = document.getElementById('agent-tooltip');
             if (tt) tt.style.display = 'none';
         });
@@ -497,7 +501,7 @@ function applyStatusVisuals(runtime) {
 
     if (runtime.status === 'offline') {
         runtime.sprite.setAlpha(0.3);
-        runtime.halo.setAlpha(0.1);
+        runtime.halo.setAlpha(0.3);
         runtime.nameText.setStyle(textStyle(11, '#475569'));
     } else {
         runtime.sprite.setAlpha(1);
@@ -1580,8 +1584,9 @@ function renderLiveHud(data) {
             var badge = document.createElement('span');
             badge.className = 'task-badge';
             badge.textContent = c.state || 'unknown';
-            badge.style.color = c.state === 'ok' ? '#86efac' : c.state === 'warn' ? '#f59e0b' : '#ef4444';
-            badge.style.borderColor = c.state === 'ok' ? '#166534' : c.state === 'warn' ? '#92400e' : '#991b1b';
+            var isNeutralState = c.state === 'idle' || c.state === 'unknown' || c.state === 'scheduled' || c.state === 'disabled' || c.state === undefined || c.state === null;
+            badge.style.color = c.state === 'ok' ? '#86efac' : c.state === 'warn' ? '#f59e0b' : isNeutralState ? '#64748b' : '#ef4444';
+            badge.style.borderColor = c.state === 'ok' ? '#166534' : c.state === 'warn' ? '#92400e' : isNeutralState ? '#334155' : '#991b1b';
             head.appendChild(badge);
             card.appendChild(head);
             var body = document.createElement('div');
@@ -2348,10 +2353,10 @@ function updateAgentBubblesFromFeed(entries) {
 
 function drawOffice(scene) {
     // Elegant dark floor background with glowing grids
-    scene.add.rectangle(office.width / 2, office.height / 2, office.width, office.height, 0x070c14);
+    scene.add.rectangle(office.width / 2, office.height / 2, office.width, office.height, 0x1a2332);
     var floorTextured = scene.add.tileSprite(office.width / 2, office.height / 2, office.width, office.height, 'floor-tile');
-    floorTextured.setBlendMode(Phaser.BlendModes.SCREEN);
-    floorTextured.setAlpha(0.6);
+    floorTextured.setBlendMode(Phaser.BlendModes.NORMAL);
+    floorTextured.setAlpha(0.9);
 
     // Dynamic borders
     var wt = 24;
@@ -2500,13 +2505,13 @@ function genFloorTile() {
     
     // Abstract modern grid
     var grad = x.createLinearGradient(0, 0, 64, 64);
-    grad.addColorStop(0, '#0a0f1d');
-    grad.addColorStop(1, '#0e1726');
+    grad.addColorStop(0, '#1e293b');
+    grad.addColorStop(1, '#2a3a4e');
     x.fillStyle = grad;
     x.fillRect(0, 0, 64, 64);
     
     // Fine tech grid
-    x.strokeStyle = '#1e293b'; x.lineWidth = 1;
+    x.strokeStyle = '#475569'; x.lineWidth = 1;
     x.beginPath();
     for (let i = 0; i <= 64; i += 16) {
         x.moveTo(i, 0); x.lineTo(i, 64);
@@ -2516,7 +2521,7 @@ function genFloorTile() {
     
     // Micro-accents
     x.fillStyle = '#38bdf8';
-    x.globalAlpha = 0.5;
+    x.globalAlpha = 0.8;
     x.fillRect(15, 15, 2, 2);
     x.fillRect(47, 47, 2, 2);
     x.globalAlpha = 1.0;
@@ -2529,9 +2534,9 @@ function genWallTile() {
     var x = c.getContext('2d');
     
     var grad = x.createLinearGradient(0, 0, 0, 24);
-    grad.addColorStop(0, '#020617');
-    grad.addColorStop(0.5, '#0f172a');
-    grad.addColorStop(1, '#1e293b');
+    grad.addColorStop(0, '#0f172a');
+    grad.addColorStop(0.5, '#1e293b');
+    grad.addColorStop(1, '#334155');
     
     x.fillStyle = grad;
     x.fillRect(0, 0, 24, 24);
