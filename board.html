@@ -207,6 +207,39 @@
       font-size: 9px;
       color: #64748b;
     }
+    .card-stale {
+      display: inline-block;
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 999px;
+      margin-left: 4px;
+      font-weight: 600;
+    }
+    .card-stale.stale { background: #ef444433; color: #fca5a5; border: 1px solid #ef444466; }
+    .card-stale.old   { background: #f59e0b33; color: #fcd34d; border: 1px solid #f59e0b66; }
+    .card-stale.fresh { background: #22c55e22; color: #86efac; border: 1px solid #22c55e44; }
+    .card-context-menu {
+      position: fixed;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 4px 0;
+      z-index: 500;
+      box-shadow: 0 8px 24px #00000080;
+      min-width: 140px;
+    }
+    .card-context-item {
+      padding: 7px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #94a3b8;
+    }
+    .card-context-item:hover { background: #1e293b; color: #f8fafc; }
+    .card-context-item.danger { color: #fca5a5; }
+    .card-context-item.danger:hover { background: #450a0a; }
 
     /* ── Empty state ── */
     .empty-state {
@@ -301,6 +334,19 @@
       col.innerHTML = `<div class="empty-state"><span class="icon">${icons[col.id.replace('col-','')]}</span>${msgs[col.id.replace('col-','')]}</div>`;
     };
 
+    function getStaleClass(itemTs) {
+      if (!itemTs || itemTs === 'now') return 'fresh';
+      // itemTs like '2m', '36m', '1h'
+      const m = itemTs.match(/(\d+)([mhd])/);
+      if (!m) return '';
+      const val = parseInt(m[1]);
+      const unit = m[2];
+      const min = unit === 'h' ? val * 60 : unit === 'd' ? val * 1440 : val;
+      if (min > 120) return 'stale';
+      if (min > 45)  return 'old';
+      return 'fresh';
+    }
+
     function renderColumn(colId, items) {
       const col = document.getElementById('col-' + colId);
       const count = document.getElementById('count-' + colId);
@@ -318,25 +364,129 @@
         card.className = 'card';
         card.style.animationDelay = i * 0.05 + 's';
         card.style.borderLeftColor = color;
+        card.dataset.itemId = item.id;
+        card.dataset.colId = colId;
+
         const title = document.createElement('div');
         title.className = 'card-title';
         title.textContent = (item.text || '').slice(0, 120);
+
         const meta = document.createElement('div');
         meta.className = 'card-meta';
+
+        const leftMeta = document.createElement('div');
+        leftMeta.style.display = 'flex';
+        leftMeta.style.alignItems = 'center';
+        leftMeta.style.flexWrap = 'wrap';
+        leftMeta.style.gap = '4px';
+
         const agentSpan = document.createElement('span');
         agentSpan.className = 'card-agent';
         agentSpan.style.color = color;
         agentSpan.textContent = agent || '—';
+
+        const stale = getStaleClass(item.ts);
+        if (stale) {
+          const staleBadge = document.createElement('span');
+          staleBadge.className = 'card-stale ' + stale;
+          staleBadge.textContent = stale === 'stale' ? 'stale' : stale === 'old' ? 'old' : '';
+          leftMeta.appendChild(agentSpan);
+          leftMeta.appendChild(staleBadge);
+        } else {
+          leftMeta.appendChild(agentSpan);
+        }
+
         const tsSpan = document.createElement('span');
         tsSpan.className = 'card-ts';
         tsSpan.textContent = item.ts || '';
-        meta.appendChild(agentSpan);
+
+        meta.appendChild(leftMeta);
         meta.appendChild(tsSpan);
         card.appendChild(title);
         card.appendChild(meta);
+
+        // Right-click context menu
+        card.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          showContextMenu(e.clientX, e.clientY, item, colId);
+        });
+
         col.appendChild(card);
       });
       if (count) count.textContent = items.length;
+    }
+
+    let activeMenu = null;
+    function showContextMenu(x, y, item, colId) {
+      closeContextMenu();
+      const menu = document.createElement('div');
+      menu.className = 'card-context-menu';
+      menu.style.left = Math.min(x, window.innerWidth - 160) + 'px';
+      menu.style.top  = Math.min(y, window.innerHeight - 160) + 'px';
+      menu.innerHTML = ''
+        + '<div class="card-context-item" data-action="stale"><span>⚠️</span> Mark Stale</div>'
+        + '<div class="card-context-item danger" data-action="delete"><span>🗑️</span> Delete</div>';
+      menu.addEventListener('click', function(e) {
+        const action = e.target.closest('[data-action]')?.dataset.action;
+        if (!action) return;
+        if (action === 'delete') {
+          markDeleted(item.id, colId);
+        } else if (action === 'stale') {
+          markStale(item.id, colId);
+        }
+        closeContextMenu();
+      });
+      document.body.appendChild(menu);
+      activeMenu = menu;
+    }
+
+    function closeContextMenu() {
+      if (activeMenu) {
+        activeMenu.remove();
+        activeMenu = null;
+      }
+    }
+    document.addEventListener('click', closeContextMenu);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeContextMenu(); });
+
+    async function markDeleted(itemId, colId) {
+      // POST to gateway to append [done] to shared-log
+      try {
+        const entry = `\n[${new Date().toISOString().replace('.000Z','Z')}] [ray] [done] [deleted] task ${itemId} from board (via board.html)\n`;
+        await fetch('https://gateway.openclaw.ai/shared-log/append', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ entry })
+        });
+      } catch(e) { console.warn('Could not mark deleted:', e); }
+      // Remove card visually
+      const card = document.querySelector(`[data-item-id="${itemId}"]`);
+      if (card) card.style.opacity = '0.3';
+    }
+
+    async function markStale(itemId, colId) {
+      try {
+        const entry = `\n[${new Date().toISOString().replace('.000Z','Z')}] [ray] [note] task ${itemId} marked stale on board\n`;
+        await fetch('https://gateway.openclaw.ai/shared-log/append', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ entry })
+        });
+      } catch(e) { console.warn('Could not mark stale:', e); }
+      const card = document.querySelector(`[data-item-id="${itemId}"]`);
+      if (card) {
+        const badge = card.querySelector('.card-stale');
+        if (badge) { badge.className = 'card-stale stale'; badge.textContent = 'stale'; }
+        else {
+          const tsEl = card.querySelector('.card-meta > div');
+          if (tsEl) {
+            const sb = document.createElement('span');
+            sb.className = 'card-stale stale';
+            sb.textContent = 'stale';
+            tsEl.appendChild(sb);
+          }
+        }
+      }
     }
 
     let lastSync = 0;

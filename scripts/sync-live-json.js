@@ -85,11 +85,12 @@ function parseLog(content) {
 
   const entries = [];
   for (const line of lines) {
-    const m = line.match(/^\[(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+UTC)\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
     if (!m) continue;
 
-    const [, rawTime, agent, tag, message] = m;
-    const iso = rawTime.replace(' UTC', 'Z').replace(/\s+/, 'T').replace(/T(\d)/, 'T0$1').replace(/(\d{2}:\d{2})Z$/, '$1:00Z');
+    const [, date, time, agent, tag, message] = m;
+    const secs = time.split(':').length === 2 ? ':00' : '';
+    const iso = date + 'T' + time + secs + 'Z';
     const ts = new Date(iso).getTime();
     if (isNaN(ts) || ts < cutoff) continue;
 
