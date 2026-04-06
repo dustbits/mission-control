@@ -8,6 +8,7 @@ export const agents = [
   { id: 'media',      name: 'Julia',  bebop: 'Julia',          emoji: '🎨', role: 'Media',        model: 'Qwen/Qwen2.5-7B-Instruct', desk: 6, color: '#ec4899', accent: '#111827', sprite: 'julia', status: 'idle' },
   { id: 'local',      name: 'Rocco',  bebop: 'Vicious',        emoji: '🐧', role: 'Local',        model: 'MiniMax/M2.7',            desk: 7, color: '#64748b', accent: '#f8fafc', sprite: 'rocco', status: 'idle' },
   { id: 'punch',      name: 'Punch',  bebop: 'Punch',          emoji: '🥊', role: 'Reviewer',     model: 'anthropic/claude-sonnet-4-6', desk: 8, color: '#ef4444', accent: '#fca5a5', sprite: 'punch', status: 'idle' },
+  { id: 'andrew',     name: 'Andy',   bebop: 'Andy',           emoji: '🖥', role: 'Host Exec',    model: 'MiniMax-M2.7',               desk: 9, color: '#14b8a6', accent: '#99f6e4', sprite: 'andy',  status: 'idle' },
 ];
 
 export const office = {
@@ -25,6 +26,7 @@ export const office = {
     { x: 800, y: 450 }, // 6
     { x: 900, y: 450 }, // 7
     { x: 640, y: 550 }, // 8
+    { x: 740, y: 550 }, // 9
   ],
 
 };
