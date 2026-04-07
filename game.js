@@ -632,60 +632,6 @@ function updateHudPills() {
     if (i)  i.textContent  = 'Idle '    + counts.idle;
     if (m)  m.textContent  = 'Meeting ' + counts.meeting;
     if (er) er.textContent = 'Alerts '  + counts.error;
-    updateAgentWorkloadCards();
-}
-
-function updateAgentWorkloadCards() {
-    var list = document.getElementById('hud-agents-list');
-    if (!list) return;
-    list.innerHTML = '';
-    state.agents.forEach(function(agent) {
-        var row = document.createElement('div');
-        row.style.display = 'flex';
-        row.style.alignItems = 'center';
-        row.style.gap = '5px';
-        row.style.fontSize = '9px';
-
-        var dot = document.createElement('span');
-        dot.textContent = '\u25cf';
-        dot.style.color = STATUS_COLORS[agent.status] ? '#' + STATUS_COLORS[agent.status].toString(16).padStart(6, '0') : '#64748b';
-        dot.style.fontSize = '7px';
-        dot.style.flexShrink = '0';
-
-        var name = document.createElement('span');
-        name.textContent = agent.name;
-        name.style.color = agent.color || '#94a3b8';
-        name.style.fontWeight = '700';
-        name.style.flex = '1';
-        name.style.minWidth = '0';
-        name.style.overflow = 'hidden';
-        name.style.textOverflow = 'ellipsis';
-        name.style.whiteSpace = 'nowrap';
-
-        var model = document.createElement('span');
-        var modelKey = agent.id.replace(' ', '').toLowerCase();
-        model.textContent = AGENT_MODELS[modelKey] ? AGENT_MODELS[modelKey].split('/').pop().replace('Qwen2.5-7B-Instruct', 'Qwen-7B').replace('MiniMax-M2.7-highspeed', 'M2.7-hs').replace('MiniMax-M2.7', 'M2.7').replace('claude-sonnet-4-6', 'claude-s4').replace('gpt-4o', 'gpt-4o') : (agent.model ? agent.model.split('/').pop() : '');
-        model.style.color = '#475569';
-        model.style.fontSize = '8px';
-        model.style.flexShrink = '0';
-        model.title = AGENT_MODELS[modelKey] || agent.model || '';
-
-        var msg = document.createElement('span');
-        msg.textContent = agent.message || agent.status || '';
-        msg.style.color = '#334155';
-        msg.style.fontSize = '8px';
-        msg.style.flex = '0 0 100%';
-        msg.style.paddingLeft = '12px';
-        msg.style.overflow = 'hidden';
-        msg.style.textOverflow = 'ellipsis';
-        msg.style.whiteSpace = 'nowrap';
-
-        row.appendChild(dot);
-        row.appendChild(name);
-        row.appendChild(model);
-        list.appendChild(row);
-        list.appendChild(msg);
-    });
 }
 
 function moveAgentTo(runtime, point, opts) {
@@ -1807,9 +1753,7 @@ function renderLiveHud(data) {
                 row.className = 'hud-subtle';
                 row.style.lineHeight = '1.6';
                 var dot = d.status === 'deployed' ? '<span style="color:#22c55e">\u26a1</span>' : '<span style="color:#64748b">\u25cb</span>';
-                var ago = d.time ? d.time + ' ago' : '';
-                var dur = d.duration ? ' <span style="color:#38bdf8">\u2190 ' + d.duration + '</span>' : '';
-                row.innerHTML = dot + ' ' + ago + dur + ' <span style="color:#475569">\u00b7</span> <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
+                row.innerHTML = dot + ' ' + d.time + ' ago <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
                 depEl.appendChild(row);
             });
         }
