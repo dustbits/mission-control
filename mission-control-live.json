@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-04-07T19:29:01.636Z",
+  "updatedAt": "2026-04-07T22:29:01.739Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 4,
-    "memory": 22,
+    "cpu": 79,
+    "memory": 50,
     "disk": 1
   },
   "agents": [
     {
-      "name": "Andy",
-      "key": "andy",
-      "model": "MiniMax/M2.7-highspeed",
-      "color": "#38bdf8",
-      "completed": 7,
+      "name": "Faye",
+      "key": "faye",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#a855f7",
+      "completed": 2,
       "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
@@ -23,7 +23,17 @@
       "key": "ed",
       "model": "openai-codex/gpt-5.4",
       "color": "#22c55e",
-      "completed": 6,
+      "completed": 2,
+      "efficiency": 100,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Andy",
+      "key": "andy",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#38bdf8",
+      "completed": 1,
       "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
@@ -33,28 +43,8 @@
       "key": "spike",
       "model": "MiniMax/M2.7-highspeed",
       "color": "#4a9eff",
-      "completed": 5,
-      "efficiency": 100,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Punch",
-      "key": "punch",
-      "model": "claude-sonnet-4",
-      "color": "#ef4444",
-      "completed": 3,
-      "efficiency": 100,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Faye",
-      "key": "faye",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#a855f7",
-      "completed": 2,
-      "efficiency": 100,
+      "completed": 0,
+      "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0
     },
@@ -107,81 +97,91 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0
+    },
+    {
+      "name": "Punch",
+      "key": "punch",
+      "model": "claude-sonnet-4",
+      "color": "#ef4444",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
     }
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-07T18:46:09.000Z",
+    "timestamp": "2026-04-07T20:59:53.000Z",
     "history": [
       {
-        "timestamp": "2026-04-07T18:46:09.000Z",
+        "timestamp": "2026-04-07T20:59:53.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "42m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-07T14:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "duration": "4h 46m",
-        "time": "5h"
+        "duration": "7h",
+        "time": "8h"
       },
       {
         "timestamp": "2026-04-07T12:53:42.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 6m",
-        "time": "6h"
+        "time": "9h"
       },
       {
         "timestamp": "2026-04-07T04:29:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8h 24m",
-        "time": "14h"
+        "time": "17h"
       },
       {
         "timestamp": "2026-04-07T04:15:05.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "14m",
-        "time": "15h"
+        "time": "18h"
       },
       {
         "timestamp": "2026-04-07T04:10:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "15h"
+        "time": "18h"
       },
       {
         "timestamp": "2026-04-07T03:29:17.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "41m",
-        "time": "15h"
+        "time": "18h"
       },
       {
         "timestamp": "2026-04-07T00:22:56.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "3h 6m",
-        "time": "19h"
+        "time": "22h"
       },
       {
         "timestamp": "2026-04-06T22:50:02.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 33m",
-        "time": "20h"
+        "time": "23h"
       },
       {
         "timestamp": "2026-04-06T22:40:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "10m",
-        "time": "20h"
+        "time": "23h"
       }
     ]
   },
@@ -218,736 +218,310 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Claude",
-      "line": "Memory + cron fixes applied:",
-      "time": "now",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "starting: Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse indicator",
+      "time": "15m",
+      "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Claude",
-      "line": "Session complete. All fixes saved: watcher (3-layer filter + catch-all + tag whitelist), board sync (dual-regex + timeli",
-      "time": "2m",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "34m",
+      "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "Claude",
-      "line": "Tag safety net deployed: (1) Watcher catch-all reroutes unknown [needs-*] tags to Spike for triage (2) All 8 agent skill",
-      "time": "4m",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "starting: **[manual-1491194490591907860]** 2026-04-07T21:54:37Z",
+      "time": "34m",
+      "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "Claude",
-      "line": "Tavily API key pushed to GCP via Andy. Search routing added: Gemini grounding (free) for basic lookups, Tavily (1000 cre",
-      "time": "7m",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "34m",
+      "color": "#38bdf8"
     },
     {
       "id": 5,
       "agent": "Andy",
-      "line": "starting: Push TAVILY_API_KEY to GCP Secret Manager: gcloud secrets create TAVILY_API_KEY --project=gen-lang-client-0412",
-      "time": "9m",
+      "line": "starting: **[conv-test-1]** 2026-04-07T21:54:31Z",
+      "time": "34m",
       "color": "#38bdf8"
     },
     {
       "id": 6,
       "agent": "Andy",
-      "line": "starting: Push TAVILY_API_KEY to GCP Secret Manager: gcloud secrets create TAVILY_API_KEY --project=gen-lang-client-0412",
-      "time": "9m",
+      "line": "starting: **[manual-1491193184586563634]** 2026-04-07T21:50:07Z",
+      "time": "38m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
-      "agent": "Claude",
-      "line": "Push TAVILY_API_KEY to GCP Secret Manager: gcloud secrets create TAVILY_API_KEY --project=gen-lang-client-0412397372 --d",
-      "time": "9m",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "starting: **[manual-1491193160578371656]** 2026-04-07T21:49:20Z",
+      "time": "39m",
+      "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "Spike",
-      "line": "MC v7.1-v7.4 re-implementation complete and deployed to nginx via Andy",
-      "time": "11m",
-      "color": "#4a9eff"
+      "agent": "Andy",
+      "line": "starting: sprite test",
+      "time": "39m",
+      "color": "#38bdf8"
     },
     {
       "id": 9,
       "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "23m",
+      "line": "starting: **[identity-test-ed]** 2026-04-07T21:46:36Z",
+      "time": "42m",
       "color": "#38bdf8"
     },
     {
       "id": 10,
       "agent": "Andy",
-      "line": "starting: Deploy MC — v7.1 (theme toggle 🌙/☀️ in header-right) + v7.2 (PWA manifest + sw.js registered) + v7.3 (rollbac",
-      "time": "23m",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "46m",
       "color": "#38bdf8"
     },
     {
       "id": 11,
-      "agent": "Spike",
-      "line": "starting: MC v7.1-v7.4 re-implement (theme toggle, PWA, rollback, staging link) in correct staging path",
-      "time": "25m",
-      "color": "#4a9eff"
+      "agent": "Andy",
+      "line": "starting: Deploy MC — v8.0 live agent pulse in staging. Run mc-deploy.sh to push to nginx.",
+      "time": "46m",
+      "color": "#38bdf8"
     },
     {
       "id": 12,
-      "agent": "Spike",
-      "line": "MC v7.1-v7.4: theme toggle (dark/light CSS vars + localStorage + ☀️/🌙 in header-right) | PWA manifest.json + sw.js regi",
-      "time": "25m",
-      "color": "#4a9eff"
+      "agent": "Ed",
+      "line": "MC v8.0 live agent pulse — detectAgentState() added to sync-live-json.js (2-min window, blocked>working>idle priority). ",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 13,
-      "agent": "Spike",
-      "line": "Deploy MC — v7.1 (theme toggle 🌙/☀️ in header-right) + v7.2 (PWA manifest + sw.js registered) + v7.3 (rollback ↩ button",
-      "time": "25m",
-      "color": "#4a9eff"
+      "agent": "Ed",
+      "line": "Deploy MC — v8.0 live agent pulse deployed to staging (sync-live-json.js + board.html). Run mc-deploy.sh to push to ngin",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 14,
-      "agent": "Claude",
-      "line": "Full session memory save. Session fixes: (1) Ed model minimax primary, codex fallback (2) Watcher 3-layer protection (AC",
-      "time": "28m",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "1h",
+      "color": "#38bdf8"
     },
     {
       "id": 15,
       "agent": "Andy",
-      "line": "MC v7.1-v7.4 deploy closed -- Ed wrote to wrong path (workspace/mission-control/ not staging). Board was reverted to 238",
-      "time": "28m",
+      "line": "starting: Deploy MC — v8.0 live agent pulse deployed to staging (sync-live-json.js + board.html). Run mc-deploy.sh to pu",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 16,
-      "agent": "Claude",
-      "line": "Board visibility + Andy paths fixed: (1) Andy CLAUDE.md now has explicit paths including staging=source of truth, Ed wor",
-      "time": "31m",
-      "color": "#64d8ff"
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 17,
-      "agent": "Claude",
-      "line": "CRITICAL BUG FOUND AND FIXED: Ed was editing workspace/mission-control/ but mc-deploy.sh reads from /mnt/spike-storage/m",
-      "time": "34m",
-      "color": "#64d8ff"
+      "agent": "Ed",
+      "line": "Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse indicators + heartbeat animat",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 18,
       "agent": "Ed",
-      "line": "MC v7.1-v7.4: theme toggle (dark/light CSS var swap, localStorage persist, ☀️/🌙 button in header) | PWA manifest.json +",
-      "time": "37m",
+      "line": "board.html deploy history enrichment — getDeployInfo() now captures git branch (git rev-parse --abbrev-ref HEAD), full S",
+      "time": "1h",
       "color": "#22c55e"
     },
     {
       "id": 19,
       "agent": "Ed",
-      "line": "Deploy MC — v7.1 (theme toggle 🌙/☀️) + v7.2 (PWA manifest + sw.js) + v7.3 (rollback button) + v7.4 (staging link) all i",
-      "time": "37m",
+      "line": "Deploy MC — sync-live-json.js + board.html enriched with git branch/SHA/message in deploy history. Run mc-deploy.sh to p",
+      "time": "1h",
       "color": "#22c55e"
     },
     {
       "id": 20,
-      "agent": "Claude",
-      "line": "Changeset manifest protocol deployed: Ed must write .changeset.md before tagging for review/deploy (files modified, line",
-      "time": "38m",
-      "color": "#64d8ff"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "1h",
+      "color": "#38bdf8"
     },
     {
       "id": 21,
       "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement",
-      "time": "42m",
+      "line": "starting: Also: audit mc-deploy.sh so ALL files that live in workspace/mission-control/ are included in the deploy copy ",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 22,
       "agent": "Andy",
-      "line": "starting: Deploy MC — v7.1 (theme toggle 🌙/☀️) + v7.2 (PWA manifest + sw.js) + v7.3 (rollback button) + v7.4 (staging l",
-      "time": "42m",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 23,
-      "agent": "Spike",
-      "line": "MC v7.1: theme toggle — CSS variable swap on :root (dark/light), toggle button in header, persist via localStorage. surg",
-      "time": "49m",
-      "color": "#4a9eff"
+      "agent": "Andy",
+      "line": "starting: FIX: mc-deploy.sh copies from workspace/dist/ but board.html is in workspace/mission-control/. Add board.html ",
+      "time": "1h",
+      "color": "#38bdf8"
     },
     {
       "id": 24,
       "agent": "Spike",
-      "line": "MC v7.2: PWA manifest + service worker — manifest.json + sw.js for offline board.html access. standalone files, no exist",
-      "time": "49m",
+      "line": "FIX: mc-deploy.sh copies from workspace/dist/ but board.html is in workspace/mission-control/. Add board.html + manifest",
+      "time": "1h",
       "color": "#4a9eff"
     },
     {
       "id": 25,
       "agent": "Spike",
-      "line": "MC v7.3: deploy rollback button — header button triggers mc-deploy from last good deployHistory entry, confirmation prom",
-      "time": "49m",
+      "line": "Also: audit mc-deploy.sh so ALL files that live in workspace/mission-control/ are included in the deploy copy chain goin",
+      "time": "1h",
       "color": "#4a9eff"
     },
     {
       "id": 26,
-      "agent": "Spike",
-      "line": "MC v7.4: preview staging link button — \"👁 Preview Staging\" button in deploy panel header linking to jarvis:8090.",
-      "time": "49m",
-      "color": "#4a9eff"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "1h",
+      "color": "#38bdf8"
     },
     {
       "id": 27,
-      "agent": "Ed",
-      "line": "starting: ",
-      "time": "49m",
-      "color": "#22c55e"
+      "agent": "Andy",
+      "line": "starting: MC: Ed's deploy history enrichment is done (20:52) but files are in workspace, not staging. Copy updated board",
+      "time": "1h",
+      "color": "#38bdf8"
     },
     {
       "id": 28,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement",
-      "time": "52m",
-      "color": "#38bdf8"
+      "agent": "Spike",
+      "line": "MC: Ed's deploy history enrichment is done (20:52) but files are in workspace, not staging. Copy updated board.html + sy",
+      "time": "1h",
+      "color": "#4a9eff"
     },
     {
       "id": 29,
-      "agent": "Andy",
-      "line": "starting: Deploy MC — board.html has deploy branch/hash subtabs + v7 leaderboard upgrades (sort/stale/summary). Run mc-d",
-      "time": "52m",
-      "color": "#38bdf8"
+      "agent": "Faye",
+      "line": "MC v8.0 implementation spec written to memory/research/mc-v8-impl-spec.md — includes exact CSS keyframes, JS detectAgent",
+      "time": "1h",
+      "color": "#a855f7"
     },
     {
       "id": 30,
-      "agent": "Claude",
-      "line": "Board reverted to 238976a after Ed v7 rewrite broke all rendering (672 insertions wiped columns/tabs). Ed skill file upd",
-      "time": "56m",
-      "color": "#64d8ff"
+      "agent": "Faye",
+      "line": "MC v8.0 live agent pulse: implement per memory/research/mc-v8-impl-spec.md — add detectAgentState() to sync-live-json.js",
+      "time": "1h",
+      "color": "#a855f7"
     },
     {
       "id": 31,
-      "agent": "Ed",
-      "line": "MC board v7 visual bugs fixed — JS syntax (duplicate let) resolved, deploy-summary div added, sort controls + stale dimm",
-      "time": "57m",
-      "color": "#22c55e"
+      "agent": "Faye",
+      "line": "Implement deploy history enrichment per research above: (1) add git fullSha/branch/commitMessage/author to deployHistory",
+      "time": "2h",
+      "color": "#a855f7"
     },
     {
       "id": 32,
-      "agent": "Ed",
-      "line": "Deploy MC — board.html has deploy branch/hash subtabs + v7 leaderboard upgrades (sort/stale/summary). Run mc-deploy.sh t",
-      "time": "57m",
-      "color": "#22c55e"
+      "agent": "Faye",
+      "line": "Deploy context enrichment research — findings below",
+      "time": "2h",
+      "color": "#a855f7"
     },
     {
       "id": 33,
       "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement",
-      "time": "1h",
+      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "time": "2h",
       "color": "#38bdf8"
     },
     {
       "id": 34,
       "agent": "Andy",
-      "line": "starting: for deploy.",
-      "time": "1h",
+      "line": "starting: Deploy MC — sync-live-json.js + board.html enriched with git branch/SHA/message in deploy history. Run mc-depl",
+      "time": "2h",
       "color": "#38bdf8"
     },
     {
       "id": 35,
-      "agent": "Claude",
-      "line": "Two tasks: (1) MC board.html has visual bugs from v7 update — Ray reports it broke. Check board.html in /mnt/spike-stora",
-      "time": "1h",
-      "color": "#64d8ff"
+      "agent": "Spike",
+      "line": "Research: how to enrich board.html deploy history with real deploy context — what can we capture about WHO/WHAT triggere",
+      "time": "2h",
+      "color": "#4a9eff"
     },
     {
       "id": 36,
       "agent": "Ed",
       "line": "starting: ",
-      "time": "1h",
+      "time": "2h",
       "color": "#22c55e"
     },
     {
       "id": 37,
-      "agent": "Claude",
-      "line": "Board fixes finalized: (1) parseLog dual-regex applied to all 3 scan functions — unbracketed timestamps now parsed every",
-      "time": "1h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 38,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 39,
-      "agent": "Andy",
-      "line": "starting: Deploy MC — board.html updated with deploy branch/hash display + 3 subtabs (Timeline/Detail/Log), sync-live-js",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 40,
       "agent": "Spike",
-      "line": "Deploy MC — board.html updated with deploy branch/hash display + 3 subtabs (Timeline/Detail/Log), sync-live-json.js upda",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 41,
-      "agent": "Faye",
-      "line": "MC v8 live agent viz research complete — spec at memory/research/mc-v8-live-agent-viz.md. Recommended: v8.0 pulse indica",
-      "time": "1h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 42,
-      "agent": "Claude",
-      "line": "Research real-time agent activity visualization for MC board v8 — Ray wants to SEE agents working live (not just queued/",
-      "time": "1h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 43,
-      "agent": "System",
-      "line": "memory-prune: sqlite: 2 flushed, md: 7 archived, cold: 7 purged",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 44,
-      "agent": "Ed",
-      "line": "MC v7 leaderboard/deploy panel upgrades: sort controls (Done/Eff/A-Z) added to agents panel header, stale agents dimmed ",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 45,
-      "agent": "Punch",
-      "line": "false trigger closed — no actual task",
-      "time": "1h",
-      "color": "#ef4444"
-    },
-    {
-      "id": 46,
-      "agent": "Punch",
-      "line": "starting: inside [done] log message text. Fixed: ACTIONABLE filter now strips [done]/[acknowledged]/[routed] lines befor",
-      "time": "1h",
-      "color": "#ef4444"
-    },
-    {
-      "id": 47,
-      "agent": "Spike",
-      "line": "MC: deploy history entries show \"MANUAL\" but missing commit hash, branch, and full trigger details — board.html deploy p",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 48,
-      "agent": "Spike",
-      "line": "MC: leaderboard/agents panel v7 upgrades — consider: better efficiency visualization, sort controls, per-agent task dril",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 49,
-      "agent": "Spike",
-      "line": "MC v6.3 deploy duration display — already shipped per Ray",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 50,
-      "agent": "Spike",
-      "line": "MC error rate sparklines — already shipped per Ray",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 51,
-      "agent": "Spike",
-      "line": "MC v6.3: deploy duration display fix — grid layout bug in board.html causes duration to collapse, fix grid-template-colu",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 52,
-      "agent": "Spike",
-      "line": "MC: error rate sparklines — SVG sparkline function for cron-error-history.json samples, display in deploy panel header o",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 53,
-      "agent": "Punch",
-      "line": "false trigger resolved — watcher was matching [needs-punch] inside [done] log message text. Fixed: ACTIONABLE filter now",
-      "time": "1h",
-      "color": "#ef4444"
-    },
-    {
-      "id": 54,
-      "agent": "Punch",
-      "line": "starting: , unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step.",
-      "time": "1h",
-      "color": "#ef4444"
-    },
-    {
-      "id": 55,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 56,
-      "agent": "Andy",
-      "line": "starting: [deploy] MC has unpushed commits (1 commit: auto: MC improvement), needs mc-deploy.sh from host to push to ngi",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 57,
-      "agent": "Claude",
-      "line": "Memory saved everywhere: Claude local memory (feedback_agent_behavior, feedback_model_rules, feedback_mc_rules, referenc",
-      "time": "1h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 58,
-      "agent": "Punch",
-      "line": ", unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step. — - Is this a rule you want me to **remember",
-      "time": "2h",
-      "color": "#ef4444"
-    },
-    {
-      "id": 59,
-      "agent": "Andy",
-      "line": "starting: , code -> [needs-ed], research -> [needs-faye], review -> [needs-punch], unclear -> [needs-spike], approval ->",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 60,
-      "agent": "Punch",
-      "line": "starting: , unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step.",
-      "time": "2h",
-      "color": "#ef4444"
-    },
-    {
-      "id": 61,
-      "agent": "Claude",
-      "line": "Watcher regex hardened — [needs-X] only triggers when in tag position (prevents false triggers from message text). Task ",
-      "time": "2h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 62,
-      "agent": "Andy",
-      "line": "starting: Read GOOGLE_CLIENT_SECRET: gcloud secrets versions access latest --[REDACTED] --project=ironthread-ai | Output",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 63,
-      "agent": "Andy",
-      "line": "false trigger — watcher matched [needs-andy] inside a [done] log entry. Watcher regex fixed to only match tag position.",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 64,
-      "agent": "Andy",
-      "line": "GOOGLE_CLIENT_SECRET read attempted but completion not confirmed. Re-routing.",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 65,
-      "agent": "Claude",
-      "line": "Read GOOGLE_CLIENT_SECRET: gcloud secrets versions access latest --[REDACTED] --project=ironthread-ai | Output the value",
-      "time": "2h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 66,
-      "agent": "Ed",
-      "line": "MC v6.1 agent workload cards already deployed and working at jarvis:8090 — AGENT_EMOJI map, renderAgentsPanel() with com",
-      "time": "2h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 67,
-      "agent": "Spike",
-      "line": "MC v6.1: agent workload cards — uses existing agent data, incremental to v5 agents panel. Target repo: /mnt/spike-storag",
+      "line": "board.html deploy history enrichment — add commit message, full SHA, branch name to deployHistory entries via git log; d",
       "time": "2h",
       "color": "#4a9eff"
-    },
-    {
-      "id": 68,
-      "agent": "Andy",
-      "line": "starting: for ALL host access (gcloud, Secret Manager, CLI). Andy CLAUDE.md expanded with capabilities section. Board sy",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 69,
-      "agent": "Claude",
-      "line": "Ed model reverted to openai-codex/gpt-5.4 (was minimax). Ed routing rules expanded: must [needs-andy] for ALL host acces",
-      "time": "2h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 70,
-      "agent": "Andy",
-      "line": "starting: Read GOOGLE_CLIENT_SECRET from Secret Manager: gcloud secrets versions access latest --[REDACTED] --project=ir",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 71,
-      "agent": "Claude",
-      "line": "Read GOOGLE_CLIENT_SECRET from Secret Manager: gcloud secrets versions access latest --[REDACTED] --project=ironthread-a",
-      "time": "2h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 72,
-      "agent": "Faye",
-      "line": "MC v6 research: agent workload cards recommended as Ed's next v6 feature — uses existing agent data structures, incremen",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 73,
-      "agent": "Spike",
-      "line": "Research MC v6 feature priorities — v6.1 agent workload cards, v6.2 error rate sparklines, v6.4 mobile responsive board.",
-      "time": "2h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 74,
-      "agent": "Ed",
-      "line": "IT Portal OAuth setup reviewed — code.gs already has full getAuthUrl/handleOAuthCallback, needs Script Properties set in",
-      "time": "2h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 75,
-      "agent": "Spike",
-      "line": "IT Portal: Set Script Properties in Apps Script (GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET) + redeploy via clasp. Client I",
-      "time": "2h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 76,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 57ccd3f auto: MC improvement",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 77,
-      "agent": "Andy",
-      "line": "starting: [deploy] MC has unpushed commits, needs mc-deploy.sh from host",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 78,
-      "agent": "Spike",
-      "line": "IT Portal T0 stale entries cleaned — OAuth credentials created by antigravity, remaining tasks: Script Properties (Ed), ",
-      "time": "3h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 79,
-      "agent": "Claude",
-      "line": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref archival, audit log, tr",
-      "time": "3h",
-      "color": "#64d8ff"
-    },
-    {
-      "id": 80,
-      "agent": "System",
-      "line": "memory-prune: md: 3 archived, cold: 3 purged",
-      "time": "3h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 81,
-      "agent": "Ed",
-      "line": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push blocked by host key (n",
-      "time": "4h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 82,
-      "agent": "Ed",
-      "line": "IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs push to ori",
-      "time": "4h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 83,
-      "agent": "Andy",
-      "line": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
-      "time": "4h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 84,
-      "agent": "Andy",
-      "line": "starting: IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs p",
-      "time": "4h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 85,
-      "agent": "System",
-      "line": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
-      "time": "4h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 86,
-      "agent": "Punch",
-      "line": "starting: for review",
-      "time": "4h",
-      "color": "#ef4444"
     }
   ],
   "board": {
-    "queued": [],
+    "queued": [
+      {
+        "id": 1775595122000,
+        "text": "Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse indicator",
+        "agent": "Ed",
+        "ts": "1h"
+      }
+    ],
     "inprogress": [
       {
-        "id": 1775589595000,
-        "text": "starting: Push TAVILY_API_KEY to GCP Secret Manager: gcloud secrets create TAVILY_API_KEY --project=",
+        "id": 1775600000000,
+        "text": "starting: Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse",
         "agent": "Andy",
-        "ts": "9m"
+        "ts": "15m"
       }
     ],
     "done": [
       {
-        "id": 1775574454000,
-        "text": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
-        "agent": "System",
-        "ts": "4h"
-      },
-      {
-        "id": 1775574720000,
-        "text": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push bl",
-        "agent": "Ed",
-        "ts": "4h"
-      },
-      {
-        "id": 1775574610000,
-        "text": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
-        "agent": "Andy",
-        "ts": "4h"
-      },
-      {
-        "id": 1775576796000,
-        "text": "memory-prune: md: 3 archived, cold: 3 purged",
-        "agent": "System",
-        "ts": "3h"
-      },
-      {
-        "id": 1775577000000,
-        "text": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref arc",
-        "agent": "Claude",
-        "ts": "3h"
-      },
-      {
-        "id": 1775593800000,
-        "text": "Memory + cron fixes applied:",
-        "agent": "Claude",
-        "ts": "now"
-      },
-      {
-        "id": 1775579160000,
-        "text": "IT Portal T0 stale entries cleaned — OAuth credentials created by antigravity, remaining tasks: Scri",
-        "agent": "Spike",
-        "ts": "3h"
-      },
-      {
-        "id": 1775579368000,
-        "text": "MC pushed + deployed to nginx. Latest: 57ccd3f auto: MC improvement",
-        "agent": "Andy",
-        "ts": "2h"
-      },
-      {
-        "id": 1775580120000,
-        "text": "IT Portal OAuth setup reviewed — code.gs already has full getAuthUrl/handleOAuthCallback, needs Scri",
-        "agent": "Ed",
-        "ts": "2h"
-      },
-      {
-        "id": 1775581170000,
-        "text": "MC v6 research: agent workload cards recommended as Ed's next v6 feature — uses existing agent data ",
+        "id": 1775593680000,
+        "text": "Deploy context enrichment research — findings below",
         "agent": "Faye",
         "ts": "2h"
       },
       {
-        "id": 1775582006000,
-        "text": "Ed model reverted to openai-codex/gpt-5.4 (was minimax). Ed routing rules expanded: must [needs-andy",
-        "agent": "Claude",
-        "ts": "2h"
-      },
-      {
-        "id": 1775582520000,
-        "text": "MC v6.1 agent workload cards already deployed and working at jarvis:8090 — AGENT_EMOJI map, renderAg",
+        "id": 1775595120000,
+        "text": "board.html deploy history enrichment — getDeployInfo() now captures git branch (git rev-parse --abbr",
         "agent": "Ed",
-        "ts": "2h"
+        "ts": "1h"
       },
       {
-        "id": 1775582737000,
-        "text": "false trigger — watcher matched [needs-andy] inside a [done] log entry. Watcher regex fixed to only ",
+        "id": 1775593183000,
+        "text": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHist",
         "agent": "Andy",
         "ts": "2h"
       },
       {
-        "id": 1775582737000,
-        "text": "GOOGLE_CLIENT_SECRET read attempted but completion not confirmed. Re-routing.",
-        "agent": "Andy",
-        "ts": "2h"
-      },
-      {
-        "id": 1775582809000,
-        "text": "Watcher regex hardened — [needs-X] only triggers when in tag position (prevents false triggers from ",
-        "agent": "Claude",
-        "ts": "2h"
-      },
-      {
-        "id": 1775582914000,
-        "text": ", unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step. — - Is this a rule you w",
-        "agent": "Punch",
-        "ts": "2h"
-      },
-      {
-        "id": 1775582962000,
-        "text": "Memory saved everywhere: Claude local memory (feedback_agent_behavior, feedback_model_rules, feedbac",
-        "agent": "Claude",
+        "id": 1775594100000,
+        "text": "MC v8.0 implementation spec written to memory/research/mc-v8-impl-spec.md — includes exact CSS keyfr",
+        "agent": "Faye",
         "ts": "1h"
       },
       {
-        "id": 1775582966000,
-        "text": "MC pushed + deployed to nginx. Latest: 238976a auto: MC improvement",
-        "agent": "Andy",
-        "ts": "1h"
-      },
-      {
-        "id": 1775583220000,
-        "text": "false trigger resolved — watcher was matching [needs-punch] inside [done] log message text. Fixed: A",
-        "agent": "Punch",
-        "ts": "1h"
-      },
-      {
-        "id": 1775583540000,
-        "text": "MC v6.3 deploy duration display — already shipped per Ray",
-        "agent": "Spike",
+        "id": 1775596680000,
+        "text": "MC v8.0 live agent pulse — detectAgentState() added to sync-live-json.js (2-min window, blocked>work",
+        "agent": "Ed",
         "ts": "1h"
       }
     ]
@@ -958,7 +532,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "11h",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -988,9 +562,9 @@
     {
       "id": "daily-memory-capture",
       "label": "Daily Memory Capture",
-      "schedule": "0 23 * * *",
+      "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "19h",
+      "lastRun": "22h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1022,7 +596,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "1d",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1054,8 +628,8 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "6d",
-      "state": "unknown",
+      "lastRun": "2h",
+      "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
@@ -1086,7 +660,7 @@
       "label": "Weekly Summary",
       "schedule": "0 17 * * 0",
       "next": "now",
-      "lastRun": "2d",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1118,7 +692,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "10h",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1150,7 +724,7 @@
       "label": "Spike Audit Digest",
       "schedule": "0 18 * * 5",
       "next": "now",
-      "lastRun": "4d",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1180,7 +754,7 @@
     {
       "id": "memory-cold-archive",
       "label": "Memory Cold Archive",
-      "schedule": "0 23 * * 0",
+      "schedule": "0 19 * * 0",
       "next": "now",
       "lastRun": "1d",
       "state": "ok",
@@ -1214,7 +788,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "14m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1278,7 +852,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "14h",
+      "lastRun": "17h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1308,7 +882,7 @@
     {
       "id": "weekly-deep-clean",
       "label": "Weekly Deep Clean",
-      "schedule": "0 4 * * 0",
+      "schedule": "0 0 * * 0",
       "next": "now",
       "lastRun": "2d",
       "state": "ok",
@@ -1342,7 +916,7 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "6m",
+      "lastRun": "3m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1374,7 +948,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "18m",
+      "lastRun": "3m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1406,7 +980,7 @@
       "label": "Cost Safeguard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "20h",
+      "lastRun": "23h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1438,7 +1012,7 @@
       "label": "Post-Task Validator",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "20h",
+      "lastRun": "23h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1470,7 +1044,7 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "1h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1534,7 +1108,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "11h",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1564,7 +1138,7 @@
     {
       "id": "82890dc2-1e9b-444e-9ca0-c7ad65f20252",
       "label": "spike-weekly-tale",
-      "schedule": "0 13 * * 1",
+      "schedule": "0 9 * * 1",
       "next": "now",
       "lastRun": "1d",
       "state": "ok",
@@ -1598,7 +1172,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "14h",
+      "lastRun": "17h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1630,7 +1204,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "14m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1660,9 +1234,9 @@
     {
       "id": "a12ce5af-6326-400f-b15e-ac210c8fa0c6",
       "label": "Research Digest",
-      "schedule": "0 11 * * 2,5",
+      "schedule": "0 7 * * 2,5",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1692,10 +1266,10 @@
     {
       "id": "b57e9230-57e9-4d01-b91d-e96ffbf5f999",
       "label": "IronThread Git Push",
-      "schedule": "0 17 * * 1,2,3,4,5",
+      "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
+      "lastRun": "1h",
+      "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
@@ -1724,7 +1298,7 @@
     {
       "id": "4df770af-19fd-492d-b42f-b571f58f769e",
       "label": "IronThread Site Research",
-      "schedule": "0 14 * * 4",
+      "schedule": "0 10 * * 4",
       "next": "now",
       "lastRun": "never",
       "state": "unknown",
@@ -1758,7 +1332,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "scheduled",
-      "lastRun": "3h",
+      "lastRun": "6h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
