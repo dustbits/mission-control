@@ -1,20 +1,20 @@
 {
-  "updated": "2026-04-06 07:00 PM ET",
+  "updated": "2026-04-06 07:15 PM ET",
   "total_cost": 0.0,
   "budget": 5.0,
   "status": "ok",
   "models": [
     {
-      "model": "MiniMax-M2.7-highspeed",
-      "sessions": 13,
-      "messages": 78,
+      "model": "qwen/qwen3.6-plus:free",
+      "sessions": 2,
+      "messages": 9,
       "tokens": 0,
       "cost": 0.0
     },
     {
-      "model": "qwen/qwen3.6-plus:free",
-      "sessions": 2,
-      "messages": 8,
+      "model": "MiniMax-M2.7-highspeed",
+      "sessions": 6,
+      "messages": 54,
       "tokens": 0,
       "cost": 0.0
     }
