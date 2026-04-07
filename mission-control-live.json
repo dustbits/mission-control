@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T02:28:36.047Z",
+  "updatedAt": "2026-04-07T03:27:55.633Z",
   "deploy": {
     "state": "idle",
     "lastDeploy": null,
@@ -52,143 +52,45 @@
   "activity": [
     {
       "id": 1,
-      "agent": "antigravity",
-      "line": "[done] T1 OAuth2 Client ID created for IT Portal. Client ID: 973438014764-nqngmetq2g4i750s35rd5eto7lpkvfom.apps.googleusercontent.com | Secr",
+      "agent": "Faye",
+      "line": "[needs-faye] Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI: polling vs push, intent classification",
       "time": "NaNh ago",
-      "color": "#38bdf8"
+      "color": "#a855f7"
     },
     {
       "id": 2,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: Deploy board.html from mission-control-staging to jarvis:8090 (2 commits: 5abb6f5 Cron sparkline tab, ef8bb58 ",
+      "agent": "Faye",
+      "line": "[done] Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 research, rendering scope, cost trac",
       "time": "NaNh ago",
-      "color": "#38bdf8"
+      "color": "#a855f7"
     },
     {
       "id": 3,
-      "agent": "Ed",
-      "line": "[needs-andy] Deploy board.html from mission-control-staging to jarvis:8090 (2 commits: 5abb6f5 Cron sparkline tab, ef8bb58 mobile responsive",
+      "agent": "Punch",
+      "line": "[done] Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagged as risky in safeBins.",
       "time": "NaNh ago",
-      "color": "#22c55e"
+      "color": "#ef4444"
     },
     {
       "id": 4,
-      "agent": "Ed",
-      "line": "[done] P2: Mobile responsive board — stack columns on <768px. Breakpoint 768px, vertical stack, leaderboard top-border on mobile, deploy/cro",
+      "agent": "needs-faye",
+      "line": "General research task — check for any pending research items or questions from recent sessions. — Ed Builder Loop",
       "time": "NaNh ago",
-      "color": "#22c55e"
+      "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "Spike",
-      "line": "[done] [deploy] MC staging auto-deploy: committed 3 files (game.js, index.html, mission-control-live.json) from deploy overwrite, reviewed p",
+      "agent": "Punch",
+      "line": "[acknowledged-punch] starting: Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagg",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#ef4444"
     },
     {
       "id": 6,
-      "agent": "Spike",
-      "line": "[done] [deploy] MC staging auto-deploy: committed 6 files (board.html, cost-data.json, game.js, index.html, mission-control-live.json, scrip",
-      "time": "NaNh ago",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 7,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
+      "agent": "needs-punch",
+      "line": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagged as risky in safeBins. Model ",
       "time": "NaNh ago",
       "color": "#38bdf8"
-    },
-    {
-      "id": 8,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: git push + mc-deploy for MC agent workload cards HUD (21de6bb)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 9,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 10,
-      "agent": "ed-builder-loop",
-      "line": "[needs-andy] git push + mc-deploy for MC agent workload cards HUD (21de6bb)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 11,
-      "agent": "Andy",
-      "line": "[done] git push + mc-deploy for MC deploy history duration fix (293f87c) — Could you clarify: 1. Is the repo at a different path, or does it",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 12,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: git push + mc-deploy for MC deploy history duration fix (293f87c)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 13,
-      "agent": "ed-builder-loop",
-      "line": "[needs-andy] git push + mc-deploy for MC deploy history duration fix (293f87c)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 14,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 15,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 16,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: P0: Create Google OAuth2 Client ID for IT Portal via gcloud CLI. Sign in to gcloud with ops@ironthread.ai, the",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 17,
-      "agent": "Spike",
-      "line": "[needs-andy] P0: Create Google OAuth2 Client ID for IT Portal via gcloud CLI. Sign in to gcloud with ops@ironthread.ai, then create an OAuth",
-      "time": "NaNh ago",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 18,
-      "agent": "Ed",
-      "line": "[done] P1: Error rate trending — sync-live-json.js now persists cron error history to cron-error-history.json (max 20 samples per job, updat",
-      "time": "NaNh ago",
-      "color": "#22c55e"
-    },
-    {
-      "id": 19,
-      "agent": "Ed",
-      "line": "[done] P1: Deploy history display — added Deploys tab to board.html: fetches deployHistory.json, sorts newest-first, shows time + trigger ba",
-      "time": "NaNh ago",
-      "color": "#22c55e"
-    },
-    {
-      "id": 20,
-      "agent": "Ed",
-      "line": "[done] IT Portal T4: code.gs getTicketsData() — auth guard via getUserEmail(), ops@ sees all tickets, clients see only their own (JQL report",
-      "time": "NaNh ago",
-      "color": "#22c55e"
     }
   ],
   "cron": [
@@ -287,69 +189,29 @@
   "board": {
     "queued": [
       {
-        "agent": "faye",
-        "text": "P1: Error rate trending — parse cron consecutiveErrors → sparkline in Cron tab",
-        "ts": "2026-04-06 23:36 UTC",
+        "agent": "needs-punch",
+        "text": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: ",
+        "ts": "2026-04-07 03:11 UTC",
         "priority": "normal"
       },
       {
-        "agent": "spike",
-        "text": "P0: Create Google OAuth2 Client ID for IT Portal via gcloud CLI. Sign in to gcloud with ops@ironthre",
-        "ts": "2026-04-07 00:48 UTC",
+        "agent": "needs-faye",
+        "text": "General research task — check for any pending research items or questions from recent sessions. — Ed",
+        "ts": "2026-04-07 03:22 UTC",
         "priority": "normal"
       }
     ],
     "inprogress": [],
     "done": [
       {
-        "agent": "ed",
-        "text": "P1: Error rate trending — sync-live-json.js now persists cron error history to cron-error-history.js",
-        "ts": "2026-04-07 00:48 UTC"
+        "agent": "punch",
+        "text": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: ",
+        "ts": "2026-04-07T03:24:17Z"
       },
       {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T01:00:02Z"
-      },
-      {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T01:10:03Z"
-      },
-      {
-        "agent": "andy",
-        "text": "git push + mc-deploy for MC deploy history duration fix (293f87c) — Could you clarify: 1. Is the rep",
-        "ts": "2026-04-07T01:10:46Z"
-      },
-      {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T01:20:02Z"
-      },
-      {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T01:30:02Z"
-      },
-      {
-        "agent": "spike",
-        "text": "MC staging auto-deploy: committed 6 files (board.html, cost-data.json, game.js, index.html, mission-",
-        "ts": "2026-04-07 01:30 UTC"
-      },
-      {
-        "agent": "spike",
-        "text": "MC staging auto-deploy: committed 3 files (game.js, index.html, mission-control-live.json) from depl",
-        "ts": "2026-04-07 01:35 UTC"
-      },
-      {
-        "agent": "ed",
-        "text": "P2: Mobile responsive board — stack columns on <768px. Breakpoint 768px, vertical stack, leaderboard",
-        "ts": "2026-04-07 01:55 UTC"
-      },
-      {
-        "agent": "antigravity",
-        "text": "T1 OAuth2 Client ID created for IT Portal. Client ID: 973438014764-nqngmetq2g4i750s35rd5eto7lpkvfom.",
-        "ts": "2026-04-07 02:16 UTC"
+        "agent": "faye",
+        "text": "Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 res",
+        "ts": "2026-04-07T03:24:00Z"
       }
     ]
   }
