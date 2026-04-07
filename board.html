@@ -334,10 +334,17 @@
     }
 
     /* ── Responsive ── */
-    @media (max-width: 700px) {
-      .board { flex-direction: column; padding: 10px; height: auto; }
-      .column { max-width: none; margin-bottom: 12px; }
-      .column-body { max-height: 50vh; }
+    @media (max-width: 768px) {
+      .board { flex-direction: column; padding: 10px; height: auto; overflow-x: visible; }
+      .column { max-width: none; min-width: 0; margin-bottom: 12px; border-right: none; border-bottom: 1px solid var(--border); }
+      .column-body { max-height: 40vh; }
+      .col-leaderboard { border-left: none; border-top: 1px solid var(--border); }
+      .header-tabs { flex-wrap: wrap; gap: 2px; }
+      .tab-btn { padding: 3px 8px; font-size: 11px; }
+      .deploy-panel, .cron-panel { padding: 12px 10px; }
+      .deploy-entry, .cron-entry { grid-template-columns: 1fr; gap: 6px; }
+      .cron-entry .sparkline { display: none; }
+      .header { padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
     }
 
     /* ── Tabs ── */
