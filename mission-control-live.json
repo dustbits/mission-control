@@ -1,16 +1,189 @@
 {
-  "updatedAt": "2026-04-07T14:24:17.559Z",
-  "deploy": {
-    "state": "idle",
-    "lastDeploy": null,
-    "badge": "LIVE"
-  },
+  "updatedAt": "2026-04-07T16:16:58.014Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 0,
-    "memory": 0,
-    "disk": 0
+    "cpu": 5,
+    "memory": 19,
+    "disk": 1
+  },
+  "agents": [
+    {
+      "name": "Spike",
+      "key": "spike",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#4a9eff",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Jet",
+      "key": "jet",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Faye",
+      "key": "faye",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#a855f7",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Ein",
+      "key": "ein",
+      "model": "MiniMax/M2.7",
+      "color": "#f97316",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Gren",
+      "key": "gren",
+      "model": "MiniMax/M2.7",
+      "color": "#7c3aed",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Ed",
+      "key": "ed",
+      "model": "openai/gpt-4o",
+      "color": "#22c55e",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Julia",
+      "key": "julia",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#ec4899",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Rocco",
+      "key": "rocco",
+      "model": "MiniMax/M2.7",
+      "color": "#64748b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Punch",
+      "key": "punch",
+      "model": "claude-sonnet-4",
+      "color": "#ef4444",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Andy",
+      "key": "andy",
+      "model": "claude-sonnet-4",
+      "color": "#38bdf8",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    }
+  ],
+  "deploy": {
+    "state": "deployed",
+    "timestamp": "2026-04-07T16:02:48.000Z",
+    "history": [
+      {
+        "timestamp": "2026-04-07T16:02:48.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": null,
+        "time": "14m"
+      },
+      {
+        "timestamp": "2026-04-07T14:00:01.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "2h 3m",
+        "time": "2h"
+      },
+      {
+        "timestamp": "2026-04-07T12:53:42.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "1h 6m",
+        "time": "3h"
+      },
+      {
+        "timestamp": "2026-04-07T04:29:15.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "8h 24m",
+        "time": "11h"
+      },
+      {
+        "timestamp": "2026-04-07T04:15:05.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "14m",
+        "time": "12h"
+      },
+      {
+        "timestamp": "2026-04-07T04:10:40.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "4m",
+        "time": "12h"
+      },
+      {
+        "timestamp": "2026-04-07T03:29:17.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "41m",
+        "time": "12h"
+      },
+      {
+        "timestamp": "2026-04-07T00:22:56.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "3h 6m",
+        "time": "15h"
+      },
+      {
+        "timestamp": "2026-04-06T22:50:02.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "1h 33m",
+        "time": "17h"
+      },
+      {
+        "timestamp": "2026-04-06T22:40:01.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "10m",
+        "time": "17h"
+      }
+    ]
   },
   "projects": [
     {
@@ -32,14 +205,14 @@
       "name": "OpenClaw",
       "color": "#FF6B35",
       "health": "green",
-      "note": "Mission Control v3 live"
+      "note": "Mission Control rebuild in progress"
     },
     {
       "id": "crypto",
       "name": "Crypto",
       "color": "#BA7517",
       "health": "green",
-      "note": "Daily brief posting"
+      "note": "Daily brief live"
     },
     {
       "id": "artsite",
@@ -52,305 +225,846 @@
   "activity": [
     {
       "id": 1,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Claude",
+      "line": "Memory + cron fixes applied:",
+      "time": "now",
+      "color": "#64d8ff"
     },
     {
       "id": 2,
-      "agent": "Andy",
-      "line": "[done] MC pushed + deployed to nginx. Latest: 2c64b33 fix: board.html deploy grid 4-col, game.js health from live JSON, mc-deploy.sh contain",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Claude",
+      "line": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref archival, audit log, tr",
+      "time": "26m",
+      "color": "#64d8ff"
     },
     {
       "id": 3,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: [MC deploy] push commits 4947a1d + 2c64b33 via mc-deploy.sh — board.html data fixes, game.js health, IronThrea",
-      "time": "NaNh ago",
+      "agent": "System",
+      "line": "memory-prune: md: 3 archived, cold: 3 purged",
+      "time": "30m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "Ed",
-      "line": "[needs-andy] [MC deploy] push commits 4947a1d + 2c64b33 via mc-deploy.sh — board.html data fixes, game.js health, IronThread panel cleanup, ",
-      "time": "NaNh ago",
+      "line": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push blocked by host key (n",
+      "time": "1h",
       "color": "#22c55e"
     },
     {
       "id": 5,
       "agent": "Ed",
-      "line": "[done] MC board.html data fixes — sync-live-json.js: 7-day window, count all [done] lines, punch/andy models → MiniMax-M2.7-highspeed, IronT",
-      "time": "NaNh ago",
+      "line": "IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs push to ori",
+      "time": "1h",
       "color": "#22c55e"
     },
     {
       "id": 6,
       "agent": "Andy",
-      "line": "[done] MC pushed + deployed to nginx. Latest: bad86b8 auto: MC improvement",
-      "time": "NaNh ago",
+      "line": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 7,
       "agent": "Andy",
-      "line": "[acknowledged-andy] starting: for nginx push via mc-deploy.sh",
-      "time": "NaNh ago",
+      "line": "starting: IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs p",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "Andy",
-      "line": "[done] MC pushed + deployed to nginx. Latest: bad86b8 auto: MC improvement",
-      "time": "NaNh ago",
+      "agent": "System",
+      "line": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 9,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: [deploy] MC has unpushed commits (bad86b8: board.html + deployHistory.json + mission-control-live.json), needs",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 10,
-      "agent": "Andy",
-      "line": "[done] MC v6.3 (e5155ae) pushed + deployed to nginx via mc-deploy.sh",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 11,
-      "agent": "Ed",
-      "line": "[done] MC board.html v5 fixes deployed: CPU/MEM health bar in header, agent spacing (+15\u0000olumn width, +20\u0000ard padding/gaps), Finance Hub pan",
-      "time": "NaNh ago",
-      "color": "#22c55e"
-    },
-    {
-      "id": 12,
-      "agent": "Faye",
-      "line": "[needs-ed] [MC] error sparklines: SVG sparkline function in board.html, render per-cron-job from errorHistory samples, green/yellow/red colo",
-      "time": "NaNh ago",
-      "color": "#a855f7"
-    },
-    {
-      "id": 13,
-      "agent": "Faye",
-      "line": "[needs-ed] [MC] deploy preview: add staging preview button in deploy panel header (http://jarvis:8090), sync script adds stagingAvailable + ",
-      "time": "NaNh ago",
-      "color": "#a855f7"
-    },
-    {
-      "id": 14,
-      "agent": "Faye",
-      "line": "[needs-ed] [MC] v6.1 agent workload cards: new Agents tab panel in board.html, render agents array from mission-control-live.json, toggle vi",
-      "time": "NaNh ago",
-      "color": "#a855f7"
-    },
-    {
-      "id": 15,
-      "agent": "Ed",
-      "line": "[needs-andy] MC v6.3 committed (e5155ae) — board.html deploy-entry grid fix + last-deploy header info — needs mc-deploy.sh to push to nginx",
-      "time": "NaNh ago",
-      "color": "#22c55e"
-    },
-    {
-      "id": 16,
-      "agent": "Ed",
-      "line": "[done] MC v6.3: fixed .deploy-entry grid (4-col: time, status+trigger, desc, duration), added de-desc column with commit hash, added \"Last: ",
-      "time": "NaNh ago",
-      "color": "#22c55e"
-    },
-    {
-      "id": 17,
-      "agent": "Faye",
-      "line": "[needs-ed] [MC] v6.3 deploy duration fix: change .deploy-entry grid to 4 columns, add \"Last deploy: X ago | took Y\" to deploy panel header",
-      "time": "NaNh ago",
-      "color": "#a855f7"
-    },
-    {
-      "id": 18,
-      "agent": "Faye",
-      "line": "[done] MC P1 improvements research complete — full implementation specs written to improvement-queue.md. 4 features researched: agent worklo",
-      "time": "NaNh ago",
-      "color": "#a855f7"
-    },
-    {
-      "id": 19,
-      "agent": "ops",
-      "line": "[done] MC deployed to nginx via mc-deploy.sh. Andy permission issue resolved — must always use mc-deploy.sh, never direct cp to nginx root.",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 20,
-      "agent": "Andy",
-      "line": "[done] routed — What do you mean by \"routed\"? Could you clarify what you're looking for?",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    }
-  ],
-  "cron": [
-    {
-      "id": "morning-briefing",
-      "label": "Morning briefing",
-      "schedule": "0 8 * * *",
-      "next": "08:00 ET daily",
-      "state": "ok"
-    },
-    {
-      "id": "daily-memory-capture",
-      "label": "Daily memory capture",
-      "schedule": "0 23 * * *",
-      "next": "23:00 UTC daily",
-      "state": "ok"
-    },
-    {
-      "id": "evolve-exe",
-      "label": "Evolve.exe",
-      "schedule": "0 6 * * 1,3",
-      "next": "Mon/Wed 06:00 ET",
-      "state": "ok"
-    },
-    {
-      "id": "upgrade-scanner",
-      "label": "Upgrade scanner",
-      "schedule": "0 7 * * 3",
-      "next": "Wed 07:00 ET",
-      "state": "ok"
-    },
-    {
-      "id": "weekly-skill-scan",
-      "label": "Weekly skill scan",
-      "schedule": "0 10 * * 3",
-      "next": "Wed 10:00 ET",
-      "state": "ok"
-    },
-    {
-      "id": "weekly-summary",
-      "label": "Weekly summary",
-      "schedule": "0 17 * * 0",
-      "next": "Sun 17:00 ET",
-      "state": "ok"
-    },
-    {
-      "id": "crypto-daily-brief",
-      "label": "Crypto daily brief",
-      "schedule": "0 9 * * *",
-      "next": "09:00 ET daily",
-      "state": "ok"
-    },
-    {
-      "id": "spike-audit-digest",
-      "label": "Spike audit digest",
-      "schedule": "0 18 * * 5",
-      "next": "Fri 18:00 ET",
-      "state": "ok"
-    },
-    {
-      "id": "memory-cold-archive",
-      "label": "Memory cold archive",
-      "schedule": "0 23 * * 0",
-      "next": "Sun 23:00 UTC",
-      "state": "ok"
-    },
-    {
-      "id": "faye-scan-daily",
-      "label": "Faye scan daily",
-      "schedule": "*/10 * * * *",
-      "next": "every 10 min",
-      "state": "ok"
-    },
-    {
-      "id": "ed-queue-watch",
-      "label": "Ed queue watch",
-      "schedule": "*/15 * * * *",
-      "next": "every 15 min",
-      "state": "ok"
-    },
-    {
-      "id": "agent-dispatch-watcher",
-      "label": "Agent dispatch watcher",
-      "schedule": "event-driven",
-      "next": "on log change",
-      "state": "ok"
-    },
-    {
-      "id": "refresh-live",
-      "label": "Refresh live JSON",
-      "schedule": "*/1 * * * *",
-      "next": "every 1 min",
-      "state": "ok"
+      "agent": "Punch",
+      "line": "starting: for review",
+      "time": "1h",
+      "color": "#ef4444"
     }
   ],
   "board": {
     "queued": [
       {
-        "agent": "faye",
-        "text": "[MC] v6.3 deploy duration fix: change .deploy-entry grid to 4 columns, add \"Last deploy: X ago | too",
-        "ts": "2026-04-07 12:45 UTC",
-        "priority": "normal"
-      },
-      {
-        "agent": "ed",
-        "text": "MC v6.3 committed (e5155ae) — board.html deploy-entry grid fix + last-deploy header info — needs mc-",
-        "ts": "2026-04-07 12:52 UTC",
-        "priority": "normal"
+        "id": 1775574720000,
+        "text": "IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf193",
+        "agent": "Ed",
+        "ts": "1h"
       }
     ],
-    "inprogress": [],
+    "inprogress": [
+      {
+        "id": 1775574608000,
+        "text": "starting: IronThread site git push failing (host key verification) -- LocalBusiness schema committed",
+        "agent": "Andy",
+        "ts": "1h"
+      },
+      {
+        "id": 1775574454000,
+        "text": "starting: for review",
+        "agent": "Punch",
+        "ts": "1h"
+      }
+    ],
     "done": [
       {
-        "agent": "ops",
-        "text": "MC deployed to nginx via mc-deploy.sh. Andy permission issue resolved — must always use mc-deploy.sh",
-        "ts": "2026-04-07 12:15 UTC"
+        "id": 1775593800000,
+        "text": "Memory + cron fixes applied:",
+        "agent": "Claude",
+        "ts": "now"
       },
       {
-        "agent": "faye",
-        "text": "MC P1 improvements research complete — full implementation specs written to improvement-queue.md. 4 ",
-        "ts": "2026-04-07 12:45 UTC"
+        "id": 1775577000000,
+        "text": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref arc",
+        "agent": "Claude",
+        "ts": "26m"
       },
       {
-        "agent": "ed",
-        "text": "MC v6.3: fixed .deploy-entry grid (4-col: time, status+trigger, desc, duration), added de-desc colum",
-        "ts": "2026-04-07 12:52 UTC"
+        "id": 1775576796000,
+        "text": "memory-prune: md: 3 archived, cold: 3 purged",
+        "agent": "System",
+        "ts": "30m"
       },
       {
-        "agent": "ed",
-        "text": "MC board.html v5 fixes deployed: CPU/MEM health bar in header, agent spacing (+15\u0000olumn width, +20\u0000a",
-        "ts": "2026-04-07T12:50:00Z"
+        "id": 1775574720000,
+        "text": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push bl",
+        "agent": "Ed",
+        "ts": "1h"
       },
       {
-        "agent": "andy",
-        "text": "MC v6.3 (e5155ae) pushed + deployed to nginx via mc-deploy.sh",
-        "ts": "2026-04-07T13:05:03Z"
+        "id": 1775574610000,
+        "text": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
+        "agent": "Andy",
+        "ts": "1h"
       },
       {
-        "agent": "andy",
-        "text": "MC pushed + deployed to nginx. Latest: bad86b8 auto: MC improvement",
-        "ts": "2026-04-07T13:29:24Z"
-      },
-      {
-        "agent": "andy",
-        "text": "MC pushed + deployed to nginx. Latest: bad86b8 auto: MC improvement",
-        "ts": "2026-04-07T13:29:27Z"
-      },
-      {
-        "agent": "ed",
-        "text": "MC board.html data fixes — sync-live-json.js: 7-day window, count all [done] lines, punch/andy model",
-        "ts": "2026-04-07 13:45 UTC"
-      },
-      {
-        "agent": "andy",
-        "text": "MC pushed + deployed to nginx. Latest: 2c64b33 fix: board.html deploy grid 4-col, game.js health fro",
-        "ts": "2026-04-07T13:45:52Z"
-      },
-      {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T14:00:03Z"
+        "id": 1775574454000,
+        "text": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
+        "agent": "System",
+        "ts": "1h"
       }
     ]
-  }
+  },
+  "cron": [
+    {
+      "id": "morning-briefing",
+      "label": "Morning Briefing",
+      "schedule": "0 8 * * *",
+      "next": "now",
+      "lastRun": "8h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "daily-memory-capture",
+      "label": "Daily Memory Capture",
+      "schedule": "0 23 * * *",
+      "next": "now",
+      "lastRun": "16h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "evolve-exe",
+      "label": "Evolve Exe",
+      "schedule": "0 6 * * 1,3",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "upgrade-scanner",
+      "label": "Upgrade Scanner",
+      "schedule": "0 7 * * 3",
+      "next": "now",
+      "lastRun": "6d",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "weekly-summary",
+      "label": "Weekly Summary",
+      "schedule": "0 17 * * 0",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "crypto-daily-brief",
+      "label": "Crypto Daily Brief",
+      "schedule": "0 9 * * *",
+      "next": "now",
+      "lastRun": "7h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "spike-audit-digest",
+      "label": "Spike Audit Digest",
+      "schedule": "0 18 * * 5",
+      "next": "now",
+      "lastRun": "3d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "memory-cold-archive",
+      "label": "Memory Cold Archive",
+      "schedule": "0 23 * * 0",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "job-watchdog",
+      "label": "Job Error Watchdog",
+      "schedule": "0 */6 * * *",
+      "next": "now",
+      "lastRun": "4h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "83af6b19-b647-4e74-908b-5ec68c54334b",
+      "label": "cancel-google-workspace",
+      "schedule": "event-driven",
+      "next": "now",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0d350740-9bf6-4424-a827-c4ebc0349b36",
+      "label": "Faye Dispatch Scanner",
+      "schedule": 900000,
+      "next": "scheduled",
+      "lastRun": "11h",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        3,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "weekly-deep-clean",
+      "label": "Weekly Deep Clean",
+      "schedule": "0 4 * * 0",
+      "next": "now",
+      "lastRun": "2d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "dispatch-guard",
+      "label": "Dispatch Guard",
+      "schedule": 3600000,
+      "next": "now",
+      "lastRun": "1h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "error-capture",
+      "label": "Error Capture",
+      "schedule": 1800000,
+      "next": "now",
+      "lastRun": "6m",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cost-safeguard",
+      "label": "Cost Safeguard",
+      "schedule": 3600000,
+      "next": "scheduled",
+      "lastRun": "17h",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "post-task-validator",
+      "label": "Post-Task Validator",
+      "schedule": 900000,
+      "next": "scheduled",
+      "lastRun": "17h",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ed-builder-loop",
+      "label": "Ed Builder Loop",
+      "schedule": 14400000,
+      "next": "now",
+      "lastRun": "3h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "auto-deploy-mc",
+      "label": "MC Auto Deploy",
+      "schedule": 3600000,
+      "next": "now",
+      "lastRun": "48m",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ironthread-competitive-scan",
+      "label": "IronThread Competitive Scan",
+      "schedule": "0 8 * * 2,4",
+      "next": "now",
+      "lastRun": "8h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "82890dc2-1e9b-444e-9ca0-c7ad65f20252",
+      "label": "spike-weekly-tale",
+      "schedule": "0 13 * * 1",
+      "next": "now",
+      "lastRun": "23h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "55b42ebe-7262-4eb4-81ba-5013f7f3d641",
+      "label": "Spike Task Router",
+      "schedule": 900000,
+      "next": "scheduled",
+      "lastRun": "11h",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "memory-hygiene",
+      "label": "Memory Hygiene",
+      "schedule": "0 */6 * * *",
+      "next": "now",
+      "lastRun": "4h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "a12ce5af-6326-400f-b15e-ac210c8fa0c6",
+      "label": "Research Digest",
+      "schedule": "0 11 * * 2,5",
+      "next": "now",
+      "lastRun": "1h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "b57e9230-57e9-4d01-b91d-e96ffbf5f999",
+      "label": "IronThread Git Push",
+      "schedule": "0 17 * * 1,2,3,4,5",
+      "next": "now",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "4df770af-19fd-492d-b42f-b571f58f769e",
+      "label": "IronThread Site Research",
+      "schedule": "0 14 * * 4",
+      "next": "now",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "f3740c57-11e3-4c1f-8ba5-761599cfcf86",
+      "label": "MC Live Board Sync",
+      "schedule": 300000,
+      "next": "scheduled",
+      "lastRun": "4m",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "weekly-memory-cleanup",
+      "label": "Weekly Memory Cleanup",
+      "schedule": "event-driven",
+      "next": "scheduled",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0
+      ]
+    }
+  ],
+  "errors": []
 }
