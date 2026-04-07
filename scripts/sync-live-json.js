@@ -58,8 +58,8 @@ const AGENT_MODELS = {
   ed: 'openai/gpt-4o',
   julia: 'Qwen/Qwen2.5-7B',
   rocco: 'MiniMax/M2.7',
-  punch: 'claude-sonnet-4',
-  andy: 'claude-sonnet-4',
+  punch: 'MiniMax/M2.7-highspeed',
+  andy: 'MiniMax/M2.7-highspeed',
   andrew: 'claude-sonnet-4',
   main: 'MiniMax/M2.7',
 };
@@ -97,7 +97,7 @@ function relativeTime(isoStr) {
 
 function parseLog(content) {
   const lines = content.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
 
   const entries = [];
   for (const line of lines) {
@@ -284,10 +284,10 @@ function updateDeployHistory(deployTimestamp) {
   return history.slice(0, 10);
 }
 
-function buildBoardData(entries) {
+function buildBoardData(entries, extraDone) {
   const queued = [];
   const inprogress = [];
-  const done = [];
+  const done = extraDone ? [...extraDone] : [];
 
   for (const e of entries) {
     const msg = e.message;
@@ -300,7 +300,10 @@ function buildBoardData(entries) {
 
     const tagLower = e.tag.toLowerCase();
     if (tagLower.startsWith('done')) {
-      done.push(item);
+      // Deduplicate
+      if (!done.find(d => d.text === item.text && d.agent === item.agent)) {
+        done.push(item);
+      }
     } else if (tagLower.startsWith('acknowledged')) {
       inprogress.push(item);
     } else if (tagLower.startsWith('needs')) {
@@ -314,7 +317,7 @@ function buildBoardData(entries) {
 // --- Build per-agent efficiency leaderboard ---
 function buildLeaderboard(logContent) {
   const lines = logContent.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
 
   // Parse all entries for task chains
   const allParsed = [];
@@ -362,13 +365,16 @@ function buildLeaderboard(logContent) {
           owner = e.agent;
         }
       } else if (tagLower.startsWith('done') || tagLower.startsWith('partial')) {
-        if (started && !completed) {
+        // Count every [done] line as a completed task for the agent
+        if (!completed) {
           completed = e;
-          if (owner && stats[owner]) {
-            const dur = completed.ts - started.ts;
-            stats[owner].completed++;
-            stats[owner].totalTimeMs += dur;
-            stats[owner].tasks.push({ dur, key });
+          // Attribute to the agent on the [done] line if no owner found
+          const attrAgent = owner || e.agent;
+          if (stats[attrAgent]) {
+            const dur = started ? completed.ts - started.ts : 0;
+            stats[attrAgent].completed++;
+            stats[attrAgent].totalTimeMs += dur;
+            stats[attrAgent].tasks.push({ dur, key });
           }
         }
       } else if (tagLower.startsWith('blocked') || tagLower.includes('blocked')) {
@@ -425,7 +431,36 @@ function getSystemStats() {
   return { cpu, memory, disk };
 }
 
-function buildJson(entries) {
+// Scan full log for any [done] lines (not just acknowledged→done chains)
+// to populate the board even when the task was logged directly as done
+function scanAllDoneLines(logContent) {
+  const lines = logContent.split('\n').filter(l => l.trim());
+  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const doneMap = new Map();
+
+  for (const line of lines) {
+    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    if (!m) continue;
+    const [, date, time, agent, tag, message] = m;
+    const secs = time.split(':').length === 2 ? ':00' : '';
+    const iso = date + 'T' + time + secs + 'Z';
+    const ts = new Date(iso).getTime();
+    if (isNaN(ts) || ts < cutoff) continue;
+    const tagLower = tag.toLowerCase();
+    if (!tagLower.startsWith('done') && !tagLower.startsWith('partial')) continue;
+
+    const key = message.slice(0, 100);
+    const agentDisplay = AGENT_DISPLAY[agent.toLowerCase()] ?? agent;
+    // Keep earliest timestamp for this task
+    if (!doneMap.has(key)) {
+      doneMap.set(key, { id: ts, text: key, agent: agentDisplay, ts: relativeTime(iso) });
+    }
+  }
+
+  return Array.from(doneMap.values());
+}
+
+function buildJson(entries, logContent) {
   const stats = getSystemStats();
   const deploy = getDeployInfo();
   const deployHistory = updateDeployHistory(deploy.timestamp);
@@ -477,14 +512,13 @@ function buildJson(entries) {
       })),
     },
     projects: [
-      { id: 'trendtribe', name: 'TrendTribe',  color: '#7F77DD', health: 'green',  note: 'ProductHunt launch Apr 7' },
-      { id: 'ironthread', name: 'IronThread',  color: '#1D9E75', health: 'yellow', note: 'Outreach pipeline active' },
-      { id: 'openclaw',   name: 'OpenClaw',    color: '#FF6B35', health: 'green',  note: 'Mission Control rebuild in progress' },
-      { id: 'crypto',     name: 'Crypto',      color: '#BA7517', health: 'green',  note: 'Daily brief live' },
-      { id: 'artsite',    name: 'Art Site',    color: '#993556', health: 'green',  note: 'Maintained' },
+      { id: 'ironthread-site', name: 'ironthread.ai',  color: '#1D9E75', health: 'yellow', note: 'IT consulting site' },
+      { id: 'it-portal',  name: 'IT Portal',   color: '#1D9E75', health: 'yellow', note: 'OAuth ticket portal' },
+      { id: 'gtm-pipeline', name: 'GTM Pipeline', color: '#1D9E75', health: 'green', note: '30-60-90 plan active' },
+      { id: 'openclaw',   name: 'OpenClaw',    color: '#FF6B35', health: 'green',  note: 'Mission Control active' },
     ],
     activity,
-    board: buildBoardData(allEntries),
+    board: buildBoardData(allEntries, scanAllDoneLines(logContent)),
     cron: cronHealth,
     errors: errorStream,
   };
@@ -493,7 +527,7 @@ function buildJson(entries) {
 // --- Main ---
 const logContent = readFileSync(SHARED_LOG, 'utf8');
 const entries = parseLog(logContent);
-const json = buildJson(entries);
+const json = buildJson(entries, logContent);
 const out = JSON.stringify(json, null, 2);
 
 writeFileSync(OUT_WORKSPACE, out, 'utf8');
