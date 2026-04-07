@@ -847,6 +847,39 @@
       // Remove card visually
       const card = document.querySelector(`[data-item-id="${itemId}"]`);
       if (card) card.style.opacity = '0.3';
+
+    // Leaderboard
+    function renderLeaderboard(doneItems) {
+      var el = document.getElementById("col-leaderboard");
+      var countEl = document.getElementById("count-leaders");
+      if (!el) return;
+      var agentMap = {};
+      (doneItems || []).forEach(function(item) {
+        var agent = (item.agent || "Unknown").trim();
+        if (!agentMap[agent]) agentMap[agent] = { name: agent, done: 0, color: colorForAgent(agent) };
+        agentMap[agent].done++;
+      });
+      var sorted = Object.values(agentMap).sort(function(a, b) { return b.done - a.done; });
+      if (!sorted.length) {
+        el.innerHTML = '<div class="lb-empty">No completed tasks yet.<br>Agents will appear here once tasks are done.</div>';
+        if (countEl) countEl.textContent = '0';
+        return;
+      }
+      el.innerHTML = '';
+      sorted.forEach(function(row, i) {
+        var rank = i + 1;
+        var rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+        var medals = ['🥇','🥈','🥉'];
+        var medal = rank <= 3 ? medals[rank-1] : rank;
+        var div = document.createElement("div");
+        div.className = "lb-row";
+        div.innerHTML = '<span class="lb-rank ' + rankClass + '">' + medal + '</span>'
+          + '<span class="lb-dot" style="background:' + row.color + '"></span>'
+          + '<span class="lb-name">' + row.name + '</span>'
+          + '<span class="lb-done">' + row.done + ' ✓</span>';
+        el.appendChild(div);
+      });
+      if (countEl) countEl.textContent = sorted.length;
     }
 
     async function markStale(itemId, colId) {
