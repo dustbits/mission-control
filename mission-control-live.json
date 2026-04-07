@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T06:28:43.906Z",
+  "updatedAt": "2026-04-07T08:24:36.523Z",
   "deploy": {
     "state": "idle",
     "lastDeploy": null,
@@ -52,45 +52,45 @@
   "activity": [
     {
       "id": 1,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "ops",
+      "line": "[ALERT] dispatch-guard: 2 stale entries, LOOP-DETECT: jet (110 dispatches), ein (3 dispatches) this cycle | cost-safeguard: OK ~$0.53 | post",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "guard",
+      "line": "[LOOP-DETECT] Agent 'ein' dispatched 3 times in current log cycle.",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "guard",
+      "line": "[LOOP-DETECT] Agent 'jet' dispatched 110 times in current log cycle.",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "mc-auto-deploy",
+      "line": "[done] Auto-deployed Mission Control changes",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "health-check",
+      "line": "[ALERT] OpenClaw container is DOWN:  [needs-ray]",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 6,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "Jet",
+      "line": "[done-jet] No pending [needs-jet] tasks. Loop-detected at 91 dispatches — dispatch guard should throttle. Last task (mc-production-environme",
       "time": "NaNh ago",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 7,
@@ -108,22 +108,22 @@
     },
     {
       "id": 9,
-      "agent": "Spike",
-      "line": "[done] dispatch-guard run: ALERTS 2 stale entries + loop-detect jet@53 ein@3 dispatches — cost-safeguard OK ($0.38), post-task-validator 2OK",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#38bdf8"
     },
     {
       "id": 10,
-      "agent": "guard",
-      "line": "[LOOP-DETECT] Agent 'ein' dispatched 3 times in current log cycle.",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 11,
-      "agent": "guard",
-      "line": "[LOOP-DETECT] Agent 'jet' dispatched 53 times in current log cycle.",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
@@ -171,22 +171,22 @@
     },
     {
       "id": 18,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "Andy",
+      "line": "[done] [deploy] MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-control-live.json), needs mc-depl",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 19,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "Andy",
+      "line": "[acknowledged-andy] starting: [deploy] MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-control-li",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 20,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "agent": "needs-andy",
+      "line": "[deploy] MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-control-live.json), needs mc-deploy.sh f",
       "time": "NaNh ago",
       "color": "#38bdf8"
     }
@@ -287,60 +287,44 @@
   "board": {
     "queued": [
       {
-        "agent": "needs-punch",
-        "text": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: ",
-        "ts": "2026-04-07 03:11 UTC",
+        "agent": "test",
+        "text": "TEST TASK — verify event-driven dispatch is working. Ed should read this and reply NO_REPLY. — Claud",
+        "ts": "2026-04-07 04:50 UTC",
         "priority": "normal"
       },
       {
-        "agent": "needs-faye",
-        "text": "General research task — check for any pending research items or questions from recent sessions. — Ed",
-        "ts": "2026-04-07 03:22 UTC",
+        "agent": "guard",
+        "text": "[auto-closed] [needs-faye] MC v6 research — already completed by Faye at 04:02. Spec in improvement-",
+        "ts": "2026-04-07 04:57 UTC",
         "priority": "normal"
       },
       {
-        "agent": "faye",
-        "text": "MC v6 build: deploy duration (v6.3), agent workload cards (v6.1), mobile responsive board (v6.4), er",
-        "ts": "2026-04-07T04:02:00Z",
+        "agent": "ein",
+        "text": "[done-ein] session complete — no pending [needs-ein] tasks found. Cost tracking pipeline was complet",
+        "ts": "2026-04-07T05:00:00Z",
         "priority": "normal"
       },
       {
-        "agent": "faye",
-        "text": "MC v7 queued in improvement-queue.md — Ed picks up after v6 ships. Cost tracking pipeline + producti",
-        "ts": "2026-04-07T04:02:00Z",
+        "agent": "needs-andy",
+        "text": "[deploy] MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-",
+        "ts": "2026-04-07 07:28 UTC",
         "priority": "normal"
       },
       {
-        "agent": "spike",
-        "text": "Production environment — define staging → prod deploy step. Currently only staging → nginx. Spec: me",
-        "ts": "2026-04-07T04:04:00Z",
+        "agent": "jet",
+        "text": "[done-jet] No pending [needs-jet] tasks. Loop-detected at 91 dispatches — dispatch guard should thro",
+        "ts": "2026-04-07 07:49 UTC",
         "priority": "normal"
       },
       {
-        "agent": "spike",
-        "text": "Cost tracking pipeline — set up cost-data.json with real API data or manual entry. Blocked by cost A",
-        "ts": "2026-04-07T04:04:00Z",
-        "priority": "normal"
-      },
-      {
-        "agent": "ed",
-        "text": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
-        "ts": "2026-04-07 04:07 UTC",
+        "agent": "health-check",
+        "text": "[ALERT] OpenClaw container is DOWN:  [needs-ray]",
+        "ts": "2026-04-07T08:00:01Z",
         "priority": "normal"
       }
     ],
     "inprogress": [],
     "done": [
-      {
-        "agent": "ed",
-        "text": "MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy ",
-        "ts": "2026-04-07 04:07 UTC"
-      },
-      {
-        "agent": "andy",
-        "text": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop — 3. Or push via a",
-        "ts": "2026-04-07T04:09:52Z"
-      },
       {
         "agent": "ed",
         "text": "MC v6 build: sync script updated (agents array + deploy duration field), board.html updated with all",
@@ -380,6 +364,16 @@
         "agent": "spike",
         "text": "dispatch-guard run: ALERTS 2 stale entries + loop-detect jet@53 ein@3 dispatches — cost-safeguard OK",
         "ts": "2026-04-07 06:16 UTC"
+      },
+      {
+        "agent": "andy",
+        "text": "MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-control-l",
+        "ts": "2026-04-07T07:29:51Z"
+      },
+      {
+        "agent": "mc-auto-deploy",
+        "text": "Auto-deployed Mission Control changes",
+        "ts": "2026-04-07T08:10:02Z"
       }
     ]
   }

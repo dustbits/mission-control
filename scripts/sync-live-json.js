@@ -49,6 +49,21 @@ const AGENT_COLORS = {
   'ed-builder-loop': '#22c55e',
 };
 
+const AGENT_MODELS = {
+  spike: 'MiniMax/M2.7-highspeed',
+  jet: 'MiniMax/M2.7',
+  faye: 'Qwen/Qwen2.5-7B',
+  ein: 'MiniMax/M2.7',
+  gren: 'MiniMax/M2.7',
+  ed: 'openai/gpt-4o',
+  julia: 'Qwen/Qwen2.5-7B',
+  rocco: 'MiniMax/M2.7',
+  punch: 'claude-sonnet-4',
+  andy: 'claude-sonnet-4',
+  andrew: 'claude-sonnet-4',
+  main: 'MiniMax/M2.7',
+};
+
 const AGENT_DISPLAY = {
   spike: 'Spike', main: 'Spike',
   jet: 'Jet', ops: 'Jet',
@@ -434,8 +449,6 @@ function buildJson(entries) {
     };
   });
 
-  const leaderboard = buildLeaderboard(readFileSync(SHARED_LOG, 'utf8'));
-
   return {
     updatedAt: new Date().toISOString(),
     health: {
@@ -445,10 +458,21 @@ function buildJson(entries) {
       memory: stats.memory,
       disk: stats.disk,
     },
+    agents: buildLeaderboard(readFileSync(SHARED_LOG, 'utf8')).map(entry => ({
+      name: entry.agent,
+      key: entry.agentKey,
+      model: AGENT_MODELS[entry.agentKey] || 'unknown',
+      color: entry.color,
+      completed: entry.completed,
+      efficiency: entry.efficiency,
+      avgTimeSec: entry.avgTimeSec,
+      blockers: entry.blockers,
+    })),
     deploy: {
       ...deploy,
       history: deployHistory.map(d => ({
         ...d,
+        duration: d.duration || null,
         time: relativeTime(d.timestamp),
       })),
     },
@@ -461,7 +485,6 @@ function buildJson(entries) {
     ],
     activity,
     board: buildBoardData(allEntries),
-    leaderboard,
     cron: cronHealth,
     errors: errorStream,
   };
@@ -491,11 +514,15 @@ if (json.deploy.history?.length > 0) {
   }));
   writeFileSync(DEPLOY_HISTORY_PATH, JSON.stringify(historyOnly, null, 2), 'utf8');
   console.log(`✓ Deploy history: ${historyOnly.length} entries`);
+
+  // Also copy to staging so nginx can serve it
+  const stagingDeployHistory = '/mnt/spike-storage/mission-control-staging/deployHistory.json';
+  writeFileSync(stagingDeployHistory, JSON.stringify(historyOnly, null, 2), 'utf8');
+  console.log(`✓ Deploy history synced to staging`);
 }
 
 console.log(`  Activity items: ${json.activity.length}`);
 console.log(`  Board: ${json.board.queued.length} queued | ${json.board.inprogress.length} in-progress | ${json.board.done.length} done`);
-console.log(`  Leaderboard: ${json.leaderboard.length} agents`);
 console.log(`  Deploy: ${json.deploy.state}`);
 console.log(`  Cron jobs: ${json.cron.length}`);
 console.log(`  Errors: ${json.errors.length}`);
