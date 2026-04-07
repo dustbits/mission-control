@@ -1,20 +1,50 @@
 {
-  "updatedAt": "2026-04-07T16:16:58.014Z",
+  "updatedAt": "2026-04-07T17:29:01.893Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 5,
-    "memory": 19,
+    "cpu": 21,
+    "memory": 29,
     "disk": 1
   },
   "agents": [
+    {
+      "name": "Andy",
+      "key": "andy",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#38bdf8",
+      "completed": 4,
+      "efficiency": 100,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Ed",
+      "key": "ed",
+      "model": "openai-codex/gpt-5.4",
+      "color": "#22c55e",
+      "completed": 3,
+      "efficiency": 100,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
     {
       "name": "Spike",
       "key": "spike",
       "model": "MiniMax/M2.7-highspeed",
       "color": "#4a9eff",
-      "completed": 0,
-      "efficiency": 0,
+      "completed": 1,
+      "efficiency": 100,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Punch",
+      "key": "punch",
+      "model": "claude-sonnet-4",
+      "color": "#ef4444",
+      "completed": 1,
+      "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
     },
@@ -59,16 +89,6 @@
       "blockers": 0
     },
     {
-      "name": "Ed",
-      "key": "ed",
-      "model": "openai/gpt-4o",
-      "color": "#22c55e",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
       "name": "Julia",
       "key": "julia",
       "model": "Qwen/Qwen2.5-7B",
@@ -87,26 +107,6 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0
-    },
-    {
-      "name": "Punch",
-      "key": "punch",
-      "model": "claude-sonnet-4",
-      "color": "#ef4444",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Andy",
-      "key": "andy",
-      "model": "claude-sonnet-4",
-      "color": "#38bdf8",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
     }
   ],
   "deploy": {
@@ -118,108 +118,101 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "14m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-07T14:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "2h 3m",
-        "time": "2h"
+        "time": "3h"
       },
       {
         "timestamp": "2026-04-07T12:53:42.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 6m",
-        "time": "3h"
+        "time": "4h"
       },
       {
         "timestamp": "2026-04-07T04:29:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8h 24m",
-        "time": "11h"
+        "time": "12h"
       },
       {
         "timestamp": "2026-04-07T04:15:05.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "14m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-07T04:10:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-07T03:29:17.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "41m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-07T00:22:56.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "3h 6m",
-        "time": "15h"
+        "time": "17h"
       },
       {
         "timestamp": "2026-04-06T22:50:02.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 33m",
-        "time": "17h"
+        "time": "18h"
       },
       {
         "timestamp": "2026-04-06T22:40:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "10m",
-        "time": "17h"
+        "time": "18h"
       }
     ]
   },
   "projects": [
     {
-      "id": "trendtribe",
-      "name": "TrendTribe",
-      "color": "#7F77DD",
-      "health": "green",
-      "note": "ProductHunt launch Apr 7"
-    },
-    {
-      "id": "ironthread",
-      "name": "IronThread",
+      "id": "ironthread-site",
+      "name": "ironthread.ai",
       "color": "#1D9E75",
       "health": "yellow",
-      "note": "Outreach pipeline active"
+      "note": "IT consulting site"
+    },
+    {
+      "id": "it-portal",
+      "name": "IT Portal",
+      "color": "#1D9E75",
+      "health": "yellow",
+      "note": "OAuth ticket portal"
+    },
+    {
+      "id": "gtm-pipeline",
+      "name": "GTM Pipeline",
+      "color": "#1D9E75",
+      "health": "green",
+      "note": "30-60-90 plan active"
     },
     {
       "id": "openclaw",
       "name": "OpenClaw",
       "color": "#FF6B35",
       "health": "green",
-      "note": "Mission Control rebuild in progress"
-    },
-    {
-      "id": "crypto",
-      "name": "Crypto",
-      "color": "#BA7517",
-      "health": "green",
-      "note": "Daily brief live"
-    },
-    {
-      "id": "artsite",
-      "name": "Art Site",
-      "color": "#993556",
-      "health": "green",
-      "note": "Maintained"
+      "note": "Mission Control active"
     }
   ],
   "activity": [
@@ -232,85 +225,255 @@
     },
     {
       "id": 2,
-      "agent": "Claude",
-      "line": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref archival, audit log, tr",
-      "time": "26m",
-      "color": "#64d8ff"
+      "agent": "Punch",
+      "line": ", unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step. — - Is this a rule you want me to **remember",
+      "time": "now",
+      "color": "#ef4444"
     },
     {
       "id": 3,
-      "agent": "System",
-      "line": "memory-prune: md: 3 archived, cold: 3 purged",
-      "time": "30m",
+      "agent": "Andy",
+      "line": "starting: , code -> [needs-ed], research -> [needs-faye], review -> [needs-punch], unclear -> [needs-spike], approval ->",
+      "time": "now",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "Ed",
-      "line": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push blocked by host key (n",
-      "time": "1h",
-      "color": "#22c55e"
+      "agent": "Punch",
+      "line": "starting: , unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step.",
+      "time": "now",
+      "color": "#ef4444"
     },
     {
       "id": 5,
-      "agent": "Ed",
-      "line": "IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs push to ori",
-      "time": "1h",
-      "color": "#22c55e"
+      "agent": "Claude",
+      "line": "Watcher regex hardened — [needs-X] only triggers when in tag position (prevents false triggers from message text). Task ",
+      "time": "2m",
+      "color": "#64d8ff"
     },
     {
       "id": 6,
       "agent": "Andy",
-      "line": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
-      "time": "1h",
+      "line": "starting: Read GOOGLE_CLIENT_SECRET: gcloud secrets versions access latest --secret=GOOGLE_CLIENT_SECRET --project=iront",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
       "agent": "Andy",
-      "line": "starting: IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs p",
-      "time": "1h",
+      "line": "false trigger — watcher matched [needs-andy] inside a [done] log entry. Watcher regex fixed to only match tag position.",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "System",
-      "line": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
-      "time": "1h",
+      "agent": "Andy",
+      "line": "GOOGLE_CLIENT_SECRET read attempted but completion not confirmed. Re-routing.",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 9,
+      "agent": "Claude",
+      "line": "Read GOOGLE_CLIENT_SECRET: gcloud secrets versions access latest --secret=GOOGLE_CLIENT_SECRET --project=ironthread-ai |",
+      "time": "3m",
+      "color": "#64d8ff"
+    },
+    {
+      "id": 10,
+      "agent": "Ed",
+      "line": "MC v6.1 agent workload cards already deployed and working at jarvis:8090 — AGENT_EMOJI map, renderAgentsPanel() with com",
+      "time": "7m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 11,
+      "agent": "Spike",
+      "line": "MC v6.1: agent workload cards — uses existing agent data, incremental to v5 agents panel. Target repo: /mnt/spike-storag",
+      "time": "10m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 12,
+      "agent": "Andy",
+      "line": "starting: for ALL host access (gcloud, Secret Manager, CLI). Andy CLAUDE.md expanded with capabilities section. Board sy",
+      "time": "15m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 13,
+      "agent": "Claude",
+      "line": "Ed model reverted to openai-codex/gpt-5.4 (was minimax). Ed routing rules expanded: must [needs-andy] for ALL host acces",
+      "time": "15m",
+      "color": "#64d8ff"
+    },
+    {
+      "id": 14,
+      "agent": "Andy",
+      "line": "starting: Read GOOGLE_CLIENT_SECRET from Secret Manager: gcloud secrets versions access latest --secret=GOOGLE_CLIENT_SE",
+      "time": "27m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 15,
+      "agent": "Claude",
+      "line": "Read GOOGLE_CLIENT_SECRET from Secret Manager: gcloud secrets versions access latest --secret=GOOGLE_CLIENT_SECRET --pro",
+      "time": "27m",
+      "color": "#64d8ff"
+    },
+    {
+      "id": 16,
+      "agent": "Spike",
+      "line": "Research MC v6 feature priorities — v6.1 agent workload cards, v6.2 error rate sparklines, v6.4 mobile responsive board.",
+      "time": "37m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 17,
+      "agent": "Ed",
+      "line": "IT Portal OAuth setup reviewed — code.gs already has full getAuthUrl/handleOAuthCallback, needs Script Properties set in",
+      "time": "47m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 18,
+      "agent": "Spike",
+      "line": "IT Portal: Set Script Properties in Apps Script (GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET) + redeploy via clasp. Client I",
+      "time": "58m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 19,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 57ccd3f auto: MC improvement",
+      "time": "59m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 20,
+      "agent": "Andy",
+      "line": "starting: [deploy] MC has unpushed commits, needs mc-deploy.sh from host",
+      "time": "59m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 21,
+      "agent": "Spike",
+      "line": "IT Portal T0 stale entries cleaned — OAuth credentials created by antigravity, remaining tasks: Script Properties (Ed), ",
+      "time": "1h",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 22,
+      "agent": "Claude",
+      "line": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref archival, audit log, tr",
+      "time": "1h",
+      "color": "#64d8ff"
+    },
+    {
+      "id": 23,
+      "agent": "System",
+      "line": "memory-prune: md: 3 archived, cold: 3 purged",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 24,
+      "agent": "Ed",
+      "line": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push blocked by host key (n",
+      "time": "2h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 25,
+      "agent": "Ed",
+      "line": "IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs push to ori",
+      "time": "2h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 26,
+      "agent": "Andy",
+      "line": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 27,
+      "agent": "Andy",
+      "line": "starting: IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf1934, needs p",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 28,
+      "agent": "System",
+      "line": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 29,
       "agent": "Punch",
       "line": "starting: for review",
-      "time": "1h",
+      "time": "2h",
       "color": "#ef4444"
     }
   ],
   "board": {
     "queued": [
       {
-        "id": 1775574720000,
-        "text": "IronThread site git push failing (host key verification) -- LocalBusiness schema committed as 3cf193",
-        "agent": "Ed",
-        "ts": "1h"
+        "id": 1775580720000,
+        "text": "Research MC v6 feature priorities — v6.1 agent workload cards, v6.2 error rate sparklines, v6.4 mobi",
+        "agent": "Spike",
+        "ts": "37m"
       }
     ],
     "inprogress": [
       {
-        "id": 1775574608000,
-        "text": "starting: IronThread site git push failing (host key verification) -- LocalBusiness schema committed",
+        "id": 1775582907000,
+        "text": "starting: , code -> [needs-ed], research -> [needs-faye], review -> [needs-punch], unclear -> [needs",
         "agent": "Andy",
-        "ts": "1h"
+        "ts": "now"
       },
       {
-        "id": 1775574454000,
-        "text": "starting: for review",
-        "agent": "Punch",
-        "ts": "1h"
+        "id": 1775582738000,
+        "text": "starting: Read GOOGLE_CLIENT_SECRET: gcloud secrets versions access latest --secret=GOOGLE_CLIENT_SE",
+        "agent": "Andy",
+        "ts": "3m"
       }
     ],
     "done": [
+      {
+        "id": 1775574454000,
+        "text": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
+        "agent": "System",
+        "ts": "2h"
+      },
+      {
+        "id": 1775574720000,
+        "text": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push bl",
+        "agent": "Ed",
+        "ts": "2h"
+      },
+      {
+        "id": 1775574610000,
+        "text": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
+        "agent": "Andy",
+        "ts": "2h"
+      },
+      {
+        "id": 1775576796000,
+        "text": "memory-prune: md: 3 archived, cold: 3 purged",
+        "agent": "System",
+        "ts": "1h"
+      },
+      {
+        "id": 1775577000000,
+        "text": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref arc",
+        "agent": "Claude",
+        "ts": "1h"
+      },
       {
         "id": 1775593800000,
         "text": "Memory + cron fixes applied:",
@@ -318,34 +481,58 @@
         "ts": "now"
       },
       {
-        "id": 1775577000000,
-        "text": "Memory system overhaul deployed: memory-prune.js v2 (smart SQLite prune, .bak cleanup, stale ref arc",
-        "agent": "Claude",
-        "ts": "26m"
-      },
-      {
-        "id": 1775576796000,
-        "text": "memory-prune: md: 3 archived, cold: 3 purged",
-        "agent": "System",
-        "ts": "30m"
-      },
-      {
-        "id": 1775574720000,
-        "text": "IronThread LocalBusiness JSON-LD schema added to index.html (line 407) -- committed locally, push bl",
-        "agent": "Ed",
+        "id": 1775579160000,
+        "text": "IT Portal T0 stale entries cleaned — OAuth credentials created by antigravity, remaining tasks: Scri",
+        "agent": "Spike",
         "ts": "1h"
       },
       {
-        "id": 1775574610000,
-        "text": "IronThread pushed. Latest: 3cf1934 Add LocalBusiness JSON-LD schema markup for SEO",
+        "id": 1775579368000,
+        "text": "MC pushed + deployed to nginx. Latest: 57ccd3f auto: MC improvement",
         "agent": "Andy",
-        "ts": "1h"
+        "ts": "59m"
       },
       {
-        "id": 1775574454000,
-        "text": "memory-prune: sqlite: 1 flushed, md: 6 archived, cold: 6 purged",
-        "agent": "System",
-        "ts": "1h"
+        "id": 1775580120000,
+        "text": "IT Portal OAuth setup reviewed — code.gs already has full getAuthUrl/handleOAuthCallback, needs Scri",
+        "agent": "Ed",
+        "ts": "47m"
+      },
+      {
+        "id": 1775582006000,
+        "text": "Ed model reverted to openai-codex/gpt-5.4 (was minimax). Ed routing rules expanded: must [needs-andy",
+        "agent": "Claude",
+        "ts": "15m"
+      },
+      {
+        "id": 1775582520000,
+        "text": "MC v6.1 agent workload cards already deployed and working at jarvis:8090 — AGENT_EMOJI map, renderAg",
+        "agent": "Ed",
+        "ts": "7m"
+      },
+      {
+        "id": 1775582737000,
+        "text": "false trigger — watcher matched [needs-andy] inside a [done] log entry. Watcher regex fixed to only ",
+        "agent": "Andy",
+        "ts": "3m"
+      },
+      {
+        "id": 1775582737000,
+        "text": "GOOGLE_CLIENT_SECRET read attempted but completion not confirmed. Re-routing.",
+        "agent": "Andy",
+        "ts": "3m"
+      },
+      {
+        "id": 1775582809000,
+        "text": "Watcher regex hardened — [needs-X] only triggers when in tag position (prevents false triggers from ",
+        "agent": "Claude",
+        "ts": "2m"
+      },
+      {
+        "id": 1775582914000,
+        "text": ", unclear -> [needs-spike], approval -> [needs-ray]. NEVER log manual step. — - Is this a rule you w",
+        "agent": "Punch",
+        "ts": "now"
       }
     ]
   },
@@ -355,11 +542,16 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -382,11 +574,16 @@
       "label": "Daily Memory Capture",
       "schedule": "0 23 * * *",
       "next": "now",
-      "lastRun": "16h",
+      "lastRun": "17h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -428,6 +625,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -455,6 +657,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -463,11 +670,16 @@
       "label": "Weekly Summary",
       "schedule": "0 17 * * 0",
       "next": "now",
-      "lastRun": "1d",
+      "lastRun": "2d",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -490,11 +702,16 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -536,6 +753,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -563,6 +785,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -571,11 +798,16 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -617,6 +849,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -625,14 +862,19 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "11h",
+      "lastRun": "12h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        3,
-        3,
-        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -671,6 +913,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -679,11 +926,16 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "6m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -706,11 +958,16 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "now",
-      "lastRun": "6m",
+      "lastRun": "18m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -733,11 +990,16 @@
       "label": "Cost Safeguard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "17h",
+      "lastRun": "18h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -760,11 +1022,16 @@
       "label": "Post-Task Validator",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "17h",
+      "lastRun": "18h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -787,11 +1054,16 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "36m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -814,11 +1086,16 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "48m",
+      "lastRun": "1h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -841,11 +1118,16 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -868,11 +1150,16 @@
       "label": "spike-weekly-tale",
       "schedule": "0 13 * * 1",
       "next": "now",
-      "lastRun": "23h",
+      "lastRun": "1d",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -895,11 +1182,16 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "11h",
+      "lastRun": "12h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -922,11 +1214,16 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -949,11 +1246,16 @@
       "label": "Research Digest",
       "schedule": "0 11 * * 2,5",
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "2h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -995,6 +1297,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -1022,6 +1329,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
@@ -1030,11 +1342,16 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "scheduled",
-      "lastRun": "4m",
+      "lastRun": "1h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -1055,13 +1372,32 @@
     {
       "id": "weekly-memory-cleanup",
       "label": "Weekly Memory Cleanup",
-      "schedule": "event-driven",
-      "next": "scheduled",
+      "schedule": "0 8 * * 0",
+      "next": "now",
       "lastRun": "never",
       "state": "unknown",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     }
