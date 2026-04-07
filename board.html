@@ -33,13 +33,13 @@
     .header {
       background: linear-gradient(180deg, #0f172a, #1e293b);
       border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: relative;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
     }
     .header::before {
       content: '';
@@ -48,10 +48,15 @@
       height: 3px;
       background: #8b5cf6;
     }
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
     .header-title {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     .header-title h1 {
       font-size: 16px;
@@ -62,6 +67,24 @@
       font-size: 11px;
       color: #475569;
     }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      color: #64748b;
+    }
+    .sys-stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .sys-stat .lbl { color: #475569; }
+    .sys-stat .val { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .sys-stat .val.ok   { color: #22c55e; }
+    .sys-stat .val.warn { color: #f59e0b; }
+    .sys-stat .val.crit { color: #ef4444; }
+
     .header-status {
       font-size: 11px;
       color: #64748b;
@@ -106,8 +129,8 @@
     }
     .column {
       flex: 1;
-      min-width: 260px;
-      max-width: 380px;
+      min-width: 300px;
+      max-width: 420px;
       display: flex;
       flex-direction: column;
       background: var(--bg-column);
@@ -150,7 +173,7 @@
       padding: 12px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     /* ── Custom scrollbar ── */
@@ -165,7 +188,7 @@
       border: 1px solid var(--border);
       border-left: 3px solid #64748b;
       border-radius: 8px;
-      padding: 10px 12px;
+      padding: 12px 14px;
       transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
       cursor: default;
       opacity: 0;
@@ -191,7 +214,7 @@
       font-size: 13px;
       color: var(--text-card);
       line-height: 1.4;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       word-break: break-word;
     }
     .card-meta {
@@ -205,7 +228,7 @@
     .card-left {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }
     .card-agent-row {
       display: flex;
@@ -290,16 +313,41 @@
     .tab-btn.active { background: #8b5cf6; border-color: #8b5cf6; color: #fff; }
 
     /* ── Deploy Panel ── */
-    .deploy-panel { display: none; padding: 16px 24px 24px; }
-    .deploy-panel.visible { display: block; }
-    .deploy-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .deploy-panel-header h2 { font-size: 14px; color: var(--text-header); }
-    .deploy-refresh { background: #1e293b; border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 4px 10px; font-size: 11px; cursor: pointer; }
-    .deploy-refresh:hover { border-color: #8b5cf6; }
+    .deploy-panel, .agents-panel, .finance-panel, .ironthread-panel {
+      display: none;
+      padding: 16px 24px 24px;
+    }
+    .deploy-panel.visible,
+    .agents-panel.visible,
+    .finance-panel.visible,
+    .ironthread-panel.visible { display: block; }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .panel-header h2 {
+      font-size: 14px;
+      color: var(--text-header);
+    }
+    .panel-refresh {
+      background: #1e293b;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-primary);
+      padding: 4px 10px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .panel-refresh:hover { border-color: #8b5cf6; }
+
+    /* ── Deploy Timeline ── */
     .deploy-timeline { display: flex; flex-direction: column; gap: 8px; }
     .deploy-entry {
       display: grid;
-      grid-template-columns: 120px 80px 1fr;
+      grid-template-columns: 130px 90px 1fr;
       align-items: center;
       gap: 12px;
       padding: 10px 14px;
@@ -309,7 +357,15 @@
       font-size: 12px;
     }
     .deploy-entry .de-time { color: var(--text-primary); font-variant-numeric: tabular-nums; }
-    .deploy-entry .de-trigger { text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 4px; display: inline-block; }
+    .deploy-entry .de-trigger {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-block;
+    }
     .deploy-entry .de-trigger.manual { background: #1e3a5f; color: #38bdf8; }
     .deploy-entry .de-trigger.auto   { background: #1a2e1a; color: #22c55e; }
     .deploy-entry .de-trigger.cron   { background: #2e251a; color: #f59e0b; }
@@ -318,95 +374,204 @@
     .deploy-entry .de-duration { color: #475569; font-size: 11px; margin-left: auto; }
     .deploy-entry .de-status { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
     .deploy-entry .de-status.err { background: #ef4444; }
-    .deploy-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
-
-    /* ── Cron Panel ── */
-    .cron-panel { display: none; padding: 16px 24px 24px; }
-    .cron-panel.visible { display: block; }
-    .cron-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .cron-panel-header h2 { font-size: 14px; color: var(--text-header); }
-    .cron-refresh { background: #1e293b; border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 4px 10px; font-size: 11px; cursor: pointer; }
-    .cron-refresh:hover { border-color: #8b5cf6; }
-    .cron-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-    .cron-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .deploy-empty, .panel-empty {
+      text-align: center;
+      padding: 40px;
+      color: #475569;
+      font-size: 13px;
     }
-    .cron-card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .cron-card-name { font-size: 12px; font-weight: 600; color: var(--text-card); }
-    .cron-card-state { font-size: 10px; padding: 2px 7px; border-radius: 999px; font-weight: 600; }
-    .cron-card-state.ok { background: #22c55e22; color: #22c55e; }
-    .cron-card-state.error { background: #ef444422; color: #ef4444; }
-    .cron-card-state.paused { background: #64748b22; color: #64748b; }
-    .cron-card-state.unknown { background: #1e293b; color: #475569; }
-    .cron-card-meta { display: flex; align-items: center; gap: 12px; font-size: 10px; color: #475569; }
-    .cron-card-meta span { display: flex; align-items: center; gap: 4px; }
-    .cron-sparkline { display: flex; align-items: flex-end; gap: 2px; height: 20px; margin-top: 2px; }
-    .cron-sparkline-bar { width: 5px; border-radius: 2px 2px 0 0; min-height: 2px; }
-    .cron-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
 
-    /* ── Agents Panel (v6.1) ── */
-    .agents-panel { display: none; padding: 16px 24px 24px; }
-    .agents-panel.visible { display: block; }
-    .agents-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .agents-panel-header h2 { font-size: 14px; color: var(--text-header); }
-    .agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    /* ── Agents Panel ── */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
     .agent-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 14px;
+      padding: 12px 14px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    .agent-card-top { display: flex; align-items: center; gap: 10px; }
-    .agent-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
-      flex-shrink: 0;
-      color: #fff;
+    .agent-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .agent-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-    .agent-name { font-size: 13px; font-weight: 700; color: var(--text-header); }
-    .agent-model { font-size: 9px; color: #475569; font-family: monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .agent-stats { display: flex; gap: 10px; }
-    .agent-stat { display: flex; flex-direction: column; gap: 1px; }
-    .agent-stat-val { font-size: 15px; font-weight: 700; color: var(--text-card); line-height: 1; }
-    .agent-stat-lbl { font-size: 9px; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; }
-    .agent-bar-wrap { display: flex; flex-direction: column; gap: 3px; }
-    .agent-bar-label { display: flex; justify-content: space-between; font-size: 9px; color: #475569; }
-    .agent-bar { height: 4px; background: #1e293b; border-radius: 2px; overflow: hidden; }
-    .agent-bar-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
-    .agent-efficieny { font-size: 10px; color: #475569; }
-    .agent-efficieny span { font-weight: 700; color: var(--text-card); }
-    .agents-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
+    .agent-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .agent-card-info { flex: 1; min-width: 0; }
+    .agent-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-header);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .agent-card-model {
+      font-size: 9px;
+      color: #475569;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .agent-card-stats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .agent-stat {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      flex: 1;
+      min-width: 50px;
+    }
+    .agent-stat .stat-val {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-header);
+      line-height: 1;
+    }
+    .agent-stat .stat-lbl {
+      font-size: 9px;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .agent-stat.done .stat-val { color: #22c55e; }
+    .agent-stat.eff .stat-val  { color: #38bdf8; }
+    .agent-stat.avg .stat-val  { color: #f59e0b; }
+
+    /* ── Finance Hub ── */
+    .finance-hub {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .finance-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .finance-card-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+    .finance-big {
+      font-size: 28px;
+      font-weight: 800;
+      color: #22c55e;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .finance-sub {
+      font-size: 10px;
+      color: #64748b;
+    }
+    .finance-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+    }
+    .finance-row:last-child { border-bottom: none; }
+    .finance-row .lbl { color: #64748b; }
+    .finance-row .val { color: var(--text-header); font-weight: 600; }
+    .finance-row .val.pos { color: #22c55e; }
+    .finance-row .val.neg { color: #ef4444; }
+
+    /* ── IronThread Lab ── */
+    .ironthread-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .it-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .it-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .it-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .it-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-header);
+    }
+    .it-card-sub {
+      font-size: 10px;
+      color: #64748b;
+    }
+    .it-metric-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+      font-size: 11px;
+    }
+    .it-metric-row:last-child { border-bottom: none; }
+    .it-metric-row .lbl { color: #64748b; }
+    .it-metric-row .val { color: var(--text-header); font-weight: 600; }
+    .it-status-pill {
+      display: inline-block;
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .it-status-pill.green { background: #22c55e22; color: #86efac; border: 1px solid #22c55e44; }
+    .it-status-pill.yellow { background: #f59e0b22; color: #fcd34d; border: 1px solid #f59e0b66; }
+    .it-status-pill.red { background: #ef444433; color: #fca5a5; border: 1px solid #ef444466; }
 
     /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .header { padding: 10px 14px; }
-      .header-title h1 { font-size: 13px; }
-      .header-title span { display: none; }
-      .board { flex-direction: column; padding: 10px; height: auto; gap: 12px; }
-      .column { max-width: none; min-width: 0; width: 100%; }
-      .column-body { max-height: 45vh; }
-      .deploy-panel, .cron-panel, .agents-panel { padding: 12px 14px 20px; }
-      .deploy-entry { grid-template-columns: 90px 70px 1fr; gap: 8px; padding: 8px 10px; }
+    @media (max-width: 700px) {
+      .board { flex-direction: column; padding: 10px; height: auto; }
+      .column { max-width: none; margin-bottom: 12px; }
+      .column-body { max-height: 50vh; }
       .agents-grid { grid-template-columns: 1fr 1fr; }
-      .agent-card { padding: 10px; }
-    }
-    @media (max-width: 480px) {
-      .agents-grid { grid-template-columns: 1fr; }
-      .header-tabs .tab-btn { padding: 3px 8px; font-size: 11px; }
-      .cron-grid { grid-template-columns: 1fr; }
+      .finance-hub { grid-template-columns: 1fr; }
+      .ironthread-section { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -415,9 +580,25 @@
   <div class="sync-error" id="sync-error">⚠ Sync error — retrying…</div>
 
   <div class="header">
-    <div class="header-title">
-      <h1>📋 Mission Board</h1>
-      <span>Mission Control · Shared-log Kanban</span>
+    <div class="header-left">
+      <div class="header-title">
+        <h1>📋 Mission Board</h1>
+        <span>Mission Control · Shared-log Kanban</span>
+      </div>
+      <div class="header-meta" id="header-meta">
+        <div class="sys-stat">
+          <span class="lbl">CPU</span>
+          <span class="val ok" id="stat-cpu">—</span>
+        </div>
+        <div class="sys-stat">
+          <span class="lbl">MEM</span>
+          <span class="val ok" id="stat-mem">—</span>
+        </div>
+        <div class="sys-stat">
+          <span class="lbl">NODE</span>
+          <span class="val" id="stat-node">jarvis</span>
+        </div>
+      </div>
     </div>
     <div class="header-status">
       <span id="sync-time">—</span>
@@ -426,11 +607,13 @@
     <nav class="header-tabs" style="display:flex;gap:4px;align-items:center;">
       <button class="tab-btn active" data-tab="tasks">Tasks</button>
       <button class="tab-btn" data-tab="agents">Agents</button>
-      <button class="tab-btn" data-tab="cron">Cron</button>
+      <button class="tab-btn" data-tab="finance">Finance</button>
+      <button class="tab-btn" data-tab="ironthread">IronThread</button>
       <button class="tab-btn" data-tab="deploys">Deploys</button>
     </nav>
   </div>
 
+  <!-- Tasks Board View -->
   <div class="board" id="board-view">
     <div class="column col-queued">
       <div class="column-header">
@@ -455,32 +638,109 @@
     </div>
   </div>
 
-  <!-- Agents Panel (v6.1) -->
+  <!-- Agents Panel -->
   <div class="agents-panel" id="agents-panel">
-    <div class="agents-panel-header">
+    <div class="panel-header">
       <h2>🤖 Agent Workload</h2>
+      <button class="panel-refresh" id="agents-refresh-btn">↻ Refresh</button>
     </div>
     <div class="agents-grid" id="agents-grid">
-      <div class="agents-empty">Loading agent data…</div>
+      <div class="panel-empty">Loading agent data…</div>
     </div>
   </div>
 
-  <!-- Cron Panel -->
-  <div class="cron-panel" id="cron-panel">
-    <div class="cron-panel-header">
-      <h2>⏰ Cron Health</h2>
-      <button class="cron-refresh" id="cron-refresh-btn">↻ Refresh</button>
+  <!-- Finance Hub -->
+  <div class="finance-panel" id="finance-panel">
+    <div class="panel-header">
+      <h2>💰 Finance Hub</h2>
+      <button class="panel-refresh" id="finance-refresh-btn">↻ Refresh</button>
     </div>
-    <div class="cron-grid" id="cron-grid">
-      <div class="cron-empty">Loading cron data…</div>
+    <div class="finance-hub" id="finance-hub">
+      <div class="finance-card">
+        <div class="finance-card-title">Today's Spend</div>
+        <div class="finance-big" id="fin-today">$0.00</div>
+        <div class="finance-sub" id="fin-today-sub">Loading…</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-title">7-Day Spend</div>
+        <div class="finance-big" style="color:#38bdf8;" id="fin-week">$0.00</div>
+        <div class="finance-sub" id="fin-week-sub">Loading…</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-title">Budget Remaining</div>
+        <div class="finance-big" style="color:#f59e0b;" id="fin-budget">—</div>
+        <div class="finance-sub" id="fin-budget-sub">Monthly budget</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-title">Cost by Model</div>
+        <div id="fin-by-model"><div class="finance-sub">Loading…</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IronThread Lab -->
+  <div class="ironthread-panel" id="ironthread-panel">
+    <div class="panel-header">
+      <h2>🔩 IronThread Lab</h2>
+      <button class="panel-refresh" id="ironthread-refresh-btn">↻ Refresh</button>
+    </div>
+    <div class="ironthread-section" id="ironthread-section">
+      <div class="it-card">
+        <div class="it-card-header">
+          <div class="it-card-icon" style="background:#1a3a5f;color:#38bdf8;">🌐</div>
+          <div>
+            <div class="it-card-name">ironthread.ai</div>
+            <div class="it-card-sub">Main website · Next.js</div>
+          </div>
+        </div>
+        <div class="it-metric-row"><span class="lbl">Status</span><span class="it-status-pill green" id="it-site-status">Live</span></div>
+        <div class="it-metric-row"><span class="lbl">Last Deploy</span><span class="val" id="it-site-deploy">—</span></div>
+        <div class="it-metric-row"><span class="lbl">Issues</span><span class="val" id="it-site-issues">0</span></div>
+      </div>
+      <div class="it-card">
+        <div class="it-card-header">
+          <div class="it-card-icon" style="background:#2e1a3a;color:#a855f7;">📊</div>
+          <div>
+            <div class="it-card-name">IT Portal</div>
+            <div class="it-card-sub">OAuth ticket viewer</div>
+          </div>
+        </div>
+        <div class="it-metric-row"><span class="lbl">Status</span><span class="it-status-pill yellow" id="it-portal-status">In Progress</span></div>
+        <div class="it-metric-row"><span class="lbl">Blocker</span><span class="val" id="it-portal-blocker">Google OAuth2 ID</span></div>
+        <div class="it-metric-row"><span class="lbl">Progress</span><span class="val" id="it-portal-progress">T5 of 7</span></div>
+      </div>
+      <div class="it-card">
+        <div class="it-card-header">
+          <div class="it-card-icon" style="background:#1a3a1a;color:#22c55e;">✉️</div>
+          <div>
+            <div class="it-card-name">GTM Pipeline</div>
+            <div class="it-card-sub">30-60-90 outbound plan</div>
+          </div>
+        </div>
+        <div class="it-metric-row"><span class="lbl">Stage</span><span class="val" id="it-gtm-stage">Lead Magnet</span></div>
+        <div class="it-metric-row"><span class="lbl">Backend MRR Target</span><span class="val">M365 / MSP Services</span></div>
+        <div class="it-metric-row"><span class="lbl">Status</span><span class="it-status-pill green" id="it-gtm-status">Active</span></div>
+      </div>
+      <div class="it-card">
+        <div class="it-card-header">
+          <div class="it-card-icon" style="background:#3a2e1a;color:#f59e0b;">🐙</div>
+          <div>
+            <div class="it-card-name">Crypto Bot</div>
+            <div class="it-card-sub">spike-brain · GCP Cloud Function</div>
+          </div>
+        </div>
+        <div class="it-metric-row"><span class="lbl">Status</span><span class="it-status-pill red" id="it-crypto-status">Dead</span></div>
+        <div class="it-metric-row"><span class="lbl">Last Trade</span><span class="val" id="it-crypto-trade">~Mar 20</span></div>
+        <div class="it-metric-row"><span class="lbl">Recovery</span><span class="val" id="it-crypto-recovery">Faye researching</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Deploy History Panel -->
   <div class="deploy-panel" id="deploy-panel">
-    <div class="deploy-panel-header">
+    <div class="panel-header">
       <h2>📦 Deploy History</h2>
-      <button class="deploy-refresh" id="deploy-refresh-btn">↻ Refresh</button>
+      <button class="panel-refresh" id="deploy-refresh-btn">↻ Refresh</button>
     </div>
     <div class="deploy-timeline" id="deploy-timeline">
       <div class="deploy-empty">Loading deploy history…</div>
@@ -494,16 +754,16 @@
       julia: '#f59e0b', rocco: '#64748b', punch: '#ef4444',
       andy: '#06b6d4', andrew: '#06b6d4', main: '#475569'
     };
-    const AGENT_EMOJI = {
-      spike: '🧠', jet: '✈️', faye: '🔬', ein: '💰', gren: '🔩',
-      ed: '🔧', julia: '🎬', rocco: '🏥', punch: '🥊',
-      andy: '🤖', andrew: '🤖', main: '🧠'
-    };
     const AGENT_MODELS = {
       spike: 'MiniMax/M2.7-highspeed', jet: 'MiniMax/M2.7', faye: 'Qwen/Qwen2.5-7B',
       ein: 'MiniMax/M2.7', gren: 'MiniMax/M2.7', ed: 'openai/gpt-4o',
       julia: 'Qwen/Qwen2.5-7B', rocco: 'MiniMax/M2.7', punch: 'claude-sonnet-4',
       andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', main: 'MiniMax/M2.7'
+    };
+    const AGENT_AVATARS = {
+      spike: '🧠', jet: '✈️', faye: '🔬', ein: '💰',
+      gren: '🔩', ed: '🔧', julia: '🎬', rocco: '🏥',
+      punch: '🥊', andy: '🤖', andrew: '🤖', main: '🎯'
     };
     const UNKNOWN = '#94a3b8';
     const POLL_MS = 10000;
@@ -523,15 +783,39 @@
     function activateTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
       document.getElementById('board-view').style.display = tabName === 'tasks' ? '' : 'none';
-      document.getElementById('agents-panel').classList.toggle('visible', tabName === 'agents');
-      document.getElementById('cron-panel').classList.toggle('visible', tabName === 'cron');
       document.getElementById('deploy-panel').classList.toggle('visible', tabName === 'deploys');
+      document.getElementById('agents-panel').classList.toggle('visible', tabName === 'agents');
+      document.getElementById('finance-panel').classList.toggle('visible', tabName === 'finance');
+      document.getElementById('ironthread-panel').classList.toggle('visible', tabName === 'ironthread');
       if (tabName === 'deploys') loadDeployHistory();
-      if (tabName === 'cron') loadCronData();
+      if (tabName === 'agents') refreshAgentsPanel();
+      if (tabName === 'finance') refreshFinancePanel();
+      if (tabName === 'ironthread') refreshIronThreadPanel();
     }
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => activateTab(btn.dataset.tab));
     });
+
+    // ── System health ──
+    function updateSystemHealth(h) {
+      const cpu = h.cpu ?? 0;
+      const mem = h.memory ?? 0;
+      const node = h.node || 'jarvis';
+
+      const cpuEl = document.getElementById('stat-cpu');
+      const memEl = document.getElementById('stat-mem');
+      const nodeEl = document.getElementById('stat-node');
+
+      if (cpuEl) {
+        cpuEl.textContent = cpu + '%';
+        cpuEl.className = 'val ' + (cpu > 80 ? 'crit' : cpu > 50 ? 'warn' : 'ok');
+      }
+      if (memEl) {
+        memEl.textContent = mem + '%';
+        memEl.className = 'val ' + (mem > 85 ? 'crit' : mem > 65 ? 'warn' : 'ok');
+      }
+      if (nodeEl) nodeEl.textContent = node;
+    }
 
     // ── Deploy History ──
     let deployHistoryCache = null;
@@ -575,10 +859,10 @@
         const ts = entry.timestamp ? new Date(entry.timestamp) : null;
         const timeStr = ts ? ts.toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
         const trigger = (entry.trigger || 'manual').toLowerCase();
-        const status = entry.status === 'deployed' ? 'ok' : 'err';
-        const dur = computeDuration(entry.timestamp, prevEntry ? prevEntry.timestamp : null);
-        // Use precomputed duration from sync script (v6.3)
-        const displayDur = entry.duration || dur;
+        const status = entry.status === 'deployed' || entry.status === 'ok' ? 'ok' : 'err';
+        const dur = (entry.durationMs != null && entry.durationMs > 0)
+          ? (entry.durationMs < 60000 ? '<1m' : entry.durationMs < 3600000 ? Math.round(entry.durationMs / 60000) + 'm' : (Math.floor(entry.durationMs / 3600000) + 'h ' + Math.round((entry.durationMs % 3600000) / 60000) + 'm'))
+          : computeDuration(entry.timestamp, prevEntry ? prevEntry.timestamp : null);
 
         const div = document.createElement('div');
         div.className = 'deploy-entry';
@@ -588,131 +872,147 @@
             <span class="de-status ${status === 'err' ? 'err' : ''}"></span>
             <span class="de-trigger ${trigger}">${trigger}</span>
           </div>
-          <div class="de-duration">${displayDur ? '~' + displayDur : ''}</div>
+          <div class="de-duration">${dur ? '← ' + dur : ''}</div>
         `;
         el.appendChild(div);
       });
     }
 
-    document.getElementById('deploy-refresh-btn').addEventListener('click', function() {
+    document.getElementById('deploy-refresh-btn')?.addEventListener('click', function() {
       loadDeployHistory();
     });
 
-    // ── Cron Panel + Sparklines (v6.2) ──
-    async function loadCronData() {
-      const el = document.getElementById('cron-grid');
-      el.innerHTML = '<div class="cron-empty">Loading…</div>';
-      try {
-        const r = await fetch('mission-control-live.json?t=' + Date.now());
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        const data = await r.json();
-        renderCronPanel(data.cron || [], el);
-      } catch(e) {
-        el.innerHTML = '<div class="cron-empty">Could not load cron data: ' + e.message + '</div>';
-      }
+    // ── Agents Panel ──
+    function refreshAgentsPanel() {
+      renderAgentsPanel(cachedLiveData);
     }
 
-    function sparklineColor(val) {
-      if (val === 0) return '#22c55e';
-      if (val <= 3)  return '#f59e0b';
-      return '#ef4444';
-    }
-
-    function renderSparkline(samples) {
-      if (!samples || samples.length === 0) {
-        return '<span style="font-size:9px;color:#475569">no data</span>';
-      }
-      const max = Math.max(...samples, 1);
-      return samples.slice(-12).map(s => {
-        const h = Math.max(2, Math.round((s / max) * 18));
-        return `<div class="cron-sparkline-bar" style="height:${h}px;background:${sparklineColor(s)}"></div>`;
-      }).join('');
-    }
-
-    function renderCronPanel(cronJobs, el) {
-      if (!cronJobs || cronJobs.length === 0) {
-        el.innerHTML = '<div class="cron-empty">No cron jobs found.</div>';
-        return;
-      }
-      el.innerHTML = '';
-      cronJobs.forEach(function(job) {
-        const state = job.state || 'unknown';
-        const stateClass = state === 'ok' ? 'ok' : state === 'error' ? 'error' : state === 'paused' ? 'paused' : 'unknown';
-        const errCount = job.errors || 0;
-        const spark = renderSparkline(job.errorHistory);
-
-        const card = document.createElement('div');
-        card.className = 'cron-card';
-        card.innerHTML = `
-          <div class="cron-card-header">
-            <span class="cron-card-name">${job.label || job.id}</span>
-            <span class="cron-card-state ${stateClass}">${errCount > 0 ? errCount + ' err' : state}</span>
-          </div>
-          <div class="cron-card-meta">
-            <span>⏱ next <b>${job.next || '—'}</b></span>
-            <span>⏳ last <b>${job.lastRun || '—'}</b></span>
-          </div>
-          <div class="cron-sparkline">${spark}</div>
-        `;
-        el.appendChild(card);
-      });
-    }
-
-    document.getElementById('cron-refresh-btn').addEventListener('click', loadCronData);
-
-    // ── Agents Panel (v6.1) ──
     function renderAgentsPanel(data) {
-      const el = document.getElementById('agents-grid');
-      const agents = data.agents || [];
+      const grid = document.getElementById('agents-grid');
+      if (!grid) return;
+
+      const agents = data?.agents;
       if (!agents || agents.length === 0) {
-        el.innerHTML = '<div class="agents-empty">No agent data available.</div>';
+        grid.innerHTML = '<div class="panel-empty">No agent data available.</div>';
         return;
       }
-      el.innerHTML = '';
-      agents.forEach(function(agent) {
-        const key = (agent.key || '').toLowerCase();
-        const color = agent.color || AGENT_COLORS[key] || UNKNOWN;
-        const emoji = AGENT_EMOJI[key] || '🤖';
-        const model = agent.model || AGENT_MODELS[key] || '—';
-        const completed = agent.completed || 0;
-        const efficiency = agent.efficiency || 0;
-        const blockers = agent.blockers || 0;
-        const avgTime = agent.avgTimeSec || 0;
-        const barWidth = Math.min(100, efficiency);
-        const barColor = efficiency >= 80 ? '#22c55e' : efficiency >= 50 ? '#f59e0b' : '#ef4444';
+
+      grid.innerHTML = '';
+      agents.forEach(function(a) {
+        const color = a.color || AGENT_COLORS[a.key] || UNKNOWN;
+        const avatar = AGENT_AVATARS[a.key] || '🤖';
+        const eff = a.efficiency ?? 0;
+        const completed = a.completed ?? 0;
+        const avgSec = a.avgTimeSec ?? 0;
+        const avgStr = avgSec > 0 ? (avgSec < 60 ? avgSec + 's' : Math.round(avgSec / 60) + 'm') : '—';
 
         const card = document.createElement('div');
         card.className = 'agent-card';
-        card.innerHTML = `
-          <div class="agent-card-top">
-            <div class="agent-avatar" style="background:${color}">${emoji}</div>
-            <div class="agent-info">
-              <span class="agent-name">${agent.name || key}</span>
-              <span class="agent-model">${model}</span>
-            </div>
-          </div>
-          <div class="agent-stats">
-            <div class="agent-stat">
-              <span class="agent-stat-val">${completed}</span>
-              <span class="agent-stat-lbl">Done</span>
-            </div>
-            <div class="agent-stat">
-              <span class="agent-stat-val">${blockers}</span>
-              <span class="agent-stat-lbl">Blocked</span>
-            </div>
-            <div class="agent-stat">
-              <span class="agent-stat-val">${avgTime >= 60 ? Math.round(avgTime/60) + 'm' : avgTime + 's'}</span>
-              <span class="agent-stat-lbl">Avg</span>
-            </div>
-          </div>
-          <div class="agent-bar-wrap">
-            <div class="agent-bar-label"><span>Efficiency</span><span>${efficiency}%</span></div>
-            <div class="agent-bar"><div class="agent-bar-fill" style="width:${barWidth}%;background:${barColor}"></div></div>
-          </div>
+        card.style.borderTop = '2px solid ' + color;
+
+        const header = document.createElement('div');
+        header.className = 'agent-card-header';
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'agent-avatar';
+        avatarDiv.style.background = color + '22';
+        avatarDiv.style.color = color;
+        avatarDiv.textContent = avatar;
+
+        const info = document.createElement('div');
+        info.className = 'agent-card-info';
+        info.innerHTML = `
+          <div class="agent-card-name" style="color:${color}">${a.name || a.key || '—'}</div>
+          <div class="agent-card-model">${a.model || '—'}</div>
         `;
-        el.appendChild(card);
+
+        header.appendChild(avatarDiv);
+        header.appendChild(info);
+        card.appendChild(header);
+
+        const stats = document.createElement('div');
+        stats.className = 'agent-card-stats';
+
+        const doneDiv = document.createElement('div');
+        doneDiv.className = 'agent-stat done';
+        doneDiv.innerHTML = `<div class="stat-val">${completed}</div><div class="stat-lbl">Done</div>`;
+
+        const effDiv = document.createElement('div');
+        effDiv.className = 'agent-stat eff';
+        effDiv.innerHTML = `<div class="stat-val">${eff}%</div><div class="stat-lbl">Eff</div>`;
+
+        const avgDiv = document.createElement('div');
+        avgDiv.className = 'agent-stat avg';
+        avgDiv.innerHTML = `<div class="stat-val">${avgStr}</div><div class="stat-lbl">Avg</div>`;
+
+        stats.appendChild(doneDiv);
+        stats.appendChild(effDiv);
+        stats.appendChild(avgDiv);
+        card.appendChild(stats);
+        grid.appendChild(card);
       });
     }
+
+    document.getElementById('agents-refresh-btn')?.addEventListener('click', function() {
+      refreshAgentsPanel();
+    });
+
+    // ── Finance Panel ──
+    function refreshFinancePanel() {
+      // Try to load cost data from cost-data.json
+      fetch('cost-data.json?t=' + Date.now())
+        .then(r => r.ok ? r.json() : null)
+        .catch(() => null)
+        .then(cost => {
+          const today = cost?.todayTotal ?? 0;
+          const week = cost?.weekTotal ?? 0;
+          const budget = cost?.budgetRemaining ?? null;
+
+          const todayEl = document.getElementById('fin-today');
+          const weekEl = document.getElementById('fin-week');
+          const budgetEl = document.getElementById('fin-budget');
+          const todaySub = document.getElementById('fin-today-sub');
+          const weekSub = document.getElementById('fin-today-sub');
+
+          if (todayEl) todayEl.textContent = '$' + today.toFixed(2);
+          if (weekEl) weekEl.textContent = '$' + week.toFixed(2);
+          if (budgetEl) budgetEl.textContent = budget != null ? '$' + budget.toFixed(2) : '—';
+
+          const byModel = cost?.byModel;
+          const byModelEl = document.getElementById('fin-by-model');
+          if (byModelEl && byModel && byModel.length > 0) {
+            byModelEl.innerHTML = '';
+            byModel.slice(0, 4).forEach(m => {
+              const row = document.createElement('div');
+              row.className = 'finance-row';
+              row.innerHTML = `<span class="lbl">${m.model || 'Unknown'}</span><span class="val pos">$${m.cost?.toFixed(2) || '0.00'}</span>`;
+              byModelEl.appendChild(row);
+            });
+          }
+        });
+    }
+
+    document.getElementById('finance-refresh-btn')?.addEventListener('click', function() {
+      refreshFinancePanel();
+    });
+
+    // ── IronThread Lab ──
+    function refreshIronThreadPanel() {
+      // Static render based on known project state
+      const itSiteDeploy = document.getElementById('it-site-deploy');
+      if (itSiteDeploy) {
+        const stagingPath = '/mnt/spike-storage/mission-control-staging/index.html';
+        // Use last deploy from deployHistory if available
+        if (deployHistoryCache && deployHistoryCache.length > 0) {
+          const latest = new Date(deployHistoryCache[0].timestamp);
+          itSiteDeploy.textContent = latest.toLocaleDateString([], { month: 'short', day: 'numeric' });
+        }
+      }
+    }
+
+    document.getElementById('ironthread-refresh-btn')?.addEventListener('click', function() {
+      refreshIronThreadPanel();
+    });
 
     function colorForAgent(agentName) {
       const a = (agentName || '').toLowerCase().trim();
@@ -785,7 +1085,6 @@
         } else {
           agentRow.appendChild(agentSpan);
         }
-
         leftDiv.appendChild(agentRow);
 
         const agentLower = (agent || '').toLowerCase().trim();
@@ -883,7 +1182,7 @@
 
     let lastSync = 0;
     let fetching = false;
-    let cachedData = null;
+    let cachedLiveData = null;
 
     async function poll() {
       if (fetching) return;
@@ -897,16 +1196,19 @@
         const r = await fetch('mission-control-live.json?t=' + Date.now());
         if (!r.ok) throw new Error('HTTP ' + r.status);
         const data = await r.json();
-        cachedData = data;
+        cachedLiveData = data;
         lastSync = Date.now();
         const board = data.board || { queued: [], inprogress: [], done: [] };
         renderColumn('queued',    board.queued    || []);
         renderColumn('inprogress', board.inprogress || []);
-        renderColumn('done',      board.done      || []);
+        renderColumn('done',     board.done      || []);
 
-        // v6.1: render agents panel if visible
-        const agentsTab = document.getElementById('agents-panel');
-        if (agentsTab && agentsTab.classList.contains('visible')) {
+        // Update system health stats in header
+        if (data.health) updateSystemHealth(data.health);
+
+        // Update agents panel if visible
+        const agentsPanel = document.getElementById('agents-panel');
+        if (agentsPanel && agentsPanel.classList.contains('visible')) {
           renderAgentsPanel(data);
         }
 

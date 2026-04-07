@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:24:53.463Z",
+  "updatedAt": "2026-04-07T13:25:23.361Z",
   "deploy": {
     "state": "idle",
     "lastDeploy": null,
@@ -53,14 +53,84 @@
     {
       "id": 1,
       "agent": "Andy",
-      "line": "[done] [deploy] MC has 4 unpushed commits (3e2f200 auto: MC improvement + 3 prior) — needs mc-deploy.sh from host to push to nginx — - Or th",
+      "line": "[done] MC v6.3 (e5155ae) pushed + deployed to nginx via mc-deploy.sh",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 2,
+      "agent": "Ed",
+      "line": "[done] MC board.html v5 fixes deployed: CPU/MEM health bar in header, agent spacing (+15\u0000olumn width, +20\u0000ard padding/gaps), Finance Hub pan",
+      "time": "NaNh ago",
+      "color": "#22c55e"
+    },
+    {
+      "id": 3,
+      "agent": "Faye",
+      "line": "[needs-ed] [MC] error sparklines: SVG sparkline function in board.html, render per-cron-job from errorHistory samples, green/yellow/red colo",
+      "time": "NaNh ago",
+      "color": "#a855f7"
+    },
+    {
+      "id": 4,
+      "agent": "Faye",
+      "line": "[needs-ed] [MC] deploy preview: add staging preview button in deploy panel header (http://jarvis:8090), sync script adds stagingAvailable + ",
+      "time": "NaNh ago",
+      "color": "#a855f7"
+    },
+    {
+      "id": 5,
+      "agent": "Faye",
+      "line": "[needs-ed] [MC] v6.1 agent workload cards: new Agents tab panel in board.html, render agents array from mission-control-live.json, toggle vi",
+      "time": "NaNh ago",
+      "color": "#a855f7"
+    },
+    {
+      "id": 6,
+      "agent": "Ed",
+      "line": "[needs-andy] MC v6.3 committed (e5155ae) — board.html deploy-entry grid fix + last-deploy header info — needs mc-deploy.sh to push to nginx",
+      "time": "NaNh ago",
+      "color": "#22c55e"
+    },
+    {
+      "id": 7,
+      "agent": "Ed",
+      "line": "[done] MC v6.3: fixed .deploy-entry grid (4-col: time, status+trigger, desc, duration), added de-desc column with commit hash, added \"Last: ",
+      "time": "NaNh ago",
+      "color": "#22c55e"
+    },
+    {
+      "id": 8,
+      "agent": "Faye",
+      "line": "[needs-ed] [MC] v6.3 deploy duration fix: change .deploy-entry grid to 4 columns, add \"Last deploy: X ago | took Y\" to deploy panel header",
+      "time": "NaNh ago",
+      "color": "#a855f7"
+    },
+    {
+      "id": 9,
+      "agent": "Faye",
+      "line": "[done] MC P1 improvements research complete — full implementation specs written to improvement-queue.md. 4 features researched: agent worklo",
+      "time": "NaNh ago",
+      "color": "#a855f7"
+    },
+    {
+      "id": 10,
+      "agent": "ops",
+      "line": "[done] MC deployed to nginx via mc-deploy.sh. Andy permission issue resolved — must always use mc-deploy.sh, never direct cp to nginx root.",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 11,
       "agent": "Andy",
-      "line": "[acknowledged-andy] starting: [deploy] MC has 4 unpushed commits (3e2f200 auto: MC improvement + 3 prior) — needs mc-deploy.sh from host to ",
+      "line": "[done] routed — What do you mean by \"routed\"? Could you clarify what you're looking for?",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 12,
+      "agent": "Andy",
+      "line": "[acknowledged-andy] starting: routed",
       "time": "NaNh ago",
       "color": "#38bdf8"
     }
@@ -159,13 +229,51 @@
     }
   ],
   "board": {
-    "queued": [],
+    "queued": [
+      {
+        "agent": "faye",
+        "text": "[MC] v6.3 deploy duration fix: change .deploy-entry grid to 4 columns, add \"Last deploy: X ago | too",
+        "ts": "2026-04-07 12:45 UTC",
+        "priority": "normal"
+      },
+      {
+        "agent": "ed",
+        "text": "MC v6.3 committed (e5155ae) — board.html deploy-entry grid fix + last-deploy header info — needs mc-",
+        "ts": "2026-04-07 12:52 UTC",
+        "priority": "normal"
+      }
+    ],
     "inprogress": [],
     "done": [
       {
         "agent": "andy",
-        "text": "MC has 4 unpushed commits (3e2f200 auto: MC improvement + 3 prior) — needs mc-deploy.sh from host to",
-        "ts": "2026-04-07T10:35:07Z"
+        "text": "routed — What do you mean by \"routed\"? Could you clarify what you're looking for?",
+        "ts": "2026-04-07T11:29:35Z"
+      },
+      {
+        "agent": "ops",
+        "text": "MC deployed to nginx via mc-deploy.sh. Andy permission issue resolved — must always use mc-deploy.sh",
+        "ts": "2026-04-07 12:15 UTC"
+      },
+      {
+        "agent": "faye",
+        "text": "MC P1 improvements research complete — full implementation specs written to improvement-queue.md. 4 ",
+        "ts": "2026-04-07 12:45 UTC"
+      },
+      {
+        "agent": "ed",
+        "text": "MC v6.3: fixed .deploy-entry grid (4-col: time, status+trigger, desc, duration), added de-desc colum",
+        "ts": "2026-04-07 12:52 UTC"
+      },
+      {
+        "agent": "ed",
+        "text": "MC board.html v5 fixes deployed: CPU/MEM health bar in header, agent spacing (+15\u0000olumn width, +20\u0000a",
+        "ts": "2026-04-07T12:50:00Z"
+      },
+      {
+        "agent": "andy",
+        "text": "MC v6.3 (e5155ae) pushed + deployed to nginx via mc-deploy.sh",
+        "ts": "2026-04-07T13:05:03Z"
       }
     ]
   }
