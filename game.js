@@ -1753,7 +1753,8 @@ function renderLiveHud(data) {
                 row.className = 'hud-subtle';
                 row.style.lineHeight = '1.6';
                 var dot = d.status === 'deployed' ? '<span style="color:#22c55e">\u26a1</span>' : '<span style="color:#64748b">\u25cb</span>';
-                row.innerHTML = dot + ' ' + d.time + ' ago <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
+                var durHtml = d.duration ? ' <span style="color:#475569">(~' + d.duration + ')</span>' : '';
+                row.innerHTML = dot + ' ' + d.time + ' ago <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>' + durHtml;
                 depEl.appendChild(row);
             });
         }
