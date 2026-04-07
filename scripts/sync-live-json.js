@@ -18,7 +18,8 @@ const SHARED_LOG = `${WORKSPACE}/memory/shared-log.md`;
 const OUT_WORKSPACE = `${WORKSPACE}/mission-control/mission-control-live.json`;
 const OUT_STAGING  = '/mnt/spike-storage/mission-control-staging/mission-control-live.json';
 const CRON_JOBS_PATH = '/home/node/.openclaw/cron/jobs.json';
-const DEPLOY_HISTORY_PATH = `${WORKSPACE}/mission-control/deployHistory.json`;
+const DEPLOY_HISTORY_PATH   = `${WORKSPACE}/mission-control/deployHistory.json`;
+const CRON_ERROR_HISTORY_PATH = `${WORKSPACE}/mission-control/cron-error-history.json`;
 
 const AGENT_COLORS = {
   spike:    '#4a9eff',
@@ -132,6 +133,44 @@ function extractErrors(logContent) {
   }
 
   return errors.slice(0, 10);
+}
+
+// --- Persistent cron error history for sparklines ---
+function getCronErrorHistory() {
+  try {
+    if (existsSync(CRON_ERROR_HISTORY_PATH)) {
+      return JSON.parse(readFileSync(CRON_ERROR_HISTORY_PATH, 'utf8'));
+    }
+  } catch {}
+  return {};
+}
+
+function saveCronErrorHistory(history) {
+  try {
+    writeFileSync(CRON_ERROR_HISTORY_PATH, JSON.stringify(history, null, 2), 'utf8');
+  } catch (e) {
+    console.warn('Could not save cron error history:', e.message);
+  }
+}
+
+function updateCronErrorHistory(cronJobs) {
+  const history = getCronErrorHistory();
+  const now = Date.now();
+  cronJobs.forEach(job => {
+    const id = job.id;
+    if (!history[id]) {
+      history[id] = { samples: [] };
+    }
+    const h = history[id];
+    // Append current error count as a sample (max 20 samples = last 20 syncs)
+    h.samples.push({ t: now, e: job.errors || 0 });
+    if (h.samples.length > 20) h.samples = h.samples.slice(-20);
+  });
+  // Prune jobs that no longer exist
+  const activeIds = new Set(cronJobs.map(j => j.id));
+  Object.keys(history).forEach(id => { if (!activeIds.has(id)) delete history[id]; });
+  saveCronErrorHistory(history);
+  return history;
 }
 
 // --- NEW: Real cron health from jobs.json ---
@@ -376,6 +415,11 @@ function buildJson(entries) {
   const deploy = getDeployInfo();
   const deployHistory = updateDeployHistory(deploy.timestamp);
   const cronHealth = getCronHealthData();
+  const cronErrorHistory = updateCronErrorHistory(cronHealth);
+  // Attach error history samples to each cron job
+  cronHealth.forEach(job => {
+    job.errorHistory = (cronErrorHistory[job.id]?.samples || []).map(s => s.e);
+  });
   const errorStream = extractErrors(readFileSync(SHARED_LOG, 'utf8'));
   const allEntries = parseLog(readFileSync(SHARED_LOG, 'utf8'));
 
@@ -439,7 +483,12 @@ if (existsSync('/mnt/spike-storage/mission-control-staging')) {
 
 // Persist deploy history
 if (json.deploy.history?.length > 0) {
-  const historyOnly = json.deploy.history.map(d => ({ timestamp: d.timestamp, status: d.status, trigger: d.trigger }));
+  const historyOnly = json.deploy.history.map(d => ({
+    timestamp: d.timestamp,
+    status: d.status,
+    trigger: d.trigger,
+    duration: d.duration || null,
+  }));
   writeFileSync(DEPLOY_HISTORY_PATH, JSON.stringify(historyOnly, null, 2), 'utf8');
   console.log(`✓ Deploy history: ${historyOnly.length} entries`);
 }

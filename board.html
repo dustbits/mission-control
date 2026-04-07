@@ -142,6 +142,66 @@
     .col-done .column-header h2 { color: var(--done); }
     .col-done .count { background: #22c55e22; color: var(--done); }
 
+    /* ── Leaderboard sidebar ── */
+    .col-leaderboard {
+      flex: 0 0 240px;
+      min-width: 200px;
+      max-width: 260px;
+      background: linear-gradient(180deg, #0d1117, #161b22);
+      border-left: 1px solid var(--border);
+    }
+    .col-leaderboard .column-header {
+      background: rgba(139,92,246,0.08);
+    }
+    .col-leaderboard .column-header h2 { color: #c084fc; }
+    .col-leaderboard .count { background: #c084fc22; color: #c084fc; }
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 4px;
+      border-bottom: 1px solid rgba(30,41,59,0.5);
+      font-size: 11px;
+    }
+    .lb-row:last-child { border-bottom: none; }
+    .lb-rank {
+      width: 18px;
+      font-weight: 700;
+      font-size: 10px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .lb-rank.gold { color: #fbbf24; }
+    .lb-rank.silver { color: #94a3b8; }
+    .lb-rank.bronze { color: #d97706; }
+    .lb-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .lb-name {
+      flex: 1;
+      font-weight: 600;
+      font-size: 10px;
+      color: var(--text-header);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .lb-done {
+      font-size: 10px;
+      color: #22c55e;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .lb-empty {
+      text-align: center;
+      padding: 24px 12px;
+      color: #475569;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
     .column-body {
       flex: 1;
       overflow-y: auto;
@@ -279,6 +339,51 @@
       .column { max-width: none; margin-bottom: 12px; }
       .column-body { max-height: 50vh; }
     }
+
+    /* ── Tabs ── */
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-primary);
+      padding: 4px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tab-btn:hover { border-color: #8b5cf6; color: #e2e8f0; }
+    .tab-btn.active { background: #8b5cf6; border-color: #8b5cf6; color: #fff; }
+
+    /* ── Deploy Panel ── */
+    .deploy-panel { display: none; padding: 16px 24px 24px; }
+    .deploy-panel.visible { display: block; }
+    .deploy-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .deploy-panel-header h2 { font-size: 14px; color: var(--text-header); }
+    .deploy-refresh { background: #1e293b; border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 4px 10px; font-size: 11px; cursor: pointer; }
+    .deploy-refresh:hover { border-color: #8b5cf6; }
+    .deploy-timeline { display: flex; flex-direction: column; gap: 8px; }
+    .deploy-entry {
+      display: grid;
+      grid-template-columns: 120px 80px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .deploy-entry .de-time { color: var(--text-primary); font-variant-numeric: tabular-nums; }
+    .deploy-entry .de-trigger { text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 4px; display: inline-block; }
+    .deploy-entry .de-trigger.manual { background: #1e3a5f; color: #38bdf8; }
+    .deploy-entry .de-trigger.auto   { background: #1a2e1a; color: #22c55e; }
+    .deploy-entry .de-trigger.cron   { background: #2e251a; color: #f59e0b; }
+    .deploy-entry .de-trigger.unknown { background: #1e293b; color: #64748b; }
+    .deploy-entry .de-right { display: flex; align-items: center; gap: 10px; }
+    .deploy-entry .de-duration { color: #475569; font-size: 11px; margin-left: auto; }
+    .deploy-entry .de-status { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+    .deploy-entry .de-status.err { background: #ef4444; }
+    .deploy-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
   </style>
 </head>
 <body>
@@ -294,9 +399,13 @@
       <span id="sync-time">—</span>
       <span class="sync-dot" id="sync-dot"></span>
     </div>
+    <nav class="header-tabs" style="display:flex;gap:4px;align-items:center;">
+      <button class="tab-btn active" data-tab="tasks">Tasks</button>
+      <button class="tab-btn" data-tab="deploys">Deploys</button>
+    </nav>
   </div>
 
-  <div class="board">
+  <div class="board" id="board-view">
     <div class="column col-queued">
       <div class="column-header">
         <h2>⚡ Queued</h2>
@@ -317,6 +426,24 @@
         <span class="count" id="count-done">0</span>
       </div>
       <div class="column-body" id="col-done"></div>
+    </div>
+    <div class="column col-leaderboard">
+      <div class="column-header">
+        <h2>🏆 Leaderboard</h2>
+        <span class="count" id="count-leaders">0</span>
+      </div>
+      <div class="column-body" id="col-leaderboard"></div>
+    </div>
+  </div>
+
+  <!-- Deploy History Panel -->
+  <div class="deploy-panel" id="deploy-panel">
+    <div class="deploy-panel-header">
+      <h2>📦 Deploy History</h2>
+      <button class="deploy-refresh" id="deploy-refresh-btn">↻ Refresh</button>
+    </div>
+    <div class="deploy-timeline" id="deploy-timeline">
+      <div class="deploy-empty">Loading deploy history…</div>
     </div>
   </div>
 
@@ -346,6 +473,81 @@
       const hr = Math.floor(min / 60);
       return `${hr}h`;
     }
+
+    // ── Tab switching ──
+    function activateTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+      document.getElementById('board-view').style.display = tabName === 'tasks' ? '' : 'none';
+      document.getElementById('deploy-panel').classList.toggle('visible', tabName === 'deploys');
+      if (tabName === 'deploys') loadDeployHistory();
+    }
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+    });
+
+    // ── Deploy History ──
+    let deployHistoryCache = null;
+    async function loadDeployHistory() {
+      const el = document.getElementById('deploy-timeline');
+      el.innerHTML = '<div class="deploy-empty">Loading…</div>';
+      try {
+        const r = await fetch('deployHistory.json?t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const history = await r.json();
+        deployHistoryCache = history;
+        renderDeployHistory(history, el);
+      } catch(e) {
+        el.innerHTML = '<div class="deploy-empty">Could not load deploy history: ' + e.message + '</div>';
+      }
+    }
+
+    function computeDuration(timestamp, prevTimestamp) {
+      if (!timestamp) return '';
+      const diffMs = new Date(timestamp).getTime() - (prevTimestamp ? new Date(prevTimestamp).getTime() : new Date(timestamp).getTime());
+      if (isNaN(diffMs) || diffMs <= 0) return '';
+      const diffMins = Math.round(diffMs / 60000);
+      if (diffMins < 1)   return '<1m';
+      if (diffMins < 60)  return diffMins + 'm';
+      const h = Math.floor(diffMins / 60);
+      const m = diffMins % 60;
+      return m > 0 ? h + 'h ' + m + 'm' : h + 'h';
+    }
+
+    function renderDeployHistory(history, el) {
+      if (!history || history.length === 0) {
+        el.innerHTML = '<div class="deploy-empty">No deploy history yet.</div>';
+        return;
+      }
+      el.innerHTML = '';
+      // Show newest first, compute duration client-side
+      const sorted = [...history].sort(function(a, b) {
+        return new Date(b.timestamp) - new Date(a.timestamp);
+      });
+      sorted.slice(0, 20).forEach(function(entry, idx) {
+        const prevEntry = sorted[idx + 1];
+        const ts = entry.timestamp ? new Date(entry.timestamp) : null;
+        const timeStr = ts ? ts.toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
+        const trigger = (entry.trigger || 'manual').toLowerCase();
+        const status = entry.status === 'deployed' ? 'ok' : 'err';
+        const dur = computeDuration(entry.timestamp, prevEntry ? prevEntry.timestamp : null);
+
+        const div = document.createElement('div');
+        div.className = 'deploy-entry';
+        div.innerHTML = `
+          <div class="de-time">${timeStr}</div>
+          <div class="de-right">
+            <span class="de-status ${status === 'err' ? 'err' : ''}"></span>
+            <span class="de-trigger ${trigger}">${trigger}</span>
+          </div>
+          <div class="de-duration">${dur ? '← ' + dur : ''}</div>
+        `;
+        el.appendChild(div);
+      });
+    }
+
+    document.getElementById('deploy-refresh-btn').addEventListener('click', function() {
+      loadDeployHistory();
+    });
 
     function colorForAgent(agentName) {
       const a = (agentName || '').toLowerCase().trim();
@@ -551,6 +753,7 @@
         renderColumn('queued',   board.queued   || []);
         renderColumn('inprogress', board.inprogress || []);
         renderColumn('done',     board.done     || []);
+        renderLeaderboard(board.done || []);
 
         const minAgo = Math.round((Date.now() - lastSync) / 60000);
         document.getElementById('sync-time').textContent = 'Synced: ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

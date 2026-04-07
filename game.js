@@ -636,35 +636,56 @@ function updateHudPills() {
 }
 
 function updateAgentWorkloadCards() {
-    var container = document.getElementById('agent-cards');
-    if (!container) return;
-    var cfgAgents = window._mcAgents || [];
-    var html = '';
-    for (var ci = 0; ci < cfgAgents.length; ci++) {
-        var agent = cfgAgents[ci];
-        var rt = state.agents.get(agent.id);
-        if (!rt) continue;
-        var status = rt.status || 'idle';
-        var msg = rt.message || 'standing by';
-        // trim long messages
-        if (msg.length > 30) msg = msg.substring(0, 28) + '…';
-        html += '<div class="agent-row">';
-        html += '<span class="agent-emoji" style="color:' + (agent.color || '#e2e8f0') + '">' + (agent.emoji || '') + '</span>';
-        html += '<span class="agent-name">' + agent.name + '</span>';
-        html += '<span class="agent-pw">' + (agent.model || '') + '</span>';
-        html += '<span class="agent-status-dot ' + status + '"></span>';
-        html += '</div>';
-        if (status !== 'idle' && status !== 'offline') {
-            html += '<div class="agent-msg">' + escapeHtml(msg) + '</div>';
-        }
-    }
-    container.innerHTML = html;
-}
+    var list = document.getElementById('hud-agents-list');
+    if (!list) return;
+    list.innerHTML = '';
+    state.agents.forEach(function(agent) {
+        var row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.alignItems = 'center';
+        row.style.gap = '5px';
+        row.style.fontSize = '9px';
 
-function escapeHtml(text) {
-    var d = document.createElement('div');
-    d.appendChild(document.createTextNode(text));
-    return d.innerHTML;
+        var dot = document.createElement('span');
+        dot.textContent = '\u25cf';
+        dot.style.color = STATUS_COLORS[agent.status] ? '#' + STATUS_COLORS[agent.status].toString(16).padStart(6, '0') : '#64748b';
+        dot.style.fontSize = '7px';
+        dot.style.flexShrink = '0';
+
+        var name = document.createElement('span');
+        name.textContent = agent.name;
+        name.style.color = agent.color || '#94a3b8';
+        name.style.fontWeight = '700';
+        name.style.flex = '1';
+        name.style.minWidth = '0';
+        name.style.overflow = 'hidden';
+        name.style.textOverflow = 'ellipsis';
+        name.style.whiteSpace = 'nowrap';
+
+        var model = document.createElement('span');
+        var modelKey = agent.id.replace(' ', '').toLowerCase();
+        model.textContent = AGENT_MODELS[modelKey] ? AGENT_MODELS[modelKey].split('/').pop().replace('Qwen2.5-7B-Instruct', 'Qwen-7B').replace('MiniMax-M2.7-highspeed', 'M2.7-hs').replace('MiniMax-M2.7', 'M2.7').replace('claude-sonnet-4-6', 'claude-s4').replace('gpt-4o', 'gpt-4o') : (agent.model ? agent.model.split('/').pop() : '');
+        model.style.color = '#475569';
+        model.style.fontSize = '8px';
+        model.style.flexShrink = '0';
+        model.title = AGENT_MODELS[modelKey] || agent.model || '';
+
+        var msg = document.createElement('span');
+        msg.textContent = agent.message || agent.status || '';
+        msg.style.color = '#334155';
+        msg.style.fontSize = '8px';
+        msg.style.flex = '0 0 100%';
+        msg.style.paddingLeft = '12px';
+        msg.style.overflow = 'hidden';
+        msg.style.textOverflow = 'ellipsis';
+        msg.style.whiteSpace = 'nowrap';
+
+        row.appendChild(dot);
+        row.appendChild(name);
+        row.appendChild(model);
+        list.appendChild(row);
+        list.appendChild(msg);
+    });
 }
 
 function moveAgentTo(runtime, point, opts) {
@@ -1693,6 +1714,28 @@ function renderLiveHud(data) {
             }
             body.textContent = 'Next: ' + nextText;
             card.appendChild(body);
+            // Sparkline — error history bar chart
+            if (c.errorHistory && c.errorHistory.length > 1) {
+              var sparkEl = document.createElement('div');
+              sparkEl.style.display = 'flex';
+              sparkEl.style.alignItems = 'flex-end';
+              sparkEl.style.gap = '2px';
+              sparkEl.style.height = '20px';
+              sparkEl.style.marginTop = '6px';
+              var maxErr = Math.max(...c.errorHistory.map(function(n) { return n || 0; }), 1);
+              c.errorHistory.forEach(function(errCount) {
+                var bar = document.createElement('div');
+                var h = Math.max(3, Math.round((errCount / maxErr) * 20));
+                bar.style.width = '5px';
+                bar.style.height = h + 'px';
+                bar.style.borderRadius = '2px';
+                bar.style.background = errCount > 0 ? '#f59e0b' : '#166534';
+                bar.style.flexShrink = '0';
+                bar.title = errCount + ' error(s)';
+                sparkEl.appendChild(bar);
+              });
+              card.appendChild(sparkEl);
+            }
             cronListEl.appendChild(card);
         });
     }
@@ -1764,7 +1807,9 @@ function renderLiveHud(data) {
                 row.className = 'hud-subtle';
                 row.style.lineHeight = '1.6';
                 var dot = d.status === 'deployed' ? '<span style="color:#22c55e">\u26a1</span>' : '<span style="color:#64748b">\u25cb</span>';
-                row.innerHTML = dot + ' ' + d.time + ' ago <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
+                var ago = d.time ? d.time + ' ago' : '';
+                var dur = d.duration ? ' <span style="color:#38bdf8">\u2190 ' + d.duration + '</span>' : '';
+                row.innerHTML = dot + ' ' + ago + dur + ' <span style="color:#475569">\u00b7</span> <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
                 depEl.appendChild(row);
             });
         }

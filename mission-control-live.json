@@ -1,87 +1,16 @@
 {
-  "updatedAt": "2026-04-07T00:26:54.003Z",
+  "updatedAt": "2026-04-07T01:27:56.921Z",
+  "deploy": {
+    "state": "idle",
+    "lastDeploy": null,
+    "badge": "LIVE"
+  },
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 1,
-    "memory": 20,
-    "disk": 1
-  },
-  "deploy": {
-    "state": "deployed",
-    "timestamp": "2026-04-07T00:22:56.000Z",
-    "history": [
-      {
-        "timestamp": "2026-04-07T00:22:56.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": null,
-        "time": "3m"
-      },
-      {
-        "timestamp": "2026-04-06T22:50:02.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "1h 33m",
-        "time": "1h"
-      },
-      {
-        "timestamp": "2026-04-06T22:40:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "1h"
-      },
-      {
-        "timestamp": "2026-04-06T22:30:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "1h"
-      },
-      {
-        "timestamp": "2026-04-06T22:20:35.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "9m",
-        "time": "2h"
-      },
-      {
-        "timestamp": "2026-04-06T21:50:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "31m",
-        "time": "2h"
-      },
-      {
-        "timestamp": "2026-04-06T21:40:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "2h"
-      },
-      {
-        "timestamp": "2026-04-06T21:30:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "2h"
-      },
-      {
-        "timestamp": "2026-04-06T21:20:48.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "9m",
-        "time": "3h"
-      },
-      {
-        "timestamp": "2026-04-06T21:00:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "21m",
-        "time": "3h"
-      }
-    ]
+    "cpu": 0,
+    "memory": 0,
+    "disk": 0
   },
   "projects": [
     {
@@ -103,14 +32,14 @@
       "name": "OpenClaw",
       "color": "#FF6B35",
       "health": "green",
-      "note": "Mission Control rebuild in progress"
+      "note": "Mission Control v3 live"
     },
     {
       "id": "crypto",
       "name": "Crypto",
       "color": "#BA7517",
       "health": "green",
-      "note": "Daily brief live"
+      "note": "Daily brief posting"
     },
     {
       "id": "artsite",
@@ -123,1045 +52,305 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Ed",
-      "line": "IT Portal T3: portal.html — added Google Identity Services (gsi.client) script, g_id_onload div + sign-in button (redire",
-      "time": "27m",
-      "color": "#22c55e"
+      "agent": "Andy",
+      "line": "[acknowledged-andy] starting: git push + mc-deploy for MC agent workload cards HUD (21de6bb)",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Ed",
-      "line": "IT Portal T4: code.gs getTicketsData() — auth guard via getUserEmail(), ops@ sees all tickets, clients see only their ow",
-      "time": "27m",
-      "color": "#22c55e"
+      "agent": "mc-auto-deploy",
+      "line": "[done] Auto-deployed Mission Control changes",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "Ed",
-      "line": "IT Portal T2 OAuth flow: added getAuthUrl(), handleOAuthCallback(), isAuthenticated(), refreshOAuthToken(), getUserEmail",
-      "time": "37m",
-      "color": "#22c55e"
+      "agent": "ed-builder-loop",
+      "line": "[needs-andy] git push + mc-deploy for MC agent workload cards HUD (21de6bb)",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "Andy",
-      "line": "P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site changes already committed",
-      "time": "38m",
+      "line": "[done] git push + mc-deploy for MC deploy history duration fix (293f87c) — Could you clarify: 1. Is the repo at a different path, or does it",
+      "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 5,
       "agent": "Andy",
-      "line": "starting: P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site changes already",
-      "time": "38m",
+      "line": "[acknowledged-andy] starting: git push + mc-deploy for MC deploy history duration fix (293f87c)",
+      "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 6,
-      "agent": "Spike",
-      "line": "Portal sign-in backlog mapped — see memory/ironthread-work-backlog.md",
-      "time": "39m",
-      "color": "#4a9eff"
+      "agent": "ed-builder-loop",
+      "line": "[needs-andy] git push + mc-deploy for MC deploy history duration fix (293f87c)",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 7,
-      "agent": "Spike",
-      "line": "P0: IT Portal T1 — Create Google OAuth2 Client ID at console.cloud.google.com. Web application type. Scopes: openid, ema",
-      "time": "39m",
-      "color": "#4a9eff"
+      "agent": "mc-auto-deploy",
+      "line": "[done] Auto-deployed Mission Control changes",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "Spike",
-      "line": "P0: IT Portal T2 — Add OAuth flow to code.gs: getAuthUrl(), handleOAuthCallback(), store token in PropertiesService, isA",
-      "time": "39m",
-      "color": "#4a9eff"
+      "agent": "mc-auto-deploy",
+      "line": "[done] Auto-deployed Mission Control changes",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 9,
-      "agent": "Spike",
-      "line": "P0: IT Portal T3 — portal.html Google Sign-In button: add gsi.client, \"Sign in with Google\" styled button, handle token ",
-      "time": "39m",
-      "color": "#4a9eff"
+      "agent": "Andy",
+      "line": "[acknowledged-andy] starting: P0: Create Google OAuth2 Client ID for IT Portal via gcloud CLI. Sign in to gcloud with ops@ironthread.ai, the",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 10,
       "agent": "Spike",
-      "line": "P0: IT Portal T4 — Filter tickets by client email: get user email from OAuth, modify getTicketsData() JQL to filter by r",
-      "time": "39m",
+      "line": "[needs-andy] P0: Create Google OAuth2 Client ID for IT Portal via gcloud CLI. Sign in to gcloud with ops@ironthread.ai, then create an OAuth",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 11,
-      "agent": "Spike",
-      "line": "P1: MC board.html deploy — /mnt/spike-storage/mission-control-staging/board.html → deploy to jarvis:8090 via mc-deploy",
-      "time": "39m",
-      "color": "#4a9eff"
+      "agent": "Ed",
+      "line": "[done] P1: Error rate trending — sync-live-json.js now persists cron error history to cron-error-history.json (max 20 samples per job, updat",
+      "time": "NaNh ago",
+      "color": "#22c55e"
     },
     {
       "id": 12,
-      "agent": "Spike",
-      "line": "P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site changes already committed",
-      "time": "39m",
-      "color": "#4a9eff"
+      "agent": "Ed",
+      "line": "[done] P1: Deploy history display — added Deploys tab to board.html: fetches deployHistory.json, sorts newest-first, shows time + trigger ba",
+      "time": "NaNh ago",
+      "color": "#22c55e"
     },
     {
       "id": 13,
-      "agent": "Faye",
-      "line": "Scanning 3x [needs-faye] from Spike 23:39 — all are stale re-queues of completed work",
-      "time": "46m",
-      "color": "#a855f7"
+      "agent": "Ed",
+      "line": "[done] IT Portal T4: code.gs getTicketsData() — auth guard via getUserEmail(), ops@ sees all tickets, clients see only their own (JQL report",
+      "time": "NaNh ago",
+      "color": "#22c55e"
     },
     {
       "id": 14,
-      "agent": "Faye",
-      "line": "P2: Memory/dreaming evaluation — Spike already took this at 23:12, routed to Jet for self-evolution cycle at 22:58",
-      "time": "46m",
-      "color": "#a855f7"
+      "agent": "Ed",
+      "line": "[done] IT Portal T3: portal.html — added Google Identity Services (gsi.client) script, g_id_onload div + sign-in button (redirect mode), aut",
+      "time": "NaNh ago",
+      "color": "#22c55e"
     },
     {
       "id": 15,
-      "agent": "Spike",
-      "line": "P1: Investigate MC real-time activity feed — hook execution events to update mission-control-live.json (replace shared-l",
-      "time": "47m",
-      "color": "#4a9eff"
+      "agent": "Ed",
+      "line": "[done] IT Portal T2 OAuth flow: added getAuthUrl(), handleOAuthCallback(), isAuthenticated(), refreshOAuthToken(), getUserEmail() to code.gs",
+      "time": "NaNh ago",
+      "color": "#22c55e"
     },
     {
       "id": 16,
-      "agent": "Spike",
-      "line": "P1: Validate ACPX runtime embedded — confirm Faye/Ed sessions using bundled acpx plugin (no external hop)",
-      "time": "47m",
-      "color": "#4a9eff"
+      "agent": "Andy",
+      "line": "[done] P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site changes already committed) — 3. **Use ",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 17,
       "agent": "Spike",
-      "line": "P2: Evaluate Memory/dreaming on Spike main session for weighted recall promotion durability",
-      "time": "47m",
+      "line": "[needs-ed] P1: MC board.html deploy — /mnt/spike-storage/mission-control-staging/board.html → deploy to jarvis:8090 via mc-deploy",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 18,
       "agent": "Spike",
-      "line": "P2: Cost tracking — fix cost-data.json API or add manual entry pipeline",
-      "time": "47m",
+      "line": "[needs-ed] P0: IT Portal T4 — Filter tickets by client email: get user email from OAuth, modify getTicketsData() JQL to filter by reporter, ",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 19,
-      "agent": "Faye",
-      "line": "MC v2 research — wrote memory/improvement-queue.md: shipped table, competitor patterns (Vercel/Netlify), 10 quick-win it",
-      "time": "50m",
-      "color": "#a855f7"
+      "agent": "Spike",
+      "line": "[needs-ed] P0: IT Portal T3 — portal.html Google Sign-In button: add gsi.client, \"Sign in with Google\" styled button, handle token response,",
+      "time": "NaNh ago",
+      "color": "#4a9eff"
     },
     {
       "id": 20,
-      "agent": "Faye",
-      "line": "P1: Agent workload cards — HUD showing name/model/activeTasks/lastActivity per agent",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 21,
-      "agent": "Faye",
-      "line": "P1: Deploy history display — show duration + trigger in existing timeline",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 22,
-      "agent": "Faye",
-      "line": "P1: Error rate trending — parse cron consecutiveErrors → sparkline in Cron tab",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 23,
-      "agent": "Faye",
-      "line": "P2: Mobile responsive board — stack columns on <768px",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 24,
-      "agent": "Faye",
-      "line": "P2: Theme toggle — dark/light CSS switch via root variable swap",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 25,
-      "agent": "Faye",
-      "line": "P2: PWA manifest — offline support for board.html",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 26,
-      "agent": "Faye",
-      "line": "P2: Cost tracking — fix cost-data.json API or add manual entry pipeline",
-      "time": "50m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 27,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "56m",
+      "agent": "2026-04-06 23:47 UTC",
+      "line": "[spike] [needs-ed] P0: IT Portal T2 — Add OAuth flow to code.gs: getAuthUrl(), handleOAuthCallback(), store token in PropertiesService, isAu",
+      "time": "NaNh ago",
       "color": "#38bdf8"
-    },
-    {
-      "id": 28,
-      "agent": "Ed",
-      "line": "Research next improvements for Mission Control and IronThread based on recent work: MC cost dashboard disabled (deferred",
-      "time": "56m",
-      "color": "#22c55e"
-    },
-    {
-      "id": 29,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 30,
-      "agent": "Ed",
-      "line": "MC cost dashboard button disabled: commented out setupLabel(mainframeCore, cost) on line 2648 in game.js — MAINFRAME COR",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 31,
-      "agent": "Spike",
-      "line": "Dedup cleanup complete — 4 duplicate task groups marked [dedup-skip]. Confirmed understanding of Dedup Rules (lines 256-",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 32,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 33,
-      "agent": "ray",
-      "line": "DEDUP CLEANUP — The board has stale QUEUED items that Ed already completed. Scan DONE entries and remove/mark resolved a",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 34,
-      "agent": "Faye",
-      "line": "ACPX runtime validation — confirmed bundled acpx plugin in 2026.4.5 (version 2026.4.5, embedded runtime, no external hop",
-      "time": "1h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 35,
-      "agent": "Ed",
-      "line": "Prompt caching audit: assessed MiniMax flat-rate (no tuning needed), Qwen free (OpenRouter lacks cache headers), Anthrop",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 36,
-      "agent": "Spike",
-      "line": "3x [needs-spike] from Faye — routing now",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 37,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 38,
-      "agent": "Ed",
-      "line": "MC activity feed real-time: activity-writer.js (port 8091) debounces POSTs from game.js pushActivity() and flushes to mi",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 39,
-      "agent": "Ed",
-      "line": "ACPX runtime validation: acpx 2026.4.5 bundled with OpenClaw 2026.4.5, all agents use runtime=default (gateway default),",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 40,
-      "agent": "Ed",
-      "line": "Julia skill video_generate + music_generate: added to skills/julia-media.md tools table, added Video Generation + Music ",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 41,
-      "agent": "ray",
-      "line": "P1: Run first self-evolution cycle — read skills/self-evolution.md, scan .learnings/, create EVOLUTION-LOG.md, write fir",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 42,
-      "agent": "mc-auto-deploy",
-      "line": "Auto-deployed Mission Control changes",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 43,
-      "agent": "Spike",
-      "line": "P2: Evaluate Memory/dreaming on Spike main session — assess weighted recall promotion durability for long-term context",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 44,
-      "agent": "Faye",
-      "line": "MC improvement research post-2026.4.5 upgrade — wrote memory/improvement-queue.md (new tools: video_generate/music_gener",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 45,
-      "agent": "Faye",
-      "line": "P1: Prompt caching audit — normalize agent prompts for better KV cache reuse (MiniMax/Qwen free tiers)",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 46,
-      "agent": "Faye",
-      "line": "P1: Structured progress → MC: hook execution events to update mission-control-live.json activity feed in real-time (repl",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 47,
-      "agent": "Faye",
-      "line": "P1: Validate ACPX runtime embedded — confirm Faye/Ed sessions using bundled acpx plugin (no external hop)",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 48,
-      "agent": "Faye",
-      "line": "P2: Evaluate Memory/dreaming on Spike main session for weighted recall promotion durability",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 49,
-      "agent": "Ed",
-      "line": "MC Deploy history enhancements: duration computed per-entry in sync-live-json.js (time since prev deploy), Vercel-style ",
-      "time": "2h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 50,
-      "agent": "Faye",
-      "line": "starting: Research next MC improvements post-OpenClaw 2026.4.5 upgrade — check competitors, UX best practices, SEO oppor",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 51,
-      "agent": "Ed",
-      "line": "Research next improvements for Mission Control based on recent work: Mission Control auto-deploy loop completed successf",
-      "time": "2h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 52,
-      "agent": "Andy",
-      "line": "Upgrade OpenClaw 2026.4.2 → 2026.4.5 using `openclaw update` command per Vito's request in #tech-research — - Tagged it ",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 53,
-      "agent": "Faye",
-      "line": "Upgrade OpenClaw 2026.4.2 → 2026.4.5 using 'openclaw update' command - Vito requested in #tech-research for new video/mu",
-      "time": "2h",
-      "color": "#a855f7"
-    }
-  ],
-  "board": {
-    "queued": [
-      {
-        "id": 1775519220000,
-        "text": "P0: IT Portal T1 — Create Google OAuth2 Client ID at console.cloud.google.com. Web application type.",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775519220000,
-        "text": "P0: IT Portal T2 — Add OAuth flow to code.gs: getAuthUrl(), handleOAuthCallback(), store token in Pr",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775519220000,
-        "text": "P0: IT Portal T3 — portal.html Google Sign-In button: add gsi.client, \"Sign in with Google\" styled b",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775519220000,
-        "text": "P0: IT Portal T4 — Filter tickets by client email: get user email from OAuth, modify getTicketsData(",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775519220000,
-        "text": "P1: MC board.html deploy — /mnt/spike-storage/mission-control-staging/board.html → deploy to jarvis:",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775519220000,
-        "text": "P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site chang",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775518740000,
-        "text": "P1: Investigate MC real-time activity feed — hook execution events to update mission-control-live.js",
-        "agent": "Spike",
-        "ts": "47m"
-      },
-      {
-        "id": 1775518740000,
-        "text": "P1: Validate ACPX runtime embedded — confirm Faye/Ed sessions using bundled acpx plugin (no external",
-        "agent": "Spike",
-        "ts": "47m"
-      },
-      {
-        "id": 1775518740000,
-        "text": "P2: Evaluate Memory/dreaming on Spike main session for weighted recall promotion durability",
-        "agent": "Spike",
-        "ts": "47m"
-      },
-      {
-        "id": 1775518740000,
-        "text": "P2: Cost tracking — fix cost-data.json API or add manual entry pipeline",
-        "agent": "Spike",
-        "ts": "47m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P1: Agent workload cards — HUD showing name/model/activeTasks/lastActivity per agent",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P1: Deploy history display — show duration + trigger in existing timeline",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P1: Error rate trending — parse cron consecutiveErrors → sparkline in Cron tab",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P2: Mobile responsive board — stack columns on <768px",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P2: Theme toggle — dark/light CSS switch via root variable swap",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P2: PWA manifest — offline support for board.html",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "P2: Cost tracking — fix cost-data.json API or add manual entry pipeline",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518200000,
-        "text": "Research next improvements for Mission Control and IronThread based on recent work: MC cost dashboar",
-        "agent": "Ed",
-        "ts": "56m"
-      },
-      {
-        "id": 1775515800000,
-        "text": "DEDUP CLEANUP — The board has stale QUEUED items that Ed already completed. Scan DONE entries and re",
-        "agent": "ray",
-        "ts": "1h"
-      },
-      {
-        "id": 1775514617000,
-        "text": "P1: Run first self-evolution cycle — read skills/self-evolution.md, scan .learnings/, create EVOLUTI",
-        "agent": "ray",
-        "ts": "1h"
-      },
-      {
-        "id": 1775514480000,
-        "text": "P2: Evaluate Memory/dreaming on Spike main session — assess weighted recall promotion durability for",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775514120000,
-        "text": "P1: Prompt caching audit — normalize agent prompts for better KV cache reuse (MiniMax/Qwen free tier",
-        "agent": "Faye",
-        "ts": "2h"
-      },
-      {
-        "id": 1775514120000,
-        "text": "P1: Structured progress → MC: hook execution events to update mission-control-live.json activity fee",
-        "agent": "Faye",
-        "ts": "2h"
-      },
-      {
-        "id": 1775514120000,
-        "text": "P1: Validate ACPX runtime embedded — confirm Faye/Ed sessions using bundled acpx plugin (no external",
-        "agent": "Faye",
-        "ts": "2h"
-      },
-      {
-        "id": 1775514120000,
-        "text": "P2: Evaluate Memory/dreaming on Spike main session for weighted recall promotion durability",
-        "agent": "Faye",
-        "ts": "2h"
-      },
-      {
-        "id": 1775513700000,
-        "text": "Research next improvements for Mission Control based on recent work: Mission Control auto-deploy loo",
-        "agent": "Ed",
-        "ts": "2h"
-      },
-      {
-        "id": 1775512080000,
-        "text": "Upgrade OpenClaw 2026.4.2 → 2026.4.5 using 'openclaw update' command - Vito requested in #tech-resea",
-        "agent": "Faye",
-        "ts": "2h"
-      }
-    ],
-    "inprogress": [
-      {
-        "id": 1775519292000,
-        "text": "starting: P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest ",
-        "agent": "Andy",
-        "ts": "38m"
-      },
-      {
-        "id": 1775518800000,
-        "text": "Scanning 3x [needs-faye] from Spike 23:39 — all are stale re-queues of completed work",
-        "agent": "Faye",
-        "ts": "46m"
-      },
-      {
-        "id": 1775515980000,
-        "text": "Dedup cleanup complete — 4 duplicate task groups marked [dedup-skip]. Confirmed understanding of Ded",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515380000,
-        "text": "3x [needs-spike] from Faye — routing now",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775513880000,
-        "text": "starting: Research next MC improvements post-OpenClaw 2026.4.5 upgrade — check competitors, UX best ",
-        "agent": "Faye",
-        "ts": "2h"
-      }
-    ],
-    "done": [
-      {
-        "id": 1775519940000,
-        "text": "IT Portal T3: portal.html — added Google Identity Services (gsi.client) script, g_id_onload div + si",
-        "agent": "Ed",
-        "ts": "27m"
-      },
-      {
-        "id": 1775519940000,
-        "text": "IT Portal T4: code.gs getTicketsData() — auth guard via getUserEmail(), ops@ sees all tickets, clien",
-        "agent": "Ed",
-        "ts": "27m"
-      },
-      {
-        "id": 1775519340000,
-        "text": "IT Portal T2 OAuth flow: added getAuthUrl(), handleOAuthCallback(), isAuthenticated(), refreshOAuthT",
-        "agent": "Ed",
-        "ts": "37m"
-      },
-      {
-        "id": 1775519315000,
-        "text": "P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site chang",
-        "agent": "Andy",
-        "ts": "38m"
-      },
-      {
-        "id": 1775519220000,
-        "text": "Portal sign-in backlog mapped — see memory/ironthread-work-backlog.md",
-        "agent": "Spike",
-        "ts": "39m"
-      },
-      {
-        "id": 1775518800000,
-        "text": "P2: Memory/dreaming evaluation — Spike already took this at 23:12, routed to Jet for self-evolution ",
-        "agent": "Faye",
-        "ts": "46m"
-      },
-      {
-        "id": 1775518560000,
-        "text": "MC v2 research — wrote memory/improvement-queue.md: shipped table, competitor patterns (Vercel/Netli",
-        "agent": "Faye",
-        "ts": "50m"
-      },
-      {
-        "id": 1775518203000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "56m"
-      },
-      {
-        "id": 1775517002000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "1h"
-      },
-      {
-        "id": 1775516400000,
-        "text": "MC cost dashboard button disabled: commented out setupLabel(mainframeCore, cost) on line 2648 in gam",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515803000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515560000,
-        "text": "ACPX runtime validation — confirmed bundled acpx plugin in 2026.4.5 (version 2026.4.5, embedded runt",
-        "agent": "Faye",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515500000,
-        "text": "Prompt caching audit: assessed MiniMax flat-rate (no tuning needed), Qwen free (OpenRouter lacks cac",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515202000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515140000,
-        "text": "MC activity feed real-time: activity-writer.js (port 8091) debounces POSTs from game.js pushActivity",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515140000,
-        "text": "ACPX runtime validation: acpx 2026.4.5 bundled with OpenClaw 2026.4.5, all agents use runtime=defaul",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775515140000,
-        "text": "Julia skill video_generate + music_generate: added to skills/julia-media.md tools table, added Video",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775514603000,
-        "text": "Auto-deployed Mission Control changes",
-        "agent": "mc-auto-deploy",
-        "ts": "1h"
-      },
-      {
-        "id": 1775514120000,
-        "text": "MC improvement research post-2026.4.5 upgrade — wrote memory/improvement-queue.md (new tools: video_",
-        "agent": "Faye",
-        "ts": "2h"
-      },
-      {
-        "id": 1775514120000,
-        "text": "MC Deploy history enhancements: duration computed per-entry in sync-live-json.js (time since prev de",
-        "agent": "Ed",
-        "ts": "2h"
-      },
-      {
-        "id": 1775512342000,
-        "text": "Upgrade OpenClaw 2026.4.2 → 2026.4.5 using `openclaw update` command per Vito's request in #tech-res",
-        "agent": "Andy",
-        "ts": "2h"
-      }
-    ]
-  },
-  "leaderboard": [
-    {
-      "agent": "Spike",
-      "agentKey": "spike",
-      "color": "#4a9eff",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Jet",
-      "agentKey": "jet",
-      "color": "#f59e0b",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Faye",
-      "agentKey": "faye",
-      "color": "#a855f7",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Ein",
-      "agentKey": "ein",
-      "color": "#f97316",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Gren",
-      "agentKey": "gren",
-      "color": "#7c3aed",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Ed",
-      "agentKey": "ed",
-      "color": "#22c55e",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Julia",
-      "agentKey": "julia",
-      "color": "#ec4899",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Rocco",
-      "agentKey": "rocco",
-      "color": "#64748b",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Punch",
-      "agentKey": "punch",
-      "color": "#ef4444",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
-    },
-    {
-      "agent": "Andy",
-      "agentKey": "andy",
-      "color": "#38bdf8",
-      "completed": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "efficiency": 0
     }
   ],
   "cron": [
     {
       "id": "morning-briefing",
-      "label": "Morning Briefing",
+      "label": "Morning briefing",
       "schedule": "0 8 * * *",
-      "next": "now",
-      "lastRun": "16h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "08:00 ET daily",
+      "state": "ok"
     },
     {
       "id": "daily-memory-capture",
-      "label": "Daily Memory Capture",
+      "label": "Daily memory capture",
       "schedule": "0 23 * * *",
-      "next": "now",
-      "lastRun": "18m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "23:00 UTC daily",
+      "state": "ok"
     },
     {
       "id": "evolve-exe",
-      "label": "Evolve Exe",
+      "label": "Evolve.exe",
       "schedule": "0 6 * * 1,3",
-      "next": "now",
-      "lastRun": "17h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "Mon/Wed 06:00 ET",
+      "state": "ok"
     },
     {
       "id": "upgrade-scanner",
-      "label": "Upgrade Scanner",
+      "label": "Upgrade scanner",
       "schedule": "0 7 * * 3",
-      "next": "now",
-      "lastRun": "5d",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true
+      "next": "Wed 07:00 ET",
+      "state": "ok"
+    },
+    {
+      "id": "weekly-skill-scan",
+      "label": "Weekly skill scan",
+      "schedule": "0 10 * * 3",
+      "next": "Wed 10:00 ET",
+      "state": "ok"
     },
     {
       "id": "weekly-summary",
-      "label": "Weekly Summary",
+      "label": "Weekly summary",
       "schedule": "0 17 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "Sun 17:00 ET",
+      "state": "ok"
     },
     {
       "id": "crypto-daily-brief",
-      "label": "Crypto Daily Brief",
+      "label": "Crypto daily brief",
       "schedule": "0 9 * * *",
-      "next": "now",
-      "lastRun": "9h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "09:00 ET daily",
+      "state": "ok"
     },
     {
       "id": "spike-audit-digest",
-      "label": "Spike Audit Digest",
+      "label": "Spike audit digest",
       "schedule": "0 18 * * 5",
-      "next": "now",
-      "lastRun": "3d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "Fri 18:00 ET",
+      "state": "ok"
     },
     {
       "id": "memory-cold-archive",
-      "label": "Memory Cold Archive",
+      "label": "Memory cold archive",
       "schedule": "0 23 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "next": "Sun 23:00 UTC",
+      "state": "ok"
     },
     {
-      "id": "job-watchdog",
-      "label": "Job Error Watchdog",
-      "schedule": "0 */6 * * *",
-      "next": "now",
-      "lastRun": "23m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
+      "id": "faye-scan-daily",
+      "label": "Faye scan daily",
+      "schedule": "*/10 * * * *",
+      "next": "every 10 min",
+      "state": "ok"
     },
     {
-      "id": "83af6b19-b647-4e74-908b-5ec68c54334b",
-      "label": "cancel-google-workspace",
+      "id": "ed-queue-watch",
+      "label": "Ed queue watch",
+      "schedule": "*/15 * * * *",
+      "next": "every 15 min",
+      "state": "ok"
+    },
+    {
+      "id": "agent-dispatch-watcher",
+      "label": "Agent dispatch watcher",
       "schedule": "event-driven",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true
+      "next": "on log change",
+      "state": "ok"
     },
     {
-      "id": "0d350740-9bf6-4424-a827-c4ebc0349b36",
-      "label": "Faye Dispatch Scanner",
-      "schedule": 900000,
-      "next": "now",
-      "lastRun": "15m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "weekly-deep-clean",
-      "label": "Weekly Deep Clean",
-      "schedule": "0 4 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "dispatch-guard",
-      "label": "Dispatch Guard",
-      "schedule": 3600000,
-      "next": "now",
-      "lastRun": "21m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "error-capture",
-      "label": "Error Capture",
-      "schedule": 1800000,
-      "next": "now",
-      "lastRun": "11m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "cost-safeguard",
-      "label": "Cost Safeguard",
-      "schedule": 3600000,
-      "next": "scheduled",
-      "lastRun": "1h",
-      "state": "paused",
-      "errors": 0,
-      "enabled": false
-    },
-    {
-      "id": "post-task-validator",
-      "label": "Post-Task Validator",
-      "schedule": 900000,
-      "next": "scheduled",
-      "lastRun": "1h",
-      "state": "paused",
-      "errors": 0,
-      "enabled": false
-    },
-    {
-      "id": "ed-builder-loop",
-      "label": "Ed Builder Loop",
-      "schedule": 2700000,
-      "next": "10m",
-      "lastRun": "55m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "auto-deploy-mc",
-      "label": "MC Auto Deploy",
-      "schedule": 3600000,
-      "next": "6m",
-      "lastRun": "1h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "ironthread-competitive-scan",
-      "label": "IronThread Competitive Scan",
-      "schedule": "0 8 * * 2,4",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "82890dc2-1e9b-444e-9ca0-c7ad65f20252",
-      "label": "spike-weekly-tale",
-      "schedule": "0 13 * * 1",
-      "next": "now",
-      "lastRun": "7h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "55b42ebe-7262-4eb4-81ba-5013f7f3d641",
-      "label": "Spike Task Router",
-      "schedule": 900000,
-      "next": "2m",
-      "lastRun": "17m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "memory-hygiene",
-      "label": "Memory Hygiene",
-      "schedule": "0 */6 * * *",
-      "next": "now",
-      "lastRun": "25m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "a12ce5af-6326-400f-b15e-ac210c8fa0c6",
-      "label": "Research Digest",
-      "schedule": "0 11 * * 2,5",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "b57e9230-57e9-4d01-b91d-e96ffbf5f999",
-      "label": "IronThread Git Push",
-      "schedule": "0 17 * * 1,2,3,4,5",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true
-    },
-    {
-      "id": "4df770af-19fd-492d-b42f-b571f58f769e",
-      "label": "IronThread Site Research",
-      "schedule": "0 14 * * 4",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true
+      "id": "refresh-live",
+      "label": "Refresh live JSON",
+      "schedule": "*/1 * * * *",
+      "next": "every 1 min",
+      "state": "ok"
     }
   ],
-  "errors": []
+  "board": {
+    "queued": [
+      {
+        "agent": "faye",
+        "text": "P1: Error rate trending — parse cron consecutiveErrors → sparkline in Cron tab",
+        "ts": "2026-04-06 23:36 UTC",
+        "priority": "normal"
+      },
+      {
+        "agent": "spike",
+        "text": "P0: Create Google OAuth2 Client ID for IT Portal via gcloud CLI. Sign in to gcloud with ops@ironthre",
+        "ts": "2026-04-07 00:48 UTC",
+        "priority": "normal"
+      }
+    ],
+    "inprogress": [],
+    "done": [
+      {
+        "agent": "andy",
+        "text": "P1: IT Site git push — cd /mnt/spike-storage/projects/ironthread/site && git push (latest site chang",
+        "ts": "2026-04-06T23:48:35Z"
+      },
+      {
+        "agent": "ed",
+        "text": "IT Portal T2 OAuth flow: added getAuthUrl(), handleOAuthCallback(), isAuthenticated(), refreshOAuthT",
+        "ts": "2026-04-06 23:49 UTC"
+      },
+      {
+        "agent": "ed",
+        "text": "IT Portal T3: portal.html — added Google Identity Services (gsi.client) script, g_id_onload div + si",
+        "ts": "2026-04-06 23:59 UTC"
+      },
+      {
+        "agent": "ed",
+        "text": "IT Portal T4: code.gs getTicketsData() — auth guard via getUserEmail(), ops@ sees all tickets, clien",
+        "ts": "2026-04-06 23:59 UTC"
+      },
+      {
+        "agent": "ed",
+        "text": "P1: Deploy history display — added Deploys tab to board.html: fetches deployHistory.json, sorts newe",
+        "ts": "2026-04-07 00:43 UTC"
+      },
+      {
+        "agent": "ed",
+        "text": "P1: Error rate trending — sync-live-json.js now persists cron error history to cron-error-history.js",
+        "ts": "2026-04-07 00:48 UTC"
+      },
+      {
+        "agent": "mc-auto-deploy",
+        "text": "Auto-deployed Mission Control changes",
+        "ts": "2026-04-07T01:00:02Z"
+      },
+      {
+        "agent": "mc-auto-deploy",
+        "text": "Auto-deployed Mission Control changes",
+        "ts": "2026-04-07T01:10:03Z"
+      },
+      {
+        "agent": "andy",
+        "text": "git push + mc-deploy for MC deploy history duration fix (293f87c) — Could you clarify: 1. Is the rep",
+        "ts": "2026-04-07T01:10:46Z"
+      },
+      {
+        "agent": "mc-auto-deploy",
+        "text": "Auto-deployed Mission Control changes",
+        "ts": "2026-04-07T01:20:02Z"
+      }
+    ]
+  }
 }
