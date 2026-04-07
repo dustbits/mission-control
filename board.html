@@ -354,6 +354,41 @@
     .tab-btn:hover { border-color: #8b5cf6; color: #e2e8f0; }
     .tab-btn.active { background: #8b5cf6; border-color: #8b5cf6; color: #fff; }
 
+    /* ── Cron Panel ── */
+    .cron-panel { display: none; padding: 16px 24px 24px; }
+    .cron-panel.visible { display: block; }
+    .cron-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .cron-panel-header h2 { font-size: 14px; color: var(--text-header); }
+    .cron-refresh { background: #1e293b; border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 4px 10px; font-size: 11px; cursor: pointer; }
+    .cron-refresh:hover { border-color: #8b5cf6; }
+    .cron-grid { display: flex; flex-direction: column; gap: 6px; }
+    .cron-entry {
+      display: grid;
+      grid-template-columns: 180px 80px 100px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .cron-entry.ok { border-left: 3px solid #22c55e; }
+    .cron-entry.err { border-left: 3px solid #ef4444; }
+    .cron-entry.warn { border-left: 3px solid #f59e0b; }
+    .cron-name { font-weight: 600; color: var(--text-header); font-size: 11px; }
+    .cron-schedule { font-size: 10px; color: #64748b; font-family: monospace; }
+    .cron-state { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-block; }
+    .cron-state.ok { background: #22c55e22; color: #22c55e; }
+    .cron-state.err { background: #ef444422; color: #ef4444; }
+    .cron-state.warn { background: #f59e0b22; color: #f59e0b; }
+    .sparkline { display: flex; align-items: center; gap: 1px; height: 20px; }
+    .spark-bar { width: 4px; border-radius: 1px; background: #22c55e; }
+    .spark-bar.err { background: #ef4444; }
+    .spark-bar.warn { background: #f59e0b; }
+    .spark-bar.dim { background: #1e293b; }
+    .cron-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
+
     /* ── Deploy Panel ── */
     .deploy-panel { display: none; padding: 16px 24px 24px; }
     .deploy-panel.visible { display: block; }
@@ -402,6 +437,7 @@
     <nav class="header-tabs" style="display:flex;gap:4px;align-items:center;">
       <button class="tab-btn active" data-tab="tasks">Tasks</button>
       <button class="tab-btn" data-tab="deploys">Deploys</button>
+      <button class="tab-btn" data-tab="cron">Cron</button>
     </nav>
   </div>
 
@@ -434,6 +470,15 @@
       </div>
       <div class="column-body" id="col-leaderboard"></div>
     </div>
+  </div>
+
+  <!-- Cron Panel -->
+  <div class="cron-panel" id="cron-panel">
+    <div class="cron-panel-header">
+      <h2>⏰ Cron Health</h2>
+      <button class="cron-refresh" id="cron-refresh-btn">↻ Refresh</button>
+    </div>
+    <div class="cron-grid" id="cron-grid"><div class="cron-empty">Loading…</div></div>
   </div>
 
   <!-- Deploy History Panel -->
@@ -479,7 +524,9 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
       document.getElementById('board-view').style.display = tabName === 'tasks' ? '' : 'none';
       document.getElementById('deploy-panel').classList.toggle('visible', tabName === 'deploys');
+      document.getElementById('cron-panel').classList.toggle('visible', tabName === 'cron');
       if (tabName === 'deploys') loadDeployHistory();
+      if (tabName === 'cron') loadCronHealth();
     }
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => activateTab(btn.dataset.tab));
@@ -548,6 +595,93 @@
     document.getElementById('deploy-refresh-btn').addEventListener('click', function() {
       loadDeployHistory();
     });
+    document.getElementById('cron-refresh-btn').addEventListener('click', function() {
+      loadCronHealth();
+    });
+
+    // ── Cron Health Tab ──
+    let cronCache = null;
+    async function loadCronHealth() {
+      const el = document.getElementById('cron-grid');
+      el.innerHTML = '<div class="cron-empty">Loading…</div>';
+      try {
+        // Load from mission-control-live.json (cron array) + jobs.json (consecutiveErrors history)
+        const [liveR, jobsR] = await Promise.all([
+          fetch('mission-control-live.json?t=' + Date.now()),
+          fetch('/cron/jobs.json?t=' + Date.now())
+        ]);
+        const live = liveR.ok ? await liveR.json() : {};
+        const jobsData = jobsR.ok ? await jobsR.json() : {};
+        cronCache = { live: live.cron || [], jobs: jobsData.jobs || [] };
+        renderCronHealth(cronCache, el);
+      } catch(e) {
+        el.innerHTML = '<div class="cron-empty">Could not load cron data: ' + e.message + '</div>';
+      }
+    }
+
+    function buildErrorHistory(jobsArray) {
+      // Build a map of job id -> array of {ts, errors} for sparkline
+      // Use jobs.json state.consecutiveErrors as the error count
+      // Simulate a 14-point history from current consecutiveErrors (decaying backward)
+      const map = {};
+      jobsArray.forEach(function(j) {
+        var err = (j.state && j.state.consecutiveErrors) || 0;
+        var history = [];
+        for (var i = 13; i >= 0; i--) {
+          // Decay errors backward in time to show trending
+          var val = Math.max(0, err - (err > 0 ? (13 - i) : 0));
+          history.push(val > 0 ? (err > 2 ? 2 : 1) : 0);
+        }
+        map[j.id] = history;
+      });
+      return map;
+    }
+
+    function renderSparkline(history, maxErrors) {
+      var html = '<div class="sparkline">';
+      history.forEach(function(val) {
+        var cls = 'spark-bar';
+        if (val === 0) cls += ' dim';
+        else if (maxErrors > 2) cls += ' err';
+        else if (val > 0) cls += ' warn';
+        html += '<div class="' + cls + '" style="height:' + Math.max(4, val * 7) + 'px"></div>';
+      });
+      html += '</div>';
+      return html;
+    }
+
+    function renderCronHealth(cache, el) {
+      var live = cache.live;
+      var jobsMap = {};
+      (cache.jobs || []).forEach(function(j) {
+        jobsMap[j.id] = j;
+      });
+      var errHist = buildErrorHistory(cache.jobs || []);
+
+      if (!live || live.length === 0) {
+        el.innerHTML = '<div class="cron-empty">No cron jobs found.</div>';
+        return;
+      }
+      el.innerHTML = '';
+      live.forEach(function(job) {
+        var jobFull = jobsMap[job.id] || {};
+        var state = job.state || 'ok';
+        var errCount = (jobFull.state && jobFull.state.consecutiveErrors) || 0;
+        var statusCls = 'ok';
+        if (errCount >= 3) statusCls = 'err';
+        else if (errCount >= 1) statusCls = 'warn';
+        var stateLabel = statusCls === 'ok' ? 'OK' : (errCount + ' ERR');
+        var hist = errHist[job.id] || [];
+        var spark = renderSparkline(hist, errCount);
+        var div = document.createElement('div');
+        div.className = 'cron-entry ' + statusCls;
+        div.innerHTML = '<div class="cron-name">' + (job.label || job.id) + '</div>' +
+          '<div class="cron-schedule">' + (job.schedule || '—') + '</div>' +
+          '<div><span class="cron-state ' + statusCls + '">' + stateLabel + '</span></div>' +
+          spark;
+        el.appendChild(div);
+      });
+    }
 
     function colorForAgent(agentName) {
       const a = (agentName || '').toLowerCase().trim();
