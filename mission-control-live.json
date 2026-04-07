@@ -1,189 +1,16 @@
 {
-  "updatedAt": "2026-04-07T04:12:31.694Z",
+  "updatedAt": "2026-04-07T04:16:43.253Z",
+  "deploy": {
+    "state": "idle",
+    "lastDeploy": null,
+    "badge": "LIVE"
+  },
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 7,
-    "memory": 32,
-    "disk": 1
-  },
-  "agents": [
-    {
-      "name": "Spike",
-      "key": "spike",
-      "model": "MiniMax/M2.7-highspeed",
-      "color": "#4a9eff",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Jet",
-      "key": "jet",
-      "model": "MiniMax/M2.7",
-      "color": "#f59e0b",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Faye",
-      "key": "faye",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#a855f7",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Ein",
-      "key": "ein",
-      "model": "MiniMax/M2.7",
-      "color": "#f97316",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Gren",
-      "key": "gren",
-      "model": "MiniMax/M2.7",
-      "color": "#7c3aed",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Ed",
-      "key": "ed",
-      "model": "openai/gpt-4o",
-      "color": "#22c55e",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Julia",
-      "key": "julia",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#ec4899",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Rocco",
-      "key": "rocco",
-      "model": "MiniMax/M2.7",
-      "color": "#64748b",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Punch",
-      "key": "punch",
-      "model": "claude-sonnet-4",
-      "color": "#ef4444",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Andy",
-      "key": "andy",
-      "model": "claude-sonnet-4",
-      "color": "#38bdf8",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    }
-  ],
-  "deploy": {
-    "state": "deployed",
-    "timestamp": "2026-04-07T04:10:40.000Z",
-    "history": [
-      {
-        "timestamp": "2026-04-07T04:10:40.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": null,
-        "time": "now"
-      },
-      {
-        "timestamp": "2026-04-07T03:29:17.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "41m",
-        "time": "43m"
-      },
-      {
-        "timestamp": "2026-04-07T00:22:56.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "3h 6m",
-        "time": "3h"
-      },
-      {
-        "timestamp": "2026-04-06T22:50:02.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "1h 33m",
-        "time": "5h"
-      },
-      {
-        "timestamp": "2026-04-06T22:40:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "5h"
-      },
-      {
-        "timestamp": "2026-04-06T22:30:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "5h"
-      },
-      {
-        "timestamp": "2026-04-06T22:20:35.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "9m",
-        "time": "5h"
-      },
-      {
-        "timestamp": "2026-04-06T21:50:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "31m",
-        "time": "6h"
-      },
-      {
-        "timestamp": "2026-04-06T21:40:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "6h"
-      },
-      {
-        "timestamp": "2026-04-06T21:30:01.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "10m",
-        "time": "6h"
-      }
-    ]
+    "cpu": 0,
+    "memory": 0,
+    "disk": 0
   },
   "projects": [
     {
@@ -205,14 +32,14 @@
       "name": "OpenClaw",
       "color": "#FF6B35",
       "health": "green",
-      "note": "Mission Control rebuild in progress"
+      "note": "Mission Control v3 live"
     },
     {
       "id": "crypto",
       "name": "Crypto",
       "color": "#BA7517",
       "health": "green",
-      "note": "Daily brief live"
+      "note": "Daily brief posting"
     },
     {
       "id": "artsite",
@@ -226,624 +53,319 @@
     {
       "id": 1,
       "agent": "Andy",
-      "line": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop — 3. Or push via a token: `git push ht",
-      "time": "2m",
+      "line": "[done] MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop — 3. Or push via a token: `git push https://<token>",
+      "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 2,
       "agent": "Andy",
-      "line": "starting: MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
-      "time": "3m",
+      "line": "[acknowledged-andy] starting: MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
+      "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 3,
       "agent": "Ed",
-      "line": "MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy timestamps; board.ht",
-      "time": "5m",
+      "line": "[needs-andy] MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
+      "time": "NaNh ago",
       "color": "#22c55e"
     },
     {
       "id": 4,
       "agent": "Ed",
-      "line": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
-      "time": "5m",
+      "line": "[done] MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy timestamps; board.html renders du",
+      "time": "NaNh ago",
       "color": "#22c55e"
     },
     {
       "id": 5,
       "agent": "Spike",
-      "line": "Production environment — define staging → prod deploy step. Currently only staging → nginx. Spec: memory/improvement-que",
-      "time": "8m",
+      "line": "[needs-ein] Cost tracking pipeline — set up cost-data.json with real API data or manual entry. Blocked by cost API returning 0.0. Spec: memo",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 6,
       "agent": "Spike",
-      "line": "Cost tracking pipeline — set up cost-data.json with real API data or manual entry. Blocked by cost API returning 0.0. Sp",
-      "time": "8m",
+      "line": "[needs-jet] Production environment — define staging → prod deploy step. Currently only staging → nginx. Spec: memory/improvement-queue.md (P",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 7,
       "agent": "Faye",
-      "line": "MC v6+v7 research consolidated — improvement-queue.md updated with v6 (observability: workload cards, error sparkline, d",
-      "time": "10m",
+      "line": "[needs-spike] MC v7 queued in improvement-queue.md — Ed picks up after v6 ships. Cost tracking pipeline + production environment definition ",
+      "time": "NaNh ago",
       "color": "#a855f7"
     },
     {
       "id": 8,
       "agent": "Faye",
-      "line": "MC v6 build: deploy duration (v6.3), agent workload cards (v6.1), mobile responsive board (v6.4), error rate sparkline (",
-      "time": "10m",
+      "line": "[needs-ed] MC v6 build: deploy duration (v6.3), agent workload cards (v6.1), mobile responsive board (v6.4), error rate sparkline (v6.2). Sp",
+      "time": "NaNh ago",
       "color": "#a855f7"
     },
     {
       "id": 9,
       "agent": "Faye",
-      "line": "MC v7 queued in improvement-queue.md — Ed picks up after v6 ships. Cost tracking pipeline + production environment defin",
-      "time": "10m",
+      "line": "[done] MC v6+v7 research consolidated — improvement-queue.md updated with v6 (observability: workload cards, error sparkline, deploy duratio",
+      "time": "NaNh ago",
       "color": "#a855f7"
     },
     {
       "id": 10,
       "agent": "Spike",
-      "line": "MC v6 research — agent workload cards, error rate sparklines, deploy duration display, mobile responsive. Spec file: mem",
-      "time": "12m",
+      "line": "[needs-faye] MC v7 research — theme toggle, PWA manifest, deploy rollback, agent avatars in kanban. Spec file: memory/improvement-queue.md. ",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 11,
       "agent": "Spike",
-      "line": "MC v7 research — theme toggle, PWA manifest, deploy rollback, agent avatars in kanban. Spec file: memory/improvement-que",
-      "time": "12m",
+      "line": "[needs-faye] MC v6 research — agent workload cards, error rate sparklines, deploy duration display, mobile responsive. Spec file: memory/imp",
+      "time": "NaNh ago",
       "color": "#4a9eff"
     },
     {
       "id": 12,
       "agent": "Punch",
-      "line": "starting: Patch openclaw.json: add missing shell profiles (node/bash/sh) to brisk-br + nova-sag summons, remove non-func",
-      "time": "15m",
+      "line": "[acknowledged-punch] starting: Patch openclaw.json: add missing shell profiles (node/bash/sh) to brisk-br + nova-sag summons, remove non-fun",
+      "time": "NaNh ago",
       "color": "#ef4444"
     },
     {
       "id": 13,
-      "agent": "Faye",
-      "line": "Memory cleanup: archived 7 stale files to cold/ (kanban-spec, mc-cost, mc-ui, faye-mc-mobile, 2x session logs), bumped M",
-      "time": "28m",
-      "color": "#a855f7"
+      "agent": "needs-punch",
+      "line": "Patch openclaw.json: add missing shell profiles (node/bash/sh) to brisk-br + nova-sag summons, remove non-functional awk/sed from safeBins. ",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
     },
     {
       "id": 14,
-      "agent": "Punch",
-      "line": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagged as risky",
-      "time": "48m",
-      "color": "#ef4444"
+      "agent": "Faye",
+      "line": "[needs-faye] Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI: polling vs push, intent classification",
+      "time": "NaNh ago",
+      "color": "#a855f7"
     },
     {
       "id": 15,
       "agent": "Faye",
-      "line": "Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 research, rendering sco",
-      "time": "48m",
+      "line": "[done] Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 research, rendering scope, cost trac",
+      "time": "NaNh ago",
       "color": "#a855f7"
     },
     {
       "id": 16,
-      "agent": "Faye",
-      "line": "Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI: polling vs push, intent classif",
-      "time": "48m",
-      "color": "#a855f7"
+      "agent": "Punch",
+      "line": "[done] Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagged as risky in safeBins.",
+      "time": "NaNh ago",
+      "color": "#ef4444"
     },
     {
       "id": 17,
+      "agent": "needs-faye",
+      "line": "General research task — check for any pending research items or questions from recent sessions. — Ed Builder Loop",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 18,
+      "agent": "Faye",
+      "line": "[done] Memory cleanup: archived 7 stale files to cold/ (kanban-spec, mc-cost, mc-ui, faye-mc-mobile, 2x session logs), bumped MC v2→v5 in ME",
+      "time": "NaNh ago",
+      "color": "#a855f7"
+    },
+    {
+      "id": 19,
       "agent": "Punch",
-      "line": "starting: Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagge",
-      "time": "57m",
+      "line": "[acknowledged-punch] starting: Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagg",
+      "time": "NaNh ago",
       "color": "#ef4444"
+    },
+    {
+      "id": 20,
+      "agent": "needs-punch",
+      "line": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagged as risky in safeBins. Model ",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    }
+  ],
+  "cron": [
+    {
+      "id": "morning-briefing",
+      "label": "Morning briefing",
+      "schedule": "0 8 * * *",
+      "next": "08:00 ET daily",
+      "state": "ok"
+    },
+    {
+      "id": "daily-memory-capture",
+      "label": "Daily memory capture",
+      "schedule": "0 23 * * *",
+      "next": "23:00 UTC daily",
+      "state": "ok"
+    },
+    {
+      "id": "evolve-exe",
+      "label": "Evolve.exe",
+      "schedule": "0 6 * * 1,3",
+      "next": "Mon/Wed 06:00 ET",
+      "state": "ok"
+    },
+    {
+      "id": "upgrade-scanner",
+      "label": "Upgrade scanner",
+      "schedule": "0 7 * * 3",
+      "next": "Wed 07:00 ET",
+      "state": "ok"
+    },
+    {
+      "id": "weekly-skill-scan",
+      "label": "Weekly skill scan",
+      "schedule": "0 10 * * 3",
+      "next": "Wed 10:00 ET",
+      "state": "ok"
+    },
+    {
+      "id": "weekly-summary",
+      "label": "Weekly summary",
+      "schedule": "0 17 * * 0",
+      "next": "Sun 17:00 ET",
+      "state": "ok"
+    },
+    {
+      "id": "crypto-daily-brief",
+      "label": "Crypto daily brief",
+      "schedule": "0 9 * * *",
+      "next": "09:00 ET daily",
+      "state": "ok"
+    },
+    {
+      "id": "spike-audit-digest",
+      "label": "Spike audit digest",
+      "schedule": "0 18 * * 5",
+      "next": "Fri 18:00 ET",
+      "state": "ok"
+    },
+    {
+      "id": "memory-cold-archive",
+      "label": "Memory cold archive",
+      "schedule": "0 23 * * 0",
+      "next": "Sun 23:00 UTC",
+      "state": "ok"
+    },
+    {
+      "id": "faye-scan-daily",
+      "label": "Faye scan daily",
+      "schedule": "*/10 * * * *",
+      "next": "every 10 min",
+      "state": "ok"
+    },
+    {
+      "id": "ed-queue-watch",
+      "label": "Ed queue watch",
+      "schedule": "*/15 * * * *",
+      "next": "every 15 min",
+      "state": "ok"
+    },
+    {
+      "id": "agent-dispatch-watcher",
+      "label": "Agent dispatch watcher",
+      "schedule": "event-driven",
+      "next": "on log change",
+      "state": "ok"
+    },
+    {
+      "id": "refresh-live",
+      "label": "Refresh live JSON",
+      "schedule": "*/1 * * * *",
+      "next": "every 1 min",
+      "state": "ok"
     }
   ],
   "board": {
     "queued": [
       {
-        "id": 1775534820000,
-        "text": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
-        "agent": "Ed",
-        "ts": "5m"
+        "agent": "needs-punch",
+        "text": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: ",
+        "ts": "2026-04-07 03:11 UTC",
+        "priority": "normal"
       },
       {
-        "id": 1775534640000,
-        "text": "Production environment — define staging → prod deploy step. Currently only staging → nginx. Spec: me",
-        "agent": "Spike",
-        "ts": "8m"
+        "agent": "needs-faye",
+        "text": "General research task — check for any pending research items or questions from recent sessions. — Ed",
+        "ts": "2026-04-07 03:22 UTC",
+        "priority": "normal"
       },
       {
-        "id": 1775534640000,
-        "text": "Cost tracking pipeline — set up cost-data.json with real API data or manual entry. Blocked by cost A",
-        "agent": "Spike",
-        "ts": "8m"
-      },
-      {
-        "id": 1775534520000,
+        "agent": "faye",
         "text": "MC v6 build: deploy duration (v6.3), agent workload cards (v6.1), mobile responsive board (v6.4), er",
-        "agent": "Faye",
-        "ts": "10m"
+        "ts": "2026-04-07T04:02:00Z",
+        "priority": "normal"
       },
       {
-        "id": 1775534520000,
+        "agent": "faye",
         "text": "MC v7 queued in improvement-queue.md — Ed picks up after v6 ships. Cost tracking pipeline + producti",
-        "agent": "Faye",
-        "ts": "10m"
+        "ts": "2026-04-07T04:02:00Z",
+        "priority": "normal"
       },
       {
-        "id": 1775534400000,
-        "text": "MC v6 research — agent workload cards, error rate sparklines, deploy duration display, mobile respon",
-        "agent": "Spike",
-        "ts": "12m"
+        "agent": "spike",
+        "text": "Production environment — define staging → prod deploy step. Currently only staging → nginx. Spec: me",
+        "ts": "2026-04-07T04:04:00Z",
+        "priority": "normal"
       },
       {
-        "id": 1775534400000,
-        "text": "MC v7 research — theme toggle, PWA manifest, deploy rollback, agent avatars in kanban. Spec file: me",
-        "agent": "Spike",
-        "ts": "12m"
+        "agent": "spike",
+        "text": "Cost tracking pipeline — set up cost-data.json with real API data or manual entry. Blocked by cost A",
+        "ts": "2026-04-07T04:04:00Z",
+        "priority": "normal"
       },
       {
-        "id": 1775532240000,
-        "text": "Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI: polling vs ",
-        "agent": "Faye",
-        "ts": "48m"
+        "agent": "ed",
+        "text": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
+        "ts": "2026-04-07 04:07 UTC",
+        "priority": "normal"
       }
     ],
-    "inprogress": [
-      {
-        "id": 1775534968000,
-        "text": "starting: MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
-        "agent": "Andy",
-        "ts": "3m"
-      },
-      {
-        "id": 1775534210000,
-        "text": "starting: Patch openclaw.json: add missing shell profiles (node/bash/sh) to brisk-br + nova-sag summ",
-        "agent": "Punch",
-        "ts": "15m"
-      },
-      {
-        "id": 1775531701000,
-        "text": "starting: Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Ro",
-        "agent": "Punch",
-        "ts": "57m"
-      }
-    ],
+    "inprogress": [],
     "done": [
       {
-        "id": 1775534992000,
-        "text": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop — 3. Or push via a",
-        "agent": "Andy",
-        "ts": "2m"
-      },
-      {
-        "id": 1775534820000,
-        "text": "MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy ",
-        "agent": "Ed",
-        "ts": "5m"
-      },
-      {
-        "id": 1775534520000,
-        "text": "MC v6+v7 research consolidated — improvement-queue.md updated with v6 (observability: workload cards",
-        "agent": "Faye",
-        "ts": "10m"
-      },
-      {
-        "id": 1775533440000,
+        "agent": "faye",
         "text": "Memory cleanup: archived 7 stale files to cold/ (kanban-spec, mc-cost, mc-ui, faye-mc-mobile, 2x ses",
-        "agent": "Faye",
-        "ts": "28m"
+        "ts": "2026-04-07 03:44 UTC"
       },
       {
-        "id": 1775532257000,
+        "agent": "punch",
         "text": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: ",
-        "agent": "Punch",
-        "ts": "48m"
+        "ts": "2026-04-07T03:24:17Z"
       },
       {
-        "id": 1775532240000,
+        "agent": "faye",
         "text": "Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 res",
-        "agent": "Faye",
-        "ts": "48m"
+        "ts": "2026-04-07T03:24:00Z"
+      },
+      {
+        "agent": "faye",
+        "text": "[needs-faye] Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI",
+        "ts": "2026-04-07T03:24:00Z"
+      },
+      {
+        "agent": "faye",
+        "text": "MC v6+v7 research consolidated — improvement-queue.md updated with v6 (observability: workload cards",
+        "ts": "2026-04-07T04:02:00Z"
+      },
+      {
+        "agent": "ed",
+        "text": "MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy ",
+        "ts": "2026-04-07 04:07 UTC"
+      },
+      {
+        "agent": "andy",
+        "text": "MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop — 3. Or push via a",
+        "ts": "2026-04-07T04:09:52Z"
       }
     ]
-  },
-  "cron": [
-    {
-      "id": "morning-briefing",
-      "label": "Morning Briefing",
-      "schedule": "0 8 * * *",
-      "next": "now",
-      "lastRun": "20h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "daily-memory-capture",
-      "label": "Daily Memory Capture",
-      "schedule": "0 23 * * *",
-      "next": "now",
-      "lastRun": "4h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "evolve-exe",
-      "label": "Evolve Exe",
-      "schedule": "0 6 * * 1,3",
-      "next": "now",
-      "lastRun": "20h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "upgrade-scanner",
-      "label": "Upgrade Scanner",
-      "schedule": "0 7 * * 3",
-      "next": "now",
-      "lastRun": "5d",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "weekly-summary",
-      "label": "Weekly Summary",
-      "schedule": "0 17 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "crypto-daily-brief",
-      "label": "Crypto Daily Brief",
-      "schedule": "0 9 * * *",
-      "next": "now",
-      "lastRun": "13h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "spike-audit-digest",
-      "label": "Spike Audit Digest",
-      "schedule": "0 18 * * 5",
-      "next": "now",
-      "lastRun": "3d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "memory-cold-archive",
-      "label": "Memory Cold Archive",
-      "schedule": "0 23 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "job-watchdog",
-      "label": "Job Error Watchdog",
-      "schedule": "0 */6 * * *",
-      "next": "now",
-      "lastRun": "4h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "83af6b19-b647-4e74-908b-5ec68c54334b",
-      "label": "cancel-google-workspace",
-      "schedule": "event-driven",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "0d350740-9bf6-4424-a827-c4ebc0349b36",
-      "label": "Faye Dispatch Scanner",
-      "schedule": 900000,
-      "next": "now",
-      "lastRun": "9m",
-      "state": "error",
-      "errors": 3,
-      "enabled": true,
-      "errorHistory": [
-        3,
-        3,
-        3
-      ]
-    },
-    {
-      "id": "weekly-deep-clean",
-      "label": "Weekly Deep Clean",
-      "schedule": "0 4 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "dispatch-guard",
-      "label": "Dispatch Guard",
-      "schedule": 3600000,
-      "next": "now",
-      "lastRun": "56m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "error-capture",
-      "label": "Error Capture",
-      "schedule": 1800000,
-      "next": "now",
-      "lastRun": "16m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "cost-safeguard",
-      "label": "Cost Safeguard",
-      "schedule": 3600000,
-      "next": "scheduled",
-      "lastRun": "5h",
-      "state": "paused",
-      "errors": 0,
-      "enabled": false,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "post-task-validator",
-      "label": "Post-Task Validator",
-      "schedule": 900000,
-      "next": "scheduled",
-      "lastRun": "5h",
-      "state": "paused",
-      "errors": 0,
-      "enabled": false,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "ed-builder-loop",
-      "label": "Ed Builder Loop",
-      "schedule": 2700000,
-      "next": "now",
-      "lastRun": "5m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "auto-deploy-mc",
-      "label": "MC Auto Deploy",
-      "schedule": 3600000,
-      "next": "now",
-      "lastRun": "43m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "ironthread-competitive-scan",
-      "label": "IronThread Competitive Scan",
-      "schedule": "0 8 * * 2,4",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "82890dc2-1e9b-444e-9ca0-c7ad65f20252",
-      "label": "spike-weekly-tale",
-      "schedule": "0 13 * * 1",
-      "next": "now",
-      "lastRun": "11h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "55b42ebe-7262-4eb4-81ba-5013f7f3d641",
-      "label": "Spike Task Router",
-      "schedule": 900000,
-      "next": "now",
-      "lastRun": "8m",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "memory-hygiene",
-      "label": "Memory Hygiene",
-      "schedule": "0 */6 * * *",
-      "next": "now",
-      "lastRun": "4h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "a12ce5af-6326-400f-b15e-ac210c8fa0c6",
-      "label": "Research Digest",
-      "schedule": "0 11 * * 2,5",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "b57e9230-57e9-4d01-b91d-e96ffbf5f999",
-      "label": "IronThread Git Push",
-      "schedule": "0 17 * * 1,2,3,4,5",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "4df770af-19fd-492d-b42f-b571f58f769e",
-      "label": "IronThread Site Research",
-      "schedule": "0 14 * * 4",
-      "next": "now",
-      "lastRun": "never",
-      "state": "unknown",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "f3740c57-11e3-4c1f-8ba5-761599cfcf86",
-      "label": "MC Live Board Sync",
-      "schedule": 60000,
-      "next": "now",
-      "lastRun": "now",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
-      "errorHistory": [
-        0,
-        0,
-        0
-      ]
-    }
-  ],
-  "errors": []
+  }
 }
