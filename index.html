@@ -121,6 +121,27 @@
         .hud-pill.error.has-errors { animation: errorPulse 1.5s ease-in-out infinite; }
         @keyframes errorPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
 
+        /* ── agent workload cards ── */
+        .agent-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 0;
+            border-bottom: 1px solid #1e293b33;
+            font-size: 10px;
+        }
+        .agent-row:last-child { border-bottom: none; }
+        .agent-emoji { font-size: 11px; width: 16px; text-align: center; flex-shrink: 0; }
+        .agent-name { color: #e2e8f0; font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .agent-pw { font-size: 8px; color: #475569; flex-shrink: 0; margin-left: 2px; }
+        .agent-status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .agent-status-dot.working { background: #22c55e; }
+        .agent-status-dot.idle    { background: #475569; }
+        .agent-status-dot.meeting { background: #a855f7; }
+        .agent-status-dot.error   { background: #ef4444; }
+        .agent-status-dot.offline { background: #334155; }
+        .agent-msg { width: 100%; font-size: 9px; color: #64748b; margin-top: 1px; padding-left: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
         canvas {
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
@@ -809,6 +830,10 @@
                     <span class="hud-pill idle"    id="hud-idle">Idle 0</span>
                     <span class="hud-pill error"   id="hud-error">Alerts 0</span>
                 </div>
+            </div>
+            <div class="hud-card" id="hud-agent-workload">
+                <div class="hud-title">Crew</div>
+                <div id="agent-cards"><div class="hud-subtle">Loading…</div></div>
             </div>
             <div class="hud-card">
                 <div class="hud-title">Projects</div>

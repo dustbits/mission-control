@@ -632,6 +632,39 @@ function updateHudPills() {
     if (i)  i.textContent  = 'Idle '    + counts.idle;
     if (m)  m.textContent  = 'Meeting ' + counts.meeting;
     if (er) er.textContent = 'Alerts '  + counts.error;
+    updateAgentWorkloadCards();
+}
+
+function updateAgentWorkloadCards() {
+    var container = document.getElementById('agent-cards');
+    if (!container) return;
+    var cfgAgents = window._mcAgents || [];
+    var html = '';
+    for (var ci = 0; ci < cfgAgents.length; ci++) {
+        var agent = cfgAgents[ci];
+        var rt = state.agents.get(agent.id);
+        if (!rt) continue;
+        var status = rt.status || 'idle';
+        var msg = rt.message || 'standing by';
+        // trim long messages
+        if (msg.length > 30) msg = msg.substring(0, 28) + '…';
+        html += '<div class="agent-row">';
+        html += '<span class="agent-emoji" style="color:' + (agent.color || '#e2e8f0') + '">' + (agent.emoji || '') + '</span>';
+        html += '<span class="agent-name">' + agent.name + '</span>';
+        html += '<span class="agent-pw">' + (agent.model || '') + '</span>';
+        html += '<span class="agent-status-dot ' + status + '"></span>';
+        html += '</div>';
+        if (status !== 'idle' && status !== 'offline') {
+            html += '<div class="agent-msg">' + escapeHtml(msg) + '</div>';
+        }
+    }
+    container.innerHTML = html;
+}
+
+function escapeHtml(text) {
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(text));
+    return d.innerHTML;
 }
 
 function moveAgentTo(runtime, point, opts) {
@@ -1416,26 +1449,11 @@ function resolveRuntime(input) {
     }) || null;
 }
 
-// ── Real-time activity → mission-control-live.json writer ──
-var activityFlushTimer = null;
-function submitActivityToWriter(text) {
-    // Resolve agent context from the most-recent gateway event
-    var agentName  = state.selectedId ? (state.agents.get(state.selectedId) || {}).name : null;
-    var agentColor = state.selectedId ? (state.agents.get(state.selectedId) || {}).color : '#4a9eff';
-    try {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://' + location.hostname + ':8091/activity', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({ text: text, agent: agentName || 'Spike', color: agentColor }));
-    } catch(e) {}
-}
-
 function pushActivity(text) {
     var stamp = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'America/New_York' });
     var entryText = stamp + ' \u2014 ' + text;
     state.activity.unshift(entryText);
     state.activity = state.activity.slice(0, 50);
-    submitActivityToWriter(text);
     
     var feedEl = document.getElementById('live-feed-items');
     if (feedEl) {
@@ -1741,78 +1759,12 @@ function renderLiveHud(data) {
             depEl.innerHTML = '<div class="empty-state">No deploy history yet</div>';
         } else {
             depEl.innerHTML = '';
-            // Vercel-style timeline: vertical line with nodes
-            var timeline = document.createElement('div');
-            timeline.style.display = 'flex';
-            timeline.style.flexDirection = 'column';
-            timeline.style.gap = '0';
-            data.deploy.history.slice(0, 6).forEach(function(d, idx) {
-                var isLatest = idx === 0;
-                var statusColor = d.status === 'deployed' ? '#22c55e' : '#64748b';
-                var statusBg   = d.status === 'deployed' ? 'rgba(34,197,94,0.15)' : 'rgba(100,116,139,0.15)';
-                var statusLabel = d.status === 'deployed' ? 'deployed' : (d.status || 'pending');
-
+            data.deploy.history.slice(0, 5).forEach(function(d) {
                 var row = document.createElement('div');
-                row.style.display = 'flex';
-                row.style.alignItems = 'center';
-                row.style.gap = '6px';
-                row.style.marginBottom = '2px';
-
-                // Status badge
-                var badge = document.createElement('span');
-                badge.textContent = isLatest ? '\u26a1' : '\u25cb';
-                badge.style.color = statusColor;
-                badge.style.fontSize = '8px';
-                badge.style.flexShrink = '0';
-
-                // Info block
-                var info = document.createElement('div');
-                info.style.display = 'flex';
-                info.style.flexDirection = 'column';
-                info.style.minWidth = '0';
-
-                var triggerLine = document.createElement('div');
-                triggerLine.style.display = 'flex';
-                triggerLine.style.alignItems = 'center';
-                triggerLine.style.gap = '5px';
-                var triggerChip = document.createElement('span');
-                triggerChip.textContent = d.trigger || 'deploy';
-                triggerChip.style.fontSize = '8px';
-                triggerChip.style.color = '#e2e8f0';
-                triggerChip.style.fontWeight = '600';
-                triggerChip.style.background = statusBg;
-                triggerChip.style.padding = '1px 5px';
-                triggerChip.style.borderRadius = '3px';
-                triggerChip.style.textTransform = 'uppercase';
-                triggerChip.style.letterSpacing = '0.04em';
-                triggerLine.appendChild(triggerChip);
-
-                // Duration + time row
-                var metaLine = document.createElement('div');
-                metaLine.style.display = 'flex';
-                metaLine.style.gap = '6px';
-                metaLine.style.alignItems = 'center';
-                metaLine.style.marginTop = '1px';
-
-                if (d.duration) {
-                    var dur = document.createElement('span');
-                    dur.textContent = d.duration;
-                    dur.style.fontSize = '8px';
-                    dur.style.color = '#64748b';
-                    dur.style.fontFamily = 'monospace';
-                    metaLine.appendChild(dur);
-                }
-                var age = document.createElement('span');
-                age.textContent = (d.time || 'now') + ' ago';
-                age.style.fontSize = '8px';
-                age.style.color = '#475569';
-                metaLine.appendChild(age);
-
-                info.appendChild(triggerLine);
-                info.appendChild(metaLine);
-
-                row.appendChild(badge);
-                row.appendChild(info);
+                row.className = 'hud-subtle';
+                row.style.lineHeight = '1.6';
+                var dot = d.status === 'deployed' ? '<span style="color:#22c55e">\u26a1</span>' : '<span style="color:#64748b">\u25cb</span>';
+                row.innerHTML = dot + ' ' + d.time + ' ago <span style="color:#334155">' + (d.trigger || 'deploy') + '</span>';
                 depEl.appendChild(row);
             });
         }
@@ -2645,7 +2597,7 @@ function drawOffice(scene) {
     };
 
     setupLabel(strategyNexus, 'calendar');
-    // setupLabel(mainframeCore, 'cost'); // DISABLED per Ray 2026-04-06 — cost dashboard not functional, button disabled not removed
+    setupLabel(mainframeCore, 'cost');
     setupLabel(rechargeSector, 'recharge');
     setupLabel(synthLab, null, 'code');
 }
