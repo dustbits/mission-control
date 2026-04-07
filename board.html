@@ -38,6 +38,8 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .header::before {
       content: '';
@@ -141,66 +143,6 @@
     .col-progress .count { background: #38bdf822; color: var(--progress); }
     .col-done .column-header h2 { color: var(--done); }
     .col-done .count { background: #22c55e22; color: var(--done); }
-
-    /* ── Leaderboard sidebar ── */
-    .col-leaderboard {
-      flex: 0 0 240px;
-      min-width: 200px;
-      max-width: 260px;
-      background: linear-gradient(180deg, #0d1117, #161b22);
-      border-left: 1px solid var(--border);
-    }
-    .col-leaderboard .column-header {
-      background: rgba(139,92,246,0.08);
-    }
-    .col-leaderboard .column-header h2 { color: #c084fc; }
-    .col-leaderboard .count { background: #c084fc22; color: #c084fc; }
-    .lb-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 4px;
-      border-bottom: 1px solid rgba(30,41,59,0.5);
-      font-size: 11px;
-    }
-    .lb-row:last-child { border-bottom: none; }
-    .lb-rank {
-      width: 18px;
-      font-weight: 700;
-      font-size: 10px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    .lb-rank.gold { color: #fbbf24; }
-    .lb-rank.silver { color: #94a3b8; }
-    .lb-rank.bronze { color: #d97706; }
-    .lb-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .lb-name {
-      flex: 1;
-      font-weight: 600;
-      font-size: 10px;
-      color: var(--text-header);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .lb-done {
-      font-size: 10px;
-      color: #22c55e;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-    .lb-empty {
-      text-align: center;
-      padding: 24px 12px;
-      color: #475569;
-      font-size: 11px;
-      line-height: 1.5;
-    }
 
     .column-body {
       flex: 1;
@@ -333,20 +275,6 @@
       display: block;
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .board { flex-direction: column; padding: 10px; height: auto; overflow-x: visible; }
-      .column { max-width: none; min-width: 0; margin-bottom: 12px; border-right: none; border-bottom: 1px solid var(--border); }
-      .column-body { max-height: 40vh; }
-      .col-leaderboard { border-left: none; border-top: 1px solid var(--border); }
-      .header-tabs { flex-wrap: wrap; gap: 2px; }
-      .tab-btn { padding: 3px 8px; font-size: 11px; }
-      .deploy-panel, .cron-panel { padding: 12px 10px; }
-      .deploy-entry, .cron-entry { grid-template-columns: 1fr; gap: 6px; }
-      .cron-entry .sparkline { display: none; }
-      .header { padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
-    }
-
     /* ── Tabs ── */
     .tab-btn {
       background: transparent;
@@ -360,41 +288,6 @@
     }
     .tab-btn:hover { border-color: #8b5cf6; color: #e2e8f0; }
     .tab-btn.active { background: #8b5cf6; border-color: #8b5cf6; color: #fff; }
-
-    /* ── Cron Panel ── */
-    .cron-panel { display: none; padding: 16px 24px 24px; }
-    .cron-panel.visible { display: block; }
-    .cron-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .cron-panel-header h2 { font-size: 14px; color: var(--text-header); }
-    .cron-refresh { background: #1e293b; border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 4px 10px; font-size: 11px; cursor: pointer; }
-    .cron-refresh:hover { border-color: #8b5cf6; }
-    .cron-grid { display: flex; flex-direction: column; gap: 6px; }
-    .cron-entry {
-      display: grid;
-      grid-template-columns: 180px 80px 100px 1fr;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 14px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 12px;
-    }
-    .cron-entry.ok { border-left: 3px solid #22c55e; }
-    .cron-entry.err { border-left: 3px solid #ef4444; }
-    .cron-entry.warn { border-left: 3px solid #f59e0b; }
-    .cron-name { font-weight: 600; color: var(--text-header); font-size: 11px; }
-    .cron-schedule { font-size: 10px; color: #64748b; font-family: monospace; }
-    .cron-state { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-block; }
-    .cron-state.ok { background: #22c55e22; color: #22c55e; }
-    .cron-state.err { background: #ef444422; color: #ef4444; }
-    .cron-state.warn { background: #f59e0b22; color: #f59e0b; }
-    .sparkline { display: flex; align-items: center; gap: 1px; height: 20px; }
-    .spark-bar { width: 4px; border-radius: 1px; background: #22c55e; }
-    .spark-bar.err { background: #ef4444; }
-    .spark-bar.warn { background: #f59e0b; }
-    .spark-bar.dim { background: #1e293b; }
-    .cron-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
 
     /* ── Deploy Panel ── */
     .deploy-panel { display: none; padding: 16px 24px 24px; }
@@ -426,6 +319,95 @@
     .deploy-entry .de-status { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
     .deploy-entry .de-status.err { background: #ef4444; }
     .deploy-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
+
+    /* ── Cron Panel ── */
+    .cron-panel { display: none; padding: 16px 24px 24px; }
+    .cron-panel.visible { display: block; }
+    .cron-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .cron-panel-header h2 { font-size: 14px; color: var(--text-header); }
+    .cron-refresh { background: #1e293b; border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 4px 10px; font-size: 11px; cursor: pointer; }
+    .cron-refresh:hover { border-color: #8b5cf6; }
+    .cron-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+    .cron-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cron-card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .cron-card-name { font-size: 12px; font-weight: 600; color: var(--text-card); }
+    .cron-card-state { font-size: 10px; padding: 2px 7px; border-radius: 999px; font-weight: 600; }
+    .cron-card-state.ok { background: #22c55e22; color: #22c55e; }
+    .cron-card-state.error { background: #ef444422; color: #ef4444; }
+    .cron-card-state.paused { background: #64748b22; color: #64748b; }
+    .cron-card-state.unknown { background: #1e293b; color: #475569; }
+    .cron-card-meta { display: flex; align-items: center; gap: 12px; font-size: 10px; color: #475569; }
+    .cron-card-meta span { display: flex; align-items: center; gap: 4px; }
+    .cron-sparkline { display: flex; align-items: flex-end; gap: 2px; height: 20px; margin-top: 2px; }
+    .cron-sparkline-bar { width: 5px; border-radius: 2px 2px 0 0; min-height: 2px; }
+    .cron-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
+
+    /* ── Agents Panel (v6.1) ── */
+    .agents-panel { display: none; padding: 16px 24px 24px; }
+    .agents-panel.visible { display: block; }
+    .agents-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .agents-panel-header h2 { font-size: 14px; color: var(--text-header); }
+    .agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .agent-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .agent-card-top { display: flex; align-items: center; gap: 10px; }
+    .agent-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .agent-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .agent-name { font-size: 13px; font-weight: 700; color: var(--text-header); }
+    .agent-model { font-size: 9px; color: #475569; font-family: monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .agent-stats { display: flex; gap: 10px; }
+    .agent-stat { display: flex; flex-direction: column; gap: 1px; }
+    .agent-stat-val { font-size: 15px; font-weight: 700; color: var(--text-card); line-height: 1; }
+    .agent-stat-lbl { font-size: 9px; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; }
+    .agent-bar-wrap { display: flex; flex-direction: column; gap: 3px; }
+    .agent-bar-label { display: flex; justify-content: space-between; font-size: 9px; color: #475569; }
+    .agent-bar { height: 4px; background: #1e293b; border-radius: 2px; overflow: hidden; }
+    .agent-bar-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
+    .agent-efficieny { font-size: 10px; color: #475569; }
+    .agent-efficieny span { font-weight: 700; color: var(--text-card); }
+    .agents-empty { text-align: center; padding: 40px; color: #475569; font-size: 13px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .header { padding: 10px 14px; }
+      .header-title h1 { font-size: 13px; }
+      .header-title span { display: none; }
+      .board { flex-direction: column; padding: 10px; height: auto; gap: 12px; }
+      .column { max-width: none; min-width: 0; width: 100%; }
+      .column-body { max-height: 45vh; }
+      .deploy-panel, .cron-panel, .agents-panel { padding: 12px 14px 20px; }
+      .deploy-entry { grid-template-columns: 90px 70px 1fr; gap: 8px; padding: 8px 10px; }
+      .agents-grid { grid-template-columns: 1fr 1fr; }
+      .agent-card { padding: 10px; }
+    }
+    @media (max-width: 480px) {
+      .agents-grid { grid-template-columns: 1fr; }
+      .header-tabs .tab-btn { padding: 3px 8px; font-size: 11px; }
+      .cron-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -443,8 +425,9 @@
     </div>
     <nav class="header-tabs" style="display:flex;gap:4px;align-items:center;">
       <button class="tab-btn active" data-tab="tasks">Tasks</button>
-      <button class="tab-btn" data-tab="deploys">Deploys</button>
+      <button class="tab-btn" data-tab="agents">Agents</button>
       <button class="tab-btn" data-tab="cron">Cron</button>
+      <button class="tab-btn" data-tab="deploys">Deploys</button>
     </nav>
   </div>
 
@@ -470,12 +453,15 @@
       </div>
       <div class="column-body" id="col-done"></div>
     </div>
-    <div class="column col-leaderboard">
-      <div class="column-header">
-        <h2>🏆 Leaderboard</h2>
-        <span class="count" id="count-leaders">0</span>
-      </div>
-      <div class="column-body" id="col-leaderboard"></div>
+  </div>
+
+  <!-- Agents Panel (v6.1) -->
+  <div class="agents-panel" id="agents-panel">
+    <div class="agents-panel-header">
+      <h2>🤖 Agent Workload</h2>
+    </div>
+    <div class="agents-grid" id="agents-grid">
+      <div class="agents-empty">Loading agent data…</div>
     </div>
   </div>
 
@@ -485,7 +471,9 @@
       <h2>⏰ Cron Health</h2>
       <button class="cron-refresh" id="cron-refresh-btn">↻ Refresh</button>
     </div>
-    <div class="cron-grid" id="cron-grid"><div class="cron-empty">Loading…</div></div>
+    <div class="cron-grid" id="cron-grid">
+      <div class="cron-empty">Loading cron data…</div>
+    </div>
   </div>
 
   <!-- Deploy History Panel -->
@@ -505,6 +493,11 @@
       ein: '#f97316', gren: '#7c3aed', ed: '#22c55e',
       julia: '#f59e0b', rocco: '#64748b', punch: '#ef4444',
       andy: '#06b6d4', andrew: '#06b6d4', main: '#475569'
+    };
+    const AGENT_EMOJI = {
+      spike: '🧠', jet: '✈️', faye: '🔬', ein: '💰', gren: '🔩',
+      ed: '🔧', julia: '🎬', rocco: '🏥', punch: '🥊',
+      andy: '🤖', andrew: '🤖', main: '🧠'
     };
     const AGENT_MODELS = {
       spike: 'MiniMax/M2.7-highspeed', jet: 'MiniMax/M2.7', faye: 'Qwen/Qwen2.5-7B',
@@ -530,10 +523,11 @@
     function activateTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
       document.getElementById('board-view').style.display = tabName === 'tasks' ? '' : 'none';
-      document.getElementById('deploy-panel').classList.toggle('visible', tabName === 'deploys');
+      document.getElementById('agents-panel').classList.toggle('visible', tabName === 'agents');
       document.getElementById('cron-panel').classList.toggle('visible', tabName === 'cron');
+      document.getElementById('deploy-panel').classList.toggle('visible', tabName === 'deploys');
       if (tabName === 'deploys') loadDeployHistory();
-      if (tabName === 'cron') loadCronHealth();
+      if (tabName === 'cron') loadCronData();
     }
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => activateTab(btn.dataset.tab));
@@ -573,7 +567,6 @@
         return;
       }
       el.innerHTML = '';
-      // Show newest first, compute duration client-side
       const sorted = [...history].sort(function(a, b) {
         return new Date(b.timestamp) - new Date(a.timestamp);
       });
@@ -584,6 +577,8 @@
         const trigger = (entry.trigger || 'manual').toLowerCase();
         const status = entry.status === 'deployed' ? 'ok' : 'err';
         const dur = computeDuration(entry.timestamp, prevEntry ? prevEntry.timestamp : null);
+        // Use precomputed duration from sync script (v6.3)
+        const displayDur = entry.duration || dur;
 
         const div = document.createElement('div');
         div.className = 'deploy-entry';
@@ -593,7 +588,7 @@
             <span class="de-status ${status === 'err' ? 'err' : ''}"></span>
             <span class="de-trigger ${trigger}">${trigger}</span>
           </div>
-          <div class="de-duration">${dur ? '← ' + dur : ''}</div>
+          <div class="de-duration">${displayDur ? '~' + displayDur : ''}</div>
         `;
         el.appendChild(div);
       });
@@ -602,91 +597,120 @@
     document.getElementById('deploy-refresh-btn').addEventListener('click', function() {
       loadDeployHistory();
     });
-    document.getElementById('cron-refresh-btn').addEventListener('click', function() {
-      loadCronHealth();
-    });
 
-    // ── Cron Health Tab ──
-    let cronCache = null;
-    async function loadCronHealth() {
+    // ── Cron Panel + Sparklines (v6.2) ──
+    async function loadCronData() {
       const el = document.getElementById('cron-grid');
       el.innerHTML = '<div class="cron-empty">Loading…</div>';
       try {
-        // Load from mission-control-live.json (cron array) + jobs.json (consecutiveErrors history)
-        const [liveR, jobsR] = await Promise.all([
-          fetch('mission-control-live.json?t=' + Date.now()),
-          fetch('/cron/jobs.json?t=' + Date.now())
-        ]);
-        const live = liveR.ok ? await liveR.json() : {};
-        const jobsData = jobsR.ok ? await jobsR.json() : {};
-        cronCache = { live: live.cron || [], jobs: jobsData.jobs || [] };
-        renderCronHealth(cronCache, el);
+        const r = await fetch('mission-control-live.json?t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const data = await r.json();
+        renderCronPanel(data.cron || [], el);
       } catch(e) {
         el.innerHTML = '<div class="cron-empty">Could not load cron data: ' + e.message + '</div>';
       }
     }
 
-    function buildErrorHistory(jobsArray) {
-      // Build a map of job id -> array of {ts, errors} for sparkline
-      // Use jobs.json state.consecutiveErrors as the error count
-      // Simulate a 14-point history from current consecutiveErrors (decaying backward)
-      const map = {};
-      jobsArray.forEach(function(j) {
-        var err = (j.state && j.state.consecutiveErrors) || 0;
-        var history = [];
-        for (var i = 13; i >= 0; i--) {
-          // Decay errors backward in time to show trending
-          var val = Math.max(0, err - (err > 0 ? (13 - i) : 0));
-          history.push(val > 0 ? (err > 2 ? 2 : 1) : 0);
-        }
-        map[j.id] = history;
-      });
-      return map;
+    function sparklineColor(val) {
+      if (val === 0) return '#22c55e';
+      if (val <= 3)  return '#f59e0b';
+      return '#ef4444';
     }
 
-    function renderSparkline(history, maxErrors) {
-      var html = '<div class="sparkline">';
-      history.forEach(function(val) {
-        var cls = 'spark-bar';
-        if (val === 0) cls += ' dim';
-        else if (maxErrors > 2) cls += ' err';
-        else if (val > 0) cls += ' warn';
-        html += '<div class="' + cls + '" style="height:' + Math.max(4, val * 7) + 'px"></div>';
-      });
-      html += '</div>';
-      return html;
+    function renderSparkline(samples) {
+      if (!samples || samples.length === 0) {
+        return '<span style="font-size:9px;color:#475569">no data</span>';
+      }
+      const max = Math.max(...samples, 1);
+      return samples.slice(-12).map(s => {
+        const h = Math.max(2, Math.round((s / max) * 18));
+        return `<div class="cron-sparkline-bar" style="height:${h}px;background:${sparklineColor(s)}"></div>`;
+      }).join('');
     }
 
-    function renderCronHealth(cache, el) {
-      var live = cache.live;
-      var jobsMap = {};
-      (cache.jobs || []).forEach(function(j) {
-        jobsMap[j.id] = j;
-      });
-      var errHist = buildErrorHistory(cache.jobs || []);
-
-      if (!live || live.length === 0) {
+    function renderCronPanel(cronJobs, el) {
+      if (!cronJobs || cronJobs.length === 0) {
         el.innerHTML = '<div class="cron-empty">No cron jobs found.</div>';
         return;
       }
       el.innerHTML = '';
-      live.forEach(function(job) {
-        var jobFull = jobsMap[job.id] || {};
-        var state = job.state || 'ok';
-        var errCount = (jobFull.state && jobFull.state.consecutiveErrors) || 0;
-        var statusCls = 'ok';
-        if (errCount >= 3) statusCls = 'err';
-        else if (errCount >= 1) statusCls = 'warn';
-        var stateLabel = statusCls === 'ok' ? 'OK' : (errCount + ' ERR');
-        var hist = errHist[job.id] || [];
-        var spark = renderSparkline(hist, errCount);
-        var div = document.createElement('div');
-        div.className = 'cron-entry ' + statusCls;
-        div.innerHTML = '<div class="cron-name">' + (job.label || job.id) + '</div>' +
-          '<div class="cron-schedule">' + (job.schedule || '—') + '</div>' +
-          '<div><span class="cron-state ' + statusCls + '">' + stateLabel + '</span></div>' +
-          spark;
-        el.appendChild(div);
+      cronJobs.forEach(function(job) {
+        const state = job.state || 'unknown';
+        const stateClass = state === 'ok' ? 'ok' : state === 'error' ? 'error' : state === 'paused' ? 'paused' : 'unknown';
+        const errCount = job.errors || 0;
+        const spark = renderSparkline(job.errorHistory);
+
+        const card = document.createElement('div');
+        card.className = 'cron-card';
+        card.innerHTML = `
+          <div class="cron-card-header">
+            <span class="cron-card-name">${job.label || job.id}</span>
+            <span class="cron-card-state ${stateClass}">${errCount > 0 ? errCount + ' err' : state}</span>
+          </div>
+          <div class="cron-card-meta">
+            <span>⏱ next <b>${job.next || '—'}</b></span>
+            <span>⏳ last <b>${job.lastRun || '—'}</b></span>
+          </div>
+          <div class="cron-sparkline">${spark}</div>
+        `;
+        el.appendChild(card);
+      });
+    }
+
+    document.getElementById('cron-refresh-btn').addEventListener('click', loadCronData);
+
+    // ── Agents Panel (v6.1) ──
+    function renderAgentsPanel(data) {
+      const el = document.getElementById('agents-grid');
+      const agents = data.agents || [];
+      if (!agents || agents.length === 0) {
+        el.innerHTML = '<div class="agents-empty">No agent data available.</div>';
+        return;
+      }
+      el.innerHTML = '';
+      agents.forEach(function(agent) {
+        const key = (agent.key || '').toLowerCase();
+        const color = agent.color || AGENT_COLORS[key] || UNKNOWN;
+        const emoji = AGENT_EMOJI[key] || '🤖';
+        const model = agent.model || AGENT_MODELS[key] || '—';
+        const completed = agent.completed || 0;
+        const efficiency = agent.efficiency || 0;
+        const blockers = agent.blockers || 0;
+        const avgTime = agent.avgTimeSec || 0;
+        const barWidth = Math.min(100, efficiency);
+        const barColor = efficiency >= 80 ? '#22c55e' : efficiency >= 50 ? '#f59e0b' : '#ef4444';
+
+        const card = document.createElement('div');
+        card.className = 'agent-card';
+        card.innerHTML = `
+          <div class="agent-card-top">
+            <div class="agent-avatar" style="background:${color}">${emoji}</div>
+            <div class="agent-info">
+              <span class="agent-name">${agent.name || key}</span>
+              <span class="agent-model">${model}</span>
+            </div>
+          </div>
+          <div class="agent-stats">
+            <div class="agent-stat">
+              <span class="agent-stat-val">${completed}</span>
+              <span class="agent-stat-lbl">Done</span>
+            </div>
+            <div class="agent-stat">
+              <span class="agent-stat-val">${blockers}</span>
+              <span class="agent-stat-lbl">Blocked</span>
+            </div>
+            <div class="agent-stat">
+              <span class="agent-stat-val">${avgTime >= 60 ? Math.round(avgTime/60) + 'm' : avgTime + 's'}</span>
+              <span class="agent-stat-lbl">Avg</span>
+            </div>
+          </div>
+          <div class="agent-bar-wrap">
+            <div class="agent-bar-label"><span>Efficiency</span><span>${efficiency}%</span></div>
+            <div class="agent-bar"><div class="agent-bar-fill" style="width:${barWidth}%;background:${barColor}"></div></div>
+          </div>
+        `;
+        el.appendChild(card);
       });
     }
 
@@ -703,7 +727,6 @@
 
     function getStaleClass(itemTs) {
       if (!itemTs || itemTs === 'now') return 'fresh';
-      // itemTs like '2m', '36m', '1h'
       const m = itemTs.match(/(\d+)([mhd])/);
       if (!m) return '';
       const val = parseInt(m[1]);
@@ -741,15 +764,6 @@
         const meta = document.createElement('div');
         meta.className = 'card-meta';
 
-        const leftMeta = document.createElement('div');
-        leftMeta.style.display = 'flex';
-        leftMeta.style.alignItems = 'center';
-        leftMeta.style.flexWrap = 'wrap';
-        leftMeta.style.gap = '4px';
-
-        const agentLower = (agent || '').toLowerCase().trim();
-        const modelName = AGENT_MODELS[agentLower] || AGENT_MODELS[agentLower.split('(')[0]?.trim()] || '';
-
         const leftDiv = document.createElement('div');
         leftDiv.className = 'card-left';
 
@@ -774,6 +788,8 @@
 
         leftDiv.appendChild(agentRow);
 
+        const agentLower = (agent || '').toLowerCase().trim();
+        const modelName = AGENT_MODELS[agentLower] || AGENT_MODELS[agentLower.split('(')[0]?.trim()] || '';
         if (modelName) {
           const modelSpan = document.createElement('span');
           modelSpan.className = 'card-model';
@@ -790,7 +806,6 @@
         card.appendChild(title);
         card.appendChild(meta);
 
-        // Right-click context menu
         card.addEventListener('contextmenu', function(e) {
           e.preventDefault();
           showContextMenu(e.clientX, e.clientY, item, colId);
@@ -814,11 +829,8 @@
       menu.addEventListener('click', function(e) {
         const action = e.target.closest('[data-action]')?.dataset.action;
         if (!action) return;
-        if (action === 'delete') {
-          markDeleted(item.id, colId);
-        } else if (action === 'stale') {
-          markStale(item.id, colId);
-        }
+        if (action === 'delete') markDeleted(item.id, colId);
+        else if (action === 'stale') markStale(item.id, colId);
         closeContextMenu();
       });
       document.body.appendChild(menu);
@@ -826,16 +838,12 @@
     }
 
     function closeContextMenu() {
-      if (activeMenu) {
-        activeMenu.remove();
-        activeMenu = null;
-      }
+      if (activeMenu) { activeMenu.remove(); activeMenu = null; }
     }
     document.addEventListener('click', closeContextMenu);
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeContextMenu(); });
 
     async function markDeleted(itemId, colId) {
-      // POST to gateway to append [done] to shared-log
       try {
         const entry = `\n[${new Date().toISOString().replace('.000Z','Z')}] [ray] [done] [deleted] task ${itemId} from board (via board.html)\n`;
         await fetch('https://gateway.openclaw.ai/shared-log/append', {
@@ -844,42 +852,8 @@
           body: JSON.stringify({ entry })
         });
       } catch(e) { console.warn('Could not mark deleted:', e); }
-      // Remove card visually
       const card = document.querySelector(`[data-item-id="${itemId}"]`);
       if (card) card.style.opacity = '0.3';
-
-    // Leaderboard
-    function renderLeaderboard(doneItems) {
-      var el = document.getElementById("col-leaderboard");
-      var countEl = document.getElementById("count-leaders");
-      if (!el) return;
-      var agentMap = {};
-      (doneItems || []).forEach(function(item) {
-        var agent = (item.agent || "Unknown").trim();
-        if (!agentMap[agent]) agentMap[agent] = { name: agent, done: 0, color: colorForAgent(agent) };
-        agentMap[agent].done++;
-      });
-      var sorted = Object.values(agentMap).sort(function(a, b) { return b.done - a.done; });
-      if (!sorted.length) {
-        el.innerHTML = '<div class="lb-empty">No completed tasks yet.<br>Agents will appear here once tasks are done.</div>';
-        if (countEl) countEl.textContent = '0';
-        return;
-      }
-      el.innerHTML = '';
-      sorted.forEach(function(row, i) {
-        var rank = i + 1;
-        var rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
-        var medals = ['🥇','🥈','🥉'];
-        var medal = rank <= 3 ? medals[rank-1] : rank;
-        var div = document.createElement("div");
-        div.className = "lb-row";
-        div.innerHTML = '<span class="lb-rank ' + rankClass + '">' + medal + '</span>'
-          + '<span class="lb-dot" style="background:' + row.color + '"></span>'
-          + '<span class="lb-name">' + row.name + '</span>'
-          + '<span class="lb-done">' + row.done + ' ✓</span>';
-        el.appendChild(div);
-      });
-      if (countEl) countEl.textContent = sorted.length;
     }
 
     async function markStale(itemId, colId) {
@@ -909,6 +883,7 @@
 
     let lastSync = 0;
     let fetching = false;
+    let cachedData = null;
 
     async function poll() {
       if (fetching) return;
@@ -922,14 +897,19 @@
         const r = await fetch('mission-control-live.json?t=' + Date.now());
         if (!r.ok) throw new Error('HTTP ' + r.status);
         const data = await r.json();
+        cachedData = data;
         lastSync = Date.now();
         const board = data.board || { queued: [], inprogress: [], done: [] };
-        renderColumn('queued',   board.queued   || []);
+        renderColumn('queued',    board.queued    || []);
         renderColumn('inprogress', board.inprogress || []);
-        renderColumn('done',     board.done     || []);
-        renderLeaderboard(board.done || []);
+        renderColumn('done',      board.done      || []);
 
-        const minAgo = Math.round((Date.now() - lastSync) / 60000);
+        // v6.1: render agents panel if visible
+        const agentsTab = document.getElementById('agents-panel');
+        if (agentsTab && agentsTab.classList.contains('visible')) {
+          renderAgentsPanel(data);
+        }
+
         document.getElementById('sync-time').textContent = 'Synced: ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         dot.className = 'sync-dot';
       } catch (e) {

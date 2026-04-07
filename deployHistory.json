@@ -1,0 +1,62 @@
+[
+  {
+    "timestamp": "2026-04-07T03:29:17.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": null
+  },
+  {
+    "timestamp": "2026-04-07T00:22:56.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "3h 6m"
+  },
+  {
+    "timestamp": "2026-04-06T22:50:02.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "1h 33m"
+  },
+  {
+    "timestamp": "2026-04-06T22:40:01.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "10m"
+  },
+  {
+    "timestamp": "2026-04-06T22:30:01.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "10m"
+  },
+  {
+    "timestamp": "2026-04-06T22:20:35.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "9m"
+  },
+  {
+    "timestamp": "2026-04-06T21:50:01.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "31m"
+  },
+  {
+    "timestamp": "2026-04-06T21:40:01.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "10m"
+  },
+  {
+    "timestamp": "2026-04-06T21:30:01.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "10m"
+  },
+  {
+    "timestamp": "2026-04-06T21:20:48.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "duration": "9m"
+  }
+]
