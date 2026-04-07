@@ -2256,17 +2256,19 @@ function startSystemHealthSimulation() {
 }
 
 function updateSystemHealth() {
-    const cpu = 5 + Math.floor(Math.random() * 15);
-    const ram = 38 + Math.floor(Math.random() * 10);
-    const lag = 5 + Math.floor(Math.random() * 25);
-    
+    // Read real health from live JSON (updated every 30s by sync-live-json.js)
+    const health = (state.liveData && state.liveData.health) || {};
+    const cpu = health.cpu || 0;
+    const ram = health.memory || 0;
+    const disk = health.disk || 0;
+
     const cpuEl = document.getElementById('bar-cpu');
     const ramEl = document.getElementById('bar-ram');
-    const lagEl = document.getElementById('bar-lag');
-    
-    if (cpuEl) cpuEl.style.width = cpu + '%';
-    if (ramEl) ramEl.style.width = ram + '%';
-    if (lagEl) lagEl.style.width = lag + '%';
+    const diskEl = document.getElementById('bar-lag'); // bar-lag repurposed for disk
+
+    if (cpuEl) cpuEl.style.width = Math.min(100, Math.max(0, cpu)) + '%';
+    if (ramEl) ramEl.style.width = Math.min(100, Math.max(0, ram)) + '%';
+    if (diskEl) diskEl.style.width = Math.min(100, Math.max(0, disk)) + '%';
     
     // Update uptime randomly occasionally
     const uptimeEl = document.getElementById('hud-uptime');
