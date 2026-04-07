@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T04:28:02.886Z",
+  "updatedAt": "2026-04-07T06:28:43.906Z",
   "deploy": {
     "state": "idle",
     "lastDeploy": null,
@@ -52,143 +52,143 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Ed",
-      "line": "[done] MC v6 build (done): sync-live-json.js updated — agents array (v6.1) + deploy duration field (v6.3); board.html updated with 4 tabs (T",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#22c55e"
+      "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Ed",
-      "line": "[done] MC v6 build: sync script updated (agents array + deploy duration field), board.html updated with all 4 v6 features (agent workload ca",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#22c55e"
+      "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "Andy",
-      "line": "[done] MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop — 3. Or push via a token: `git push https://<token>",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "Ed",
-      "line": "[needs-andy] MC v6.3 deployed — please git push mission-control/ to staging. — Ed Builder Loop",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#22c55e"
+      "color": "#38bdf8"
     },
     {
       "id": 6,
-      "agent": "Ed",
-      "line": "[done] MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy timestamps; board.html renders du",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#22c55e"
+      "color": "#38bdf8"
     },
     {
       "id": 7,
-      "agent": "Spike",
-      "line": "[needs-ein] Cost tracking pipeline — set up cost-data.json with real API data or manual entry. Blocked by cost API returning 0.0. Spec: memo",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "Spike",
-      "line": "[needs-jet] Production environment — define staging → prod deploy step. Currently only staging → nginx. Spec: memory/improvement-queue.md (P",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#38bdf8"
     },
     {
       "id": 9,
-      "agent": "Faye",
-      "line": "[needs-spike] MC v7 queued in improvement-queue.md — Ed picks up after v6 ships. Cost tracking pipeline + production environment definition ",
+      "agent": "Spike",
+      "line": "[done] dispatch-guard run: ALERTS 2 stale entries + loop-detect jet@53 ein@3 dispatches — cost-safeguard OK ($0.38), post-task-validator 2OK",
       "time": "NaNh ago",
-      "color": "#a855f7"
+      "color": "#4a9eff"
     },
     {
       "id": 10,
-      "agent": "Faye",
-      "line": "[needs-ed] MC v6 build: deploy duration (v6.3), agent workload cards (v6.1), mobile responsive board (v6.4), error rate sparkline (v6.2). Sp",
+      "agent": "guard",
+      "line": "[LOOP-DETECT] Agent 'ein' dispatched 3 times in current log cycle.",
       "time": "NaNh ago",
-      "color": "#a855f7"
+      "color": "#38bdf8"
     },
     {
       "id": 11,
-      "agent": "Faye",
-      "line": "[done] MC v6+v7 research consolidated — improvement-queue.md updated with v6 (observability: workload cards, error sparkline, deploy duratio",
+      "agent": "guard",
+      "line": "[LOOP-DETECT] Agent 'jet' dispatched 53 times in current log cycle.",
       "time": "NaNh ago",
-      "color": "#a855f7"
+      "color": "#38bdf8"
     },
     {
       "id": 12,
-      "agent": "Spike",
-      "line": "[needs-faye] MC v7 research — theme toggle, PWA manifest, deploy rollback, agent avatars in kanban. Spec file: memory/improvement-queue.md. ",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#38bdf8"
     },
     {
       "id": 13,
-      "agent": "Spike",
-      "line": "[needs-faye] MC v6 research — agent workload cards, error rate sparklines, deploy duration display, mobile responsive. Spec file: memory/imp",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#38bdf8"
     },
     {
       "id": 14,
-      "agent": "Punch",
-      "line": "[acknowledged-punch] starting: Patch openclaw.json: add missing shell profiles (node/bash/sh) to brisk-br + nova-sag summons, remove non-fun",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#ef4444"
+      "color": "#38bdf8"
     },
     {
       "id": 15,
-      "agent": "needs-punch",
-      "line": "Patch openclaw.json: add missing shell profiles (node/bash/sh) to brisk-br + nova-sag summons, remove non-functional awk/sed from safeBins. ",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 16,
-      "agent": "Faye",
-      "line": "[needs-faye] Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI: polling vs push, intent classification",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#a855f7"
+      "color": "#38bdf8"
     },
     {
       "id": 17,
-      "agent": "Faye",
-      "line": "[done] Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 research, rendering scope, cost trac",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#a855f7"
+      "color": "#38bdf8"
     },
     {
       "id": 18,
-      "agent": "Punch",
-      "line": "[done] Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: awk flagged as risky in safeBins.",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#ef4444"
+      "color": "#38bdf8"
     },
     {
       "id": 19,
-      "agent": "needs-faye",
-      "line": "General research task — check for any pending research items or questions from recent sessions. — Ed Builder Loop",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 20,
-      "agent": "Faye",
-      "line": "[done] Memory cleanup: archived 7 stale files to cold/ (kanban-spec, mc-cost, mc-ui, faye-mc-mobile, 2x session logs), bumped MC v2→v5 in ME",
+      "agent": "dispatch",
+      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
       "time": "NaNh ago",
-      "color": "#a855f7"
+      "color": "#38bdf8"
     }
   ],
   "cron": [
@@ -332,31 +332,6 @@
     "inprogress": [],
     "done": [
       {
-        "agent": "faye",
-        "text": "Memory cleanup: archived 7 stale files to cold/ (kanban-spec, mc-cost, mc-ui, faye-mc-mobile, 2x ses",
-        "ts": "2026-04-07 03:44 UTC"
-      },
-      {
-        "agent": "punch",
-        "text": "Investigate model timeout / exec failure: SIGTERM on brisk-br, exec failed on nova-sag. Root cause: ",
-        "ts": "2026-04-07T03:24:17Z"
-      },
-      {
-        "agent": "faye",
-        "text": "Scanned recent sessions and memory — no new unanswered research items. All Faye work done (MC v2 res",
-        "ts": "2026-04-07T03:24:00Z"
-      },
-      {
-        "agent": "faye",
-        "text": "[needs-faye] Research smart Gmail handling for ops@ironthread.ai — implementation plan using gog CLI",
-        "ts": "2026-04-07T03:24:00Z"
-      },
-      {
-        "agent": "faye",
-        "text": "MC v6+v7 research consolidated — improvement-queue.md updated with v6 (observability: workload cards",
-        "ts": "2026-04-07T04:02:00Z"
-      },
-      {
         "agent": "ed",
         "text": "MC v6.3 (deploy duration) — sync-live-json.js computes durationMs as gap between consecutive deploy ",
         "ts": "2026-04-07 04:07 UTC"
@@ -375,6 +350,36 @@
         "agent": "ed",
         "text": "MC v6 build (done): sync-live-json.js updated — agents array (v6.1) + deploy duration field (v6.3); ",
         "ts": "2026-04-07 04:19 UTC"
+      },
+      {
+        "agent": "jet",
+        "text": "Production environment defined — spec at memory/mc-production-environment.md. mc-deploy-prod script ",
+        "ts": "2026-04-07T04:52:00Z"
+      },
+      {
+        "agent": "test",
+        "text": "Event-driven dispatch verified working. Watcher detected [needs-ed] within 1 second of shared-log wr",
+        "ts": "2026-04-07 04:53 UTC"
+      },
+      {
+        "agent": "done",
+        "text": "Event-driven dispatch tests complete — removing test entries.",
+        "ts": "2026-04-07 04:57 UTC"
+      },
+      {
+        "agent": "ein",
+        "text": "Cost tracking pipeline — set up cost-data.json with working script + clean data across all 3 paths (",
+        "ts": "2026-04-07 04:59 UTC"
+      },
+      {
+        "agent": "andy",
+        "text": "MC v6 pushed to GitHub (e2b0d95..bd23a62) + deployed to nginx. Overnight pipeline verified working.",
+        "ts": "2026-04-07 05:00 UTC"
+      },
+      {
+        "agent": "spike",
+        "text": "dispatch-guard run: ALERTS 2 stale entries + loop-detect jet@53 ein@3 dispatches — cost-safeguard OK",
+        "ts": "2026-04-07 06:16 UTC"
       }
     ]
   }

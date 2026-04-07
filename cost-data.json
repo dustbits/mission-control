@@ -1,29 +1,29 @@
 {
-  "updated": "2026-04-06 09:15 PM ET",
-  "total_cost": 0.0,
-  "budget": 5.0,
+  "updated": "04/07/2026, 00:58 ET",
+  "total_cost": 0.126,
+  "budget": 5,
   "status": "ok",
   "models": [
     {
-      "model": "MiniMax-M2.7-highspeed",
-      "sessions": 2,
-      "messages": 48,
+      "model": "minimax/MiniMax-M2.7-highspeed",
+      "sessions": 27,
+      "messages": 84,
       "tokens": 0,
-      "cost": 0.0
+      "cost": 0.126
     },
     {
       "model": "qwen/qwen3.6-plus:free",
-      "sessions": 1,
-      "messages": 5,
+      "sessions": 6,
+      "messages": 47,
       "tokens": 0,
-      "cost": 0.0
+      "cost": 0
     },
     {
-      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "model": "meta/llama-3.3-70b-instruct:free",
       "sessions": 1,
-      "messages": 6,
+      "messages": 3,
       "tokens": 0,
-      "cost": 0.0
+      "cost": 0
     }
   ]
 }
