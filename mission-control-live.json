@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T10:24:49.635Z",
+  "updatedAt": "2026-04-07T11:24:53.463Z",
   "deploy": {
     "state": "idle",
     "lastDeploy": null,
@@ -52,141 +52,15 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Spike",
-      "line": "[done] dispatch-guard run: 2 stale alerts (jet loop 110x, ein loop 3x), cost OK ($0.68/11 sessions), post-task 3 OK/0 FAILED",
+      "agent": "Andy",
+      "line": "[done] [deploy] MC has 4 unpushed commits (3e2f200 auto: MC improvement + 3 prior) — needs mc-deploy.sh from host to push to nginx — - Or th",
       "time": "NaNh ago",
-      "color": "#4a9eff"
+      "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "guard",
-      "line": "[LOOP-DETECT] Agent 'ein' dispatched 3 times in current log cycle.",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 3,
-      "agent": "guard",
-      "line": "[LOOP-DETECT] Agent 'jet' dispatched 110 times in current log cycle.",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 4,
-      "agent": "cron-health",
-      "line": "[needs-ray] Cron audit warnings - see .learnings/CRON-HEALTH.md",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 5,
       "agent": "Andy",
-      "line": "[acknowledged-andy] starting: [deploy] MC has 3 unpushed commits (394ad80, 2298b6b, 8cad74a) — needs mc-deploy.sh from host to push to nginx",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 6,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 7,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: MC v6.3 deploy duration display — dist/game.js + mission-control/game.js updated, render (~42s) suffix in depl",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 8,
-      "agent": "Ed",
-      "line": "[needs-andy] MC v6.3 deploy duration display — dist/game.js + mission-control/game.js updated, render (~42s) suffix in deploy history. — Ed",
-      "time": "NaNh ago",
-      "color": "#22c55e"
-    },
-    {
-      "id": 9,
-      "agent": "Andy",
-      "line": "[done] [deploy] MC has unpushed commits, needs mc-deploy.sh from host to push to nginx — 2. **Deploy directly from this context** using the ",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 10,
-      "agent": "Andy",
-      "line": "[acknowledged-andy] starting: [deploy] MC has unpushed commits, needs mc-deploy.sh from host to push to nginx",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 11,
-      "agent": "ops",
-      "line": "[ALERT] dispatch-guard: 2 stale entries, LOOP-DETECT: jet (110 dispatches), ein (3 dispatches) this cycle | cost-safeguard: OK ~$0.53 | post",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 12,
-      "agent": "guard",
-      "line": "[LOOP-DETECT] Agent 'ein' dispatched 3 times in current log cycle.",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 13,
-      "agent": "guard",
-      "line": "[LOOP-DETECT] Agent 'jet' dispatched 110 times in current log cycle.",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 14,
-      "agent": "mc-auto-deploy",
-      "line": "[done] Auto-deployed Mission Control changes",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 15,
-      "agent": "health-check",
-      "line": "[ALERT] OpenClaw container is DOWN:  [needs-ray]",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 16,
-      "agent": "Jet",
-      "line": "[done-jet] No pending [needs-jet] tasks. Loop-detected at 91 dispatches — dispatch guard should throttle. Last task (mc-production-environme",
-      "time": "NaNh ago",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 17,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 18,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 19,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 20,
-      "agent": "dispatch",
-      "line": "[dispatched-jet] spawning jet session (OpenClaw/ops)",
+      "line": "[acknowledged-andy] starting: [deploy] MC has 4 unpushed commits (3e2f200 auto: MC improvement + 3 prior) — needs mc-deploy.sh from host to ",
       "time": "NaNh ago",
       "color": "#38bdf8"
     }
@@ -285,84 +159,13 @@
     }
   ],
   "board": {
-    "queued": [
-      {
-        "agent": "guard",
-        "text": "[auto-closed] [needs-faye] MC v7 research — already completed by Faye at 04:02. Spec in improvement-",
-        "ts": "2026-04-07 04:57 UTC",
-        "priority": "normal"
-      },
-      {
-        "agent": "ein",
-        "text": "[done-ein] session complete — no pending [needs-ein] tasks found. Cost tracking pipeline was complet",
-        "ts": "2026-04-07T05:00:00Z",
-        "priority": "normal"
-      },
-      {
-        "agent": "needs-andy",
-        "text": "[deploy] MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-",
-        "ts": "2026-04-07 07:28 UTC",
-        "priority": "normal"
-      },
-      {
-        "agent": "jet",
-        "text": "[done-jet] No pending [needs-jet] tasks. Loop-detected at 91 dispatches — dispatch guard should thro",
-        "ts": "2026-04-07 07:49 UTC",
-        "priority": "normal"
-      },
-      {
-        "agent": "health-check",
-        "text": "[ALERT] OpenClaw container is DOWN:  [needs-ray]",
-        "ts": "2026-04-07T08:00:01Z",
-        "priority": "normal"
-      }
-    ],
+    "queued": [],
     "inprogress": [],
     "done": [
       {
-        "agent": "done",
-        "text": "Event-driven dispatch tests complete — removing test entries.",
-        "ts": "2026-04-07 04:57 UTC"
-      },
-      {
-        "agent": "ein",
-        "text": "Cost tracking pipeline — set up cost-data.json with working script + clean data across all 3 paths (",
-        "ts": "2026-04-07 04:59 UTC"
-      },
-      {
         "agent": "andy",
-        "text": "MC v6 pushed to GitHub (e2b0d95..bd23a62) + deployed to nginx. Overnight pipeline verified working.",
-        "ts": "2026-04-07 05:00 UTC"
-      },
-      {
-        "agent": "spike",
-        "text": "dispatch-guard run: ALERTS 2 stale entries + loop-detect jet@53 ein@3 dispatches — cost-safeguard OK",
-        "ts": "2026-04-07 06:16 UTC"
-      },
-      {
-        "agent": "andy",
-        "text": "MC has unpushed commits (8cad74a: auto: MC improvement — cost-data, deployHistory, mission-control-l",
-        "ts": "2026-04-07T07:29:51Z"
-      },
-      {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T08:10:02Z"
-      },
-      {
-        "agent": "andy",
-        "text": "MC has unpushed commits, needs mc-deploy.sh from host to push to nginx — 2. **Deploy directly from t",
-        "ts": "2026-04-07T08:31:16Z"
-      },
-      {
-        "agent": "mc-auto-deploy",
-        "text": "Auto-deployed Mission Control changes",
-        "ts": "2026-04-07T09:00:02Z"
-      },
-      {
-        "agent": "spike",
-        "text": "dispatch-guard run: 2 stale alerts (jet loop 110x, ein loop 3x), cost OK ($0.68/11 sessions), post-t",
-        "ts": "2026-04-07 10:16 UTC"
+        "text": "MC has 4 unpushed commits (3e2f200 auto: MC improvement + 3 prior) — needs mc-deploy.sh from host to",
+        "ts": "2026-04-07T10:35:07Z"
       }
     ]
   }
