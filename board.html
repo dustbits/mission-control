@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mission Control · Board</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1d4ed8">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,6 +22,17 @@
       --progress: #38bdf8;
       --done: #22c55e;
       --card-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-column: #f1f5f9;
+      --border: #cbd5e1;
+      --text-primary: #475569;
+      --text-header: #0f172a;
+      --text-card: #1e293b;
+      --card-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
 
     body {
@@ -422,6 +435,7 @@
       <span>Mission Control · Shared-log Kanban</span>
     </div>
     <div class="header-status">
+      <button id="theme-btn" title="Toggle theme" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 6px;opacity:0.8;">🌙</button>
       <span id="sync-time">—</span>
       <span class="sync-dot" id="sync-dot"></span> <button class="cron-refresh" id="sync-now-btn" style="margin-left:8px;font-size:11px">↻ Sync</button>
     </div>
@@ -482,7 +496,11 @@
   <div class="deploy-panel" id="deploy-panel">
     <div class="deploy-panel-header">
       <h2>📦 Deploy History</h2>
-      <button class="deploy-refresh" id="deploy-refresh-btn">↻ Refresh</button>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <a href="http://jarvis:8090" target="_blank" class="deploy-refresh" style="text-decoration:none;">👁 Staging</a>
+        <button class="deploy-refresh" id="rollback-btn" title="Rollback to previous deploy">↩ Rollback</button>
+        <button class="deploy-refresh" id="deploy-refresh-btn">↻ Refresh</button>
+      </div>
     </div>
     <div class="deploy-timeline" id="deploy-timeline">
       <div class="deploy-empty">Loading deploy history…</div>
@@ -805,6 +823,14 @@
         tsSpan.className = 'card-ts';
         tsSpan.textContent = item.ts || '';
 
+        // Show duration badge if available (acknowledged->done time)
+        if (item.duration) {
+          const durBadge = document.createElement('span');
+          durBadge.style.cssText = 'background:#22c55e22;color:#22c55e;padding:1px 6px;border-radius:4px;font-size:10px;margin-left:6px;';
+          durBadge.textContent = '⏱ ' + item.duration;
+          tsSpan.appendChild(durBadge);
+        }
+
         meta.appendChild(leftDiv);
         meta.appendChild(tsSpan);
         card.appendChild(title);
@@ -924,6 +950,37 @@
       } finally {
         fetching = false;
       }
+    }
+
+    // ── Theme Toggle (v7.1) ──
+    (function() {
+      const btn = document.getElementById('theme-btn');
+      const saved = localStorage.getItem('mc-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const initTheme = saved || (prefersDark ? 'light' : 'dark');
+      document.documentElement.dataset.theme = initTheme;
+      btn.textContent = initTheme === 'dark' ? '🌙' : '☀️';
+      btn.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('mc-theme', next);
+        btn.textContent = next === 'dark' ? '🌙' : '☀️';
+      });
+    })();
+
+    // ── Rollback (v7.3) ──
+    document.getElementById('rollback-btn').addEventListener('click', async () => {
+      const hist = deployHistoryCache || [];
+      if (hist.length < 2) { alert('Not enough deploy history to rollback.'); return; }
+      const prev = hist[1];
+      const prevTime = prev.timestamp ? new Date(prev.timestamp).toLocaleString() : 'unknown';
+      if (!confirm('Rollback to deploy from\n' + prevTime + '?\n\nRun mc-deploy.sh manually on the host to complete.')) return;
+      alert('⚠ Manual action required: run mc-deploy.sh on the host to complete rollback to ' + prevTime);
+    });
+
+    // ── PWA Service Worker Registration (v7.2) ──
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
     }
 
     poll();

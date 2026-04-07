@@ -254,10 +254,20 @@ function updateDeployHistory(deployTimestamp) {
     return history.slice(0, 10);
   }
 
+  // Capture git branch + short hash at deploy time
+  let branch = 'main';
+  let commitHash = '';
+  try {
+    branch = execSync('git branch --show-current 2>/dev/null || echo main').toString().trim() || 'main';
+    commitHash = execSync('git rev-parse --short HEAD 2>/dev/null || echo').toString().trim();
+  } catch {}
+
   const entry = {
     timestamp: deployTimestamp || new Date().toISOString(),
     status: 'deployed',
     trigger: 'manual',
+    branch: branch,
+    commit: commitHash,
   };
 
   history.unshift(entry);
