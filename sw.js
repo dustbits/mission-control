@@ -1,4 +1,4 @@
-const CACHE = 'mc-v4';
+const CACHE = 'mc-v7';
 const PRECACHE = ['/', '/index.html', '/config.js', '/game.js', '/scripts/cost-dashboard.js', '/assets/bebop-sprites.png'];
 
 self.addEventListener('install', e => {
