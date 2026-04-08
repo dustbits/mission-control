@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-04-08T01:29:01.746Z",
+  "updatedAt": "2026-04-08T03:29:01.962Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 99,
-    "memory": 41,
+    "cpu": 45,
+    "memory": 39,
     "disk": 1
   },
   "agents": [
     {
-      "name": "Ed",
-      "key": "ed",
-      "model": "openai-codex/gpt-5.4",
-      "color": "#22c55e",
-      "completed": 2,
+      "name": "Andy",
+      "key": "andy",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#38bdf8",
+      "completed": 1,
       "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
@@ -69,6 +69,16 @@
       "blockers": 0
     },
     {
+      "name": "Ed",
+      "key": "ed",
+      "model": "openai-codex/gpt-5.4",
+      "color": "#22c55e",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
       "name": "Julia",
       "key": "julia",
       "model": "Qwen/Qwen2.5-7B",
@@ -97,16 +107,6 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0
-    },
-    {
-      "name": "Andy",
-      "key": "andy",
-      "model": "MiniMax/M2.7-highspeed",
-      "color": "#38bdf8",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
     }
   ],
   "deploy": {
@@ -118,49 +118,49 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "18m"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-07T14:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "11h 10m",
-        "time": "11h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-07T12:53:42.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 6m",
-        "time": "12h"
+        "time": "14h"
       },
       {
         "timestamp": "2026-04-07T04:29:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8h 24m",
-        "time": "20h"
+        "time": "22h"
       },
       {
         "timestamp": "2026-04-07T04:15:05.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "14m",
-        "time": "21h"
+        "time": "23h"
       },
       {
         "timestamp": "2026-04-07T04:10:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "21h"
+        "time": "23h"
       },
       {
         "timestamp": "2026-04-07T03:29:17.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "41m",
-        "time": "21h"
+        "time": "23h"
       },
       {
         "timestamp": "2026-04-07T00:22:56.000Z",
@@ -219,59 +219,131 @@
     {
       "id": 1,
       "agent": "Ed",
-      "line": "JSON dump fix documented — Ray applied `or \"\"` guard in Python listener scripts to prevent str(dict) leak when payloads ",
-      "time": "30m",
+      "line": "starting: ",
+      "time": "4m",
       "color": "#22c55e"
     },
     {
       "id": 2,
       "agent": "Ed",
-      "line": "Cron cleanup: disabled daily-memory-capture (broken/timeout), ed-builder-loop (redundant/discord-listener handles), memo",
-      "time": "1h",
+      "line": "MC v8.0: state dots, task badges, search bar, activity feed tab, mobile responsive, PWA manifest — all staged",
+      "time": "5m",
       "color": "#22c55e"
     },
     {
       "id": 3,
-      "agent": "System",
-      "line": "memory-prune: sqlite: 3 flushed, cold: 3 purged",
-      "time": "1h",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "starting: mobile responsive pass + PWA manifest",
+      "time": "5m",
+      "color": "#22c55e"
     },
     {
       "id": 4,
-      "agent": "ray",
-      "line": "Discord system fixed. Two critical bugs: (1) loginctl linger was off — all listeners dying on SSH disconnect. Fixed: log",
-      "time": "1h",
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "6m",
       "color": "#38bdf8"
+    },
+    {
+      "id": 5,
+      "agent": "Andy",
+      "line": "starting: Andy — updated my listener. I now respond to all activity in #ed-andy without needing a tag. Here's the load-b",
+      "time": "6m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 6,
+      "agent": "vicious",
+      "line": "Vicious, Ray wants you to document the steps for the MC push so the process is r (exit=1)",
+      "time": "30m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 7,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "31m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 8,
+      "agent": "Andy",
+      "line": "starting: MC push: done. Commit 7a31584 (auto: MC improvement) is now on DustBits/mission-control.git. Staging is clean,",
+      "time": "31m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 9,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "34m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 10,
+      "agent": "Andy",
+      "line": "starting: Cryptobot autopsy result: the  GCP function is GONE. Not accessible in any project. Either deleted or project ",
+      "time": "34m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 11,
+      "agent": "Andy",
+      "line": "starting: the dustbits token is in google secret manager you should know that, its the Pat token,",
+      "time": "39m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 12,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "40m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 13,
+      "agent": "Andy",
+      "line": "starting: Verified MC deploy status:",
+      "time": "40m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 14,
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "41m",
+      "color": "#22c55e"
+    },
+    {
+      "id": 15,
+      "agent": "Ed",
+      "line": "test task — verifying board pipeline",
+      "time": "44m",
+      "color": "#22c55e"
     }
   ],
   "board": {
     "queued": [],
-    "inprogress": [],
+    "inprogress": [
+      {
+        "id": 1775618694000,
+        "text": "starting: ",
+        "agent": "Ed",
+        "ts": "4m"
+      },
+      {
+        "id": 1775618640000,
+        "text": "starting: mobile responsive pass + PWA manifest",
+        "agent": "Ed",
+        "ts": "5m"
+      }
+    ],
     "done": [
       {
-        "id": 1775605800000,
-        "text": "Discord system fixed. Two critical bugs: (1) loginctl linger was off — all listeners dying on SSH di",
-        "agent": "ray",
-        "ts": "1h"
-      },
-      {
-        "id": 1775606406000,
-        "text": "memory-prune: sqlite: 3 flushed, cold: 3 purged",
-        "agent": "System",
-        "ts": "1h"
-      },
-      {
-        "id": 1775607000000,
-        "text": "Cron cleanup: disabled daily-memory-capture (broken/timeout), ed-builder-loop (redundant/discord-lis",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775609940000,
-        "text": "JSON dump fix documented — Ray applied `or \"\"` guard in Python listener scripts to prevent str(dict)",
-        "agent": "Ed",
-        "ts": "30m"
+        "id": 1775616507000,
+        "text": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mi",
+        "agent": "Andy",
+        "ts": "40m"
       }
     ]
   },
@@ -281,7 +353,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -312,11 +384,11 @@
       "id": "daily-memory-capture",
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
-      "next": "scheduled",
-      "lastRun": "2h",
-      "state": "paused",
+      "next": "now",
+      "lastRun": "4h",
+      "state": "error",
       "errors": 1,
-      "enabled": false,
+      "enabled": true,
       "errorHistory": [
         1,
         1,
@@ -345,7 +417,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -377,7 +449,7 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -409,7 +481,7 @@
       "label": "Weekly Summary",
       "schedule": "0 17 * * 0",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -441,7 +513,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -473,7 +545,7 @@
       "label": "Spike Audit Digest",
       "schedule": "0 18 * * 5",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -537,7 +609,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -601,7 +673,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "20h",
+      "lastRun": "22h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -697,7 +769,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "scheduled",
-      "lastRun": "1h",
+      "lastRun": "3h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -792,11 +864,11 @@
       "id": "ed-builder-loop",
       "label": "Ed Builder Loop",
       "schedule": 14400000,
-      "next": "scheduled",
-      "lastRun": "4h",
-      "state": "paused",
+      "next": "now",
+      "lastRun": "6h",
+      "state": "ok",
       "errors": 0,
-      "enabled": false,
+      "enabled": true,
       "errorHistory": [
         0,
         0,
@@ -857,7 +929,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -920,11 +992,11 @@
       "id": "55b42ebe-7262-4eb4-81ba-5013f7f3d641",
       "label": "Spike Task Router",
       "schedule": 900000,
-      "next": "scheduled",
-      "lastRun": "20h",
-      "state": "paused",
+      "next": "now",
+      "lastRun": "22h",
+      "state": "ok",
       "errors": 0,
-      "enabled": false,
+      "enabled": true,
       "errorHistory": [
         0,
         0,
@@ -953,7 +1025,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -985,7 +1057,7 @@
       "label": "Research Digest",
       "schedule": "0 7 * * 2,5",
       "next": "now",
-      "lastRun": "10h",
+      "lastRun": "12h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1017,7 +1089,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "6h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1081,7 +1153,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "scheduled",
-      "lastRun": "9h",
+      "lastRun": "11h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
