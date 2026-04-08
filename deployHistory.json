@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-08T06:17:00.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "sha": "d608fe8",
+    "shaFull": "d608fe8f51db7f8b0c6e71289d7e0c1934788176",
+    "message": "MC v8.0: newest-first sort default, toggle button, card glow on changes, cron tab with sparklines, mobile PWA manifest, cost-writer integration",
+    "branch": "master",
+    "changedFiles": "board.html,cost-data.json,cron-error-history.json,manifest.json,mission-control-live.json,sw.js",
+    "durationSec": 0
+  },
+  {
     "timestamp": "2026-04-08T01:10:10.000Z",
     "status": "deployed",
     "trigger": "manual",
