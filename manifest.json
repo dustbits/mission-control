@@ -1,14 +1,16 @@
 {
-  "name": "Ray's AI Office - Mission Control",
-  "short_name": "Mission Control",
-  "description": "Real-time dashboard for OpenClaw multi-agent system",
+  "name": "Mission Control",
+  "short_name": "MC",
+  "description": "Spike crew command center — real-time task board, agent status, deploy tracking",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#020617",
-  "theme_color": "#1d4ed8",
+  "background_color": "#0f172a",
+  "theme_color": "#38bdf8",
   "icons": [
-    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2338bdf8'>🧠</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
   ]
 }

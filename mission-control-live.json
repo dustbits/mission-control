@@ -1,19 +1,29 @@
 {
-  "updatedAt": "2026-04-08T04:29:01.913Z",
+  "updatedAt": "2026-04-08T05:22:01.624Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 99,
-    "memory": 39,
+    "cpu": 30,
+    "memory": 29,
     "disk": 1
   },
   "agents": [
+    {
+      "name": "Ed",
+      "key": "ed",
+      "model": "openai-codex/gpt-5.4",
+      "color": "#22c55e",
+      "completed": 5,
+      "efficiency": 100,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
     {
       "name": "Andy",
       "key": "andy",
       "model": "MiniMax/M2.7-highspeed",
       "color": "#38bdf8",
-      "completed": 3,
+      "completed": 4,
       "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
@@ -69,16 +79,6 @@
       "blockers": 0
     },
     {
-      "name": "Ed",
-      "key": "ed",
-      "model": "openai-codex/gpt-5.4",
-      "color": "#22c55e",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
       "name": "Julia",
       "key": "julia",
       "model": "Qwen/Qwen2.5-7B",
@@ -118,28 +118,28 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "3h"
+        "time": "4h"
       },
       {
         "timestamp": "2026-04-07T14:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "11h 10m",
-        "time": "14h"
+        "time": "15h"
       },
       {
         "timestamp": "2026-04-07T12:53:42.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 6m",
-        "time": "15h"
+        "time": "16h"
       },
       {
         "timestamp": "2026-04-07T04:29:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8h 24m",
-        "time": "23h"
+        "time": "1d"
       },
       {
         "timestamp": "2026-04-07T04:15:05.000Z",
@@ -218,221 +218,435 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "21m",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "8m",
       "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Andy",
-      "line": "starting: Relayed from shared-log [needs-andy]: MC improvements staged — Cron tab with sparklines, Activity tab, mobile ",
-      "time": "21m",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "8m",
       "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "21m",
+      "agent": "vicious",
+      "line": "Discord cleanup: deleted 10 dead channels (cryptobot, ironthread, art-site, trendtribe, seo-analysis, market-research, t",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "Andy",
-      "line": "starting: MC improvements staged — Cron tab with sparklines, Activity tab, mobile responsive, PWA manifest — need git pu",
-      "time": "21m",
+      "agent": "vicious",
+      "line": "Hermes agent installed on jarvis: v0.7.0, location ~/.hermes/hermes-agent, MiniMax API configured",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "Ed",
-      "line": "MC improvements staged — Cron tab with sparklines, Activity tab, mobile responsive, PWA manifest — need git push + nginx",
-      "time": "24m",
-      "color": "#22c55e"
+      "agent": "vicious",
+      "line": "Hermes skills external_dir → /mnt/spike-storage/openclaw-live/workspace/skills (read-only)",
+      "time": "10m",
+      "color": "#38bdf8"
     },
     {
       "id": 6,
-      "agent": "Andy",
-      "line": "starting: ok why aren't you pushing anything, ive seen 0 logs here",
-      "time": "33m",
+      "agent": "vicious",
+      "line": "Hermes Discord gateway fix: check Discord developer portal for Spike bot — ensure Message Content Intent is enabled, ver",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
-      "agent": "vicious",
-      "line": "ok why aren't you pushing anything, ive seen 0 logs here (exit=1)",
-      "time": "33m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "Discord bot token for Vicious posted by Ray in lounge — exposed in chat logs, security risk per Andy. Store in GCP Secre",
+      "time": "11m",
+      "color": "#22c55e"
     },
     {
       "id": 8,
-      "agent": "Andy",
-      "line": "Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to coordinate on the MC p",
-      "time": "33m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "MC board: added newest-first sort (default) + sort toggle button + new/changed card highlight glow",
+      "time": "16m",
+      "color": "#22c55e"
     },
     {
       "id": 9,
-      "agent": "vicious",
-      "line": "Yeah I caught it, Vicious laid out the load-balance split — [needs-andy] tasks c (exit=1)",
-      "time": "33m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "16m",
+      "color": "#22c55e"
     },
     {
       "id": 10,
-      "agent": "Andy",
-      "line": "starting: Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to coordinate o",
-      "time": "33m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "16m",
+      "color": "#22c55e"
     },
     {
       "id": 11,
       "agent": "Ed",
-      "line": "starting: ",
-      "time": "43m",
+      "line": "MC board: added Vicious to AGENT_COLORS/MODELS/AVATARS — color #14b8a6, model MiniMax/M2.7-highspeed, avatar ⚡",
+      "time": "18m",
       "color": "#22c55e"
     },
     {
       "id": 12,
       "agent": "Ed",
-      "line": "starting: ",
-      "time": "1h",
+      "line": "Hermes: needs role definition before adding to MC board — research by Faye",
+      "time": "18m",
       "color": "#22c55e"
     },
     {
       "id": 13,
       "agent": "Ed",
-      "line": "MC v8.0: state dots, task badges, search bar, activity feed tab, mobile responsive, PWA manifest — all staged",
-      "time": "1h",
+      "line": "faye-research.md: added reply rules — only respond on research/evaluation/direct mention, stay quiet otherwise",
+      "time": "21m",
       "color": "#22c55e"
     },
     {
       "id": 14,
-      "agent": "Ed",
-      "line": "starting: mobile responsive pass + PWA manifest",
-      "time": "1h",
-      "color": "#22c55e"
+      "agent": "vicious",
+      "line": "Hermes agent plan created — nousresearch/ourselves-agent, MiniMax backend, 4-phase integration, self-improving skill lib",
+      "time": "34m",
+      "color": "#38bdf8"
     },
     {
       "id": 15,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "1h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "34m",
       "color": "#38bdf8"
     },
     {
       "id": 16,
-      "agent": "Andy",
-      "line": "starting: Andy — updated my listener. I now respond to all activity in #ed-andy without needing a tag. Here's the load-b",
-      "time": "1h",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "Research: TrendTribe competitor analysis — identify top 3 comparable digital product stores, document their pricing mode",
+      "time": "40m",
+      "color": "#22c55e"
     },
     {
       "id": 17,
       "agent": "vicious",
-      "line": "Vicious, Ray wants you to document the steps for the MC push so the process is r (exit=1)",
-      "time": "1h",
+      "line": "Faye files configured: Gemma purged from workspace, model set to MiniMax M2.7, gemma-reasoning.md archived to cold/",
+      "time": "41m",
       "color": "#38bdf8"
     },
     {
       "id": 18,
       "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "1h",
+      "line": "MC pushed + deployed to nginx. Latest: df4d7a8 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "45m",
       "color": "#38bdf8"
     },
     {
       "id": 19,
       "agent": "Andy",
-      "line": "starting: MC push: done. Commit 7a31584 (auto: MC improvement) is now on DustBits/mission-control.git. Staging is clean,",
-      "time": "1h",
+      "line": "starting: MC deploy: Cron tab + Activity tab + mobile responsive + PWA manifest staged — git push to mission-control rep",
+      "time": "45m",
       "color": "#38bdf8"
     },
     {
       "id": 20,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "1h",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "ed-code.md: added mandatory task lifecycle logging rule — [taken] on work start, [done] on completion — survives compact",
+      "time": "47m",
+      "color": "#22c55e"
     },
     {
       "id": 21,
-      "agent": "Andy",
-      "line": "starting: Cryptobot autopsy result: the  GCP function is GONE. Not accessible in any project. Either deleted or project ",
-      "time": "1h",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "MC deploy: Cron tab + Activity tab + mobile responsive + PWA manifest staged — git push to mission-control repo needed",
+      "time": "47m",
+      "color": "#22c55e"
     },
     {
       "id": 22,
-      "agent": "Andy",
-      "line": "starting: the dustbits token is in google secret manager you should know that, its the Pat token,",
-      "time": "1h",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "MC: added Cron tab with SVG sparklines, Activity feed tab, mobile responsive 700px breakpoint, PWA manifest.json — stage",
+      "time": "51m",
+      "color": "#22c55e"
     },
     {
       "id": 23,
       "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "line": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
       "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 24,
       "agent": "Andy",
-      "line": "starting: Verified MC deploy status:",
+      "line": "starting: Relayed from shared-log [needs-andy]: MC improvements staged — Cron tab with sparklines, Activity tab, mobile ",
       "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 25,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 26,
+      "agent": "Andy",
+      "line": "starting: MC improvements staged — Cron tab with sparklines, Activity tab, mobile responsive, PWA manifest — need git pu",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 27,
+      "agent": "Ed",
+      "line": "MC improvements staged — Cron tab with sparklines, Activity tab, mobile responsive, PWA manifest — need git push + nginx",
+      "time": "1h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 28,
+      "agent": "Andy",
+      "line": "starting: ok why aren't you pushing anything, ive seen 0 logs here",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 29,
+      "agent": "vicious",
+      "line": "ok why aren't you pushing anything, ive seen 0 logs here (exit=1)",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 30,
+      "agent": "Andy",
+      "line": "Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to coordinate on the MC p",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 31,
+      "agent": "vicious",
+      "line": "Yeah I caught it, Vicious laid out the load-balance split — [needs-andy] tasks c (exit=1)",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 32,
+      "agent": "Andy",
+      "line": "starting: Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to coordinate o",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 33,
       "agent": "Ed",
       "line": "starting: ",
       "time": "1h",
       "color": "#22c55e"
     },
     {
-      "id": 26,
+      "id": 34,
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "1h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 35,
+      "agent": "Ed",
+      "line": "MC v8.0: state dots, task badges, search bar, activity feed tab, mobile responsive, PWA manifest — all staged",
+      "time": "1h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 36,
+      "agent": "Ed",
+      "line": "starting: mobile responsive pass + PWA manifest",
+      "time": "1h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 37,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 38,
+      "agent": "Andy",
+      "line": "starting: Andy — updated my listener. I now respond to all activity in #ed-andy without needing a tag. Here's the load-b",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 39,
+      "agent": "vicious",
+      "line": "Vicious, Ray wants you to document the steps for the MC push so the process is r (exit=1)",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 40,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 41,
+      "agent": "Andy",
+      "line": "starting: MC push: done. Commit 7a31584 (auto: MC improvement) is now on DustBits/mission-control.git. Staging is clean,",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 42,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 43,
+      "agent": "Andy",
+      "line": "starting: Cryptobot autopsy result: the  GCP function is GONE. Not accessible in any project. Either deleted or project ",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 44,
+      "agent": "Andy",
+      "line": "starting: the dustbits token is in google secret manager you should know that, its the Pat token,",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 45,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 46,
+      "agent": "Andy",
+      "line": "starting: Verified MC deploy status:",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 47,
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "2h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 48,
       "agent": "Ed",
       "line": "test task — verifying board pipeline",
-      "time": "1h",
+      "time": "2h",
       "color": "#22c55e"
     }
   ],
   "board": {
-    "queued": [],
-    "inprogress": [
+    "queued": [
       {
-        "id": 1775619942000,
-        "text": "starting: ",
-        "agent": "Ed",
-        "ts": "43m"
+        "id": 1775625107000,
+        "text": "Hermes Discord gateway fix: check Discord developer portal for Spike bot — ensure Message Content In",
+        "agent": "vicious",
+        "ts": "10m"
       },
       {
-        "id": 1775618640000,
-        "text": "starting: mobile responsive pass + PWA manifest",
+        "id": 1775623320000,
+        "text": "Research: TrendTribe competitor analysis — identify top 3 comparable digital product stores, documen",
         "agent": "Ed",
-        "ts": "1h"
+        "ts": "40m"
       }
     ],
+    "inprogress": [],
     "done": [
       {
         "id": 1775616507000,
         "text": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mi",
         "agent": "Andy",
-        "ts": "1h"
+        "ts": "2h"
       },
       {
         "id": 1775620538000,
         "text": "Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to co",
         "agent": "Andy",
-        "ts": "33m"
+        "ts": "1h"
       },
       {
         "id": 1775621231000,
         "text": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mi",
         "agent": "Andy",
+        "ts": "1h"
+      },
+      {
+        "id": 1775622660000,
+        "text": "MC: added Cron tab with SVG sparklines, Activity feed tab, mobile responsive 700px breakpoint, PWA m",
+        "agent": "Ed",
+        "ts": "51m"
+      },
+      {
+        "id": 1775622900000,
+        "text": "ed-code.md: added mandatory task lifecycle logging rule — [taken] on work start, [done] on completio",
+        "agent": "Ed",
+        "ts": "47m"
+      },
+      {
+        "id": 1775623016000,
+        "text": "MC pushed + deployed to nginx. Latest: df4d7a8 auto: MC improvement | Changed: deployHistory.json,mi",
+        "agent": "Andy",
+        "ts": "45m"
+      },
+      {
+        "id": 1775623244000,
+        "text": "Faye files configured: Gemma purged from workspace, model set to MiniMax M2.7, gemma-reasoning.md ar",
+        "agent": "vicious",
+        "ts": "41m"
+      },
+      {
+        "id": 1775624460000,
+        "text": "faye-research.md: added reply rules — only respond on research/evaluation/direct mention, stay quiet",
+        "agent": "Ed",
         "ts": "21m"
+      },
+      {
+        "id": 1775624640000,
+        "text": "MC board: added Vicious to AGENT_COLORS/MODELS/AVATARS — color #14b8a6, model MiniMax/M2.7-highspeed",
+        "agent": "Ed",
+        "ts": "18m"
+      },
+      {
+        "id": 1775624760000,
+        "text": "MC board: added newest-first sort (default) + sort toggle button + new/changed card highlight glow",
+        "agent": "Ed",
+        "ts": "16m"
+      },
+      {
+        "id": 1775625107000,
+        "text": "Discord cleanup: deleted 10 dead channels (cryptobot, ironthread, art-site, trendtribe, seo-analysis",
+        "agent": "vicious",
+        "ts": "10m"
+      },
+      {
+        "id": 1775625107000,
+        "text": "Hermes agent installed on jarvis: v0.7.0, location ~/.hermes/hermes-agent, MiniMax API configured",
+        "agent": "vicious",
+        "ts": "10m"
+      },
+      {
+        "id": 1775625107000,
+        "text": "Hermes skills external_dir → /mnt/spike-storage/openclaw-live/workspace/skills (read-only)",
+        "agent": "vicious",
+        "ts": "10m"
       }
     ]
   },
@@ -442,7 +656,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -474,7 +688,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "6h",
       "state": "error",
       "errors": 1,
       "enabled": true,
@@ -506,7 +720,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -538,7 +752,7 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -570,7 +784,7 @@
       "label": "Weekly Summary",
       "schedule": "0 17 * * 0",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -602,7 +816,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -634,7 +848,7 @@
       "label": "Spike Audit Digest",
       "schedule": "0 18 * * 5",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -698,7 +912,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "26m",
+      "lastRun": "1h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -762,7 +976,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "23h",
+      "lastRun": "1d",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -826,7 +1040,7 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "3m",
+      "lastRun": "56m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -858,7 +1072,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "scheduled",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -954,7 +1168,7 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "39m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -986,7 +1200,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "53m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1018,7 +1232,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1082,7 +1296,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "10m",
+      "lastRun": "3m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1114,7 +1328,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "27m",
+      "lastRun": "1h",
       "state": "error",
       "errors": 1,
       "enabled": true,
@@ -1146,7 +1360,7 @@
       "label": "Research Digest",
       "schedule": "0 7 * * 2,5",
       "next": "now",
-      "lastRun": "13h",
+      "lastRun": "14h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1178,7 +1392,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1242,7 +1456,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "scheduled",
-      "lastRun": "12h",
+      "lastRun": "13h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
