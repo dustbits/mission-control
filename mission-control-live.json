@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-04-08T03:29:01.962Z",
+  "updatedAt": "2026-04-08T04:29:01.913Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 45,
+    "cpu": 99,
     "memory": 39,
     "disk": 1
   },
@@ -13,7 +13,7 @@
       "key": "andy",
       "model": "MiniMax/M2.7-highspeed",
       "color": "#38bdf8",
-      "completed": 1,
+      "completed": 3,
       "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
@@ -118,49 +118,49 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "2h"
+        "time": "3h"
       },
       {
         "timestamp": "2026-04-07T14:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "11h 10m",
-        "time": "13h"
+        "time": "14h"
       },
       {
         "timestamp": "2026-04-07T12:53:42.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 6m",
-        "time": "14h"
+        "time": "15h"
       },
       {
         "timestamp": "2026-04-07T04:29:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8h 24m",
-        "time": "22h"
+        "time": "23h"
       },
       {
         "timestamp": "2026-04-07T04:15:05.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "14m",
-        "time": "23h"
+        "time": "1d"
       },
       {
         "timestamp": "2026-04-07T04:10:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "23h"
+        "time": "1d"
       },
       {
         "timestamp": "2026-04-07T03:29:17.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "41m",
-        "time": "23h"
+        "time": "1d"
       },
       {
         "timestamp": "2026-04-07T00:22:56.000Z",
@@ -218,107 +218,184 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Ed",
-      "line": "starting: ",
-      "time": "4m",
-      "color": "#22c55e"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "21m",
+      "color": "#38bdf8"
     },
     {
       "id": 2,
-      "agent": "Ed",
-      "line": "MC v8.0: state dots, task badges, search bar, activity feed tab, mobile responsive, PWA manifest — all staged",
-      "time": "5m",
-      "color": "#22c55e"
+      "agent": "Andy",
+      "line": "starting: Relayed from shared-log [needs-andy]: MC improvements staged — Cron tab with sparklines, Activity tab, mobile ",
+      "time": "21m",
+      "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "Ed",
-      "line": "starting: mobile responsive pass + PWA manifest",
-      "time": "5m",
-      "color": "#22c55e"
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "21m",
+      "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "6m",
+      "line": "starting: MC improvements staged — Cron tab with sparklines, Activity tab, mobile responsive, PWA manifest — need git pu",
+      "time": "21m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "Andy",
-      "line": "starting: Andy — updated my listener. I now respond to all activity in #ed-andy without needing a tag. Here's the load-b",
-      "time": "6m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "MC improvements staged — Cron tab with sparklines, Activity tab, mobile responsive, PWA manifest — need git push + nginx",
+      "time": "24m",
+      "color": "#22c55e"
     },
     {
       "id": 6,
-      "agent": "vicious",
-      "line": "Vicious, Ray wants you to document the steps for the MC push so the process is r (exit=1)",
-      "time": "30m",
+      "agent": "Andy",
+      "line": "starting: ok why aren't you pushing anything, ive seen 0 logs here",
+      "time": "33m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "31m",
+      "agent": "vicious",
+      "line": "ok why aren't you pushing anything, ive seen 0 logs here (exit=1)",
+      "time": "33m",
       "color": "#38bdf8"
     },
     {
       "id": 8,
       "agent": "Andy",
-      "line": "starting: MC push: done. Commit 7a31584 (auto: MC improvement) is now on DustBits/mission-control.git. Staging is clean,",
-      "time": "31m",
+      "line": "Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to coordinate on the MC p",
+      "time": "33m",
       "color": "#38bdf8"
     },
     {
       "id": 9,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "34m",
+      "agent": "vicious",
+      "line": "Yeah I caught it, Vicious laid out the load-balance split — [needs-andy] tasks c (exit=1)",
+      "time": "33m",
       "color": "#38bdf8"
     },
     {
       "id": 10,
       "agent": "Andy",
-      "line": "starting: Cryptobot autopsy result: the  GCP function is GONE. Not accessible in any project. Either deleted or project ",
-      "time": "34m",
+      "line": "starting: Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to coordinate o",
+      "time": "33m",
       "color": "#38bdf8"
     },
     {
       "id": 11,
-      "agent": "Andy",
-      "line": "starting: the dustbits token is in google secret manager you should know that, its the Pat token,",
-      "time": "39m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "43m",
+      "color": "#22c55e"
     },
     {
       "id": 12,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
-      "time": "40m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 13,
-      "agent": "Andy",
-      "line": "starting: Verified MC deploy status:",
-      "time": "40m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "MC v8.0: state dots, task badges, search bar, activity feed tab, mobile responsive, PWA manifest — all staged",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 14,
       "agent": "Ed",
-      "line": "starting: ",
-      "time": "41m",
+      "line": "starting: mobile responsive pass + PWA manifest",
+      "time": "1h",
       "color": "#22c55e"
     },
     {
       "id": 15,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 16,
+      "agent": "Andy",
+      "line": "starting: Andy — updated my listener. I now respond to all activity in #ed-andy without needing a tag. Here's the load-b",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 17,
+      "agent": "vicious",
+      "line": "Vicious, Ray wants you to document the steps for the MC push so the process is r (exit=1)",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 18,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 19,
+      "agent": "Andy",
+      "line": "starting: MC push: done. Commit 7a31584 (auto: MC improvement) is now on DustBits/mission-control.git. Staging is clean,",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 20,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 21,
+      "agent": "Andy",
+      "line": "starting: Cryptobot autopsy result: the  GCP function is GONE. Not accessible in any project. Either deleted or project ",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 22,
+      "agent": "Andy",
+      "line": "starting: the dustbits token is in google secret manager you should know that, its the Pat token,",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 23,
+      "agent": "Andy",
+      "line": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mission-control-live.j",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 24,
+      "agent": "Andy",
+      "line": "starting: Verified MC deploy status:",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 25,
+      "agent": "Ed",
+      "line": "starting: ",
+      "time": "1h",
+      "color": "#22c55e"
+    },
+    {
+      "id": 26,
       "agent": "Ed",
       "line": "test task — verifying board pipeline",
-      "time": "44m",
+      "time": "1h",
       "color": "#22c55e"
     }
   ],
@@ -326,16 +403,16 @@
     "queued": [],
     "inprogress": [
       {
-        "id": 1775618694000,
+        "id": 1775619942000,
         "text": "starting: ",
         "agent": "Ed",
-        "ts": "4m"
+        "ts": "43m"
       },
       {
         "id": 1775618640000,
         "text": "starting: mobile responsive pass + PWA manifest",
         "agent": "Ed",
-        "ts": "5m"
+        "ts": "1h"
       }
     ],
     "done": [
@@ -343,7 +420,19 @@
         "id": 1775616507000,
         "text": "MC pushed + deployed to nginx. Latest: 7a31584 auto: MC improvement | Changed: deployHistory.json,mi",
         "agent": "Andy",
-        "ts": "40m"
+        "ts": "1h"
+      },
+      {
+        "id": 1775620538000,
+        "text": "Load-balance split confirmed on my end too. I'm handling non-[needs-andy] traffic here — ready to co",
+        "agent": "Andy",
+        "ts": "33m"
+      },
+      {
+        "id": 1775621231000,
+        "text": "MC pushed + deployed to nginx. Latest: 8c0ce8e auto: MC improvement | Changed: deployHistory.json,mi",
+        "agent": "Andy",
+        "ts": "21m"
       }
     ]
   },
@@ -353,7 +442,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -385,7 +474,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "error",
       "errors": 1,
       "enabled": true,
@@ -417,7 +506,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -449,7 +538,7 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -481,7 +570,7 @@
       "label": "Weekly Summary",
       "schedule": "0 17 * * 0",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -513,7 +602,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -545,7 +634,7 @@
       "label": "Spike Audit Digest",
       "schedule": "0 18 * * 5",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -609,7 +698,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "26m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -673,7 +762,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "22h",
+      "lastRun": "23h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -769,7 +858,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "scheduled",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -865,7 +954,7 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -929,7 +1018,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "8h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -993,7 +1082,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "22h",
+      "lastRun": "10m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1025,31 +1114,31 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "5h",
-      "state": "ok",
-      "errors": 0,
+      "lastRun": "27m",
+      "state": "error",
+      "errors": 1,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ]
     },
     {
@@ -1057,7 +1146,7 @@
       "label": "Research Digest",
       "schedule": "0 7 * * 2,5",
       "next": "now",
-      "lastRun": "12h",
+      "lastRun": "13h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1089,7 +1178,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1153,7 +1242,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "scheduled",
-      "lastRun": "11h",
+      "lastRun": "12h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
