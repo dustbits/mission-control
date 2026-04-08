@@ -1,39 +1,19 @@
 {
-  "updatedAt": "2026-04-07T22:29:01.739Z",
+  "updatedAt": "2026-04-08T01:29:01.746Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 79,
-    "memory": 50,
+    "cpu": 99,
+    "memory": 41,
     "disk": 1
   },
   "agents": [
-    {
-      "name": "Faye",
-      "key": "faye",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#a855f7",
-      "completed": 2,
-      "efficiency": 100,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
     {
       "name": "Ed",
       "key": "ed",
       "model": "openai-codex/gpt-5.4",
       "color": "#22c55e",
       "completed": 2,
-      "efficiency": 100,
-      "avgTimeSec": 0,
-      "blockers": 0
-    },
-    {
-      "name": "Andy",
-      "key": "andy",
-      "model": "MiniMax/M2.7-highspeed",
-      "color": "#38bdf8",
-      "completed": 1,
       "efficiency": 100,
       "avgTimeSec": 0,
       "blockers": 0
@@ -53,6 +33,16 @@
       "key": "jet",
       "model": "MiniMax/M2.7",
       "color": "#f59e0b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
+    },
+    {
+      "name": "Faye",
+      "key": "faye",
+      "model": "Gemma 4 31B",
+      "color": "#a855f7",
       "completed": 0,
       "efficiency": 0,
       "avgTimeSec": 0,
@@ -107,81 +97,91 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0
+    },
+    {
+      "name": "Andy",
+      "key": "andy",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#38bdf8",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0
     }
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-07T20:59:53.000Z",
+    "timestamp": "2026-04-08T01:10:10.000Z",
     "history": [
       {
-        "timestamp": "2026-04-07T20:59:53.000Z",
+        "timestamp": "2026-04-08T01:10:10.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "1h"
+        "time": "18m"
       },
       {
         "timestamp": "2026-04-07T14:00:01.000Z",
         "status": "deployed",
         "trigger": "manual",
-        "duration": "7h",
-        "time": "8h"
+        "duration": "11h 10m",
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-07T12:53:42.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 6m",
-        "time": "9h"
+        "time": "12h"
       },
       {
         "timestamp": "2026-04-07T04:29:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8h 24m",
-        "time": "17h"
+        "time": "20h"
       },
       {
         "timestamp": "2026-04-07T04:15:05.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "14m",
-        "time": "18h"
+        "time": "21h"
       },
       {
         "timestamp": "2026-04-07T04:10:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "18h"
+        "time": "21h"
       },
       {
         "timestamp": "2026-04-07T03:29:17.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "41m",
-        "time": "18h"
+        "time": "21h"
       },
       {
         "timestamp": "2026-04-07T00:22:56.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "3h 6m",
-        "time": "22h"
+        "time": "1d"
       },
       {
         "timestamp": "2026-04-06T22:50:02.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 33m",
-        "time": "23h"
+        "time": "1d"
       },
       {
         "timestamp": "2026-04-06T22:40:01.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "10m",
-        "time": "23h"
+        "time": "1d"
       }
     ]
   },
@@ -218,311 +218,60 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Andy",
-      "line": "starting: Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse indicator",
-      "time": "15m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "JSON dump fix documented — Ray applied `or \"\"` guard in Python listener scripts to prevent str(dict) leak when payloads ",
+      "time": "30m",
+      "color": "#22c55e"
     },
     {
       "id": 2,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "34m",
-      "color": "#38bdf8"
+      "agent": "Ed",
+      "line": "Cron cleanup: disabled daily-memory-capture (broken/timeout), ed-builder-loop (redundant/discord-listener handles), memo",
+      "time": "1h",
+      "color": "#22c55e"
     },
     {
       "id": 3,
-      "agent": "Andy",
-      "line": "starting: **[manual-1491194490591907860]** 2026-04-07T21:54:37Z",
-      "time": "34m",
+      "agent": "System",
+      "line": "memory-prune: sqlite: 3 flushed, cold: 3 purged",
+      "time": "1h",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "34m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 5,
-      "agent": "Andy",
-      "line": "starting: **[conv-test-1]** 2026-04-07T21:54:31Z",
-      "time": "34m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 6,
-      "agent": "Andy",
-      "line": "starting: **[manual-1491193184586563634]** 2026-04-07T21:50:07Z",
-      "time": "38m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 7,
-      "agent": "Andy",
-      "line": "starting: **[manual-1491193160578371656]** 2026-04-07T21:49:20Z",
-      "time": "39m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 8,
-      "agent": "Andy",
-      "line": "starting: sprite test",
-      "time": "39m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 9,
-      "agent": "Andy",
-      "line": "starting: **[identity-test-ed]** 2026-04-07T21:46:36Z",
-      "time": "42m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 10,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "46m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 11,
-      "agent": "Andy",
-      "line": "starting: Deploy MC — v8.0 live agent pulse in staging. Run mc-deploy.sh to push to nginx.",
-      "time": "46m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 12,
-      "agent": "Ed",
-      "line": "MC v8.0 live agent pulse — detectAgentState() added to sync-live-json.js (2-min window, blocked>working>idle priority). ",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 13,
-      "agent": "Ed",
-      "line": "Deploy MC — v8.0 live agent pulse deployed to staging (sync-live-json.js + board.html). Run mc-deploy.sh to push to ngin",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 14,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
+      "agent": "ray",
+      "line": "Discord system fixed. Two critical bugs: (1) loginctl linger was off — all listeners dying on SSH disconnect. Fixed: log",
       "time": "1h",
       "color": "#38bdf8"
-    },
-    {
-      "id": 15,
-      "agent": "Andy",
-      "line": "starting: Deploy MC — v8.0 live agent pulse deployed to staging (sync-live-json.js + board.html). Run mc-deploy.sh to pu",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 16,
-      "agent": "Ed",
-      "line": "starting: ",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 17,
-      "agent": "Ed",
-      "line": "Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse indicators + heartbeat animat",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 18,
-      "agent": "Ed",
-      "line": "board.html deploy history enrichment — getDeployInfo() now captures git branch (git rev-parse --abbrev-ref HEAD), full S",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 19,
-      "agent": "Ed",
-      "line": "Deploy MC — sync-live-json.js + board.html enriched with git branch/SHA/message in deploy history. Run mc-deploy.sh to p",
-      "time": "1h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 20,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 21,
-      "agent": "Andy",
-      "line": "starting: Also: audit mc-deploy.sh so ALL files that live in workspace/mission-control/ are included in the deploy copy ",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 22,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 23,
-      "agent": "Andy",
-      "line": "starting: FIX: mc-deploy.sh copies from workspace/dist/ but board.html is in workspace/mission-control/. Add board.html ",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 24,
-      "agent": "Spike",
-      "line": "FIX: mc-deploy.sh copies from workspace/dist/ but board.html is in workspace/mission-control/. Add board.html + manifest",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 25,
-      "agent": "Spike",
-      "line": "Also: audit mc-deploy.sh so ALL files that live in workspace/mission-control/ are included in the deploy copy chain goin",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 26,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 27,
-      "agent": "Andy",
-      "line": "starting: MC: Ed's deploy history enrichment is done (20:52) but files are in workspace, not staging. Copy updated board",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 28,
-      "agent": "Spike",
-      "line": "MC: Ed's deploy history enrichment is done (20:52) but files are in workspace, not staging. Copy updated board.html + sy",
-      "time": "1h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 29,
-      "agent": "Faye",
-      "line": "MC v8.0 implementation spec written to memory/research/mc-v8-impl-spec.md — includes exact CSS keyframes, JS detectAgent",
-      "time": "1h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 30,
-      "agent": "Faye",
-      "line": "MC v8.0 live agent pulse: implement per memory/research/mc-v8-impl-spec.md — add detectAgentState() to sync-live-json.js",
-      "time": "1h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 31,
-      "agent": "Faye",
-      "line": "Implement deploy history enrichment per research above: (1) add git fullSha/branch/commitMessage/author to deployHistory",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 32,
-      "agent": "Faye",
-      "line": "Deploy context enrichment research — findings below",
-      "time": "2h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 33,
-      "agent": "Andy",
-      "line": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHistory.json,mission-con",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 34,
-      "agent": "Andy",
-      "line": "starting: Deploy MC — sync-live-json.js + board.html enriched with git branch/SHA/message in deploy history. Run mc-depl",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 35,
-      "agent": "Spike",
-      "line": "Research: how to enrich board.html deploy history with real deploy context — what can we capture about WHO/WHAT triggere",
-      "time": "2h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 36,
-      "agent": "Ed",
-      "line": "starting: ",
-      "time": "2h",
-      "color": "#22c55e"
-    },
-    {
-      "id": 37,
-      "agent": "Spike",
-      "line": "board.html deploy history enrichment — add commit message, full SHA, branch name to deployHistory entries via git log; d",
-      "time": "2h",
-      "color": "#4a9eff"
     }
   ],
   "board": {
-    "queued": [
-      {
-        "id": 1775595122000,
-        "text": "Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse indicator",
-        "agent": "Ed",
-        "ts": "1h"
-      }
-    ],
-    "inprogress": [
-      {
-        "id": 1775600000000,
-        "text": "starting: Based on mc-v8-live-agent-viz.md research: write an implementation spec for MC v8.0 (pulse",
-        "agent": "Andy",
-        "ts": "15m"
-      }
-    ],
+    "queued": [],
+    "inprogress": [],
     "done": [
       {
-        "id": 1775593680000,
-        "text": "Deploy context enrichment research — findings below",
-        "agent": "Faye",
-        "ts": "2h"
+        "id": 1775605800000,
+        "text": "Discord system fixed. Two critical bugs: (1) loginctl linger was off — all listeners dying on SSH di",
+        "agent": "ray",
+        "ts": "1h"
       },
       {
-        "id": 1775595120000,
-        "text": "board.html deploy history enrichment — getDeployInfo() now captures git branch (git rev-parse --abbr",
+        "id": 1775606406000,
+        "text": "memory-prune: sqlite: 3 flushed, cold: 3 purged",
+        "agent": "System",
+        "ts": "1h"
+      },
+      {
+        "id": 1775607000000,
+        "text": "Cron cleanup: disabled daily-memory-capture (broken/timeout), ed-builder-loop (redundant/discord-lis",
         "agent": "Ed",
         "ts": "1h"
       },
       {
-        "id": 1775593183000,
-        "text": "MC pushed + deployed to nginx. Latest: 337861c auto: MC improvement | Changed: board.html,deployHist",
-        "agent": "Andy",
-        "ts": "2h"
-      },
-      {
-        "id": 1775594100000,
-        "text": "MC v8.0 implementation spec written to memory/research/mc-v8-impl-spec.md — includes exact CSS keyfr",
-        "agent": "Faye",
-        "ts": "1h"
-      },
-      {
-        "id": 1775596680000,
-        "text": "MC v8.0 live agent pulse — detectAgentState() added to sync-live-json.js (2-min window, blocked>work",
+        "id": 1775609940000,
+        "text": "JSON dump fix documented — Ray applied `or \"\"` guard in Python listener scripts to prevent str(dict)",
         "agent": "Ed",
-        "ts": "1h"
+        "ts": "30m"
       }
     ]
   },
@@ -532,7 +281,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -563,32 +312,32 @@
       "id": "daily-memory-capture",
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
-      "next": "now",
-      "lastRun": "22h",
-      "state": "ok",
-      "errors": 0,
-      "enabled": true,
+      "next": "scheduled",
+      "lastRun": "2h",
+      "state": "paused",
+      "errors": 1,
+      "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ]
     },
     {
@@ -596,7 +345,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -628,7 +377,7 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -660,7 +409,7 @@
       "label": "Weekly Summary",
       "schedule": "0 17 * * 0",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -692,7 +441,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -724,7 +473,7 @@
       "label": "Spike Audit Digest",
       "schedule": "0 18 * * 5",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -755,11 +504,11 @@
       "id": "memory-cold-archive",
       "label": "Memory Cold Archive",
       "schedule": "0 19 * * 0",
-      "next": "now",
-      "lastRun": "1d",
-      "state": "ok",
+      "next": "scheduled",
+      "lastRun": "2d",
+      "state": "paused",
       "errors": 0,
-      "enabled": true,
+      "enabled": false,
       "errorHistory": [
         0,
         0,
@@ -788,7 +537,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "14m",
+      "lastRun": "3h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -852,7 +601,7 @@
       "label": "Faye Dispatch Scanner",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "17h",
+      "lastRun": "20h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -947,11 +696,11 @@
       "id": "error-capture",
       "label": "Error Capture",
       "schedule": 1800000,
-      "next": "now",
-      "lastRun": "3m",
-      "state": "ok",
+      "next": "scheduled",
+      "lastRun": "1h",
+      "state": "paused",
       "errors": 0,
-      "enabled": true,
+      "enabled": false,
       "errorHistory": [
         0,
         0,
@@ -980,7 +729,7 @@
       "label": "Cost Safeguard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "23h",
+      "lastRun": "1d",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1012,7 +761,7 @@
       "label": "Post-Task Validator",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "23h",
+      "lastRun": "1d",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1043,11 +792,11 @@
       "id": "ed-builder-loop",
       "label": "Ed Builder Loop",
       "schedule": 14400000,
-      "next": "now",
-      "lastRun": "1h",
-      "state": "ok",
+      "next": "scheduled",
+      "lastRun": "4h",
+      "state": "paused",
       "errors": 0,
-      "enabled": true,
+      "enabled": false,
       "errorHistory": [
         0,
         0,
@@ -1108,7 +857,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1172,7 +921,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "scheduled",
-      "lastRun": "17h",
+      "lastRun": "20h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1204,7 +953,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "14m",
+      "lastRun": "3h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1236,7 +985,7 @@
       "label": "Research Digest",
       "schedule": "0 7 * * 2,5",
       "next": "now",
-      "lastRun": "7h",
+      "lastRun": "10h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1268,7 +1017,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1332,7 +1081,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "scheduled",
-      "lastRun": "6h",
+      "lastRun": "9h",
       "state": "paused",
       "errors": 0,
       "enabled": false,

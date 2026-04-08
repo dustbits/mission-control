@@ -55,12 +55,12 @@ const AGENT_MODELS = {
   faye: 'Qwen/Qwen2.5-7B',
   ein: 'MiniMax/M2.7',
   gren: 'MiniMax/M2.7',
-  ed: 'openai-codex/gpt-5.4',
+  ed: 'openai/gpt-4o',
   julia: 'Qwen/Qwen2.5-7B',
   rocco: 'MiniMax/M2.7',
   punch: 'claude-sonnet-4',
-  andy: 'MiniMax/M2.7-highspeed',
-  andrew: 'MiniMax/M2.7-highspeed',
+  andy: 'claude-sonnet-4',
+  andrew: 'claude-sonnet-4',
   main: 'MiniMax/M2.7',
 };
 
@@ -97,11 +97,14 @@ function relativeTime(isoStr) {
 
 function parseLog(content) {
   const lines = content.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
 
   const entries = [];
   for (const line of lines) {
-    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    // Format A: [YYYY-MM-DD HH:MM UTC] [agent] [tag] message
+    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    // Format B: [YYYY-MM-DD HH:MM UTC] agent [tag] message (agent without brackets)
+    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
     if (!m) continue;
 
     const [, date, time, agent, tag, message] = m;
@@ -231,17 +234,28 @@ function getCronHealthData() {
 // --- NEW: Build deploy history ---
 function getDeployInfo() {
   const stagingPath = '/mnt/spike-storage/mission-control-staging';
+  const workspacePath = '/home/node/.openclaw/workspace';
+  let info = { state: 'idle' };
   try {
     const mtime = execSync(`find ${stagingPath}/index.html -type f 2>/dev/null | head -1 | xargs stat -c %Y 2>/dev/null`, { timeout: 3000 }).toString().trim();
     if (mtime) {
       const ts = parseInt(mtime) * 1000;
-      return { state: 'deployed', timestamp: new Date(ts).toISOString() };
+      info = { state: 'deployed', timestamp: new Date(ts).toISOString() };
     }
   } catch {}
-  return { state: 'idle' };
+  // Capture git info from workspace
+  try {
+    const gitBranch = execSync(`cd ${workspacePath} && git rev-parse --abbrev-ref HEAD 2>/dev/null`, { timeout: 3000 }).toString().trim();
+    const gitSha = execSync(`cd ${workspacePath} && git rev-parse HEAD 2>/dev/null`, { timeout: 3000 }).toString().trim();
+    const gitMsg = execSync(`cd ${workspacePath} && git log -1 --format=%s 2>/dev/null`, { timeout: 3000 }).toString().trim();
+    if (gitBranch) info.branch = gitBranch;
+    if (gitSha) info.commit = gitSha.slice(0, 7);
+    if (gitMsg) info.message = gitMsg;
+  } catch {}
+  return info;
 }
 
-function updateDeployHistory(deployTimestamp) {
+function updateDeployHistory(deployTimestamp, gitInfo = {}) {
   let history = [];
   if (existsSync(DEPLOY_HISTORY_PATH)) {
     try {
@@ -254,20 +268,13 @@ function updateDeployHistory(deployTimestamp) {
     return history.slice(0, 10);
   }
 
-  // Capture git branch + short hash at deploy time
-  let branch = 'main';
-  let commitHash = '';
-  try {
-    branch = execSync('git branch --show-current 2>/dev/null || echo main').toString().trim() || 'main';
-    commitHash = execSync('git rev-parse --short HEAD 2>/dev/null || echo').toString().trim();
-  } catch {}
-
   const entry = {
     timestamp: deployTimestamp || new Date().toISOString(),
     status: 'deployed',
     trigger: 'manual',
-    branch: branch,
-    commit: commitHash,
+    branch: gitInfo.branch || null,
+    commit: gitInfo.commit || null,
+    message: gitInfo.message || null,
   };
 
   history.unshift(entry);
@@ -294,15 +301,12 @@ function updateDeployHistory(deployTimestamp) {
   return history.slice(0, 10);
 }
 
-function buildBoardData(entries, extraDone) {
-  const done = extraDone ? [...extraDone] : [];
-  const newest = [...entries].sort((a, b) => b.ts - a.ts);
+function buildBoardData(entries) {
   const queued = [];
   const inprogress = [];
-  const seenQueued = new Set();
-  const seenInProgress = new Set();
+  const done = [];
 
-  for (const e of newest) {
+  for (const e of entries) {
     const msg = e.message;
     const item = {
       id: e.ts,
@@ -310,44 +314,51 @@ function buildBoardData(entries, extraDone) {
       agent: AGENT_DISPLAY[e.agent] ?? e.agent,
       ts: relativeTime(e.iso),
     };
-    const tagLower = e.tag.toLowerCase();
 
+    const tagLower = e.tag.toLowerCase();
     if (tagLower.startsWith('done')) {
-      if (!done.find(d => d.text === item.text && d.agent === item.agent)) {
-        done.push(item);
-      }
-    } else if (tagLower.startsWith('acknowledged') || tagLower.startsWith('taken')) {
-      const hasDone = newest.some(other => {
-        const ot = other.tag.toLowerCase();
-        return other.agent === e.agent && other.ts > e.ts && (ot.startsWith('done') || ot.startsWith('partial'));
-      });
-      const key = e.agent + ':' + msg.slice(0, 40);
-      if (!hasDone && !seenInProgress.has(key)) {
-        seenInProgress.add(key);
-        inprogress.push(item);
-      }
+      done.push(item);
+    } else if (tagLower.startsWith('acknowledged')) {
+      inprogress.push(item);
     } else if (tagLower.startsWith('needs')) {
-      const targetAgent = tagLower.replace('needs-', '');
-      const isResolved = newest.some(other => {
-        return other.agent === targetAgent && other.ts > e.ts &&
-          (other.tag.toLowerCase().startsWith('acknowledged') ||
-           other.tag.toLowerCase().startsWith('done') ||
-           other.tag.toLowerCase().startsWith('taken'));
-      });
-      const key = targetAgent + ':' + msg.slice(0, 40);
-      if (!isResolved && !seenQueued.has(key)) {
-        seenQueued.add(key);
-        queued.push(item);
-      }
+      queued.push(item);
     }
   }
-  return { queued: queued.slice(0, 15), inprogress: inprogress.slice(0, 10), done: done.slice(0, 20) };
+
+  return { queued, inprogress, done };
+}
+
+// --- Detect live agent state from recent log entries ---
+function detectAgentState(allEntries, agentKey) {
+  const now = Date.now();
+  const CUTOFF_MS = 2 * 60 * 1000; // 2 minutes
+  const recent = allEntries.filter(e => {
+    if (e.agent !== agentKey) return false;
+    if (!e.iso) return false;
+    return (now - new Date(e.iso).getTime()) < CUTOFF_MS;
+  });
+
+  // Check for blocked/error first (highest priority)
+  const hasBlock = recent.some(e => {
+    const tag = (e.tag || '').toLowerCase();
+    return tag.includes('blocked') || tag.includes('error');
+  });
+  if (hasBlock) return { state: 'blocked', stateSince: null };
+
+  // Check for in-progress work
+  const hasWorking = recent.some(e => {
+    const tag = (e.tag || '').toLowerCase();
+    return tag.startsWith('acknowledged') || tag.startsWith('taken') || tag.startsWith('partial');
+  });
+  if (hasWorking) return { state: 'working', stateSince: null };
+
+  return { state: 'idle', stateSince: null };
 }
 
 // --- Build per-agent efficiency leaderboard ---
 function buildLeaderboard(logContent) {
   const lines = logContent.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
 
   // Parse all entries for task chains
   const allParsed = [];
@@ -395,16 +406,13 @@ function buildLeaderboard(logContent) {
           owner = e.agent;
         }
       } else if (tagLower.startsWith('done') || tagLower.startsWith('partial')) {
-        // Count every [done] line as a completed task for the agent
-        if (!completed) {
+        if (started && !completed) {
           completed = e;
-          // Attribute to the agent on the [done] line if no owner found
-          const attrAgent = owner || e.agent;
-          if (stats[attrAgent]) {
-            const dur = started ? completed.ts - started.ts : 0;
-            stats[attrAgent].completed++;
-            stats[attrAgent].totalTimeMs += dur;
-            stats[attrAgent].tasks.push({ dur, key });
+          if (owner && stats[owner]) {
+            const dur = completed.ts - started.ts;
+            stats[owner].completed++;
+            stats[owner].totalTimeMs += dur;
+            stats[owner].tasks.push({ dur, key });
           }
         }
       } else if (tagLower.startsWith('blocked') || tagLower.includes('blocked')) {
@@ -461,39 +469,10 @@ function getSystemStats() {
   return { cpu, memory, disk };
 }
 
-// Scan full log for any [done] lines (not just acknowledged→done chains)
-// to populate the board even when the task was logged directly as done
-function scanAllDoneLines(logContent) {
-  const lines = logContent.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
-  const doneMap = new Map();
-
-  for (const line of lines) {
-    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
-    if (!m) continue;
-    const [, date, time, agent, tag, message] = m;
-    const secs = time.split(':').length === 2 ? ':00' : '';
-    const iso = date + 'T' + time + secs + 'Z';
-    const ts = new Date(iso).getTime();
-    if (isNaN(ts) || ts < cutoff) continue;
-    const tagLower = tag.toLowerCase();
-    if (!tagLower.startsWith('done') && !tagLower.startsWith('partial')) continue;
-
-    const key = message.slice(0, 100);
-    const agentDisplay = AGENT_DISPLAY[agent.toLowerCase()] ?? agent;
-    // Keep earliest timestamp for this task
-    if (!doneMap.has(key)) {
-      doneMap.set(key, { id: ts, text: key, agent: agentDisplay, ts: relativeTime(iso) });
-    }
-  }
-
-  return Array.from(doneMap.values());
-}
-
-function buildJson(entries, logContent) {
+function buildJson(entries) {
   const stats = getSystemStats();
   const deploy = getDeployInfo();
-  const deployHistory = updateDeployHistory(deploy.timestamp);
+  const deployHistory = updateDeployHistory(deploy.timestamp, { branch: deploy.branch, commit: deploy.commit, message: deploy.message });
   const cronHealth = getCronHealthData();
   const cronErrorHistory = updateCronErrorHistory(cronHealth);
   // Attach error history samples to each cron job
@@ -523,16 +502,20 @@ function buildJson(entries, logContent) {
       memory: stats.memory,
       disk: stats.disk,
     },
-    agents: buildLeaderboard(readFileSync(SHARED_LOG, 'utf8')).map(entry => ({
-      name: entry.agent,
-      key: entry.agentKey,
-      model: AGENT_MODELS[entry.agentKey] || 'unknown',
-      color: entry.color,
-      completed: entry.completed,
-      efficiency: entry.efficiency,
-      avgTimeSec: entry.avgTimeSec,
-      blockers: entry.blockers,
-    })),
+    agents: buildLeaderboard(readFileSync(SHARED_LOG, 'utf8')).map(entry => {
+      const agentState = detectAgentState(allEntries, entry.agentKey);
+      return {
+        name: entry.agent,
+        key: entry.agentKey,
+        model: AGENT_MODELS[entry.agentKey] || 'unknown',
+        color: entry.color,
+        completed: entry.completed,
+        efficiency: entry.efficiency,
+        avgTimeSec: entry.avgTimeSec,
+        blockers: entry.blockers,
+        ...agentState,
+      };
+    }),
     deploy: {
       ...deploy,
       history: deployHistory.map(d => ({
@@ -542,13 +525,14 @@ function buildJson(entries, logContent) {
       })),
     },
     projects: [
-      { id: 'ironthread-site', name: 'ironthread.ai',  color: '#1D9E75', health: 'yellow', note: 'IT consulting site' },
-      { id: 'it-portal',  name: 'IT Portal',   color: '#1D9E75', health: 'yellow', note: 'OAuth ticket portal' },
-      { id: 'gtm-pipeline', name: 'GTM Pipeline', color: '#1D9E75', health: 'green', note: '30-60-90 plan active' },
-      { id: 'openclaw',   name: 'OpenClaw',    color: '#FF6B35', health: 'green',  note: 'Mission Control active' },
+      { id: 'trendtribe', name: 'TrendTribe',  color: '#7F77DD', health: 'green',  note: 'ProductHunt launch Apr 7' },
+      { id: 'ironthread', name: 'IronThread',  color: '#1D9E75', health: 'yellow', note: 'Outreach pipeline active' },
+      { id: 'openclaw',   name: 'OpenClaw',    color: '#FF6B35', health: 'green',  note: 'Mission Control rebuild in progress' },
+      { id: 'crypto',     name: 'Crypto',      color: '#BA7517', health: 'green',  note: 'Daily brief live' },
+      { id: 'artsite',    name: 'Art Site',    color: '#993556', health: 'green',  note: 'Maintained' },
     ],
     activity,
-    board: buildBoardData(allEntries, scanAllDoneLines(logContent)),
+    board: buildBoardData(allEntries),
     cron: cronHealth,
     errors: errorStream,
   };
@@ -557,7 +541,7 @@ function buildJson(entries, logContent) {
 // --- Main ---
 const logContent = readFileSync(SHARED_LOG, 'utf8');
 const entries = parseLog(logContent);
-const json = buildJson(entries, logContent);
+const json = buildJson(entries);
 const out = JSON.stringify(json, null, 2);
 
 writeFileSync(OUT_WORKSPACE, out, 'utf8');
