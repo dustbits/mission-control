@@ -379,7 +379,7 @@ function buildLeaderboard(logContent) {
   // Group by task text (first 80 chars as key)
   const taskMap = new Map();
   for (const e of allParsed) {
-    const key = e.message.slice(0, 80);
+    const key = e.message.slice(0, 80).replace(/\]\s*\[[^\]]+\]\s*/g, ']').replace(/\s+/g, ' ').trim();
     if (!taskMap.has(key)) taskMap.set(key, []);
     taskMap.get(key).push(e);
   }

@@ -1,5 +1,10 @@
 {
-  "updatedAt": "2026-04-09T15:53:25.339Z",
+  "updatedAt": "2026-04-09T15:56:30.000Z",
+  "deploy": {
+    "state": "deployed",
+    "lastDeploy": "2026-04-09T15:28:52Z",
+    "badge": "LIVE"
+  },
   "health": {
     "node": "jarvis",
     "uptime": "stable",
