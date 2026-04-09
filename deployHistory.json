@@ -1,24 +1,13 @@
 [
   {
-    "timestamp": "2026-04-09T17:46:40.000Z",
+    "timestamp": "2026-04-09T18:03:17.000Z",
     "status": "deployed",
     "trigger": "Ed",
-    "sha": "00441b0",
-    "shaFull": "00441b00d1a671ea12d4bdec5eb57137ace09587",
-    "message": "MC v10: agent card label fix + overflow scroll + live data refresh (CPU/mem/agents) \u2014 auto deploy",
+    "sha": "5dae6f4",
+    "shaFull": "5dae6f46d1cd0333e9dc1719810af065f656debb",
+    "message": "MC v10 hotfix: guard null agents in renderAgentsPanel to prevent ReferenceError",
     "branch": "master",
-    "changedFiles": "INFRA_CHANGE_TRACKING.md,board.html,deployHistory.json,mission-control-live.json",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T17:39:37.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "b2bed38",
-    "shaFull": "b2bed38373c7bf8a546669536322080d3479e51d",
-    "message": "auto: MC improvement",
-    "branch": "master",
-    "changedFiles": "board.html,deployHistory.json,mission-control-live.json",
+    "changedFiles": "board.html",
     "durationSec": 1
   },
   {
