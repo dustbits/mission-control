@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T16:32:23.583Z",
+  "updatedAt": "2026-04-09T16:33:56.311Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 9,
-    "memory": 31,
+    "cpu": 10,
+    "memory": 32,
     "disk": 1
   },
   "agents": [
@@ -131,12 +131,38 @@
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-09T16:24:51.000Z",
-    "commit": "78252ce",
+    "timestamp": "2026-04-09T16:33:51.000Z",
+    "commit": "e544fac",
     "branch": "master",
-    "message": "fix: clean deployHistory duplicate + remove spurious updateDeployHistory",
-    "lastDeploy": "2026-04-09T16:24:51.000Z",
+    "message": "chore: update deployHistory + live JSON post b6ace6d deploy",
+    "lastDeploy": "2026-04-09T16:33:51.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-09T16:33:51.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "e544fac",
+        "shaFull": "e544fac1ab6d596b6faef099226c99f12c33c8a0",
+        "message": "chore: update deployHistory + live JSON post b6ace6d deploy",
+        "branch": "master",
+        "changedFiles": "deployHistory.json,mission-control-live.json",
+        "durationSec": 2,
+        "duration": null,
+        "time": "now"
+      },
+      {
+        "timestamp": "2026-04-09T16:32:23.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "b6ace6d",
+        "shaFull": "b6ace6d1d09c7831341e69226ee8a38392514ab0",
+        "message": "chore: sync mission-control-live.json — deploy state active, refreshed activity",
+        "branch": "master",
+        "changedFiles": "mission-control-live.json",
+        "durationSec": 1,
+        "duration": null,
+        "time": "now"
+      },
       {
         "timestamp": "2026-04-09T16:24:51.000Z",
         "status": "deployed",
@@ -148,7 +174,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "7m"
+        "time": "9m"
       },
       {
         "timestamp": "2026-04-09T16:22:00.000Z",
@@ -161,7 +187,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "10m"
+        "time": "11m"
       },
       {
         "timestamp": "2026-04-09T16:18:15.000Z",
@@ -174,7 +200,7 @@
         "changedFiles": "scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "14m"
+        "time": "15m"
       },
       {
         "timestamp": "2026-04-09T15:58:40.000Z",
@@ -187,7 +213,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": "17m",
-        "time": "33m"
+        "time": "35m"
       },
       {
         "timestamp": "2026-04-09T15:28:52.000Z",
@@ -289,175 +315,175 @@
       "id": 1,
       "agent": "sanji",
       "line": "",
-      "time": "4m",
+      "time": "6m",
       "color": "#38bdf8"
     },
     {
       "id": 2,
       "agent": "sanji",
       "line": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), pushed + deployed to",
-      "time": "5m",
+      "time": "6m",
       "color": "#38bdf8"
     },
     {
       "id": 3,
       "agent": "sanji",
       "line": "pong debug test",
-      "time": "5m",
+      "time": "6m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "sanji",
       "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
-      "time": "5m",
+      "time": "6m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
       "agent": "sanji",
       "line": "",
-      "time": "6m",
+      "time": "8m",
       "color": "#38bdf8"
     },
     {
       "id": 6,
       "agent": "sanji",
       "line": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx.",
-      "time": "7m",
+      "time": "8m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
       "agent": "sanji",
       "line": "PONG test",
-      "time": "9m",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 8,
       "agent": "sanji",
       "line": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
-      "time": "9m",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 9,
       "agent": "sanji",
       "line": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Ngin",
-      "time": "10m",
+      "time": "11m",
       "color": "#38bdf8"
     },
     {
       "id": 10,
       "agent": "sanji",
       "line": "",
-      "time": "11m",
+      "time": "12m",
       "color": "#38bdf8"
     },
     {
       "id": 11,
       "agent": "sanji",
       "line": "(exit=124)",
-      "time": "12m",
+      "time": "14m",
       "color": "#38bdf8"
     },
     {
       "id": 12,
       "agent": "zoro",
       "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
-      "time": "15m",
+      "time": "16m",
       "color": "#38bdf8"
     },
     {
       "id": 13,
       "agent": "zoro",
       "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-      "time": "15m",
+      "time": "16m",
       "color": "#38bdf8"
     },
     {
       "id": 14,
       "agent": "zoro",
       "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
-      "time": "15m",
+      "time": "16m",
       "color": "#38bdf8"
     },
     {
       "id": 15,
       "agent": "zoro",
       "line": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to nginx",
-      "time": "15m",
+      "time": "16m",
       "color": "#38bdf8"
     },
     {
       "id": 16,
       "agent": "sanji",
       "line": "sanji PONG test",
-      "time": "20m",
+      "time": "21m",
       "color": "#38bdf8"
     },
     {
       "id": 17,
       "agent": "sanji",
       "line": "PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
-      "time": "20m",
+      "time": "21m",
       "color": "#38bdf8"
     },
     {
       "id": 18,
       "agent": "sanji",
       "line": "",
-      "time": "21m",
+      "time": "22m",
       "color": "#38bdf8"
     },
     {
       "id": 19,
       "agent": "sanji",
       "line": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) instead of index.htm",
-      "time": "21m",
+      "time": "22m",
       "color": "#38bdf8"
     },
     {
       "id": 20,
       "agent": "sanji",
       "line": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy ",
-      "time": "31m",
+      "time": "32m",
       "color": "#38bdf8"
     },
     {
       "id": 21,
       "agent": "sanji",
       "line": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored from HEAD with deploy ",
-      "time": "32m",
+      "time": "33m",
       "color": "#38bdf8"
     },
     {
       "id": 22,
       "agent": "sanji",
       "line": "",
-      "time": "33m",
+      "time": "34m",
       "color": "#38bdf8"
     },
     {
       "id": 23,
       "agent": "zoro",
       "line": "stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but task keys didn't match",
-      "time": "37m",
+      "time": "38m",
       "color": "#38bdf8"
     },
     {
       "id": 24,
       "agent": "sanji",
       "line": "",
-      "time": "37m",
+      "time": "39m",
       "color": "#38bdf8"
     },
     {
       "id": 25,
       "agent": "sanji",
       "line": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=deployed/timestamp=2026",
-      "time": "38m",
+      "time": "39m",
       "color": "#38bdf8"
     },
     {
@@ -562,7 +588,7 @@
       "id": 40,
       "agent": "vicious",
       "line": "",
-      "time": "1h",
+      "time": "2h",
       "color": "#38bdf8"
     },
     {
@@ -639,7 +665,7 @@
       "id": 51,
       "agent": "zoro",
       "line": "ALL TASKS COMPLETE — crew organization done. Discord channels renamed/created, dispatch system updated, crew-knowledge-b",
-      "time": "10h",
+      "time": "11h",
       "color": "#38bdf8"
     },
     {
@@ -951,115 +977,115 @@
         "id": 1775752061000,
         "text": "",
         "agent": "sanji",
-        "ts": "4m"
+        "ts": "6m"
       },
       {
         "id": 1775752032000,
         "text": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), ",
         "agent": "sanji",
-        "ts": "5m"
+        "ts": "6m"
       },
       {
         "id": 1775752028000,
         "text": "pong debug test",
         "agent": "sanji",
-        "ts": "5m"
+        "ts": "6m"
       },
       {
         "id": 1775752023000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
         "agent": "sanji",
-        "ts": "5m"
+        "ts": "6m"
       },
       {
         "id": 1775751900000,
         "text": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed ",
         "agent": "sanji",
-        "ts": "7m"
+        "ts": "8m"
       },
       {
         "id": 1775751780000,
         "text": "PONG test",
         "agent": "sanji",
-        "ts": "9m"
+        "ts": "10m"
       },
       {
         "id": 1775751779000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
         "agent": "sanji",
-        "ts": "9m"
+        "ts": "10m"
       },
       {
         "id": 1775751720000,
         "text": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ra",
         "agent": "sanji",
-        "ts": "10m"
+        "ts": "11m"
       },
       {
         "id": 1775751423000,
         "text": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + co",
         "agent": "zoro",
-        "ts": "15m"
+        "ts": "16m"
       },
       {
         "id": 1775751422000,
         "text": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
         "agent": "zoro",
-        "ts": "15m"
+        "ts": "16m"
       },
       {
         "id": 1775751421000,
         "text": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from ho",
         "agent": "zoro",
-        "ts": "15m"
+        "ts": "16m"
       },
       {
         "id": 1775751420000,
         "text": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deplo",
         "agent": "zoro",
-        "ts": "15m"
+        "ts": "16m"
       },
       {
         "id": 1775751122000,
         "text": "sanji PONG test",
         "agent": "sanji",
-        "ts": "20m"
+        "ts": "21m"
       },
       {
         "id": 1775751117000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
         "agent": "sanji",
-        "ts": "20m"
+        "ts": "21m"
       },
       {
         "id": 1775751060000,
         "text": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) ",
         "agent": "sanji",
-        "ts": "21m"
+        "ts": "22m"
       },
       {
         "id": 1775750460000,
         "text": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JS",
         "agent": "sanji",
-        "ts": "31m"
+        "ts": "32m"
       },
       {
         "id": 1775750400000,
         "text": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored fr",
         "agent": "sanji",
-        "ts": "32m"
+        "ts": "33m"
       },
       {
         "id": 1775750100000,
         "text": "stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but ta",
         "agent": "zoro",
-        "ts": "37m"
+        "ts": "38m"
       },
       {
         "id": 1775750040000,
         "text": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=dep",
         "agent": "sanji",
-        "ts": "38m"
+        "ts": "39m"
       },
       {
         "id": 1775748600000,
@@ -1131,7 +1157,7 @@
         "id": 1775712761000,
         "text": "ALL TASKS COMPLETE — crew organization done. Discord channels renamed/created, dispatch system updat",
         "agent": "zoro",
-        "ts": "10h"
+        "ts": "11h"
       },
       {
         "id": 1775709627000,
@@ -1293,6 +1319,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1306,6 +1334,8 @@
       "errors": 2,
       "enabled": true,
       "errorHistory": [
+        2,
+        2,
         2,
         2,
         2,
@@ -1349,6 +1379,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1362,6 +1394,8 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1405,6 +1439,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1418,6 +1454,8 @@
       "errors": 2,
       "enabled": true,
       "errorHistory": [
+        2,
+        2,
         2,
         2,
         2,
@@ -1461,6 +1499,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1489,6 +1529,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1497,11 +1539,13 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "28m",
+      "lastRun": "30m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1545,6 +1589,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1558,6 +1604,8 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1601,6 +1649,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1614,6 +1664,8 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1657,6 +1709,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1670,6 +1724,8 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1713,6 +1769,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1741,6 +1799,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1749,11 +1809,13 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "57m",
+      "lastRun": "59m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1797,6 +1859,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1825,6 +1889,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1833,11 +1899,13 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "13m",
+      "lastRun": "15m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1861,11 +1929,13 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "30m",
+      "lastRun": "32m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1909,6 +1979,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1922,6 +1994,8 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1965,6 +2039,8 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ]
     },
@@ -1973,11 +2049,13 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "now",
-      "lastRun": "now",
+      "lastRun": "2m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,
@@ -2006,6 +2084,8 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
+        0,
+        0,
         0,
         0,
         0,

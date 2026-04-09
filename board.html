@@ -1055,7 +1055,7 @@
             <div class="dde-header">
               <span class="dde-time">${timeStr}</span>
               <span class="dde-branch">${entry.branch || 'main'}</span>
-              <span class="dde-commit">${entry.commit ? '@' + entry.commit : ''}</span>
+              <span class="dde-commit">${(entry.sha || entry.commit) ? '@' + (entry.sha || entry.commit) : ''}</span>
             </div>
             <div class="dde-row">
               <div>Status: <span>${entry.status || 'deployed'}</span></div>
@@ -1069,7 +1069,7 @@
       logEl.innerHTML = sorted.slice(0, 20).map(entry => {
         const ts = entry.timestamp ? new Date(entry.timestamp) : null;
         const timeStr = ts ? ts.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '—';
-        return `<div class="deploy-log-entry"><span class="dle-time">${timeStr}</span><span class="dle-msg">[${entry.trigger || 'deploy'}] ${entry.branch || 'main'}${entry.commit ? ' @' + entry.commit : ''} — ${entry.status || 'deployed'}${entry.duration ? ' (' + entry.duration + ')' : ''}</span></div>`;
+        return `<div class="deploy-log-entry"><span class="dle-time">${timeStr}</span><span class="dle-msg">[${entry.trigger || 'deploy'}] ${entry.branch || 'main'}${(entry.sha || entry.commit) ? ' @' + (entry.sha || entry.commit) : ''} — ${entry.status || 'deployed'}${entry.duration ? ' (' + entry.duration + ')' : ''}</span></div>`;
       }).join('');
     }
 
@@ -1160,7 +1160,7 @@
           : computeDuration(entry.timestamp, prevEntry ? prevEntry.timestamp : null);
 
         const branch = entry.branch || '';
-        const commit = entry.commit || entry.hash || '';
+        const commit = entry.sha || entry.commit || entry.hash || '';
         const msg = entry.message || '';
         const desc = branch || commit || msg
           ? (branch ? branch + (commit ? ' @' + commit : '') + (msg ? ' — ' + msg : '') : (commit ? commit + (msg ? ' — ' + msg : '') : msg))
