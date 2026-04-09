@@ -248,6 +248,9 @@ function getDeployInfo() {
         const latest = history[0];
         if (latest.status === 'deployed' && latest.timestamp) {
           info = { state: 'deployed', timestamp: latest.timestamp };
+          if (latest.sha)     info.commit  = latest.sha;
+          if (latest.branch)  info.branch  = latest.branch;
+          if (latest.message) info.message = latest.message;
         }
       }
     }
@@ -325,11 +328,25 @@ function updateDeployHistory(deployTimestamp, gitInfo = {}) {
 }
 
 function buildBoardData(entries) {
+  // Deduplicate: group by normalized task text, keep the "best" tag per task.
+  // Best = done > in-progress > partial/acknowledged > needs
+  const TAG_PRIORITY = { done: 0, partial: 1, acknowledged: 2, needs: 3 };
+  const taskBest = new Map();
+  for (const e of entries) {
+    const key = e.message.slice(0, 80).replace(/\]\s*\[[^\]]+\]\s*/g, ']').replace(/\s+/g, ' ').trim();
+    const tagLower = e.tag.toLowerCase();
+    const primary = Object.keys(TAG_PRIORITY).find(t => tagLower.startsWith(t)) ?? 'needs';
+    const priority = TAG_PRIORITY[primary] ?? 4;
+    if (!taskBest.has(key) || priority < taskBest.get(key).priority) {
+      taskBest.set(key, { entry: e, priority });
+    }
+  }
+
+  // Now build board columns from deduped entries
   const queued = [];
   const inprogress = [];
   const done = [];
-
-  for (const e of entries) {
+  for (const { entry: e } of taskBest.values()) {
     const msg = e.message;
     const item = {
       id: e.ts,
@@ -337,7 +354,6 @@ function buildBoardData(entries) {
       agent: AGENT_DISPLAY[e.agent] ?? e.agent,
       ts: relativeTime(e.iso),
     };
-
     const tagLower = e.tag.toLowerCase();
     if (tagLower.startsWith('done')) {
       done.push(item);
@@ -495,7 +511,6 @@ function getSystemStats() {
 function buildJson(entries) {
   const stats = getSystemStats();
   const deploy = getDeployInfo();
-  const deployHistory = updateDeployHistory(deploy.timestamp, { branch: deploy.branch, commit: deploy.commit, message: deploy.message });
   const cronHealth = getCronHealthData();
   const cronErrorHistory = updateCronErrorHistory(cronHealth);
   // Attach error history samples to each cron job
@@ -541,11 +556,17 @@ function buildJson(entries) {
     }),
     deploy: {
       ...deploy,
-      history: deployHistory.map(d => ({
-        ...d,
-        duration: d.duration || null,
-        time: relativeTime(d.timestamp),
-      })),
+      lastDeploy: deploy.timestamp || null,
+      history: (() => {
+        try {
+          const hist = JSON.parse(readFileSync('/mnt/spike-storage/mission-control-staging/deployHistory.json', 'utf8'));
+          return hist.map(d => ({
+            ...d,
+            duration: d.duration || null,
+            time: relativeTime(d.timestamp),
+          }));
+        } catch { return []; }
+      })(),
     },
     projects: [
       { id: 'trendtribe', name: 'TrendTribe',  color: '#7F77DD', health: 'green',  note: 'ProductHunt launch Apr 7' },
@@ -573,23 +594,6 @@ console.log(`✓ Written: ${OUT_WORKSPACE}`);
 if (existsSync('/mnt/spike-storage/mission-control-staging')) {
   writeFileSync(OUT_STAGING, out, 'utf8');
   console.log(`✓ Synced:  ${OUT_STAGING}`);
-}
-
-// Persist deploy history
-if (json.deploy.history?.length > 0) {
-  const historyOnly = json.deploy.history.map(d => ({
-    timestamp: d.timestamp,
-    status: d.status,
-    trigger: d.trigger,
-    duration: d.duration || null,
-  }));
-  writeFileSync(DEPLOY_HISTORY_PATH, JSON.stringify(historyOnly, null, 2), 'utf8');
-  console.log(`✓ Deploy history: ${historyOnly.length} entries`);
-
-  // Also copy to staging so nginx can serve it
-  const stagingDeployHistory = '/mnt/spike-storage/mission-control-staging/deployHistory.json';
-  writeFileSync(stagingDeployHistory, JSON.stringify(historyOnly, null, 2), 'utf8');
-  console.log(`✓ Deploy history synced to staging`);
 }
 
 console.log(`  Activity items: ${json.activity.length}`);
