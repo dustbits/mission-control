@@ -237,14 +237,35 @@ function getCronHealthData() {
 function getDeployInfo() {
   const stagingPath = '/mnt/spike-storage/mission-control-staging';
   const workspacePath = '/home/node/.openclaw/workspace';
+  const DEPLOY_HISTORY = `${stagingPath}/deployHistory.json`;
   let info = { state: 'idle' };
+
+  // Primary: read deploy state from deployHistory.json (written by mc-deploy.sh)
   try {
-    const mtime = execSync(`find ${stagingPath}/index.html -type f 2>/dev/null | head -1 | xargs stat -c %Y 2>/dev/null`, { timeout: 3000 }).toString().trim();
-    if (mtime) {
-      const ts = parseInt(mtime) * 1000;
-      info = { state: 'deployed', timestamp: new Date(ts).toISOString() };
+    if (existsSync(DEPLOY_HISTORY)) {
+      const history = JSON.parse(readFileSync(DEPLOY_HISTORY, 'utf8'));
+      if (Array.isArray(history) && history.length > 0) {
+        const latest = history[0];
+        if (latest.status === 'deployed' && latest.timestamp) {
+          info = { state: 'deployed', timestamp: latest.timestamp };
+        }
+      }
     }
-  } catch {}
+  } catch (e) {
+    console.warn('deployHistory read error:', e.message);
+  }
+
+  // Fallback: use index.html mtime if deployHistory doesn't exist or has no entry
+  if (info.state === 'idle') {
+    try {
+      const mtime = execSync(`find ${stagingPath}/index.html -type f 2>/dev/null | head -1 | xargs stat -c %Y 2>/dev/null`, { timeout: 3000 }).toString().trim();
+      if (mtime) {
+        const ts = parseInt(mtime) * 1000;
+        info = { state: 'deployed', timestamp: new Date(ts).toISOString() };
+      }
+    } catch {}
+  }
+
   // Capture git info from workspace
   try {
     const gitBranch = execSync(`cd ${workspacePath} && git rev-parse --abbrev-ref HEAD 2>/dev/null`, { timeout: 3000 }).toString().trim();
