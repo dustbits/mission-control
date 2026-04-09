@@ -343,6 +343,8 @@
     .deploy-panel, .agents-panel, .finance-panel, .ironthread-panel {
       display: none;
       padding: 16px 24px 24px;
+      overflow-y: auto;
+      max-height: calc(100vh - 120px);
     }
     .deploy-panel.visible,
     .agents-panel.visible,
@@ -1308,7 +1310,7 @@
           ? `<span class="agent-state-badge state-${agentState}-badge">${stateLabel[agentState] || agentState}</span>`
           : '';
         info.innerHTML = `
-          <div class="agent-card-name">${a.name || a.key || '—'}${stateBadge}</div>
+          <div class="agent-card-name">${a.name || a.key || '—'}${stateBadge ? ' · ' + stateBadge : ''}</div>
           <div class="agent-card-model">${a.model || '—'}</div><div class="agent-card-last" style="font-size:10px;color:#475569;margin-top:2px;">${a.lastActive ? timeAgo(new Date(a.lastActive)) : '—'}</div>
         `;
 

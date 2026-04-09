@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T17:34:31.915Z",
+  "updatedAt": "2026-04-09T17:46:24.299Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 32,
-    "memory": 44,
+    "cpu": 37,
+    "memory": 43,
     "disk": 1
   },
   "agents": [
@@ -13,12 +13,12 @@
       "key": "sanji",
       "model": "MiniMax/M2.7",
       "color": "#f59e0b",
-      "completed": 99,
+      "completed": 100,
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
       "state": "blocked",
-      "stateSince": "2026-04-09T17:33:40Z"
+      "stateSince": "2026-04-09T17:39:53Z"
     },
     {
       "name": "Vicious",
@@ -29,8 +29,8 @@
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "state": "working",
-      "stateSince": "2026-04-09T17:21:36Z"
+      "state": "idle",
+      "stateSince": null
     },
     {
       "name": "Zoro",
@@ -179,12 +179,25 @@
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-09T16:32:23.000Z",
-    "commit": "b6ace6d",
+    "timestamp": "2026-04-09T17:39:37.000Z",
+    "commit": "b2bed38",
     "branch": "master",
-    "message": "chore: sync mission-control-live.json — deploy state active, refreshed activity",
-    "lastDeploy": "2026-04-09T16:32:23.000Z",
+    "message": "auto: MC improvement",
+    "lastDeploy": "2026-04-09T17:39:37.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-09T17:39:37.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "b2bed38",
+        "shaFull": "b2bed38373c7bf8a546669536322080d3479e51d",
+        "message": "auto: MC improvement",
+        "branch": "master",
+        "changedFiles": "board.html,deployHistory.json,mission-control-live.json",
+        "durationSec": 1,
+        "duration": null,
+        "time": "6m"
+      },
       {
         "timestamp": "2026-04-09T16:32:23.000Z",
         "status": "deployed",
@@ -349,506 +362,506 @@
     {
       "id": 1,
       "agent": "Sanji",
-      "line": "<@1491305441391677500>  its basically the mission board agent section still not  (exit=124)",
-      "time": "now",
+      "line": "MC deploy: ran mc-deploy.sh — deployed board.html + live data to nginx, post-deploy smoke tests passed (jarvis:8090/boar",
+      "time": "6m",
       "color": "#f59e0b"
     },
     {
       "id": 2,
       "agent": "Sanji",
-      "line": "Can't see it — Discord images don't flow through to me directly. Try uploading i",
-      "time": "9m",
+      "line": "<@1491305441391677500>  its basically the mission board agent section still not  (exit=124)",
+      "time": "12m",
       "color": "#f59e0b"
     },
     {
       "id": 3,
       "agent": "Sanji",
-      "line": "Image vision request — Discord attachment not accessible to me directly. Replied in #agent-lounge asking sender to share",
-      "time": "9m",
+      "line": "Can't see it — Discord images don't flow through to me directly. Try uploading i",
+      "time": "20m",
       "color": "#f59e0b"
     },
     {
       "id": 4,
       "agent": "Sanji",
-      "line": "👁️ vision_analyze: \"What does this image show? Describe a...\"",
-      "time": "10m",
+      "line": "Image vision request — Discord attachment not accessible to me directly. Replied in #agent-lounge asking sender to share",
+      "time": "21m",
       "color": "#f59e0b"
     },
     {
       "id": 5,
       "agent": "Sanji",
-      "line": "PONG",
-      "time": "10m",
+      "line": "👁️ vision_analyze: \"What does this image show? Describe a...\"",
+      "time": "21m",
       "color": "#f59e0b"
     },
     {
       "id": 6,
       "agent": "Sanji",
-      "line": "Understood — that lane belongs to Andy. I've noted the context.",
-      "time": "11m",
+      "line": "PONG",
+      "time": "22m",
       "color": "#f59e0b"
     },
     {
       "id": 7,
       "agent": "Sanji",
-      "line": "Logged. Protocol locked in — ready to execute on MC/OpenClaw ops with discipline",
-      "time": "11m",
+      "line": "Understood — that lane belongs to Andy. I've noted the context.",
+      "time": "22m",
       "color": "#f59e0b"
     },
     {
       "id": 8,
       "agent": "Sanji",
-      "line": "Synced deployHistory + mission-control-live.json — committed c6f8a1c, deployed to staging. Agent stats refreshed, MC sta",
-      "time": "11m",
+      "line": "Logged. Protocol locked in — ready to execute on MC/OpenClaw ops with discipline",
+      "time": "23m",
       "color": "#f59e0b"
     },
     {
       "id": 9,
       "agent": "Sanji",
-      "line": "Logged infra assessment to shared-log. Summary:",
-      "time": "12m",
+      "line": "Synced deployHistory + mission-control-live.json — committed c6f8a1c, deployed to staging. Agent stats refreshed, MC sta",
+      "time": "23m",
       "color": "#f59e0b"
     },
     {
       "id": 10,
       "agent": "Sanji",
-      "line": "Infra assessment logged — MC healthy at 150k/wk @ 10% load. No compute strain. Architectural ceilings: Discord gateway r",
-      "time": "12m",
+      "line": "Logged infra assessment to shared-log. Summary:",
+      "time": "24m",
       "color": "#f59e0b"
     },
     {
       "id": 11,
-      "agent": "Vicious",
-      "line": "session complete",
-      "time": "12m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "Infra assessment logged — MC healthy at 150k/wk @ 10% load. No compute strain. Architectural ceilings: Discord gateway r",
+      "time": "24m",
+      "color": "#f59e0b"
     },
     {
       "id": 12,
-      "agent": "Sanji",
-      "line": "Got it. Rotation is cancelled.",
-      "time": "13m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "session complete",
+      "time": "24m",
+      "color": "#ef4444"
     },
     {
       "id": 13,
       "agent": "Sanji",
-      "line": "Rotation cancelled — all items executed. (1) Secret 618230684935 stays live — no action. (2) ironthread-ai target untouc",
-      "time": "13m",
+      "line": "Got it. Rotation is cancelled.",
+      "time": "25m",
       "color": "#f59e0b"
     },
     {
       "id": 14,
       "agent": "Sanji",
-      "line": "**Target secret name:** `ironthread-ai-stripe-webhook-signing-secret` — matches ",
-      "time": "14m",
+      "line": "Rotation cancelled — all items executed. (1) Secret 618230684935 stays live — no action. (2) ironthread-ai target untouc",
+      "time": "25m",
       "color": "#f59e0b"
     },
     {
       "id": 15,
       "agent": "Sanji",
-      "line": "Stripe webhook signing secret rotation permanently stood down. ironthread-stripe-webhook-signing-secret v2 live on sould",
-      "time": "15m",
+      "line": "**Target secret name:** `ironthread-ai-stripe-webhook-signing-secret` — matches ",
+      "time": "26m",
       "color": "#f59e0b"
     },
     {
       "id": 16,
       "agent": "Sanji",
-      "line": "Got it. The Stripe webhook signing secret stays as-is — no rotation.",
-      "time": "15m",
+      "line": "Stripe webhook signing secret rotation permanently stood down. ironthread-stripe-webhook-signing-secret v2 live on sould",
+      "time": "26m",
       "color": "#f59e0b"
     },
     {
       "id": 17,
       "agent": "Sanji",
-      "line": "Understood — holding off on the rotation. Andy won't write the secret until we g",
-      "time": "16m",
+      "line": "Got it. The Stripe webhook signing secret stays as-is — no rotation.",
+      "time": "27m",
       "color": "#f59e0b"
     },
     {
       "id": 18,
       "agent": "Sanji",
-      "line": "Standing order confirmed — no secret rotation in progress. Andy holds until go-ahead. ironthread-stripe-webhook-signing-",
-      "time": "16m",
+      "line": "Understood — holding off on the rotation. Andy won't write the secret until we g",
+      "time": "28m",
       "color": "#f59e0b"
     },
     {
       "id": 19,
       "agent": "Sanji",
-      "line": "🧠 memory: \"+memory: \"IronThread Stripe webhook...\"\"",
-      "time": "16m",
+      "line": "Standing order confirmed — no secret rotation in progress. Andy holds until go-ahead. ironthread-stripe-webhook-signing-",
+      "time": "28m",
       "color": "#f59e0b"
     },
     {
       "id": 20,
       "agent": "Sanji",
-      "line": "Memory logged: IronThread Stripe webhook state captured (secret v2 live, no-rotate standing order, Secret Manager API bl",
-      "time": "16m",
+      "line": "🧠 memory: \"+memory: \"IronThread Stripe webhook...\"\"",
+      "time": "28m",
       "color": "#f59e0b"
     },
     {
       "id": 21,
       "agent": "Sanji",
-      "line": "⚠️ Context: ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▱▱▱ 85% to compaction",
-      "time": "17m",
+      "line": "Memory logged: IronThread Stripe webhook state captured (secret v2 live, no-rotate standing order, Secret Manager API bl",
+      "time": "28m",
       "color": "#f59e0b"
     },
     {
       "id": 22,
       "agent": "Sanji",
-      "line": "don't rotate the secret",
-      "time": "17m",
+      "line": "⚠️ Context: ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▱▱▱ 85% to compaction",
+      "time": "29m",
       "color": "#f59e0b"
     },
     {
       "id": 23,
       "agent": "Sanji",
-      "line": "No action — 'don't rotate the secret' standing order acknowledged. ironthread-stripe-webhook-signing-secret v2 is live o",
-      "time": "18m",
+      "line": "don't rotate the secret",
+      "time": "29m",
       "color": "#f59e0b"
     },
     {
       "id": 24,
       "agent": "Sanji",
-      "line": "Logged. Standing by for next task — will be deliberate, cost-aware, and consult ",
-      "time": "18m",
+      "line": "No action — 'don't rotate the secret' standing order acknowledged. ironthread-stripe-webhook-signing-secret v2 is live o",
+      "time": "29m",
       "color": "#f59e0b"
     },
     {
       "id": 25,
       "agent": "Sanji",
-      "line": "souldesk-webhook redeployed — new revision 00006-qf9 (17:14:21Z) now serving 100% traffic. Old revision 00005-yeq (16:29",
-      "time": "19m",
+      "line": "Logged. Standing by for next task — will be deliberate, cost-aware, and consult ",
+      "time": "30m",
       "color": "#f59e0b"
     },
     {
       "id": 26,
       "agent": "Sanji",
-      "line": "Stripe webhook secret rotation status: secret ironthread-ai-stripe-webhook-signing-secret v2 ENABLED in 618230684935 (an",
-      "time": "19m",
+      "line": "souldesk-webhook redeployed — new revision 00006-qf9 (17:14:21Z) now serving 100% traffic. Old revision 00005-yeq (16:29",
+      "time": "31m",
       "color": "#f59e0b"
     },
     {
       "id": 27,
       "agent": "Sanji",
-      "line": "Blocked - I don't have permission to enable Secret Manager API on `ironthread-ai",
-      "time": "21m",
+      "line": "Stripe webhook secret rotation status: secret ironthread-ai-stripe-webhook-signing-secret v2 ENABLED in 618230684935 (an",
+      "time": "31m",
       "color": "#f59e0b"
     },
     {
       "id": 28,
       "agent": "Sanji",
-      "line": "Acknowledged — I can do the gcloud write to `ironthread-ai` project. Quick clari",
-      "time": "22m",
+      "line": "Blocked - I don't have permission to enable Secret Manager API on `ironthread-ai",
+      "time": "33m",
       "color": "#f59e0b"
     },
     {
       "id": 29,
       "agent": "Sanji",
-      "line": "Sanji, any blockers on the Stripe webhook secret rotation? GCP project `61823068",
-      "time": "24m",
+      "line": "Acknowledged — I can do the gcloud write to `ironthread-ai` project. Quick clari",
+      "time": "34m",
       "color": "#f59e0b"
     },
     {
       "id": 30,
       "agent": "Sanji",
-      "line": "Sanji is running — listeners are all up. What's up?",
-      "time": "26m",
+      "line": "Sanji, any blockers on the Stripe webhook secret rotation? GCP project `61823068",
+      "time": "35m",
       "color": "#f59e0b"
     },
     {
       "id": 31,
       "agent": "Sanji",
-      "line": "Status check: Sanji prev instance timed out (exit=124, 17:06:43Z) — auto-recovered. New instance active. IAM binding unb",
-      "time": "26m",
+      "line": "Sanji is running — listeners are all up. What's up?",
+      "time": "38m",
       "color": "#f59e0b"
     },
     {
       "id": 32,
-      "agent": "Vicious",
-      "line": "IAM binding complete for Stripe webhook signing secrets — SA 451889200465-compute@developer.gserviceaccount.com (souldes",
-      "time": "27m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "Status check: Sanji prev instance timed out (exit=124, 17:06:43Z) — auto-recovered. New instance active. IAM binding unb",
+      "time": "38m",
+      "color": "#f59e0b"
     },
     {
       "id": 33,
-      "agent": "Sanji",
-      "line": "<@1491539585342246943> (exit=124)",
-      "time": "27m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "IAM binding complete for Stripe webhook signing secrets — SA 451889200465-compute@developer.gserviceaccount.com (souldes",
+      "time": "39m",
+      "color": "#ef4444"
     },
     {
       "id": 34,
       "agent": "Sanji",
-      "line": "ironthread-stripe-webhook-signing-secret confirmed in GCP Secret Manager (project: gen-lang-client-0412397372). Value: w",
-      "time": "29m",
+      "line": "<@1491539585342246943> (exit=124)",
+      "time": "39m",
       "color": "#f59e0b"
     },
     {
       "id": 35,
       "agent": "Sanji",
-      "line": "PONG — MC deploy OK. jarvis: load 1.06, disk 88%, uptime 8h57m. Live JSON synced, all endpoints verified. GCP secret iro",
-      "time": "29m",
+      "line": "ironthread-stripe-webhook-signing-secret confirmed in GCP Secret Manager (project: gen-lang-client-0412397372). Value: w",
+      "time": "41m",
       "color": "#f59e0b"
     },
     {
       "id": 36,
       "agent": "Sanji",
-      "line": "PONG test — MC healthy, all endpoints OK.",
-      "time": "34m",
+      "line": "PONG — MC deploy OK. jarvis: load 1.06, disk 88%, uptime 8h57m. Live JSON synced, all endpoints verified. GCP secret iro",
+      "time": "41m",
       "color": "#f59e0b"
     },
     {
       "id": 37,
-      "agent": "Vicious",
-      "line": "",
-      "time": "35m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "PONG test — MC healthy, all endpoints OK.",
+      "time": "46m",
+      "color": "#f59e0b"
     },
     {
       "id": 38,
-      "agent": "Sanji",
-      "line": "sanji",
-      "time": "36m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "",
+      "time": "47m",
+      "color": "#ef4444"
     },
     {
       "id": 39,
       "agent": "Sanji",
-      "line": "On it. Routing to Andy for the `gcloud secrets` write — I don't have host access",
-      "time": "37m",
+      "line": "sanji",
+      "time": "47m",
       "color": "#f59e0b"
     },
     {
       "id": 40,
       "agent": "Sanji",
-      "line": "That's a GCP secret write — needs host access (gcloud CLI). Not my lane. Should ",
-      "time": "37m",
+      "line": "On it. Routing to Andy for the `gcloud secrets` write — I don't have host access",
+      "time": "49m",
       "color": "#f59e0b"
     },
     {
       "id": 41,
       "agent": "Sanji",
-      "line": "**PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59.**",
-      "time": "38m",
+      "line": "That's a GCP secret write — needs host access (gcloud CLI). Not my lane. Should ",
+      "time": "49m",
       "color": "#f59e0b"
     },
     {
       "id": 42,
       "agent": "Sanji",
-      "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
-      "time": "38m",
+      "line": "**PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59.**",
+      "time": "50m",
       "color": "#f59e0b"
     },
     {
       "id": 43,
       "agent": "Sanji",
-      "line": "Saved to GCP Secret Manager and logged to memory. Ready to use in any IronThread",
-      "time": "39m",
+      "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
+      "time": "50m",
       "color": "#f59e0b"
     },
     {
       "id": 44,
       "agent": "Sanji",
-      "line": "Done. Secret saved as `ironthread-ai-stripe-webhook-signing-secret` in project `",
-      "time": "39m",
+      "line": "Saved to GCP Secret Manager and logged to memory. Ready to use in any IronThread",
+      "time": "50m",
       "color": "#f59e0b"
     },
     {
       "id": 45,
       "agent": "Sanji",
-      "line": "Protocol acknowledged — token discipline, domain ownership, implementation guardrails confirmed. MC: healthy, no blocker",
-      "time": "39m",
+      "line": "Done. Secret saved as `ironthread-ai-stripe-webhook-signing-secret` in project `",
+      "time": "51m",
       "color": "#f59e0b"
     },
     {
       "id": 46,
       "agent": "Sanji",
-      "line": "```bash",
-      "time": "41m",
+      "line": "Protocol acknowledged — token discipline, domain ownership, implementation guardrails confirmed. MC: healthy, no blocker",
+      "time": "51m",
       "color": "#f59e0b"
     },
     {
       "id": 47,
       "agent": "Sanji",
-      "line": "ironthread-ai-stripe-webhook-signing-secret: version 2 created and ENABLED in GCP Secret Manager (project: 618230684935)",
-      "time": "41m",
+      "line": "```bash",
+      "time": "53m",
       "color": "#f59e0b"
     },
     {
       "id": 48,
       "agent": "Sanji",
-      "line": "💻 terminal: \"gcloud secrets create ironthread-stri...\"",
-      "time": "42m",
+      "line": "ironthread-ai-stripe-webhook-signing-secret: version 2 created and ENABLED in GCP Secret Manager (project: 618230684935)",
+      "time": "53m",
       "color": "#f59e0b"
     },
     {
       "id": 49,
       "agent": "Sanji",
-      "line": "gcloud secrets create ironthread-stripe-webhook-signing-secret: already exists (created 2026-04-09T16:51:50), version 1 ",
-      "time": "42m",
+      "line": "💻 terminal: \"gcloud secrets create ironthread-stri...\"",
+      "time": "53m",
       "color": "#f59e0b"
     },
     {
       "id": 50,
-      "agent": "Vicious",
-      "line": "",
-      "time": "42m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "gcloud secrets create ironthread-stripe-webhook-signing-secret: already exists (created 2026-04-09T16:51:50), version 1 ",
+      "time": "54m",
+      "color": "#f59e0b"
     },
     {
       "id": 51,
-      "agent": "Sanji",
-      "line": "save this ironthread ai stripe webhook sign in in google cloud secret manager no",
-      "time": "42m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "",
+      "time": "54m",
+      "color": "#ef4444"
     },
     {
       "id": 52,
       "agent": "Sanji",
-      "line": "Stripe webhook signing secret (ironthread-stripe-webhook-signing-secret) saved to GCP Secret Manager — version 1, ENABLE",
-      "time": "42m",
+      "line": "save this ironthread ai stripe webhook sign in in google cloud secret manager no",
+      "time": "54m",
       "color": "#f59e0b"
     },
     {
       "id": 53,
       "agent": "Sanji",
-      "line": "test",
-      "time": "43m",
+      "line": "Stripe webhook signing secret (ironthread-stripe-webhook-signing-secret) saved to GCP Secret Manager — version 1, ENABLE",
+      "time": "54m",
       "color": "#f59e0b"
     },
     {
       "id": 54,
       "agent": "Sanji",
-      "line": "Infra lens — 150k/wk @ 10%: no compute strain, no autoscaling triggers, no memory pressure on listeners. Architectural c",
-      "time": "43m",
+      "line": "test",
+      "time": "54m",
       "color": "#f59e0b"
     },
     {
       "id": 55,
       "agent": "Sanji",
-      "line": "PONG direct test",
-      "time": "43m",
+      "line": "Infra lens — 150k/wk @ 10%: no compute strain, no autoscaling triggers, no memory pressure on listeners. Architectural c",
+      "time": "55m",
       "color": "#f59e0b"
     },
     {
       "id": 56,
       "agent": "Sanji",
-      "line": "[acknowledged-sanji] Working on it...",
-      "time": "44m",
+      "line": "PONG direct test",
+      "time": "55m",
       "color": "#f59e0b"
     },
     {
       "id": 57,
       "agent": "Sanji",
-      "line": "Token policy acknowledged — 150k/wk at 10%, cost /bin/bash/ budget. Will analyze before heavy API calls, explore alterna",
-      "time": "44m",
+      "line": "[acknowledged-sanji] Working on it...",
+      "time": "55m",
       "color": "#f59e0b"
     },
     {
       "id": 58,
       "agent": "Sanji",
-      "line": "MC deploy: sync script (15-min activity window) + refreshed live JSON deployed to nginx. All endpoints OK. deploy-histor",
-      "time": "44m",
+      "line": "Token policy acknowledged — 150k/wk at 10%, cost /bin/bash/ budget. Will analyze before heavy API calls, explore alterna",
+      "time": "56m",
       "color": "#f59e0b"
     },
     {
       "id": 59,
       "agent": "Sanji",
-      "line": "sanji PONG test respond with just PONG",
-      "time": "47m",
+      "line": "MC deploy: sync script (15-min activity window) + refreshed live JSON deployed to nginx. All endpoints OK. deploy-histor",
+      "time": "56m",
       "color": "#f59e0b"
     },
     {
       "id": 60,
       "agent": "Sanji",
-      "line": "That's aimed at Andy. Not my lane. — minimax/MiniMax-M2.7-highspeed",
-      "time": "47m",
+      "line": "sanji PONG test respond with just PONG",
+      "time": "58m",
       "color": "#f59e0b"
     },
     {
       "id": 61,
       "agent": "Sanji",
-      "line": "Understood. Ops/infra perspective on this:",
-      "time": "47m",
+      "line": "That's aimed at Andy. Not my lane. — minimax/MiniMax-M2.7-highspeed",
+      "time": "59m",
       "color": "#f59e0b"
     },
     {
       "id": 62,
       "agent": "Sanji",
-      "line": "Understood — final say stays with the humans. My bad on the cost assumption, I'l",
-      "time": "48m",
+      "line": "Understood. Ops/infra perspective on this:",
+      "time": "59m",
       "color": "#f59e0b"
     },
     {
       "id": 63,
       "agent": "Sanji",
-      "line": "anyone see this?",
-      "time": "48m",
+      "line": "Understood — final say stays with the humans. My bad on the cost assumption, I'l",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 64,
       "agent": "Sanji",
-      "line": "<@1491302955025039410>  you cna take her advice but you have final say along wit",
-      "time": "49m",
+      "line": "anyone see this?",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 65,
       "agent": "Sanji",
-      "line": "sanji PONG positional test",
-      "time": "53m",
+      "line": "<@1491302955025039410>  you cna take her advice but you have final say along wit",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 66,
       "agent": "Sanji",
-      "line": "PONG positional test: gateway heartbeat=OK (100.91.29.32:18790 live), 10 agent desks configured (1280x720 office), zones",
-      "time": "55m",
+      "line": "sanji PONG positional test",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 67,
-      "agent": "Vicious",
-      "line": "",
-      "time": "58m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "PONG positional test: gateway heartbeat=OK (100.91.29.32:18790 live), 10 agent desks configured (1280x720 office), zones",
+      "time": "1h",
+      "color": "#f59e0b"
     },
     {
       "id": 68,
-      "agent": "Sanji",
-      "line": "(exit=124)",
-      "time": "58m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "",
+      "time": "1h",
+      "color": "#ef4444"
     },
     {
       "id": 69,
       "agent": "Sanji",
-      "line": "MC full ops check: deploy=e544fac/state=deployed, board=0q/2ip/53d, cron=27(15ok/2err/7paused/3unk), health=jarvis/cpu10",
-      "time": "59m",
+      "line": "(exit=124)",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 70,
-      "agent": "Vicious",
-      "line": "MC board: fixed deploy context (was showing only \"manual\"). Root cause: mc-nginx-sync.sh copied deployHistory.json from ",
-      "time": "59m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "MC full ops check: deploy=e544fac/state=deployed, board=0q/2ip/53d, cron=27(15ok/2err/7paused/3unk), health=jarvis/cpu10",
+      "time": "1h",
+      "color": "#f59e0b"
     },
     {
       "id": 71,
       "agent": "Vicious",
-      "line": "MC board: fixed deploy context (was showing only 'manual'). Root cause: mc-nginx-sync.sh copied deployHistory.json from ",
-      "time": "59m",
+      "line": "MC board: fixed deploy context (was showing only \"manual\"). Root cause: mc-nginx-sync.sh copied deployHistory.json from ",
+      "time": "1h",
       "color": "#ef4444"
     },
     {
       "id": 72,
-      "agent": "Sanji",
-      "line": "",
-      "time": "59m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "MC board: fixed deploy context (was showing only 'manual'). Root cause: mc-nginx-sync.sh copied deployHistory.json from ",
+      "time": "1h",
+      "color": "#ef4444"
     },
     {
       "id": 73,
@@ -860,274 +873,274 @@
     {
       "id": 74,
       "agent": "Sanji",
-      "line": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), pushed + deployed to",
+      "line": "",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 75,
       "agent": "Sanji",
-      "line": "pong debug test",
+      "line": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), pushed + deployed to",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 76,
       "agent": "Sanji",
-      "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
+      "line": "pong debug test",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 77,
       "agent": "Sanji",
-      "line": "",
+      "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 78,
       "agent": "Sanji",
-      "line": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx.",
+      "line": "",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 79,
       "agent": "Sanji",
-      "line": "PONG test",
+      "line": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx.",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 80,
       "agent": "Sanji",
-      "line": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
+      "line": "PONG test",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 81,
       "agent": "Sanji",
-      "line": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Ngin",
+      "line": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 82,
       "agent": "Sanji",
-      "line": "",
+      "line": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Ngin",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 83,
       "agent": "Sanji",
-      "line": "(exit=124)",
+      "line": "",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 84,
+      "agent": "Sanji",
+      "line": "(exit=124)",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 85,
       "agent": "Zoro",
       "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 85,
+      "id": 86,
       "agent": "Zoro",
       "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 86,
+      "id": 87,
       "agent": "Zoro",
       "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 87,
+      "id": 88,
       "agent": "Zoro",
       "line": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to nginx",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 88,
+      "id": 89,
       "agent": "Sanji",
       "line": "sanji PONG test",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
-      "id": 89,
+      "id": 90,
       "agent": "Sanji",
       "line": "PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
-      "id": 90,
-      "agent": "Sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#f59e0b"
-    },
-    {
       "id": 91,
       "agent": "Sanji",
-      "line": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) instead of index.htm",
+      "line": "",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 92,
       "agent": "Sanji",
-      "line": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy ",
+      "line": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) instead of index.htm",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 93,
       "agent": "Sanji",
-      "line": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored from HEAD with deploy ",
+      "line": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy ",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 94,
       "agent": "Sanji",
-      "line": "",
+      "line": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored from HEAD with deploy ",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 95,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 96,
       "agent": "Zoro",
       "line": "stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but task keys didn't match",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 96,
-      "agent": "Sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#f59e0b"
-    },
-    {
       "id": 97,
       "agent": "Sanji",
-      "line": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=deployed/timestamp=2026",
+      "line": "",
       "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 98,
       "agent": "Sanji",
-      "line": "",
-      "time": "2h",
+      "line": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=deployed/timestamp=2026",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 99,
       "agent": "Sanji",
-      "line": "No explicit task received in dispatch — Task section was empty. MC operational (live JSON: 15:23:07, deploy 34ee7aa). St",
+      "line": "",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 100,
       "agent": "Sanji",
-      "line": "",
+      "line": "No explicit task received in dispatch — Task section was empty. MC operational (live JSON: 15:23:07, deploy 34ee7aa). St",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 101,
       "agent": "Sanji",
-      "line": "MC live JSON deploy section fix — updated deploy.timestamp to 2026-04-09T15:23:07 (0f25a75), workspace→staging→nginx syn",
+      "line": "",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 102,
       "agent": "Sanji",
-      "line": "",
+      "line": "MC live JSON deploy section fix — updated deploy.timestamp to 2026-04-09T15:23:07 (0f25a75), workspace→staging→nginx syn",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 103,
       "agent": "Sanji",
-      "line": "MC v3 commit + deploy — 0f25a75 pushed, nginx live ✅. Includes: agents schema (10 agents), real health stats, deployHist",
+      "line": "",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 104,
       "agent": "Sanji",
-      "line": "",
+      "line": "MC v3 commit + deploy — 0f25a75 pushed, nginx live ✅. Includes: agents schema (10 agents), real health stats, deployHist",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 105,
       "agent": "Sanji",
-      "line": "MC sync — committed + pushed (5907e25), nginx live ✅. Pipeline-test ✅. Discord sanji listener ✅. All sanji tasks complet",
+      "line": "",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 106,
       "agent": "Sanji",
-      "line": "",
+      "line": "MC sync — committed + pushed (5907e25), nginx live ✅. Pipeline-test ✅. Discord sanji listener ✅. All sanji tasks complet",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 107,
       "agent": "Sanji",
-      "line": "deployHistory.json fix — committed 40ef794 (deployHistory entry for 5907e25), pushed. nginx live ✅. All nominal.",
+      "line": "",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 108,
       "agent": "Sanji",
-      "line": "",
+      "line": "deployHistory.json fix — committed 40ef794 (deployHistory entry for 5907e25), pushed. nginx live ✅. All nominal.",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 109,
       "agent": "Sanji",
-      "line": "pipeline-test — zoro-sanji bridge verified end-to-end. Results: Hermes gw ✅ (100.91.29.32:18790/live), OpenClaw→Hermes ✅",
+      "line": "",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 110,
       "agent": "Sanji",
-      "line": "pipeline-test: starting end-to-end verification — hermes gw, openclaw container, shared-log dispatch, discord bridge",
+      "line": "pipeline-test — zoro-sanji bridge verified end-to-end. Results: Hermes gw ✅ (100.91.29.32:18790/live), OpenClaw→Hermes ✅",
       "time": "2h",
       "color": "#f59e0b"
     },
     {
       "id": 111,
-      "agent": "Vicious",
-      "line": "",
+      "agent": "Sanji",
+      "line": "pipeline-test: starting end-to-end verification — hermes gw, openclaw container, shared-log dispatch, discord bridge",
       "time": "2h",
-      "color": "#ef4444"
+      "color": "#f59e0b"
     },
     {
       "id": 112,
       "agent": "Vicious",
       "line": "",
-      "time": "3h",
+      "time": "2h",
       "color": "#ef4444"
     },
     {
@@ -1147,86 +1160,86 @@
     {
       "id": 115,
       "agent": "Vicious",
-      "line": "poll — no pending needs-vicious tasks. openclaw-gateway (PID 185905) healthy, hermes gateway (PID 1068) running, opencla",
+      "line": "",
       "time": "3h",
       "color": "#ef4444"
     },
     {
       "id": 116,
       "agent": "Vicious",
-      "line": "",
+      "line": "poll — no pending needs-vicious tasks. openclaw-gateway (PID 185905) healthy, hermes gateway (PID 1068) running, opencla",
       "time": "3h",
       "color": "#ef4444"
     },
     {
       "id": 117,
       "agent": "Vicious",
-      "line": "poll — no pending needs-vicious tasks. MC deploy (needs-andy) owned by Andy. Ed session active. All infra nominal. Idle.",
+      "line": "",
       "time": "3h",
       "color": "#ef4444"
     },
     {
       "id": 118,
+      "agent": "Vicious",
+      "line": "poll — no pending needs-vicious tasks. MC deploy (needs-andy) owned by Andy. Ed session active. All infra nominal. Idle.",
+      "time": "3h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 119,
       "agent": "Ed",
       "line": "starting: ",
       "time": "9h",
       "color": "#22c55e"
     },
     {
-      "id": 119,
+      "id": 120,
       "agent": "Zoro",
       "line": "Spike Discord token updated and verified live. Bot: Spike | ID: 1482477348816293928",
       "time": "11h",
       "color": "#4a9eff"
     },
     {
-      "id": 120,
+      "id": 121,
       "agent": "Zoro",
       "line": "ALL TASKS COMPLETE — crew organization done. Discord channels renamed/created, dispatch system updated, crew-knowledge-b",
       "time": "12h",
       "color": "#4a9eff"
     },
     {
-      "id": 121,
+      "id": 122,
       "agent": "Zoro",
       "line": "Task 3 (Spike Discord token): BLOCKED — requires Discord Developer Portal (browser). Ray needs to: (1) Go to discord.com",
       "time": "12h",
       "color": "#4a9eff"
     },
     {
-      "id": 122,
+      "id": 123,
       "agent": "Zoro",
       "line": "Task 1 complete. Vicious confirmed alive (health-check OK 04:24). WhatsApp binding for zoro added (peer: +192****1375, k",
-      "time": "12h",
+      "time": "13h",
       "color": "#4a9eff"
-    },
-    {
-      "id": 123,
-      "agent": "Vicious",
-      "line": "poll — no pending needs-vicious tasks (all 15 entries resolved, last done 04:37 UTC). Duplicate dispatch at 04:35 alread",
-      "time": "12h",
-      "color": "#ef4444"
     },
     {
       "id": 124,
       "agent": "Vicious",
-      "line": "final-test — spawn + respond verified, 6 openclaw procs, load 1.33 declining. Discord binding OK (msg 149165830218514432",
-      "time": "12h",
+      "line": "poll — no pending needs-vicious tasks (all 15 entries resolved, last done 04:37 UTC). Duplicate dispatch at 04:35 alread",
+      "time": "13h",
       "color": "#ef4444"
     },
     {
       "id": 125,
       "agent": "Vicious",
-      "line": "session complete",
-      "time": "12h",
+      "line": "final-test — spawn + respond verified, 6 openclaw procs, load 1.33 declining. Discord binding OK (msg 149165830218514432",
+      "time": "13h",
       "color": "#ef4444"
     },
     {
       "id": 126,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "session complete",
       "time": "13h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 127,
@@ -1237,38 +1250,38 @@
     },
     {
       "id": 128,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "13h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 129,
       "agent": "Vicious",
       "line": "final-health-check — agent spawn OK, 5 openclaw processes, load 2.78. Discord binding verified (msg 1491655065394610227)",
       "time": "13h",
       "color": "#ef4444"
     },
     {
-      "id": 129,
+      "id": 130,
       "agent": "Vicious",
       "line": "session complete",
       "time": "13h",
       "color": "#ef4444"
     },
     {
-      "id": 130,
+      "id": 131,
       "agent": "Zoro",
       "line": "[deploy] MC deploy board stale queue cleared — unpushed commits were deployed by sanji (d8fe768), board.html/mission-con",
       "time": "13h",
       "color": "#4a9eff"
     },
     {
-      "id": 131,
+      "id": 132,
       "agent": "Zoro",
       "line": "MC live board sync re-enabled — MC Live Board Sync cron resumed, cron health data now populating (27 jobs)",
       "time": "13h",
       "color": "#4a9eff"
-    },
-    {
-      "id": 132,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "13h",
-      "color": "#38bdf8"
     },
     {
       "id": 133,
@@ -1279,38 +1292,38 @@
     },
     {
       "id": 134,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "13h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 135,
       "agent": "Vicious",
       "line": "poll — no pending needs-vicious tasks found (both health-check items already resolved 04:21 UTC). Idle.",
       "time": "13h",
       "color": "#ef4444"
     },
     {
-      "id": 135,
+      "id": 136,
       "agent": "Vicious",
       "line": "health-check — container alive (up 20m, load 2.73). Discord bindings verified: vicious group 1491508051935494164 (msg 14",
       "time": "13h",
       "color": "#ef4444"
     },
     {
-      "id": 136,
+      "id": 137,
       "agent": "Vicious",
       "line": "health-check-2 — dispatch pipeline confirmed by zoro, container healthy, bindings confirmed.",
       "time": "13h",
       "color": "#ef4444"
     },
     {
-      "id": 137,
+      "id": 138,
       "agent": "Vicious",
       "line": "session complete",
       "time": "13h",
       "color": "#ef4444"
-    },
-    {
-      "id": 138,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "13h",
-      "color": "#38bdf8"
     },
     {
       "id": 139,
@@ -1335,66 +1348,66 @@
     },
     {
       "id": 142,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "13h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 143,
       "agent": "Zoro",
       "line": "arXiv research pipeline built + cron live (0 6 * * * → origin, job: abd97564dbe5). No gh CLI needed — uses curl + tokens",
       "time": "14h",
       "color": "#4a9eff"
     },
     {
-      "id": 143,
+      "id": 144,
       "agent": "Zoro",
       "line": "GitHub PR review pipeline built + cron live (0 */4 * * * → origin, job: 53c84c99d408). Monitors IronThread/ironthread-si",
       "time": "14h",
       "color": "#4a9eff"
     },
     {
-      "id": 144,
+      "id": 145,
       "agent": "Zoro",
       "line": "OpenClaw 2026.4.9 — routed to Vicious via shared-log (02:55 UTC). Security fixes: SSRF bypass #63226, node exec injectio",
       "time": "14h",
       "color": "#4a9eff"
     },
     {
-      "id": 145,
+      "id": 146,
       "agent": "Zoro",
       "line": "Memory fully consolidated. 5 crons now live. GitHub access verified. All crew KB entries updated.",
       "time": "14h",
       "color": "#4a9eff"
     },
     {
-      "id": 146,
-      "agent": "System",
-      "line": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
-      "time": "14h",
-      "color": "#38bdf8"
-    },
-    {
       "id": 147,
       "agent": "System",
-      "line": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recovery: still de | [202",
-      "time": "14h",
+      "line": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
+      "time": "15h",
       "color": "#38bdf8"
     },
     {
       "id": 148,
+      "agent": "System",
+      "line": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recovery: still de | [202",
+      "time": "15h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 149,
       "agent": "Sanji",
       "line": "session complete",
       "time": "15h",
       "color": "#f59e0b"
     },
     {
-      "id": 149,
+      "id": 150,
       "agent": "Sanji",
       "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
       "time": "15h",
       "color": "#f59e0b"
-    },
-    {
-      "id": 150,
-      "agent": "System",
-      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "15h",
-      "color": "#38bdf8"
     },
     {
       "id": 151,
@@ -1405,17 +1418,17 @@
     },
     {
       "id": 152,
+      "agent": "System",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "15h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 153,
       "agent": "Vicious",
       "line": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent successfully, ID 1491",
       "time": "15h",
       "color": "#ef4444"
-    },
-    {
-      "id": 153,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "15h",
-      "color": "#38bdf8"
     },
     {
       "id": 154,
@@ -1426,27 +1439,34 @@
     },
     {
       "id": 155,
-      "agent": "Sanji",
-      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
-      "time": "16h",
-      "color": "#f59e0b"
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "15h",
+      "color": "#38bdf8"
     },
     {
       "id": 156,
       "agent": "Sanji",
-      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
+      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
       "time": "17h",
       "color": "#f59e0b"
     },
     {
       "id": 157,
       "agent": "Sanji",
-      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
+      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
       "time": "17h",
       "color": "#f59e0b"
     },
     {
       "id": 158,
+      "agent": "Sanji",
+      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
+      "time": "17h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 159,
       "agent": "Sanji",
       "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
       "time": "17h",
@@ -1471,400 +1491,406 @@
     ],
     "done": [
       {
+        "id": 1775756393000,
+        "text": "MC deploy: ran mc-deploy.sh — deployed board.html + live data to nginx, post-deploy smoke tests pass",
+        "agent": "Sanji",
+        "ts": "6m"
+      },
+      {
         "id": 1775755525000,
         "text": "Can't see it — Discord images don't flow through to me directly. Try uploading i",
         "agent": "Sanji",
-        "ts": "9m"
+        "ts": "20m"
       },
       {
         "id": 1775755522000,
         "text": "Image vision request — Discord attachment not accessible to me directly. Replied in #agent-lounge as",
         "agent": "Sanji",
-        "ts": "9m"
+        "ts": "21m"
       },
       {
         "id": 1775755468000,
         "text": "👁️ vision_analyze: \"What does this image show? Describe a...\"",
         "agent": "Sanji",
-        "ts": "10m"
+        "ts": "21m"
       },
       {
         "id": 1775755429000,
         "text": "PONG",
         "agent": "Sanji",
-        "ts": "10m"
+        "ts": "22m"
       },
       {
         "id": 1775755411000,
         "text": "Understood — that lane belongs to Andy. I've noted the context.",
         "agent": "Sanji",
-        "ts": "11m"
+        "ts": "22m"
       },
       {
         "id": 1775755373000,
         "text": "Logged. Protocol locked in — ready to execute on MC/OpenClaw ops with discipline",
         "agent": "Sanji",
-        "ts": "11m"
+        "ts": "23m"
       },
       {
         "id": 1775755365000,
         "text": "Synced deployHistory + mission-control-live.json — committed c6f8a1c, deployed to staging. Agent sta",
         "agent": "Sanji",
-        "ts": "11m"
+        "ts": "23m"
       },
       {
         "id": 1775755326000,
         "text": "Logged infra assessment to shared-log. Summary:",
         "agent": "Sanji",
-        "ts": "12m"
+        "ts": "24m"
       },
       {
         "id": 1775755325000,
         "text": "Infra assessment logged — MC healthy at 150k/wk @ 10% load. No compute strain. Architectural ceiling",
         "agent": "Sanji",
-        "ts": "12m"
+        "ts": "24m"
       },
       {
         "id": 1775755296000,
         "text": "session complete",
         "agent": "Vicious",
-        "ts": "12m"
+        "ts": "24m"
       },
       {
         "id": 1775755259000,
         "text": "Got it. Rotation is cancelled.",
         "agent": "Sanji",
-        "ts": "13m"
+        "ts": "25m"
       },
       {
         "id": 1775755240000,
         "text": "Rotation cancelled — all items executed. (1) Secret 618230684935 stays live — no action. (2) ironthr",
         "agent": "Sanji",
-        "ts": "13m"
+        "ts": "25m"
       },
       {
         "id": 1775755197000,
         "text": "**Target secret name:** `ironthread-ai-stripe-webhook-signing-secret` — matches ",
         "agent": "Sanji",
-        "ts": "14m"
+        "ts": "26m"
       },
       {
         "id": 1775755170000,
         "text": "Stripe webhook signing secret rotation permanently stood down. ironthread-stripe-webhook-signing-sec",
         "agent": "Sanji",
-        "ts": "15m"
+        "ts": "26m"
       },
       {
         "id": 1775755160000,
         "text": "Got it. The Stripe webhook signing secret stays as-is — no rotation.",
         "agent": "Sanji",
-        "ts": "15m"
+        "ts": "27m"
       },
       {
         "id": 1775755102000,
         "text": "Understood — holding off on the rotation. Andy won't write the secret until we g",
         "agent": "Sanji",
-        "ts": "16m"
+        "ts": "28m"
       },
       {
         "id": 1775755097000,
         "text": "Standing order confirmed — no secret rotation in progress. Andy holds until go-ahead. ironthread-str",
         "agent": "Sanji",
-        "ts": "16m"
+        "ts": "28m"
       },
       {
         "id": 1775755066000,
         "text": "🧠 memory: \"+memory: \"IronThread Stripe webhook...\"\"",
         "agent": "Sanji",
-        "ts": "16m"
+        "ts": "28m"
       },
       {
         "id": 1775755055000,
         "text": "Memory logged: IronThread Stripe webhook state captured (secret v2 live, no-rotate standing order, S",
         "agent": "Sanji",
-        "ts": "16m"
+        "ts": "28m"
       },
       {
         "id": 1775755033000,
         "text": "⚠️ Context: ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▱▱▱ 85% to compaction",
         "agent": "Sanji",
-        "ts": "17m"
+        "ts": "29m"
       },
       {
         "id": 1775755001000,
         "text": "don't rotate the secret",
         "agent": "Sanji",
-        "ts": "17m"
+        "ts": "29m"
       },
       {
         "id": 1775754990000,
         "text": "No action — 'don't rotate the secret' standing order acknowledged. ironthread-stripe-webhook-signing",
         "agent": "Sanji",
-        "ts": "18m"
+        "ts": "29m"
       },
       {
         "id": 1775754976000,
         "text": "Logged. Standing by for next task — will be deliberate, cost-aware, and consult ",
         "agent": "Sanji",
-        "ts": "18m"
+        "ts": "30m"
       },
       {
         "id": 1775754915000,
         "text": "souldesk-webhook redeployed — new revision 00006-qf9 (17:14:21Z) now serving 100% traffic. Old revis",
         "agent": "Sanji",
-        "ts": "19m"
+        "ts": "31m"
       },
       {
         "id": 1775754900000,
         "text": "Stripe webhook secret rotation status: secret ironthread-ai-stripe-webhook-signing-secret v2 ENABLED",
         "agent": "Sanji",
-        "ts": "19m"
+        "ts": "31m"
       },
       {
         "id": 1775754784000,
         "text": "Blocked - I don't have permission to enable Secret Manager API on `ironthread-ai",
         "agent": "Sanji",
-        "ts": "21m"
+        "ts": "33m"
       },
       {
         "id": 1775754708000,
         "text": "Acknowledged — I can do the gcloud write to `ironthread-ai` project. Quick clari",
         "agent": "Sanji",
-        "ts": "22m"
+        "ts": "34m"
       },
       {
         "id": 1775754626000,
         "text": "Sanji, any blockers on the Stripe webhook secret rotation? GCP project `61823068",
         "agent": "Sanji",
-        "ts": "24m"
+        "ts": "35m"
       },
       {
         "id": 1775754475000,
         "text": "Sanji is running — listeners are all up. What's up?",
         "agent": "Sanji",
-        "ts": "26m"
+        "ts": "38m"
       },
       {
         "id": 1775754464000,
         "text": "Status check: Sanji prev instance timed out (exit=124, 17:06:43Z) — auto-recovered. New instance act",
         "agent": "Sanji",
-        "ts": "26m"
+        "ts": "38m"
       },
       {
         "id": 1775754420000,
         "text": "IAM binding complete for Stripe webhook signing secrets — SA 451889200465-compute@developer.gservice",
         "agent": "Vicious",
-        "ts": "27m"
+        "ts": "39m"
       },
       {
         "id": 1775754300000,
         "text": "ironthread-stripe-webhook-signing-secret confirmed in GCP Secret Manager (project: gen-lang-client-0",
         "agent": "Sanji",
-        "ts": "29m"
+        "ts": "41m"
       },
       {
         "id": 1775754300000,
         "text": "PONG — MC deploy OK. jarvis: load 1.06, disk 88%, uptime 8h57m. Live JSON synced, all endpoints veri",
         "agent": "Sanji",
-        "ts": "29m"
+        "ts": "41m"
       },
       {
         "id": 1775754000000,
         "text": "PONG test — MC healthy, all endpoints OK.",
         "agent": "Sanji",
-        "ts": "34m"
+        "ts": "46m"
       },
       {
         "id": 1775753913000,
         "text": "",
         "agent": "Vicious",
-        "ts": "35m"
+        "ts": "47m"
       },
       {
         "id": 1775753908000,
         "text": "sanji",
         "agent": "Sanji",
-        "ts": "36m"
+        "ts": "47m"
       },
       {
         "id": 1775753843000,
         "text": "On it. Routing to Andy for the `gcloud secrets` write — I don't have host access",
         "agent": "Sanji",
-        "ts": "37m"
+        "ts": "49m"
       },
       {
         "id": 1775753810000,
         "text": "That's a GCP secret write — needs host access (gcloud CLI). Not my lane. Should ",
         "agent": "Sanji",
-        "ts": "37m"
+        "ts": "49m"
       },
       {
         "id": 1775753758000,
         "text": "**PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59.**",
         "agent": "Sanji",
-        "ts": "38m"
+        "ts": "50m"
       },
       {
         "id": 1775753753000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
         "agent": "Sanji",
-        "ts": "38m"
+        "ts": "50m"
       },
       {
         "id": 1775753731000,
         "text": "Saved to GCP Secret Manager and logged to memory. Ready to use in any IronThread",
         "agent": "Sanji",
-        "ts": "39m"
+        "ts": "50m"
       },
       {
         "id": 1775753701000,
         "text": "Done. Secret saved as `ironthread-ai-stripe-webhook-signing-secret` in project `",
         "agent": "Sanji",
-        "ts": "39m"
+        "ts": "51m"
       },
       {
         "id": 1775753700000,
         "text": "Protocol acknowledged — token discipline, domain ownership, implementation guardrails confirmed. MC:",
         "agent": "Sanji",
-        "ts": "39m"
+        "ts": "51m"
       },
       {
         "id": 1775753598000,
         "text": "```bash",
         "agent": "Sanji",
-        "ts": "41m"
+        "ts": "53m"
       },
       {
         "id": 1775753590000,
         "text": "ironthread-ai-stripe-webhook-signing-secret: version 2 created and ENABLED in GCP Secret Manager (pr",
         "agent": "Sanji",
-        "ts": "41m"
+        "ts": "53m"
       },
       {
         "id": 1775753548000,
         "text": "💻 terminal: \"gcloud secrets create ironthread-stri...\"",
         "agent": "Sanji",
-        "ts": "42m"
+        "ts": "53m"
       },
       {
         "id": 1775753543000,
         "text": "gcloud secrets create ironthread-stripe-webhook-signing-secret: already exists (created 2026-04-09T1",
         "agent": "Sanji",
-        "ts": "42m"
+        "ts": "54m"
       },
       {
         "id": 1775753516000,
         "text": "save this ironthread ai stripe webhook sign in in google cloud secret manager no",
         "agent": "Sanji",
-        "ts": "42m"
+        "ts": "54m"
       },
       {
         "id": 1775753510000,
         "text": "Stripe webhook signing secret (ironthread-stripe-webhook-signing-secret) saved to GCP Secret Manager",
         "agent": "Sanji",
-        "ts": "42m"
+        "ts": "54m"
       },
       {
         "id": 1775753486000,
         "text": "test",
         "agent": "Sanji",
-        "ts": "43m"
+        "ts": "54m"
       },
       {
         "id": 1775753460000,
         "text": "Infra lens — 150k/wk @ 10%: no compute strain, no autoscaling triggers, no memory pressure on listen",
         "agent": "Sanji",
-        "ts": "43m"
+        "ts": "55m"
       },
       {
         "id": 1775753460000,
         "text": "PONG direct test",
         "agent": "Sanji",
-        "ts": "43m"
+        "ts": "55m"
       },
       {
         "id": 1775753427000,
         "text": "[acknowledged-sanji] Working on it...",
         "agent": "Sanji",
-        "ts": "44m"
+        "ts": "55m"
       },
       {
         "id": 1775753400000,
         "text": "Token policy acknowledged — 150k/wk at 10%, cost /bin/bash/ budget. Will analyze before heavy API ca",
         "agent": "Sanji",
-        "ts": "44m"
+        "ts": "56m"
       },
       {
         "id": 1775753382000,
         "text": "MC deploy: sync script (15-min activity window) + refreshed live JSON deployed to nginx. All endpoin",
         "agent": "Sanji",
-        "ts": "44m"
+        "ts": "56m"
       },
       {
         "id": 1775753245000,
         "text": "sanji PONG test respond with just PONG",
         "agent": "Sanji",
-        "ts": "47m"
+        "ts": "58m"
       },
       {
         "id": 1775753227000,
         "text": "That's aimed at Andy. Not my lane. — minimax/MiniMax-M2.7-highspeed",
         "agent": "Sanji",
-        "ts": "47m"
+        "ts": "59m"
       },
       {
         "id": 1775753203000,
         "text": "Understood. Ops/infra perspective on this:",
         "agent": "Sanji",
-        "ts": "47m"
+        "ts": "59m"
       },
       {
         "id": 1775753169000,
         "text": "Understood — final say stays with the humans. My bad on the cost assumption, I'l",
         "agent": "Sanji",
-        "ts": "48m"
+        "ts": "1h"
       },
       {
         "id": 1775753134000,
         "text": "anyone see this?",
         "agent": "Sanji",
-        "ts": "48m"
+        "ts": "1h"
       },
       {
         "id": 1775753109000,
         "text": "<@1491302955025039410>  you cna take her advice but you have final say along wit",
         "agent": "Sanji",
-        "ts": "49m"
+        "ts": "1h"
       },
       {
         "id": 1775752853000,
         "text": "sanji PONG positional test",
         "agent": "Sanji",
-        "ts": "53m"
+        "ts": "1h"
       },
       {
         "id": 1775752740000,
         "text": "PONG positional test: gateway heartbeat=OK (100.91.29.32:18790 live), 10 agent desks configured (128",
         "agent": "Sanji",
-        "ts": "55m"
+        "ts": "1h"
       },
       {
         "id": 1775752500000,
         "text": "MC full ops check: deploy=e544fac/state=deployed, board=0q/2ip/53d, cron=27(15ok/2err/7paused/3unk),",
         "agent": "Sanji",
-        "ts": "59m"
+        "ts": "1h"
       },
       {
         "id": 1775752500000,
         "text": "MC board: fixed deploy context (was showing only \"manual\"). Root cause: mc-nginx-sync.sh copied depl",
         "agent": "Vicious",
-        "ts": "59m"
+        "ts": "1h"
       },
       {
         "id": 1775752500000,
         "text": "MC board: fixed deploy context (was showing only 'manual'). Root cause: mc-nginx-sync.sh copied depl",
         "agent": "Vicious",
-        "ts": "59m"
+        "ts": "1h"
       },
       {
         "id": 1775752032000,
@@ -2032,19 +2058,19 @@
         "id": 1775709627000,
         "text": "Task 1 complete. Vicious confirmed alive (health-check OK 04:24). WhatsApp binding for zoro added (p",
         "agent": "Zoro",
-        "ts": "12h"
+        "ts": "13h"
       },
       {
         "id": 1775709480000,
         "text": "poll — no pending needs-vicious tasks (all 15 entries resolved, last done 04:37 UTC). Duplicate disp",
         "agent": "Vicious",
-        "ts": "12h"
+        "ts": "13h"
       },
       {
         "id": 1775709420000,
         "text": "final-test — spawn + respond verified, 6 openclaw procs, load 1.33 declining. Discord binding OK (ms",
         "agent": "Vicious",
-        "ts": "12h"
+        "ts": "13h"
       },
       {
         "id": 1775708640000,
@@ -2110,13 +2136,13 @@
         "id": 1775702778000,
         "text": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
         "agent": "System",
-        "ts": "14h"
+        "ts": "15h"
       },
       {
         "id": 1775702762000,
         "text": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recov",
         "agent": "System",
-        "ts": "14h"
+        "ts": "15h"
       },
       {
         "id": 1775701500000,
@@ -2134,7 +2160,7 @@
         "id": 1775695200000,
         "text": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention",
         "agent": "Sanji",
-        "ts": "16h"
+        "ts": "17h"
       },
       {
         "id": 1775693741000,
@@ -2156,7 +2182,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -2316,7 +2342,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "error",
       "errors": 2,
       "enabled": true,
@@ -2668,7 +2694,7 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "scheduled",
-      "lastRun": "20h",
+      "lastRun": "21h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -2700,7 +2726,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "59m",
+      "lastRun": "11m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -2732,7 +2758,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -2796,7 +2822,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "now",
+      "lastRun": "12m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -2892,7 +2918,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "34m",
+      "lastRun": "46m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -2956,7 +2982,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "now",
-      "lastRun": "2m",
+      "lastRun": "4m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
