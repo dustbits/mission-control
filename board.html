@@ -978,6 +978,23 @@
     const UNKNOWN = '#94a3b8';
     const POLL_MS = 10000;
 
+    function parseTs(ts) {
+      if (!ts) return 0;
+      // Try ISO date first
+      const n = new Date(ts).getTime();
+      if (!isNaN(n)) return n;
+      // Parse relative time: "10m", "2h", "1d"
+      const m = String(ts).match(/^(\d+)([mhd])$/);
+      if (!m) return 0;
+      const val = parseInt(m[1]);
+      const unit = m[2];
+      const now = Date.now();
+      if (unit === 'm') return now - val * 60000;
+      if (unit === 'h') return now - val * 3600000;
+      if (unit === 'd') return now - val * 86400000;
+      return 0;
+    }
+
     function formatRelative(ts) {
       if (!ts) return '';
       const diff = Date.now() - new Date(ts).getTime();
@@ -1207,8 +1224,8 @@
         _prevItems = {};
         const board = cachedLiveData.board || { queued: [], inprogress: [], done: [] };
         const sortByTs = (arr) => arr.slice().sort((a, b) => {
-          const ta = a.ts ? new Date(a.ts).getTime() : 0;
-          const tb = b.ts ? new Date(b.ts).getTime() : 0;
+          const ta = parseTs(a.ts);
+          const tb = parseTs(b.ts);
           return _sortNewest ? tb - ta : ta - tb;
         });
         renderColumn('queued',     sortByTs(board.queued    || []));
@@ -1234,7 +1251,7 @@
         sel.innerHTML = '<option value=>All agents</option>';
         _allAgents.forEach(function(a) {
           var name = a.name || a.key || '';
-          if (name) sel.innerHTML += '<option value=+name+>'+name+'</option>';
+          if (name) sel.innerHTML += '<option value="' + name + '">' + name + '</option>';
         });
       }
       const workingCount = (data?.agents || []).filter(a => a.state === 'working').length;
@@ -1259,8 +1276,8 @@
         const avgStr = avgSec > 0 ? (avgSec < 60 ? avgSec + 's' : Math.round(avgSec / 60) + 'm') : '—';
 
         const card = document.createElement('div');
-        const stale = isStaleAgent(agent);
-        const stateClass = stale ? '' : (' state-' + (agent.state || 'idle'));
+        const stale = isStaleAgent(a);
+        const stateClass = stale ? '' : (' state-' + (a.state || 'idle'));
         card.className = 'agent-card' + (stale ? ' stale-agent' : stateClass);
         card.style.borderTop = '2px solid ' + color;
 
@@ -1276,7 +1293,7 @@
         const info = document.createElement('div');
         info.className = 'agent-card-info';
         const stateLabel = { idle: 'idle', working: 'working', thinking: 'thinking', blocked: 'blocked' };
-        const agentState = agent.state || 'idle';
+        const agentState = a.state || 'idle';
         const stateBadge = (agentState && agentState !== 'idle')
           ? `<span class="agent-state-badge state-${agentState}-badge">${stateLabel[agentState] || agentState}</span>`
           : '';
@@ -1703,8 +1720,8 @@
         const board = data.board || { queued: [], inprogress: [], done: [] };
         // Sort all columns newest-first by default
         const sortByTs = (arr) => arr.slice().sort((a, b) => {
-          const ta = a.ts ? new Date(a.ts).getTime() : 0;
-          const tb = b.ts ? new Date(b.ts).getTime() : 0;
+          const ta = parseTs(a.ts);
+          const tb = parseTs(b.ts);
           return _sortNewest ? tb - ta : ta - tb;
         });
         renderColumn('queued',     sortByTs(board.queued    || []));
