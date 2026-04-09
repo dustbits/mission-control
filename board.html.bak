@@ -1248,7 +1248,7 @@
       _allAgents = data?.agents || [];
       const sel = document.getElementById('task-agent-filter');
       if (sel) {
-        sel.innerHTML = '<option value="">All agents</option>';
+        sel.innerHTML = '<option value=>All agents</option>';
         _allAgents.forEach(function(a) {
           var name = a.name || a.key || '';
           if (name) sel.innerHTML += '<option value="' + name + '">' + name + '</option>';
@@ -1733,7 +1733,7 @@
 
         // Update agents panel if visible
         const agentsPanel = document.getElementById('agents-panel');
-        if (agentsPanel) {
+        if (agentsPanel && agentsPanel.classList.contains('visible')) {
           renderAgentsPanel(data);
         }
 

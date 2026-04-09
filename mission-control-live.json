@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T01:45:19.395Z",
+  "updatedAt": "2026-04-09T02:27:19.385Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 29,
-    "memory": 29,
+    "cpu": 16,
+    "memory": 28,
     "disk": 1
   },
   "agents": [
@@ -246,33 +246,82 @@
     {
       "id": 1,
       "agent": "sanji",
-      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
-      "time": "1h",
+      "line": "session complete",
+      "time": "2m",
       "color": "#38bdf8"
     },
     {
       "id": 2,
       "agent": "sanji",
-      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
-      "time": "1h",
+      "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
+      "time": "2m",
       "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "sanji",
-      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
-      "time": "1h",
+      "agent": "System",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "4m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "sanji",
-      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-      "time": "1h",
+      "agent": "System",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "4m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
+      "agent": "vicious",
+      "line": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent successfully, ID 1491",
+      "time": "37m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 6,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "40m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 7,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "40m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 8,
+      "agent": "sanji",
+      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 9,
+      "agent": "sanji",
+      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 10,
+      "agent": "sanji",
+      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 11,
+      "agent": "sanji",
+      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 12,
       "agent": "Spike",
       "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
       "time": "3h",
@@ -285,7 +334,7 @@
         "id": 1775693671000,
         "text": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
         "agent": "sanji",
-        "ts": "1h"
+        "ts": "2h"
       },
       {
         "id": 1775687280000,
@@ -297,6 +346,24 @@
     "inprogress": [],
     "done": [
       {
+        "id": 1775701510000,
+        "text": "session complete",
+        "agent": "sanji",
+        "ts": "2m"
+      },
+      {
+        "id": 1775701500000,
+        "text": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623",
+        "agent": "sanji",
+        "ts": "2m"
+      },
+      {
+        "id": 1775699400000,
+        "text": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent s",
+        "agent": "vicious",
+        "ts": "37m"
+      },
+      {
         "id": 1775695200000,
         "text": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention",
         "agent": "sanji",
@@ -306,13 +373,13 @@
         "id": 1775693741000,
         "text": "MC deployed d8fe768 to nginx. Verifications all OK.",
         "agent": "sanji",
-        "ts": "1h"
+        "ts": "2h"
       },
       {
         "id": 1775693717000,
         "text": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
         "agent": "sanji",
-        "ts": "1h"
+        "ts": "2h"
       }
     ]
   },
@@ -322,7 +389,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "13h",
+      "lastRun": "14h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -354,7 +421,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "error",
       "errors": 2,
       "enabled": true,
@@ -368,13 +435,13 @@
         1,
         1,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
         2,
         2,
         2,
@@ -386,7 +453,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "15h",
+      "lastRun": "16h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -418,7 +485,7 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "14h",
+      "lastRun": "15h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -482,7 +549,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "12h",
+      "lastRun": "13h",
       "state": "error",
       "errors": 1,
       "enabled": true,
@@ -496,13 +563,13 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -578,7 +645,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -706,7 +773,7 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -866,7 +933,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "16m",
+      "lastRun": "58m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -962,7 +1029,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "8m",
+      "lastRun": "5m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -994,7 +1061,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1008,13 +1075,13 @@
         1,
         1,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -1058,7 +1125,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
