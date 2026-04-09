@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T03:21:19.385Z",
+  "updatedAt": "2026-04-09T04:26:19.391Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 4,
-    "memory": 30,
+    "cpu": 16,
+    "memory": 27,
     "disk": 1
   },
   "agents": [
@@ -166,21 +166,21 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": "14m",
-        "time": "1d"
+        "time": "2d"
       },
       {
         "timestamp": "2026-04-07T04:10:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "1d"
+        "time": "2d"
       },
       {
         "timestamp": "2026-04-07T03:29:17.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "41m",
-        "time": "1d"
+        "time": "2d"
       },
       {
         "timestamp": "2026-04-07T00:22:56.000Z",
@@ -246,106 +246,246 @@
     {
       "id": 1,
       "agent": "System",
-      "line": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
-      "time": "35m",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "now",
       "color": "#38bdf8"
     },
     {
       "id": 2,
       "agent": "System",
-      "line": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recovery: still de | [202",
-      "time": "35m",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "now",
       "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "Spike",
-      "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
-      "time": "53m",
-      "color": "#4a9eff"
+      "agent": "vicious",
+      "line": "final-health-check — agent spawn OK, 5 openclaw processes, load 2.78. Discord binding verified (msg 1491655065394610227)",
+      "time": "2m",
+      "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "sanji",
+      "agent": "vicious",
       "line": "session complete",
-      "time": "56m",
+      "time": "2m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "sanji",
-      "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
-      "time": "56m",
+      "agent": "zoro",
+      "line": "[deploy] MC deploy board stale queue cleared — unpushed commits were deployed by sanji (d8fe768), board.html/mission-con",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 6,
-      "agent": "System",
-      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "58m",
+      "agent": "zoro",
+      "line": "MC live board sync re-enabled — MC Live Board Sync cron resumed, cron health data now populating (27 jobs)",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
       "agent": "System",
-      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "58m",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "vicious",
-      "line": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent successfully, ID 1491",
-      "time": "1h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 9,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "1h",
+      "agent": "vicious",
+      "line": "poll — no pending needs-vicious tasks found (both health-check items already resolved 04:21 UTC). Idle.",
+      "time": "4m",
       "color": "#38bdf8"
     },
     {
       "id": 10,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "1h",
+      "agent": "vicious",
+      "line": "health-check — container alive (up 20m, load 2.73). Discord bindings verified: vicious group 1491508051935494164 (msg 14",
+      "time": "5m",
       "color": "#38bdf8"
     },
     {
       "id": 11,
-      "agent": "sanji",
-      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
-      "time": "2h",
+      "agent": "vicious",
+      "line": "health-check-2 — dispatch pipeline confirmed by zoro, container healthy, bindings confirmed.",
+      "time": "5m",
       "color": "#38bdf8"
     },
     {
       "id": 12,
-      "agent": "sanji",
-      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
-      "time": "3h",
+      "agent": "vicious",
+      "line": "session complete",
+      "time": "5m",
       "color": "#38bdf8"
     },
     {
       "id": 13,
-      "agent": "sanji",
-      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
-      "time": "3h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "6m",
       "color": "#38bdf8"
     },
     {
       "id": 14,
-      "agent": "sanji",
-      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-      "time": "3h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "6m",
       "color": "#38bdf8"
     },
     {
       "id": 15,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "22m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 16,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "22m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 17,
+      "agent": "zoro",
+      "line": "arXiv research pipeline built + cron live (0 6 * * * → origin, job: abd97564dbe5). No gh CLI needed — uses curl + tokens",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 18,
+      "agent": "zoro",
+      "line": "GitHub PR review pipeline built + cron live (0 */4 * * * → origin, job: 53c84c99d408). Monitors IronThread/ironthread-si",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 19,
+      "agent": "zoro",
+      "line": "OpenClaw 2026.4.9 — routed to Vicious via shared-log (02:55 UTC). Security fixes: SSRF bypass #63226, node exec injectio",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 20,
+      "agent": "zoro",
+      "line": "Memory fully consolidated. 5 crons now live. GitHub access verified. All crew KB entries updated.",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 21,
+      "agent": "System",
+      "line": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 22,
+      "agent": "System",
+      "line": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recovery: still de | [202",
+      "time": "1h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 23,
+      "agent": "Spike",
+      "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
+      "time": "1h",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 24,
+      "agent": "sanji",
+      "line": "session complete",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 25,
+      "agent": "sanji",
+      "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 26,
+      "agent": "System",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 27,
+      "agent": "System",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 28,
+      "agent": "vicious",
+      "line": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent successfully, ID 1491",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 29,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 30,
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "2h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 31,
+      "agent": "sanji",
+      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
+      "time": "3h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 32,
+      "agent": "sanji",
+      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
+      "time": "4h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 33,
+      "agent": "sanji",
+      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
+      "time": "4h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 34,
+      "agent": "sanji",
+      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
+      "time": "4h",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 35,
       "agent": "Spike",
       "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
-      "time": "4h",
+      "time": "5h",
       "color": "#4a9eff"
     }
   ],
@@ -355,70 +495,142 @@
         "id": 1775701680000,
         "text": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from ho",
         "agent": "Spike",
-        "ts": "53m"
+        "ts": "1h"
       },
       {
         "id": 1775693671000,
         "text": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
         "agent": "sanji",
-        "ts": "3h"
+        "ts": "4h"
       },
       {
         "id": 1775687280000,
         "text": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + co",
         "agent": "Spike",
-        "ts": "4h"
+        "ts": "5h"
       }
     ],
     "inprogress": [],
     "done": [
       {
+        "id": 1775708640000,
+        "text": "final-health-check — agent spawn OK, 5 openclaw processes, load 2.78. Discord binding verified (msg ",
+        "agent": "vicious",
+        "ts": "2m"
+      },
+      {
+        "id": 1775708640000,
+        "text": "session complete",
+        "agent": "vicious",
+        "ts": "2m"
+      },
+      {
+        "id": 1775708586000,
+        "text": "[deploy] MC deploy board stale queue cleared — unpushed commits were deployed by sanji (d8fe768), bo",
+        "agent": "zoro",
+        "ts": "3m"
+      },
+      {
+        "id": 1775708586000,
+        "text": "MC live board sync re-enabled — MC Live Board Sync cron resumed, cron health data now populating (27",
+        "agent": "zoro",
+        "ts": "3m"
+      },
+      {
+        "id": 1775708520000,
+        "text": "poll — no pending needs-vicious tasks found (both health-check items already resolved 04:21 UTC). Id",
+        "agent": "vicious",
+        "ts": "4m"
+      },
+      {
+        "id": 1775708460000,
+        "text": "health-check — container alive (up 20m, load 2.73). Discord bindings verified: vicious group 1491508",
+        "agent": "vicious",
+        "ts": "5m"
+      },
+      {
+        "id": 1775708460000,
+        "text": "health-check-2 — dispatch pipeline confirmed by zoro, container healthy, bindings confirmed.",
+        "agent": "vicious",
+        "ts": "5m"
+      },
+      {
+        "id": 1775708460000,
+        "text": "session complete",
+        "agent": "vicious",
+        "ts": "5m"
+      },
+      {
+        "id": 1775704500000,
+        "text": "arXiv research pipeline built + cron live (0 6 * * * → origin, job: abd97564dbe5). No gh CLI needed ",
+        "agent": "zoro",
+        "ts": "1h"
+      },
+      {
+        "id": 1775704500000,
+        "text": "GitHub PR review pipeline built + cron live (0 */4 * * * → origin, job: 53c84c99d408). Monitors Iron",
+        "agent": "zoro",
+        "ts": "1h"
+      },
+      {
+        "id": 1775704500000,
+        "text": "OpenClaw 2026.4.9 — routed to Vicious via shared-log (02:55 UTC). Security fixes: SSRF bypass #63226",
+        "agent": "zoro",
+        "ts": "1h"
+      },
+      {
+        "id": 1775704500000,
+        "text": "Memory fully consolidated. 5 crons now live. GitHub access verified. All crew KB entries updated.",
+        "agent": "zoro",
+        "ts": "1h"
+      },
+      {
         "id": 1775702778000,
         "text": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
         "agent": "System",
-        "ts": "35m"
+        "ts": "1h"
       },
       {
         "id": 1775702762000,
         "text": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recov",
         "agent": "System",
-        "ts": "35m"
+        "ts": "1h"
       },
       {
         "id": 1775701510000,
         "text": "session complete",
         "agent": "sanji",
-        "ts": "56m"
+        "ts": "2h"
       },
       {
         "id": 1775701500000,
         "text": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623",
         "agent": "sanji",
-        "ts": "56m"
+        "ts": "2h"
       },
       {
         "id": 1775699400000,
         "text": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent s",
         "agent": "vicious",
-        "ts": "1h"
+        "ts": "2h"
       },
       {
         "id": 1775695200000,
         "text": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention",
         "agent": "sanji",
-        "ts": "2h"
+        "ts": "3h"
       },
       {
         "id": 1775693741000,
         "text": "MC deployed d8fe768 to nginx. Verifications all OK.",
         "agent": "sanji",
-        "ts": "3h"
+        "ts": "4h"
       },
       {
         "id": 1775693717000,
         "text": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
         "agent": "sanji",
-        "ts": "3h"
+        "ts": "4h"
       }
     ]
   },
@@ -428,29 +640,11 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "15h",
+      "lastRun": "16h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -460,29 +654,11 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "error",
       "errors": 2,
       "enabled": true,
       "errorHistory": [
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
         2,
         2
       ]
@@ -492,29 +668,11 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "17h",
+      "lastRun": "18h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -524,29 +682,11 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "16h",
+      "lastRun": "17h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -562,24 +702,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -588,29 +710,11 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "14h",
+      "lastRun": "15h",
       "state": "error",
       "errors": 1,
       "enabled": true,
       "errorHistory": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
         1,
         1
       ]
@@ -626,24 +730,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -658,24 +744,6 @@
       "enabled": false,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -684,29 +752,11 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "22m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -722,24 +772,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -753,24 +785,6 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -786,24 +800,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -812,29 +808,11 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "3h",
+      "lastRun": "5h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -850,24 +828,6 @@
       "enabled": false,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -881,24 +841,6 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -914,24 +856,6 @@
       "enabled": false,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -940,29 +864,11 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "scheduled",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -972,29 +878,11 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "52m",
+      "lastRun": "57m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1010,24 +898,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1042,24 +912,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1068,29 +920,11 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "14m",
+      "lastRun": "4m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1100,29 +934,11 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "23m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1138,24 +954,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1164,29 +962,11 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "10h",
+      "lastRun": "11h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1202,24 +982,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1227,30 +989,12 @@
       "id": "f3740c57-11e3-4c1f-8ba5-761599cfcf86",
       "label": "MC Live Board Sync",
       "schedule": 300000,
-      "next": "scheduled",
-      "lastRun": "1d",
-      "state": "paused",
+      "next": "now",
+      "lastRun": "2m",
+      "state": "ok",
       "errors": 0,
-      "enabled": false,
+      "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1265,24 +1009,6 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
