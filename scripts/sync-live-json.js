@@ -17,7 +17,7 @@ const WORKSPACE = '/mnt/spike-storage/openclaw-live/workspace';
 const SHARED_LOG = `${WORKSPACE}/memory/shared-log.md`;
 const OUT_WORKSPACE = `${WORKSPACE}/mission-control/mission-control-live.json`;
 const OUT_STAGING  = '/mnt/spike-storage/mission-control-staging/mission-control-live.json';
-const CRON_JOBS_PATH = '/home/node/.openclaw/cron/jobs.json';
+const CRON_JOBS_PATH = '/mnt/spike-storage/openclaw-live/cron/jobs.json';
 const DEPLOY_HISTORY_PATH   = null; // deprecated — mc-deploy.sh is the authoritative source
 const CRON_ERROR_HISTORY_PATH = `${WORKSPACE}/mission-control/cron-error-history.json`;
 
