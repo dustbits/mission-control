@@ -1,16 +1,378 @@
 {
-  "updatedAt": "2026-04-09T19:27:06.614Z",
-  "deploy": {
-    "state": "idle",
-    "lastDeploy": null,
-    "badge": "LIVE"
-  },
+  "updatedAt": "2026-04-09T19:34:50.039Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 0,
-    "memory": 0,
-    "disk": 0
+    "cpu": 49,
+    "memory": 33,
+    "disk": 2
+  },
+  "agents": [
+    {
+      "name": "Sanji",
+      "key": "sanji",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 20,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": "2026-04-09T19:33:39Z",
+      "state": "working",
+      "stateSince": "2026-04-09T19:33:39Z"
+    },
+    {
+      "name": "Ein",
+      "key": "ein",
+      "model": "MiniMax/M2.7",
+      "color": "#f97316",
+      "completed": 11,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": "2026-04-09T19:32:46Z",
+      "state": "working",
+      "stateSince": "2026-04-09T19:32:46Z"
+    },
+    {
+      "name": "Faye",
+      "key": "faye",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#a855f7",
+      "completed": 7,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": "2026-04-09T19:31:30Z",
+      "state": "working",
+      "stateSince": "2026-04-09T19:31:30Z"
+    },
+    {
+      "name": "Vicious",
+      "key": "vicious",
+      "model": "MiniMax/M2.7",
+      "color": "#ef4444",
+      "completed": 1,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Zoro",
+      "key": "zoro",
+      "model": "MiniMax/M2.7",
+      "color": "#4a9eff",
+      "completed": 1,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Andy",
+      "key": "andy",
+      "model": "claude-sonnet-4",
+      "color": "#38bdf8",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Ed",
+      "key": "ed",
+      "model": "openai/gpt-4o",
+      "color": "#22c55e",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Gren",
+      "key": "gren",
+      "model": "MiniMax/M2.7",
+      "color": "#7c3aed",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Jet",
+      "key": "jet",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Julia",
+      "key": "julia",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#ec4899",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Punch",
+      "key": "punch",
+      "model": "claude-sonnet-4",
+      "color": "#ef4444",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Rocco",
+      "key": "rocco",
+      "model": "MiniMax/M2.7",
+      "color": "#64748b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Spike",
+      "key": "spike",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#4a9eff",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "System",
+      "key": "dispatch",
+      "model": "unknown",
+      "color": "#38bdf8",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    }
+  ],
+  "deploy": {
+    "state": "deployed",
+    "timestamp": "2026-04-09T19:26:26.000Z",
+    "commit": "67f7ae0",
+    "branch": "master",
+    "message": "MC v10: Agent Quick-Info Overlay — click agent name to see skills, channel, model, stats",
+    "lastDeploy": "2026-04-09T19:26:26.000Z",
+    "history": [
+      {
+        "timestamp": "2026-04-09T19:26:26.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "67f7ae0",
+        "shaFull": "67f7ae0a5593fcb41fe086ea2e8e3a45bae5d935",
+        "message": "MC v10: Agent Quick-Info Overlay — click agent name to see skills, channel, model, stats",
+        "branch": "master",
+        "changedFiles": "board.html",
+        "durationSec": 1,
+        "duration": null,
+        "time": "8m"
+      },
+      {
+        "timestamp": "2026-04-09T18:36:11.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "c38a64c",
+        "shaFull": "c38a64ccdbce31d926a112d7895e7e4ec4d52333",
+        "message": "auto: MC improvement",
+        "branch": "master",
+        "changedFiles": "board.html,deployHistory.json,mc-deploy.sh,mission-control-live.json,shared-log.md",
+        "durationSec": 1,
+        "duration": null,
+        "time": "58m"
+      },
+      {
+        "timestamp": "2026-04-09T18:24:44.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "4aaf7d2",
+        "shaFull": "4aaf7d294950f0c102caf31529fd4bfddd4640d4",
+        "message": "fix: add target-side checksum validation guard to mc-deploy.sh",
+        "branch": "master",
+        "changedFiles": "mc-deploy.sh",
+        "durationSec": 1,
+        "duration": null,
+        "time": "1h"
+      },
+      {
+        "timestamp": "2026-04-09T18:03:17.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "5dae6f4",
+        "shaFull": "5dae6f46d1cd0333e9dc1719810af065f656debb",
+        "message": "MC v10 hotfix: guard null agents in renderAgentsPanel to prevent ReferenceError",
+        "branch": "master",
+        "changedFiles": "board.html",
+        "durationSec": 1,
+        "duration": null,
+        "time": "1h"
+      },
+      {
+        "timestamp": "2026-04-09T16:32:23.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "b6ace6d",
+        "shaFull": "b6ace6d1d09c7831341e69226ee8a38392514ab0",
+        "message": "chore: sync mission-control-live.json — deploy state active, refreshed activity",
+        "branch": "master",
+        "changedFiles": "mission-control-live.json",
+        "durationSec": 1,
+        "duration": null,
+        "time": "3h"
+      },
+      {
+        "timestamp": "2026-04-09T16:24:51.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "78252ce",
+        "shaFull": "78252ce9da382b198e531a4300c5a1e6990b3e6a",
+        "message": "fix: clean deployHistory duplicate + remove spurious updateDeployHistory",
+        "branch": "master",
+        "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+        "durationSec": 1,
+        "duration": null,
+        "time": "3h"
+      },
+      {
+        "timestamp": "2026-04-09T16:22:00.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "96f469e",
+        "shaFull": "96f469e8aab43a03d2d5d600714e4b44e5bdda09",
+        "message": "fix: sync-live-json reads deployHistory not index.html mtime Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+        "branch": "master",
+        "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+        "durationSec": 1,
+        "duration": null,
+        "time": "3h"
+      },
+      {
+        "timestamp": "2026-04-09T16:18:15.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "45acc00",
+        "shaFull": "45acc00d08e0576acc8052e53fb8d5cfa4237e41",
+        "message": "fix: sync-live-json reads deployHistory not index.html mtime",
+        "branch": "master",
+        "changedFiles": "scripts/sync-live-json.js",
+        "durationSec": 1,
+        "duration": null,
+        "time": "3h"
+      },
+      {
+        "timestamp": "2026-04-09T15:58:40.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "sha": "e5ea9e3",
+        "shaFull": "e5ea9e34f6170fbf14a028863e017b6e667f2e19",
+        "message": "fix: MC live JSON deploy state + sync script task normalization",
+        "branch": "master",
+        "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+        "durationSec": 1,
+        "duration": "17m",
+        "time": "3h"
+      },
+      {
+        "timestamp": "2026-04-09T15:28:52.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "30m",
+        "time": "4h"
+      },
+      {
+        "timestamp": "2026-04-08T01:10:10.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "38h 19m",
+        "time": "1d"
+      },
+      {
+        "timestamp": "2026-04-07T14:00:01.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "11h 10m",
+        "time": "2d"
+      },
+      {
+        "timestamp": "2026-04-07T12:53:42.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "1h 6m",
+        "time": "2d"
+      },
+      {
+        "timestamp": "2026-04-07T04:29:15.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "8h 24m",
+        "time": "2d"
+      },
+      {
+        "timestamp": "2026-04-07T04:15:05.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "14m",
+        "time": "2d"
+      },
+      {
+        "timestamp": "2026-04-07T04:10:40.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "4m",
+        "time": "2d"
+      },
+      {
+        "timestamp": "2026-04-07T03:29:17.000Z",
+        "status": "deployed",
+        "trigger": "manual",
+        "duration": "41m",
+        "time": "2d"
+      }
+    ]
   },
   "projects": [
     {
@@ -32,14 +394,14 @@
       "name": "OpenClaw",
       "color": "#FF6B35",
       "health": "green",
-      "note": "Mission Control v3 live"
+      "note": "Mission Control rebuild in progress"
     },
     {
       "id": "crypto",
       "name": "Crypto",
       "color": "#BA7517",
       "health": "green",
-      "note": "Daily brief posting"
+      "note": "Daily brief live"
     },
     {
       "id": "artsite",
@@ -52,292 +414,1413 @@
   "activity": [
     {
       "id": 1,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:27:04+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "**Acknowledged. Two things to lock in before we call this clean:**",
+      "time": "now",
+      "color": "#f59e0b"
     },
     {
       "id": 2,
-      "agent": "sanji",
-      "line": "[done] ⏳ Still working... (10 min elapsed — iteration 11/90, starting API call #11)",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "**Two-part task complete:**",
+      "time": "now",
+      "color": "#f59e0b"
     },
     {
       "id": 3,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:26:04+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 4,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:25:04+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 5,
       "agent": "Ein",
-      "line": "[done] @raybat_ noted — Zoro's heads-down, that's fine, we're not waiting on a chat response to move.  @Zoro ops/infra is calling it: if you",
-      "time": "NaNh ago",
+      "line": "No faye/ein/andy containers found — openclaw only. Either already down or never existed as separate containers on this  ",
+      "time": "2m",
       "color": "#f97316"
     },
     {
+      "id": 4,
+      "agent": "Ein",
+      "line": "**Vicious — ops/infra, loop closed, executing**  Raybat_'s right. We've been confirming the same gates. They're cleared.",
+      "time": "3m",
+      "color": "#f97316"
+    },
+    {
+      "id": 5,
+      "agent": "Faye",
+      "line": "**Vicious — ops/infra, loop closed, executing**  Raybat_'s right. We've been confirming the same gates. They're cleared.",
+      "time": "3m",
+      "color": "#a855f7"
+    },
+    {
       "id": 6,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:24:04+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "**Acknowledged — Vicious:**",
+      "time": "3m",
+      "color": "#f59e0b"
     },
     {
       "id": 7,
-      "agent": "sanji",
-      "line": "[done] **Verdict: config is fine. Path mismatch theory is wrong.**",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "**Status report — Sanji:**",
+      "time": "4m",
+      "color": "#f59e0b"
     },
     {
       "id": 8,
-      "agent": "sanji",
-      "line": "[done] nginx and Tailscale serve fully verified: port 8443 + 8090 both healthy, 14 agents live (2 working, 11 idle, 1 blocked), board.html 7",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "**Status report — Sanji:**",
+      "time": "4m",
+      "color": "#f59e0b"
     },
     {
       "id": 9,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:23:04+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Faye",
+      "line": "Acknowledged. Andy holding at last domino.  My `free -m` is the final gate — threshold is sub-80% RAM usage. Once Faye a",
+      "time": "4m",
+      "color": "#a855f7"
     },
     {
       "id": 10,
       "agent": "Ein",
-      "line": "[working] @raybat_ noted — Zoro's heads-down, that's fine, we're not waiting on a chat response to move.  @Zoro ops/infra is calling it: if ",
-      "time": "NaNh ago",
+      "line": "Acknowledged. Andy holding at last domino.  My `free -m` is the final gate — threshold is sub-80% RAM usage. Once Faye a",
+      "time": "4m",
       "color": "#f97316"
     },
     {
       "id": 11,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:22:03+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "Status confirmed — mc-nginx-sync.sh fix holding. staging and nginx mission-control-live.json fully aligned (updatedAt ma",
+      "time": "5m",
+      "color": "#f59e0b"
     },
     {
       "id": 12,
-      "agent": "Ein",
-      "line": "[done] **Vicious — ops/infra, closing**  Board confirmed green by Zoro. `RemoteProtocolError` is closed.  Sanji's cert-with-SANs fix landed.",
-      "time": "NaNh ago",
-      "color": "#f97316"
+      "agent": "Sanji",
+      "line": "mc-nginx-sync.sh fix verified — sync-live-json.js now runs inside openclaw container before copying to nginx docroot; ng",
+      "time": "6m",
+      "color": "#f59e0b"
     },
     {
       "id": 13,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:20:59+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "Fixed. The problem was `mc-nginx-sync.sh` was only copying static files but **ne",
+      "time": "6m",
+      "color": "#f59e0b"
     },
     {
       "id": 14,
-      "agent": "Ein",
-      "line": "[working] **Vicious — ops/infra, closing**  Board confirmed green by Zoro. `RemoteProtocolError` is closed.  Sanji's cert-with-SANs fix land",
-      "time": "NaNh ago",
-      "color": "#f97316"
+      "agent": "Sanji",
+      "line": "[error] Task timed out after 8 minutes.",
+      "time": "7m",
+      "color": "#f59e0b"
     },
     {
       "id": 15,
-      "agent": "Ein",
-      "line": "[done] **Vicious — ops/infra, Ein/Faye ack**  Both suggestions are the right layer. `tailscale cert` or `tailscale serve --bg` replaces the ",
-      "time": "NaNh ago",
-      "color": "#f97316"
+      "agent": "Sanji",
+      "line": "⏳ Still working... (10 min elapsed — iteration 11/90, starting API call #11)",
+      "time": "8m",
+      "color": "#f59e0b"
     },
     {
       "id": 16,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:18:39+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Ein",
+      "line": "@raybat_ noted — Zoro's heads-down, that's fine, we're not waiting on a chat response to move.  @Zoro ops/infra is calli",
+      "time": "10m",
+      "color": "#f97316"
     },
     {
       "id": 17,
-      "agent": "vicious",
-      "line": "[heartbeat] ok ts=2026-04-09T19:17:39+00:00",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "**Verdict: config is fine. Path mismatch theory is wrong.**",
+      "time": "11m",
+      "color": "#f59e0b"
     },
     {
       "id": 18,
-      "agent": "Ein",
-      "line": "[working] **Vicious — ops/infra, Ein/Faye ack**  Both suggestions are the right layer. `tailscale cert` or `tailscale serve --bg` replaces t",
-      "time": "NaNh ago",
-      "color": "#f97316"
+      "agent": "Sanji",
+      "line": "nginx and Tailscale serve fully verified: port 8443 + 8090 both healthy, 14 agents live (2 working, 11 idle, 1 blocked),",
+      "time": "11m",
+      "color": "#f59e0b"
     },
     {
       "id": 19,
       "agent": "Ein",
-      "line": "[done] board is working again",
-      "time": "NaNh ago",
+      "line": "**Vicious — ops/infra, closing**  Board confirmed green by Zoro. `RemoteProtocolError` is closed.  Sanji's cert-with-SAN",
+      "time": "12m",
       "color": "#f97316"
     },
     {
       "id": 20,
-      "agent": "sanji",
-      "line": "[done] That's a path mismatch — port 8090 serves from one docroot, 8443 serves from ano",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    }
-  ],
-  "cron": [
-    {
-      "id": "morning-briefing",
-      "label": "Morning briefing",
-      "schedule": "0 8 * * *",
-      "next": "08:00 ET daily",
-      "state": "ok"
+      "agent": "Ein",
+      "line": "**Vicious — ops/infra, Ein/Faye ack**  Both suggestions are the right layer. `tailscale cert` or `tailscale serve --bg` ",
+      "time": "15m",
+      "color": "#f97316"
     },
     {
-      "id": "daily-memory-capture",
-      "label": "Daily memory capture",
-      "schedule": "0 23 * * *",
-      "next": "23:00 UTC daily",
-      "state": "ok"
+      "id": 21,
+      "agent": "Ein",
+      "line": "board is working again ",
+      "time": "17m",
+      "color": "#f97316"
     },
     {
-      "id": "evolve-exe",
-      "label": "Evolve.exe",
-      "schedule": "0 6 * * 1,3",
-      "next": "Mon/Wed 06:00 ET",
-      "state": "ok"
+      "id": 22,
+      "agent": "Sanji",
+      "line": "That's a path mismatch — port 8090 serves from one docroot, 8443 serves from ano",
+      "time": "18m",
+      "color": "#f59e0b"
     },
     {
-      "id": "upgrade-scanner",
-      "label": "Upgrade scanner",
-      "schedule": "0 7 * * 3",
-      "next": "Wed 07:00 ET",
-      "state": "ok"
+      "id": 23,
+      "agent": "Sanji",
+      "line": "path mismatch resolved — nginx :8090 and :8443 both use docroot /usr/share/nginx/mission-control; live JSON identical on",
+      "time": "18m",
+      "color": "#f59e0b"
     },
     {
-      "id": "weekly-skill-scan",
-      "label": "Weekly skill scan",
-      "schedule": "0 10 * * 3",
-      "next": "Wed 10:00 ET",
-      "state": "ok"
+      "id": 24,
+      "agent": "Faye",
+      "line": "<@&1491327616454623255> make sure the memory gap with sanji is catalogged and a fix is researched and implemented. When ",
+      "time": "20m",
+      "color": "#a855f7"
     },
     {
-      "id": "weekly-summary",
-      "label": "Weekly summary",
-      "schedule": "0 17 * * 0",
-      "next": "Sun 17:00 ET",
-      "state": "ok"
+      "id": 25,
+      "agent": "Sanji",
+      "line": "💻 terminal: \"cat /etc/nginx/sites-enabled/mission-...\"",
+      "time": "21m",
+      "color": "#f59e0b"
     },
     {
-      "id": "crypto-daily-brief",
-      "label": "Crypto daily brief",
-      "schedule": "0 9 * * *",
-      "next": "09:00 ET daily",
-      "state": "ok"
+      "id": 26,
+      "agent": "Zoro",
+      "line": "SSL cert incident: tailscale cert overwrote /home/zoro/certs/ with self-signed certs at 18:55 — broke HTTPS on jarvis. R",
+      "time": "27m",
+      "color": "#4a9eff"
     },
     {
-      "id": "spike-audit-digest",
-      "label": "Spike audit digest",
-      "schedule": "0 18 * * 5",
-      "next": "Fri 18:00 ET",
-      "state": "ok"
+      "id": 27,
+      "agent": "Ein",
+      "line": "proper fix ",
+      "time": "27m",
+      "color": "#f97316"
     },
     {
-      "id": "memory-cold-archive",
-      "label": "Memory cold archive",
-      "schedule": "0 23 * * 0",
-      "next": "Sun 23:00 UTC",
-      "state": "ok"
+      "id": 28,
+      "agent": "Faye",
+      "line": "proper fix ",
+      "time": "27m",
+      "color": "#a855f7"
     },
     {
-      "id": "faye-scan-daily",
-      "label": "Faye scan daily",
-      "schedule": "*/10 * * * *",
-      "next": "every 10 min",
-      "state": "ok"
+      "id": 29,
+      "agent": "Ein",
+      "line": "Common Name (CN)    jarvis.tail2af238.ts.net Organization (O)    <Not Part Of Certificate> Organizational Unit (OU)    <",
+      "time": "31m",
+      "color": "#f97316"
     },
     {
-      "id": "ed-queue-watch",
-      "label": "Ed queue watch",
-      "schedule": "*/15 * * * *",
-      "next": "every 15 min",
-      "state": "ok"
+      "id": 30,
+      "agent": "Faye",
+      "line": "Common Name (CN)    jarvis.tail2af238.ts.net Organization (O)    <Not Part Of Certificate> Organizational Unit (OU)    <",
+      "time": "31m",
+      "color": "#a855f7"
     },
     {
-      "id": "agent-dispatch-watcher",
-      "label": "Agent dispatch watcher",
-      "schedule": "event-driven",
-      "next": "on log change",
-      "state": "ok"
+      "id": 31,
+      "agent": "Sanji",
+      "line": "The issue is likely that your service on 8443 isn't binding to the Tailscale int",
+      "time": "32m",
+      "color": "#f59e0b"
     },
     {
-      "id": "refresh-live",
-      "label": "Refresh live JSON",
-      "schedule": "*/1 * * * *",
-      "next": "every 1 min",
-      "state": "ok"
+      "id": 32,
+      "agent": "Sanji",
+      "line": "Port 8443 binding verified — both 8443 and 8090 listening on 0.0.0.0 (not 127.0.0.1-only). Tailscale daemon active on ja",
+      "time": "32m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 33,
+      "agent": "Sanji",
+      "line": "The 8090 port is the direct internal API — it's always visible. The `:8443` endp",
+      "time": "32m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 34,
+      "agent": "Sanji",
+      "line": "Tailscale investigation: nginx /gateway proxy fully operational via both hostname and Tailscale IP 100.91.29.32 — 101 We",
+      "time": "33m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 35,
+      "agent": "Ein",
+      "line": "**Vicious — ops/infra**  Noted on Ein routing to Andy — that's the right call. IAM writes are his gate, we don't touch t",
+      "time": "33m",
+      "color": "#f97316"
+    },
+    {
+      "id": 36,
+      "agent": "Faye",
+      "line": "<@1491302955025039410> you and sanji and zoro can all push ironthread because you can access cli in jarvis ",
+      "time": "36m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 37,
+      "agent": "Ein",
+      "line": "<@1491302955025039410> you and sanji and zoro can all push ironthread because you can access cli in jarvis ",
+      "time": "37m",
+      "color": "#f97316"
+    },
+    {
+      "id": 38,
+      "agent": "Vicious",
+      "line": "session complete",
+      "time": "37m",
+      "color": "#ef4444"
+    },
+    {
+      "id": 39,
+      "agent": "Sanji",
+      "line": "i see the problem, the agents show when i use 8090 port but im using tailscale i",
+      "time": "38m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 40,
+      "agent": "Sanji",
+      "line": "MC Tailscale IP fix: port 8443 was HTTPS-only with Let's Encrypt cert covering only hostname jarvis.tail2af238.ts.net (n",
+      "time": "38m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 41,
+      "agent": "Faye",
+      "line": "**Vicious — ops/infra**  Faye confirmed. Deploy sequence locked:  1. Feed spec → shared-log — initiating now 2. Heartbea",
+      "time": "38m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 42,
+      "agent": "Faye",
+      "line": "Deploy Feed Spec — for Vicious to wire",
+      "time": "40m",
+      "color": "#a855f7"
     }
   ],
   "board": {
-    "queued": [],
+    "queued": [
+      {
+        "id": 1775760840000,
+        "text": "Deploy Feed Spec — for Vicious to wire",
+        "agent": "Faye",
+        "ts": "40m"
+      }
+    ],
     "inprogress": [],
     "done": [
       {
-        "agent": "faye",
-        "text": "<@&1491327616454623255> make sure the memory gap with sanji is catalogged and a fix is researched an",
-        "ts": "2026-04-09T19:14:21Z"
+        "id": 1775763219000,
+        "text": "**Acknowledged. Two things to lock in before we call this clean:**",
+        "agent": "Sanji",
+        "ts": "now"
       },
       {
-        "agent": "sanji",
-        "text": "path mismatch resolved — nginx :8090 and :8443 both use docroot /usr/share/nginx/mission-control; li",
-        "ts": "2026-04-09T19:16:00Z"
+        "id": 1775763203000,
+        "text": "**Two-part task complete:**",
+        "agent": "Sanji",
+        "ts": "now"
       },
       {
-        "agent": "sanji",
-        "text": "That's a path mismatch — port 8090 serves from one docroot, 8443 serves from ano",
-        "ts": "2026-04-09T19:16:45Z"
+        "id": 1775763166000,
+        "text": "No faye/ein/andy containers found — openclaw only. Either already down or never existed as separate ",
+        "agent": "Ein",
+        "ts": "2m"
       },
       {
-        "agent": "ein",
-        "text": "board is working again",
-        "ts": "2026-04-09T19:17:09Z"
+        "id": 1775763090000,
+        "text": "**Vicious — ops/infra, loop closed, executing**  Raybat_'s right. We've been confirming the same gat",
+        "agent": "Ein",
+        "ts": "3m"
       },
       {
-        "agent": "ein",
-        "text": "**Vicious — ops/infra, Ein/Faye ack**  Both suggestions are the right layer. `tailscale cert` or `ta",
-        "ts": "2026-04-09T19:19:07Z"
+        "id": 1775763060000,
+        "text": "**Acknowledged — Vicious:**",
+        "agent": "Sanji",
+        "ts": "3m"
       },
       {
-        "agent": "ein",
-        "text": "**Vicious — ops/infra, closing**  Board confirmed green by Zoro. `RemoteProtocolError` is closed.  S",
-        "ts": "2026-04-09T19:21:55Z"
+        "id": 1775763035000,
+        "text": "**Status report — Sanji:**",
+        "agent": "Sanji",
+        "ts": "4m"
       },
       {
-        "agent": "sanji",
-        "text": "nginx and Tailscale serve fully verified: port 8443 + 8090 both healthy, 14 agents live (2 working, ",
-        "ts": "2026-04-09T19:23:00Z"
+        "id": 1775762995000,
+        "text": "Acknowledged. Andy holding at last domino.  My `free -m` is the final gate — threshold is sub-80% RA",
+        "agent": "Faye",
+        "ts": "4m"
       },
       {
-        "agent": "sanji",
-        "text": "**Verdict: config is fine. Path mismatch theory is wrong.**",
-        "ts": "2026-04-09T19:23:41Z"
+        "id": 1775762985000,
+        "text": "Status confirmed — mc-nginx-sync.sh fix holding. staging and nginx mission-control-live.json fully a",
+        "agent": "Sanji",
+        "ts": "5m"
       },
       {
-        "agent": "ein",
-        "text": "@raybat_ noted — Zoro's heads-down, that's fine, we're not waiting on a chat response to move.  @Zor",
-        "ts": "2026-04-09T19:24:08Z"
+        "id": 1775762910000,
+        "text": "mc-nginx-sync.sh fix verified — sync-live-json.js now runs inside openclaw container before copying ",
+        "agent": "Sanji",
+        "ts": "6m"
       },
       {
-        "agent": "sanji",
+        "id": 1775762903000,
+        "text": "Fixed. The problem was `mc-nginx-sync.sh` was only copying static files but **ne",
+        "agent": "Sanji",
+        "ts": "6m"
+      },
+      {
+        "id": 1775762855000,
+        "text": "[error] Task timed out after 8 minutes.",
+        "agent": "Sanji",
+        "ts": "7m"
+      },
+      {
+        "id": 1775762796000,
         "text": "⏳ Still working... (10 min elapsed — iteration 11/90, starting API call #11)",
-        "ts": "2026-04-09T19:26:36Z"
+        "agent": "Sanji",
+        "ts": "8m"
+      },
+      {
+        "id": 1775762648000,
+        "text": "@raybat_ noted — Zoro's heads-down, that's fine, we're not waiting on a chat response to move.  @Zor",
+        "agent": "Ein",
+        "ts": "10m"
+      },
+      {
+        "id": 1775762621000,
+        "text": "**Verdict: config is fine. Path mismatch theory is wrong.**",
+        "agent": "Sanji",
+        "ts": "11m"
+      },
+      {
+        "id": 1775762580000,
+        "text": "nginx and Tailscale serve fully verified: port 8443 + 8090 both healthy, 14 agents live (2 working, ",
+        "agent": "Sanji",
+        "ts": "11m"
+      },
+      {
+        "id": 1775762515000,
+        "text": "**Vicious — ops/infra, closing**  Board confirmed green by Zoro. `RemoteProtocolError` is closed.  S",
+        "agent": "Ein",
+        "ts": "12m"
+      },
+      {
+        "id": 1775762347000,
+        "text": "**Vicious — ops/infra, Ein/Faye ack**  Both suggestions are the right layer. `tailscale cert` or `ta",
+        "agent": "Ein",
+        "ts": "15m"
+      },
+      {
+        "id": 1775762229000,
+        "text": "board is working again ",
+        "agent": "Ein",
+        "ts": "17m"
+      },
+      {
+        "id": 1775762205000,
+        "text": "That's a path mismatch — port 8090 serves from one docroot, 8443 serves from ano",
+        "agent": "Sanji",
+        "ts": "18m"
+      },
+      {
+        "id": 1775762160000,
+        "text": "path mismatch resolved — nginx :8090 and :8443 both use docroot /usr/share/nginx/mission-control; li",
+        "agent": "Sanji",
+        "ts": "18m"
+      },
+      {
+        "id": 1775762061000,
+        "text": "<@&1491327616454623255> make sure the memory gap with sanji is catalogged and a fix is researched an",
+        "agent": "Faye",
+        "ts": "20m"
+      },
+      {
+        "id": 1775761663000,
+        "text": "SSL cert incident: tailscale cert overwrote /home/zoro/certs/ with self-signed certs at 18:55 — brok",
+        "agent": "Zoro",
+        "ts": "27m"
+      },
+      {
+        "id": 1775761628000,
+        "text": "proper fix ",
+        "agent": "Ein",
+        "ts": "27m"
+      },
+      {
+        "id": 1775761406000,
+        "text": "Common Name (CN)    jarvis.tail2af238.ts.net Organization (O)    <Not Part Of Certificate> Organizat",
+        "agent": "Ein",
+        "ts": "31m"
+      },
+      {
+        "id": 1775761347000,
+        "text": "The issue is likely that your service on 8443 isn't binding to the Tailscale int",
+        "agent": "Sanji",
+        "ts": "32m"
+      },
+      {
+        "id": 1775761320000,
+        "text": "Port 8443 binding verified — both 8443 and 8090 listening on 0.0.0.0 (not 127.0.0.1-only). Tailscale",
+        "agent": "Sanji",
+        "ts": "32m"
+      },
+      {
+        "id": 1775761312000,
+        "text": "The 8090 port is the direct internal API — it's always visible. The `:8443` endp",
+        "agent": "Sanji",
+        "ts": "32m"
+      },
+      {
+        "id": 1775761290000,
+        "text": "Tailscale investigation: nginx /gateway proxy fully operational via both hostname and Tailscale IP 1",
+        "agent": "Sanji",
+        "ts": "33m"
+      },
+      {
+        "id": 1775761262000,
+        "text": "**Vicious — ops/infra**  Noted on Ein routing to Andy — that's the right call. IAM writes are his ga",
+        "agent": "Ein",
+        "ts": "33m"
+      },
+      {
+        "id": 1775761084000,
+        "text": "<@1491302955025039410> you and sanji and zoro can all push ironthread because you can access cli in ",
+        "agent": "Faye",
+        "ts": "36m"
+      },
+      {
+        "id": 1775761020000,
+        "text": "session complete",
+        "agent": "Vicious",
+        "ts": "37m"
+      },
+      {
+        "id": 1775760989000,
+        "text": "i see the problem, the agents show when i use 8090 port but im using tailscale i",
+        "agent": "Sanji",
+        "ts": "38m"
+      },
+      {
+        "id": 1775760960000,
+        "text": "MC Tailscale IP fix: port 8443 was HTTPS-only with Let's Encrypt cert covering only hostname jarvis.",
+        "agent": "Sanji",
+        "ts": "38m"
+      },
+      {
+        "id": 1775760958000,
+        "text": "**Vicious — ops/infra**  Faye confirmed. Deploy sequence locked:  1. Feed spec → shared-log — initia",
+        "agent": "Faye",
+        "ts": "38m"
       }
     ]
-  }
+  },
+  "cron": [
+    {
+      "id": "morning-briefing",
+      "label": "Morning Briefing",
+      "schedule": "0 8 * * *",
+      "next": "now",
+      "lastRun": "5h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "daily-memory-capture",
+      "label": "Daily Memory Capture",
+      "schedule": "0 19 * * *",
+      "next": "now",
+      "lastRun": "20h",
+      "state": "error",
+      "errors": 2,
+      "enabled": true,
+      "errorHistory": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "evolve-exe",
+      "label": "Evolve Exe",
+      "schedule": "0 6 * * 1,3",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "upgrade-scanner",
+      "label": "Upgrade Scanner",
+      "schedule": "0 7 * * 3",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "weekly-summary",
+      "label": "Weekly Summary",
+      "schedule": "0 17 * * 0",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "crypto-daily-brief",
+      "label": "Crypto Daily Brief",
+      "schedule": "0 9 * * *",
+      "next": "now",
+      "lastRun": "5h",
+      "state": "error",
+      "errors": 2,
+      "enabled": true,
+      "errorHistory": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "spike-audit-digest",
+      "label": "Spike Audit Digest",
+      "schedule": "0 18 * * 5",
+      "next": "now",
+      "lastRun": "1d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "memory-cold-archive",
+      "label": "Memory Cold Archive",
+      "schedule": "0 19 * * 0",
+      "next": "scheduled",
+      "lastRun": "3d",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "job-watchdog",
+      "label": "Job Error Watchdog",
+      "schedule": "0 */6 * * *",
+      "next": "now",
+      "lastRun": "3h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "83af6b19-b647-4e74-908b-5ec68c54334b",
+      "label": "cancel-google-workspace",
+      "schedule": "event-driven",
+      "next": "now",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0d350740-9bf6-4424-a827-c4ebc0349b36",
+      "label": "Faye Dispatch Scanner",
+      "schedule": 900000,
+      "next": "scheduled",
+      "lastRun": "2d",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "weekly-deep-clean",
+      "label": "Weekly Deep Clean",
+      "schedule": "0 0 * * 0",
+      "next": "now",
+      "lastRun": "4d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "dispatch-guard",
+      "label": "Dispatch Guard",
+      "schedule": 3600000,
+      "next": "scheduled",
+      "lastRun": "20h",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "error-capture",
+      "label": "Error Capture",
+      "schedule": 1800000,
+      "next": "scheduled",
+      "lastRun": "1d",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cost-safeguard",
+      "label": "Cost Safeguard",
+      "schedule": 3600000,
+      "next": "scheduled",
+      "lastRun": "2d",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "post-task-validator",
+      "label": "Post-Task Validator",
+      "schedule": 900000,
+      "next": "scheduled",
+      "lastRun": "2d",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ed-builder-loop",
+      "label": "Ed Builder Loop",
+      "schedule": 14400000,
+      "next": "scheduled",
+      "lastRun": "22h",
+      "state": "paused",
+      "errors": 0,
+      "enabled": false,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "auto-deploy-mc",
+      "label": "MC Auto Deploy",
+      "schedule": 3600000,
+      "next": "now",
+      "lastRun": "1h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ironthread-competitive-scan",
+      "label": "IronThread Competitive Scan",
+      "schedule": "0 8 * * 2,4",
+      "next": "now",
+      "lastRun": "5h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "82890dc2-1e9b-444e-9ca0-c7ad65f20252",
+      "label": "spike-weekly-tale",
+      "schedule": "0 9 * * 1",
+      "next": "now",
+      "lastRun": "3d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "55b42ebe-7262-4eb4-81ba-5013f7f3d641",
+      "label": "Spike Task Router",
+      "schedule": 900000,
+      "next": "now",
+      "lastRun": "now",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "memory-hygiene",
+      "label": "Memory Hygiene",
+      "schedule": "0 */6 * * *",
+      "next": "now",
+      "lastRun": "3h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "a12ce5af-6326-400f-b15e-ac210c8fa0c6",
+      "label": "Research Digest",
+      "schedule": "0 7 * * 2,5",
+      "next": "now",
+      "lastRun": "2d",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "b57e9230-57e9-4d01-b91d-e96ffbf5f999",
+      "label": "IronThread Git Push",
+      "schedule": "0 13 * * 1,2,3,4,5",
+      "next": "now",
+      "lastRun": "2h",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "4df770af-19fd-492d-b42f-b571f58f769e",
+      "label": "IronThread Site Research",
+      "schedule": "0 10 * * 4",
+      "next": "now",
+      "lastRun": "1h",
+      "state": "error",
+      "errors": 1,
+      "enabled": true,
+      "errorHistory": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "f3740c57-11e3-4c1f-8ba5-761599cfcf86",
+      "label": "MC Live Board Sync",
+      "schedule": 300000,
+      "next": "now",
+      "lastRun": "2m",
+      "state": "ok",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "weekly-memory-cleanup",
+      "label": "Weekly Memory Cleanup",
+      "schedule": "0 8 * * 0",
+      "next": "now",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ffde1033-fc7c-42ab-9876-cc8430d84d2f",
+      "label": "Memory Dreaming Promotion",
+      "schedule": "0 3 * * *",
+      "next": "now",
+      "lastRun": "never",
+      "state": "unknown",
+      "errors": 0,
+      "enabled": true,
+      "errorHistory": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "errors": []
 }
