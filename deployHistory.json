@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T16:24:51.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "sha": "78252ce",
+    "shaFull": "78252ce9da382b198e531a4300c5a1e6990b3e6a",
+    "message": "fix: clean deployHistory duplicate + remove spurious updateDeployHistory",
+    "branch": "master",
+    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T16:22:00.000Z",
     "status": "deployed",
     "trigger": "manual",
