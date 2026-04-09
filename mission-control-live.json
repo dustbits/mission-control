@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T16:33:56.311Z",
+  "updatedAt": "2026-04-09T16:43:25.692Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 10,
-    "memory": 32,
+    "cpu": 11,
+    "memory": 29,
     "disk": 1
   },
   "agents": [
@@ -127,6 +127,54 @@
       "blockers": 0,
       "state": "idle",
       "stateSince": null
+    },
+    {
+      "name": "Sanji",
+      "key": "sanji",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Vicious",
+      "key": "vicious",
+      "model": "MiniMax/M2.7",
+      "color": "#ef4444",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Zoro",
+      "key": "zoro",
+      "model": "MiniMax/M2.7",
+      "color": "#4a9eff",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "System",
+      "key": "dispatch",
+      "model": "unknown",
+      "color": "#38bdf8",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "state": "idle",
+      "stateSince": null
     }
   ],
   "deploy": {
@@ -148,7 +196,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json",
         "durationSec": 2,
         "duration": null,
-        "time": "now"
+        "time": "9m"
       },
       {
         "timestamp": "2026-04-09T16:32:23.000Z",
@@ -161,7 +209,7 @@
         "changedFiles": "mission-control-live.json",
         "durationSec": 1,
         "duration": null,
-        "time": "now"
+        "time": "11m"
       },
       {
         "timestamp": "2026-04-09T16:24:51.000Z",
@@ -174,7 +222,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "9m"
+        "time": "18m"
       },
       {
         "timestamp": "2026-04-09T16:22:00.000Z",
@@ -187,7 +235,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "11m"
+        "time": "21m"
       },
       {
         "timestamp": "2026-04-09T16:18:15.000Z",
@@ -200,7 +248,7 @@
         "changedFiles": "scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "15m"
+        "time": "25m"
       },
       {
         "timestamp": "2026-04-09T15:58:40.000Z",
@@ -213,7 +261,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": "17m",
-        "time": "35m"
+        "time": "44m"
       },
       {
         "timestamp": "2026-04-09T15:28:52.000Z",
@@ -313,647 +361,661 @@
   "activity": [
     {
       "id": 1,
-      "agent": "sanji",
-      "line": "",
-      "time": "6m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "sanji PONG positional test",
+      "time": "2m",
+      "color": "#f59e0b"
     },
     {
       "id": 2,
-      "agent": "sanji",
-      "line": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), pushed + deployed to",
-      "time": "6m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "PONG positional test: gateway heartbeat=OK (100.91.29.32:18790 live), 10 agent desks configured (1280x720 office), zones",
+      "time": "4m",
+      "color": "#f59e0b"
     },
     {
       "id": 3,
-      "agent": "sanji",
-      "line": "pong debug test",
-      "time": "6m",
-      "color": "#38bdf8"
+      "agent": "Vicious",
+      "line": "",
+      "time": "7m",
+      "color": "#ef4444"
     },
     {
       "id": 4,
-      "agent": "sanji",
-      "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
-      "time": "6m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "(exit=124)",
+      "time": "7m",
+      "color": "#f59e0b"
     },
     {
       "id": 5,
-      "agent": "sanji",
-      "line": "",
+      "agent": "Sanji",
+      "line": "MC full ops check: deploy=e544fac/state=deployed, board=0q/2ip/53d, cron=27(15ok/2err/7paused/3unk), health=jarvis/cpu10",
       "time": "8m",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 6,
-      "agent": "sanji",
-      "line": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx.",
+      "agent": "Vicious",
+      "line": "MC board: fixed deploy context (was showing only \"manual\"). Root cause: mc-nginx-sync.sh copied deployHistory.json from ",
       "time": "8m",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 7,
-      "agent": "sanji",
-      "line": "PONG test",
-      "time": "10m",
-      "color": "#38bdf8"
+      "agent": "Vicious",
+      "line": "MC board: fixed deploy context (was showing only 'manual'). Root cause: mc-nginx-sync.sh copied deployHistory.json from ",
+      "time": "8m",
+      "color": "#ef4444"
     },
     {
       "id": 8,
-      "agent": "sanji",
-      "line": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
-      "time": "10m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "",
+      "time": "8m",
+      "color": "#f59e0b"
     },
     {
       "id": 9,
-      "agent": "sanji",
-      "line": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Ngin",
-      "time": "11m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "",
+      "time": "15m",
+      "color": "#f59e0b"
     },
     {
       "id": 10,
-      "agent": "sanji",
-      "line": "",
-      "time": "12m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), pushed + deployed to",
+      "time": "16m",
+      "color": "#f59e0b"
     },
     {
       "id": 11,
-      "agent": "sanji",
-      "line": "(exit=124)",
-      "time": "14m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "pong debug test",
+      "time": "16m",
+      "color": "#f59e0b"
     },
     {
       "id": 12,
-      "agent": "zoro",
-      "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
+      "agent": "Sanji",
+      "line": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
       "time": "16m",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 13,
-      "agent": "zoro",
-      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-      "time": "16m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "",
+      "time": "17m",
+      "color": "#f59e0b"
     },
     {
       "id": 14,
-      "agent": "zoro",
-      "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
-      "time": "16m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx.",
+      "time": "18m",
+      "color": "#f59e0b"
     },
     {
       "id": 15,
-      "agent": "zoro",
-      "line": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to nginx",
-      "time": "16m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "PONG test",
+      "time": "20m",
+      "color": "#f59e0b"
     },
     {
       "id": 16,
-      "agent": "sanji",
-      "line": "sanji PONG test",
-      "time": "21m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
+      "time": "20m",
+      "color": "#f59e0b"
     },
     {
       "id": 17,
-      "agent": "sanji",
-      "line": "PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
+      "agent": "Sanji",
+      "line": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Ngin",
       "time": "21m",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 18,
-      "agent": "sanji",
+      "agent": "Sanji",
       "line": "",
       "time": "22m",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 19,
-      "agent": "sanji",
-      "line": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) instead of index.htm",
-      "time": "22m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "(exit=124)",
+      "time": "23m",
+      "color": "#f59e0b"
     },
     {
       "id": 20,
-      "agent": "sanji",
-      "line": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy ",
-      "time": "32m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 21,
-      "agent": "sanji",
-      "line": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored from HEAD with deploy ",
-      "time": "33m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 22,
-      "agent": "sanji",
-      "line": "",
-      "time": "34m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 23,
-      "agent": "zoro",
-      "line": "stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but task keys didn't match",
-      "time": "38m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 24,
-      "agent": "sanji",
-      "line": "",
-      "time": "39m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 25,
-      "agent": "sanji",
-      "line": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=deployed/timestamp=2026",
-      "time": "39m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 26,
-      "agent": "sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 27,
-      "agent": "sanji",
-      "line": "No explicit task received in dispatch — Task section was empty. MC operational (live JSON: 15:23:07, deploy 34ee7aa). St",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 28,
-      "agent": "sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 29,
-      "agent": "sanji",
-      "line": "MC live JSON deploy section fix — updated deploy.timestamp to 2026-04-09T15:23:07 (0f25a75), workspace→staging→nginx syn",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 30,
-      "agent": "sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 31,
-      "agent": "sanji",
-      "line": "MC v3 commit + deploy — 0f25a75 pushed, nginx live ✅. Includes: agents schema (10 agents), real health stats, deployHist",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 32,
-      "agent": "sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 33,
-      "agent": "sanji",
-      "line": "MC sync — committed + pushed (5907e25), nginx live ✅. Pipeline-test ✅. Discord sanji listener ✅. All sanji tasks complet",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 34,
-      "agent": "sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 35,
-      "agent": "sanji",
-      "line": "deployHistory.json fix — committed 40ef794 (deployHistory entry for 5907e25), pushed. nginx live ✅. All nominal.",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 36,
-      "agent": "sanji",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 37,
-      "agent": "sanji",
-      "line": "pipeline-test — zoro-sanji bridge verified end-to-end. Results: Hermes gw ✅ (100.91.29.32:18790/live), OpenClaw→Hermes ✅",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 38,
-      "agent": "sanji",
-      "line": "pipeline-test: starting end-to-end verification — hermes gw, openclaw container, shared-log dispatch, discord bridge",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 39,
-      "agent": "vicious",
-      "line": "",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 40,
-      "agent": "vicious",
-      "line": "",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 41,
-      "agent": "vicious",
-      "line": "",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 42,
-      "agent": "vicious",
-      "line": "",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 43,
-      "agent": "vicious",
-      "line": "poll — no pending needs-vicious tasks. openclaw-gateway (PID 185905) healthy, hermes gateway (PID 1068) running, opencla",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 44,
-      "agent": "vicious",
-      "line": "",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 45,
-      "agent": "vicious",
-      "line": "poll — no pending needs-vicious tasks. MC deploy (needs-andy) owned by Andy. Ed session active. All infra nominal. Idle.",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 46,
-      "agent": "Spike",
-      "line": "[deploy] MC staging has 2 unpushed commits (MC-Research + live JSON only) — no game files changed, skipped",
-      "time": "6h",
+      "agent": "Zoro",
+      "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
+      "time": "26m",
       "color": "#4a9eff"
     },
     {
+      "id": 21,
+      "agent": "Zoro",
+      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
+      "time": "26m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 22,
+      "agent": "Zoro",
+      "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
+      "time": "26m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 23,
+      "agent": "Zoro",
+      "line": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to nginx",
+      "time": "26m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 24,
+      "agent": "Sanji",
+      "line": "sanji PONG test",
+      "time": "31m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 25,
+      "agent": "Sanji",
+      "line": "PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
+      "time": "31m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 26,
+      "agent": "Sanji",
+      "line": "",
+      "time": "32m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 27,
+      "agent": "Sanji",
+      "line": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) instead of index.htm",
+      "time": "32m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 28,
+      "agent": "Sanji",
+      "line": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy ",
+      "time": "42m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 29,
+      "agent": "Sanji",
+      "line": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored from HEAD with deploy ",
+      "time": "43m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 30,
+      "agent": "Sanji",
+      "line": "",
+      "time": "44m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 31,
+      "agent": "Zoro",
+      "line": "stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but task keys didn't match",
+      "time": "48m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 32,
+      "agent": "Sanji",
+      "line": "",
+      "time": "48m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 33,
+      "agent": "Sanji",
+      "line": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=deployed/timestamp=2026",
+      "time": "49m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 34,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 35,
+      "agent": "Sanji",
+      "line": "No explicit task received in dispatch — Task section was empty. MC operational (live JSON: 15:23:07, deploy 34ee7aa). St",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 36,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 37,
+      "agent": "Sanji",
+      "line": "MC live JSON deploy section fix — updated deploy.timestamp to 2026-04-09T15:23:07 (0f25a75), workspace→staging→nginx syn",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 38,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 39,
+      "agent": "Sanji",
+      "line": "MC v3 commit + deploy — 0f25a75 pushed, nginx live ✅. Includes: agents schema (10 agents), real health stats, deployHist",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 40,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 41,
+      "agent": "Sanji",
+      "line": "MC sync — committed + pushed (5907e25), nginx live ✅. Pipeline-test ✅. Discord sanji listener ✅. All sanji tasks complet",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 42,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 43,
+      "agent": "Sanji",
+      "line": "deployHistory.json fix — committed 40ef794 (deployHistory entry for 5907e25), pushed. nginx live ✅. All nominal.",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 44,
+      "agent": "Sanji",
+      "line": "",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 45,
+      "agent": "Sanji",
+      "line": "pipeline-test — zoro-sanji bridge verified end-to-end. Results: Hermes gw ✅ (100.91.29.32:18790/live), OpenClaw→Hermes ✅",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 46,
+      "agent": "Sanji",
+      "line": "pipeline-test: starting end-to-end verification — hermes gw, openclaw container, shared-log dispatch, discord bridge",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
       "id": 47,
+      "agent": "Vicious",
+      "line": "",
+      "time": "1h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 48,
+      "agent": "Vicious",
+      "line": "",
+      "time": "2h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 49,
+      "agent": "Vicious",
+      "line": "",
+      "time": "2h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 50,
+      "agent": "Vicious",
+      "line": "",
+      "time": "2h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 51,
+      "agent": "Vicious",
+      "line": "poll — no pending needs-vicious tasks. openclaw-gateway (PID 185905) healthy, hermes gateway (PID 1068) running, opencla",
+      "time": "2h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 52,
+      "agent": "Vicious",
+      "line": "",
+      "time": "2h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 53,
+      "agent": "Vicious",
+      "line": "poll — no pending needs-vicious tasks. MC deploy (needs-andy) owned by Andy. Ed session active. All infra nominal. Idle.",
+      "time": "2h",
+      "color": "#ef4444"
+    },
+    {
+      "id": 54,
       "agent": "Ed",
       "line": "starting: ",
       "time": "8h",
       "color": "#22c55e"
     },
     {
-      "id": 48,
-      "agent": "Spike",
-      "line": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to nginx",
-      "time": "10h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 49,
-      "agent": "Spike",
-      "line": "[deploy] MC auto-deploy: 2 unpushed commits, nginx path /usr/share/nginx/mission-control/ not found, escalated to Andy",
-      "time": "10h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 50,
-      "agent": "zoro",
+      "id": 55,
+      "agent": "Zoro",
       "line": "Spike Discord token updated and verified live. Bot: Spike | ID: 1482477348816293928",
       "time": "10h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 51,
-      "agent": "zoro",
-      "line": "ALL TASKS COMPLETE — crew organization done. Discord channels renamed/created, dispatch system updated, crew-knowledge-b",
-      "time": "11h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 52,
-      "agent": "zoro",
-      "line": "Task 3 (Spike Discord token): BLOCKED — requires Discord Developer Portal (browser). Ray needs to: (1) Go to discord.com",
-      "time": "11h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 53,
-      "agent": "zoro",
-      "line": "Task 1 complete. Vicious confirmed alive (health-check OK 04:24). WhatsApp binding for zoro added (peer: +192****1375, k",
-      "time": "11h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 54,
-      "agent": "vicious",
-      "line": "poll — no pending needs-vicious tasks (all 15 entries resolved, last done 04:37 UTC). Duplicate dispatch at 04:35 alread",
-      "time": "11h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 55,
-      "agent": "vicious",
-      "line": "final-test — spawn + respond verified, 6 openclaw procs, load 1.33 declining. Discord binding OK (msg 149165830218514432",
-      "time": "11h",
-      "color": "#38bdf8"
+      "color": "#4a9eff"
     },
     {
       "id": 56,
-      "agent": "vicious",
-      "line": "session complete",
+      "agent": "Zoro",
+      "line": "ALL TASKS COMPLETE — crew organization done. Discord channels renamed/created, dispatch system updated, crew-knowledge-b",
       "time": "11h",
-      "color": "#38bdf8"
+      "color": "#4a9eff"
     },
     {
       "id": 57,
-      "agent": "Spike",
-      "line": "[deploy] MC auto-deploy: 1 unpushed commit (8a2ecd6) — mission-control-live.json data only, no game files changed, nothi",
-      "time": "12h",
+      "agent": "Zoro",
+      "line": "Task 3 (Spike Discord token): BLOCKED — requires Discord Developer Portal (browser). Ray needs to: (1) Go to discord.com",
+      "time": "11h",
       "color": "#4a9eff"
     },
     {
       "id": 58,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Zoro",
+      "line": "Task 1 complete. Vicious confirmed alive (health-check OK 04:24). WhatsApp binding for zoro added (peer: +192****1375, k",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#4a9eff"
     },
     {
       "id": 59,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "poll — no pending needs-vicious tasks (all 15 entries resolved, last done 04:37 UTC). Duplicate dispatch at 04:35 alread",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 60,
-      "agent": "vicious",
-      "line": "final-health-check — agent spawn OK, 5 openclaw processes, load 2.78. Discord binding verified (msg 1491655065394610227)",
+      "agent": "Vicious",
+      "line": "final-test — spawn + respond verified, 6 openclaw procs, load 1.33 declining. Discord binding OK (msg 149165830218514432",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 61,
-      "agent": "vicious",
+      "agent": "Vicious",
       "line": "session complete",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 62,
-      "agent": "zoro",
-      "line": "[deploy] MC deploy board stale queue cleared — unpushed commits were deployed by sanji (d8fe768), board.html/mission-con",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
       "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 63,
-      "agent": "zoro",
-      "line": "MC live board sync re-enabled — MC Live Board Sync cron resumed, cron health data now populating (27 jobs)",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
       "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 64,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "final-health-check — agent spawn OK, 5 openclaw processes, load 2.78. Discord binding verified (msg 1491655065394610227)",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 65,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "session complete",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 66,
-      "agent": "vicious",
-      "line": "poll — no pending needs-vicious tasks found (both health-check items already resolved 04:21 UTC). Idle.",
+      "agent": "Zoro",
+      "line": "[deploy] MC deploy board stale queue cleared — unpushed commits were deployed by sanji (d8fe768), board.html/mission-con",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#4a9eff"
     },
     {
       "id": 67,
-      "agent": "vicious",
-      "line": "health-check — container alive (up 20m, load 2.73). Discord bindings verified: vicious group 1491508051935494164 (msg 14",
+      "agent": "Zoro",
+      "line": "MC live board sync re-enabled — MC Live Board Sync cron resumed, cron health data now populating (27 jobs)",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#4a9eff"
     },
     {
       "id": 68,
-      "agent": "vicious",
-      "line": "health-check-2 — dispatch pipeline confirmed by zoro, container healthy, bindings confirmed.",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
       "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 69,
-      "agent": "vicious",
-      "line": "session complete",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
       "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 70,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "poll — no pending needs-vicious tasks found (both health-check items already resolved 04:21 UTC). Idle.",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 71,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "health-check — container alive (up 20m, load 2.73). Discord bindings verified: vicious group 1491508051935494164 (msg 14",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 72,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "health-check-2 — dispatch pipeline confirmed by zoro, container healthy, bindings confirmed.",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 73,
-      "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "agent": "Vicious",
+      "line": "session complete",
       "time": "12h",
-      "color": "#38bdf8"
+      "color": "#ef4444"
     },
     {
       "id": 74,
-      "agent": "zoro",
-      "line": "arXiv research pipeline built + cron live (0 6 * * * → origin, job: abd97564dbe5). No gh CLI needed — uses curl + tokens",
-      "time": "13h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 75,
-      "agent": "zoro",
-      "line": "GitHub PR review pipeline built + cron live (0 */4 * * * → origin, job: 53c84c99d408). Monitors IronThread/ironthread-si",
-      "time": "13h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 76,
-      "agent": "zoro",
-      "line": "OpenClaw 2026.4.9 — routed to Vicious via shared-log (02:55 UTC). Security fixes: SSRF bypass #63226, node exec injectio",
-      "time": "13h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 77,
-      "agent": "zoro",
-      "line": "Memory fully consolidated. 5 crons now live. GitHub access verified. All crew KB entries updated.",
-      "time": "13h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "12h",
       "color": "#38bdf8"
     },
     {
       "id": 78,
+      "agent": "Zoro",
+      "line": "arXiv research pipeline built + cron live (0 6 * * * → origin, job: abd97564dbe5). No gh CLI needed — uses curl + tokens",
+      "time": "13h",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 79,
+      "agent": "Zoro",
+      "line": "GitHub PR review pipeline built + cron live (0 */4 * * * → origin, job: 53c84c99d408). Monitors IronThread/ironthread-si",
+      "time": "13h",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 80,
+      "agent": "Zoro",
+      "line": "OpenClaw 2026.4.9 — routed to Vicious via shared-log (02:55 UTC). Security fixes: SSRF bypass #63226, node exec injectio",
+      "time": "13h",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 81,
+      "agent": "Zoro",
+      "line": "Memory fully consolidated. 5 crons now live. GitHub access verified. All crew KB entries updated.",
+      "time": "13h",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 82,
       "agent": "System",
       "line": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
       "time": "13h",
       "color": "#38bdf8"
     },
     {
-      "id": 79,
+      "id": 83,
       "agent": "System",
       "line": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recovery: still de | [202",
       "time": "13h",
       "color": "#38bdf8"
     },
     {
-      "id": 80,
-      "agent": "Spike",
-      "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
-      "time": "14h",
-      "color": "#4a9eff"
-    },
-    {
-      "id": 81,
-      "agent": "sanji",
+      "id": 84,
+      "agent": "Sanji",
       "line": "session complete",
       "time": "14h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 82,
-      "agent": "sanji",
-      "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
-      "time": "14h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 83,
-      "agent": "System",
-      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "14h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 84,
-      "agent": "System",
-      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "14h",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 85,
-      "agent": "vicious",
-      "line": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent successfully, ID 1491",
+      "agent": "Sanji",
+      "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
       "time": "14h",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 86,
       "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
       "time": "14h",
       "color": "#38bdf8"
     },
     {
       "id": 87,
       "agent": "System",
-      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
       "time": "14h",
       "color": "#38bdf8"
     },
     {
       "id": 88,
-      "agent": "sanji",
-      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
-      "time": "15h",
-      "color": "#38bdf8"
+      "agent": "Vicious",
+      "line": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent successfully, ID 1491",
+      "time": "14h",
+      "color": "#ef4444"
     },
     {
       "id": 89,
-      "agent": "sanji",
-      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
-      "time": "16h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "14h",
       "color": "#38bdf8"
     },
     {
       "id": 90,
-      "agent": "sanji",
-      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
-      "time": "16h",
+      "agent": "System",
+      "line": "Unknown tag [needs-vicious] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
+      "time": "14h",
       "color": "#38bdf8"
     },
     {
       "id": 91,
-      "agent": "sanji",
-      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
+      "agent": "Sanji",
+      "line": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention. All three active.",
       "time": "16h",
-      "color": "#38bdf8"
+      "color": "#f59e0b"
     },
     {
       "id": 92,
-      "agent": "Spike",
-      "line": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
-      "time": "18h",
-      "color": "#4a9eff"
+      "agent": "Sanji",
+      "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
+      "time": "16h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 93,
+      "agent": "Sanji",
+      "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
+      "time": "16h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 94,
+      "agent": "Sanji",
+      "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
+      "time": "16h",
+      "color": "#f59e0b"
     }
   ],
   "board": {
@@ -962,7 +1024,7 @@
       {
         "id": 1775746750000,
         "text": "pipeline-test: starting end-to-end verification — hermes gw, openclaw container, shared-log dispatch",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
@@ -974,279 +1036,291 @@
     ],
     "done": [
       {
-        "id": 1775752061000,
+        "id": 1775752853000,
+        "text": "sanji PONG positional test",
+        "agent": "Sanji",
+        "ts": "2m"
+      },
+      {
+        "id": 1775752740000,
+        "text": "PONG positional test: gateway heartbeat=OK (100.91.29.32:18790 live), 10 agent desks configured (128",
+        "agent": "Sanji",
+        "ts": "4m"
+      },
+      {
+        "id": 1775752580000,
         "text": "",
-        "agent": "sanji",
-        "ts": "6m"
+        "agent": "Vicious",
+        "ts": "7m"
+      },
+      {
+        "id": 1775752500000,
+        "text": "MC full ops check: deploy=e544fac/state=deployed, board=0q/2ip/53d, cron=27(15ok/2err/7paused/3unk),",
+        "agent": "Sanji",
+        "ts": "8m"
+      },
+      {
+        "id": 1775752500000,
+        "text": "MC board: fixed deploy context (was showing only \"manual\"). Root cause: mc-nginx-sync.sh copied depl",
+        "agent": "Vicious",
+        "ts": "8m"
+      },
+      {
+        "id": 1775752500000,
+        "text": "MC board: fixed deploy context (was showing only 'manual'). Root cause: mc-nginx-sync.sh copied depl",
+        "agent": "Vicious",
+        "ts": "8m"
       },
       {
         "id": 1775752032000,
         "text": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), ",
-        "agent": "sanji",
-        "ts": "6m"
+        "agent": "Sanji",
+        "ts": "16m"
       },
       {
         "id": 1775752028000,
         "text": "pong debug test",
-        "agent": "sanji",
-        "ts": "6m"
+        "agent": "Sanji",
+        "ts": "16m"
       },
       {
         "id": 1775752023000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
-        "agent": "sanji",
-        "ts": "6m"
+        "agent": "Sanji",
+        "ts": "16m"
       },
       {
         "id": 1775751900000,
         "text": "MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed ",
-        "agent": "sanji",
-        "ts": "8m"
+        "agent": "Sanji",
+        "ts": "18m"
       },
       {
         "id": 1775751780000,
         "text": "PONG test",
-        "agent": "sanji",
-        "ts": "10m"
+        "agent": "Sanji",
+        "ts": "20m"
       },
       {
         "id": 1775751779000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
-        "agent": "sanji",
-        "ts": "10m"
+        "agent": "Sanji",
+        "ts": "20m"
       },
       {
         "id": 1775751720000,
         "text": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ra",
-        "agent": "sanji",
-        "ts": "11m"
+        "agent": "Sanji",
+        "ts": "21m"
       },
       {
         "id": 1775751423000,
         "text": "[deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + co",
-        "agent": "zoro",
-        "ts": "16m"
+        "agent": "Zoro",
+        "ts": "26m"
       },
       {
         "id": 1775751422000,
         "text": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-        "agent": "zoro",
-        "ts": "16m"
+        "agent": "Zoro",
+        "ts": "26m"
       },
       {
         "id": 1775751421000,
         "text": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from ho",
-        "agent": "zoro",
-        "ts": "16m"
+        "agent": "Zoro",
+        "ts": "26m"
       },
       {
         "id": 1775751420000,
         "text": "[deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deplo",
-        "agent": "zoro",
-        "ts": "16m"
+        "agent": "Zoro",
+        "ts": "26m"
       },
       {
         "id": 1775751122000,
         "text": "sanji PONG test",
-        "agent": "sanji",
-        "ts": "21m"
+        "agent": "Sanji",
+        "ts": "31m"
       },
       {
         "id": 1775751117000,
         "text": "PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
-        "agent": "sanji",
-        "ts": "21m"
+        "agent": "Sanji",
+        "ts": "31m"
       },
       {
         "id": 1775751060000,
         "text": "MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) ",
-        "agent": "sanji",
-        "ts": "22m"
+        "agent": "Sanji",
+        "ts": "32m"
       },
       {
         "id": 1775750460000,
         "text": "MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JS",
-        "agent": "sanji",
-        "ts": "32m"
+        "agent": "Sanji",
+        "ts": "42m"
       },
       {
         "id": 1775750400000,
         "text": "MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored fr",
-        "agent": "sanji",
-        "ts": "33m"
+        "agent": "Sanji",
+        "ts": "43m"
       },
       {
         "id": 1775750100000,
         "text": "stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but ta",
-        "agent": "zoro",
-        "ts": "38m"
+        "agent": "Zoro",
+        "ts": "48m"
       },
       {
         "id": 1775750040000,
         "text": "MC deploy fix: restored 0f25a75 deploy entry to deployHistory.json, fixed live JSON deploy.state=dep",
-        "agent": "sanji",
-        "ts": "39m"
+        "agent": "Sanji",
+        "ts": "49m"
       },
       {
         "id": 1775748600000,
         "text": "No explicit task received in dispatch — Task section was empty. MC operational (live JSON: 15:23:07,",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
         "id": 1775748565000,
         "text": "MC live JSON deploy section fix — updated deploy.timestamp to 2026-04-09T15:23:07 (0f25a75), workspa",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
         "id": 1775748120000,
         "text": "MC v3 commit + deploy — 0f25a75 pushed, nginx live ✅. Includes: agents schema (10 agents), real heal",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
         "id": 1775747400000,
         "text": "MC sync — committed + pushed (5907e25), nginx live ✅. Pipeline-test ✅. Discord sanji listener ✅. All",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
         "id": 1775747384000,
         "text": "deployHistory.json fix — committed 40ef794 (deployHistory entry for 5907e25), pushed. nginx live ✅. ",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
         "id": 1775746808000,
         "text": "pipeline-test — zoro-sanji bridge verified end-to-end. Results: Hermes gw ✅ (100.91.29.32:18790/live",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "1h"
       },
       {
         "id": 1775744870000,
         "text": "poll — no pending needs-vicious tasks. openclaw-gateway (PID 185905) healthy, hermes gateway (PID 10",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "2h"
       },
       {
         "id": 1775744730000,
         "text": "poll — no pending needs-vicious tasks. MC deploy (needs-andy) owned by Andy. Ed session active. All ",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "2h"
-      },
-      {
-        "id": 1775727240000,
-        "text": "[deploy] MC staging has 2 unpushed commits (MC-Research + live JSON only) — no game files changed, s",
-        "agent": "Spike",
-        "ts": "6h"
-      },
-      {
-        "id": 1775716080000,
-        "text": "[deploy] MC auto-deploy: 2 unpushed commits, nginx path /usr/share/nginx/mission-control/ not found,",
-        "agent": "Spike",
-        "ts": "10h"
       },
       {
         "id": 1775713734000,
         "text": "Spike Discord token updated and verified live. Bot: Spike | ID: 1482477348816293928",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "10h"
       },
       {
         "id": 1775712761000,
         "text": "ALL TASKS COMPLETE — crew organization done. Discord channels renamed/created, dispatch system updat",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "11h"
       },
       {
         "id": 1775709627000,
         "text": "Task 1 complete. Vicious confirmed alive (health-check OK 04:24). WhatsApp binding for zoro added (p",
-        "agent": "zoro",
-        "ts": "11h"
+        "agent": "Zoro",
+        "ts": "12h"
       },
       {
         "id": 1775709480000,
         "text": "poll — no pending needs-vicious tasks (all 15 entries resolved, last done 04:37 UTC). Duplicate disp",
-        "agent": "vicious",
-        "ts": "11h"
+        "agent": "Vicious",
+        "ts": "12h"
       },
       {
         "id": 1775709420000,
         "text": "final-test — spawn + respond verified, 6 openclaw procs, load 1.33 declining. Discord binding OK (ms",
-        "agent": "vicious",
-        "ts": "11h"
+        "agent": "Vicious",
+        "ts": "12h"
       },
       {
         "id": 1775709420000,
         "text": "session complete",
-        "agent": "vicious",
-        "ts": "11h"
-      },
-      {
-        "id": 1775708880000,
-        "text": "[deploy] MC auto-deploy: 1 unpushed commit (8a2ecd6) — mission-control-live.json data only, no game ",
-        "agent": "Spike",
+        "agent": "Vicious",
         "ts": "12h"
       },
       {
         "id": 1775708640000,
         "text": "final-health-check — agent spawn OK, 5 openclaw processes, load 2.78. Discord binding verified (msg ",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "12h"
       },
       {
         "id": 1775708586000,
         "text": "[deploy] MC deploy board stale queue cleared — unpushed commits were deployed by sanji (d8fe768), bo",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "12h"
       },
       {
         "id": 1775708586000,
         "text": "MC live board sync re-enabled — MC Live Board Sync cron resumed, cron health data now populating (27",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "12h"
       },
       {
         "id": 1775708520000,
         "text": "poll — no pending needs-vicious tasks found (both health-check items already resolved 04:21 UTC). Id",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "12h"
       },
       {
         "id": 1775708460000,
         "text": "health-check — container alive (up 20m, load 2.73). Discord bindings verified: vicious group 1491508",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "12h"
       },
       {
         "id": 1775708460000,
         "text": "health-check-2 — dispatch pipeline confirmed by zoro, container healthy, bindings confirmed.",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "12h"
       },
       {
         "id": 1775704500000,
         "text": "arXiv research pipeline built + cron live (0 6 * * * → origin, job: abd97564dbe5). No gh CLI needed ",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "13h"
       },
       {
         "id": 1775704500000,
         "text": "GitHub PR review pipeline built + cron live (0 */4 * * * → origin, job: 53c84c99d408). Monitors Iron",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "13h"
       },
       {
         "id": 1775704500000,
         "text": "OpenClaw 2026.4.9 — routed to Vicious via shared-log (02:55 UTC). Security fixes: SSRF bypass #63226",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "13h"
       },
       {
         "id": 1775704500000,
         "text": "Memory fully consolidated. 5 crons now live. GitHub access verified. All crew KB entries updated.",
-        "agent": "zoro",
+        "agent": "Zoro",
         "ts": "13h"
       },
       {
@@ -1264,31 +1338,31 @@
       {
         "id": 1775701500000,
         "text": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "14h"
       },
       {
         "id": 1775699400000,
         "text": "bridge-test — Discord binding for vicious (group 1491508051935494164) verified alive. Message sent s",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "14h"
       },
       {
         "id": 1775695200000,
         "text": "Discord audit fix: Ein, Faye, Vicious listeners re-enabled with detect_bot_id() self-loop prevention",
-        "agent": "sanji",
-        "ts": "15h"
+        "agent": "Sanji",
+        "ts": "16h"
       },
       {
         "id": 1775693741000,
         "text": "MC deployed d8fe768 to nginx. Verifications all OK.",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "16h"
       },
       {
         "id": 1775693717000,
         "text": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "16h"
       }
     ]
@@ -1299,27 +1373,11 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1335,22 +1393,6 @@
       "enabled": true,
       "errorHistory": [
         2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
         2
       ]
     },
@@ -1364,22 +1406,6 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1395,22 +1421,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1425,22 +1435,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1449,27 +1443,11 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "error",
       "errors": 2,
       "enabled": true,
       "errorHistory": [
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
         2,
         2
       ]
@@ -1485,22 +1463,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1515,22 +1477,6 @@
       "enabled": false,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1539,27 +1485,11 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "30m",
+      "lastRun": "39m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1575,22 +1505,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1604,22 +1518,6 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1635,22 +1533,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1664,22 +1546,6 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1695,22 +1561,6 @@
       "enabled": false,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1724,22 +1574,6 @@
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1755,22 +1589,6 @@
       "enabled": false,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1779,27 +1597,11 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "scheduled",
-      "lastRun": "19h",
+      "lastRun": "20h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1809,27 +1611,11 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "59m",
+      "lastRun": "8m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1839,27 +1625,11 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1875,22 +1645,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1899,27 +1653,11 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "15m",
+      "lastRun": "9m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1929,27 +1667,11 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "32m",
+      "lastRun": "41m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -1965,22 +1687,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -1994,22 +1700,6 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -2025,22 +1715,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -2055,22 +1729,6 @@
       "enabled": true,
       "errorHistory": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
@@ -2084,22 +1742,6 @@
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0
       ]

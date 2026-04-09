@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T16:43:25.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "sha": "4142bba",
+    "shaFull": "4142bba84e0da8a0b8f275855328a02c441ba83e",
+    "message": "chore: add sanji/vicious/zoro agent colors + extend activity cutoff to 72h",
+    "branch": "master",
+    "changedFiles": "scripts/sync-live-json.js",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T16:33:51.000Z",
     "status": "deployed",
     "trigger": "manual",
