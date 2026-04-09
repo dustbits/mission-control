@@ -476,6 +476,7 @@ function buildJson(entries) {
         efficiency: entry.efficiency,
         avgTimeSec: entry.avgTimeSec,
         blockers: entry.blockers,
+        lastActive: agentState.stateSince || null,
         ...agentState,
       };
     }),
