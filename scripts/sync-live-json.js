@@ -338,113 +338,70 @@ function buildBoardData(entries) {
 // --- Detect live agent state from recent log entries ---
 function detectAgentState(allEntries, agentKey) {
   const now = Date.now();
-  const CUTOFF_MS = 2 * 60 * 1000; // 2 minutes
+  // 15 min window — agents are "working" if they had recent done/error activity
+  const CUTOFF_MS = 15 * 60 * 1000;
   const recent = allEntries.filter(e => {
     if (e.agent !== agentKey) return false;
     if (!e.iso) return false;
-    return (now - new Date(e.iso).getTime()) < CUTOFF_MS;
+    return (now - e.ts) < CUTOFF_MS;
   });
+
+  if (recent.length === 0) return { state: 'idle', stateSince: null };
 
   // Check for blocked/error first (highest priority)
-  const hasBlock = recent.some(e => {
-    const tag = (e.tag || '').toLowerCase();
-    return tag.includes('blocked') || tag.includes('error');
-  });
-  if (hasBlock) return { state: 'blocked', stateSince: null };
+  const hasBlock = recent.some(e => e.tag.toLowerCase().includes('error') || e.tag.toLowerCase().includes('blocked'));
+  if (hasBlock) return { state: 'blocked', stateSince: recent[0].iso };
 
-  // Check for in-progress work
-  const hasWorking = recent.some(e => {
-    const tag = (e.tag || '').toLowerCase();
-    return tag.startsWith('acknowledged') || tag.startsWith('taken') || tag.startsWith('partial');
+  // Working if any recent done/partial/acknowledged entries
+  const hasWork = recent.some(e => {
+    const t = e.tag.toLowerCase();
+    return t.startsWith('done') || t.startsWith('partial') || t.startsWith('acknowledged') || t.startsWith('taken');
   });
-  if (hasWorking) return { state: 'working', stateSince: null };
+  if (hasWork) return { state: 'working', stateSince: recent[0].iso };
 
-  return { state: 'idle', stateSince: null };
+  return { state: 'idle', stateSince: recent[0].iso };
 }
 
 // --- Build per-agent efficiency leaderboard ---
 function buildLeaderboard(logContent) {
-  const lines = logContent.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  const allParsed = parseLog(logContent);
 
-  // Parse all entries for task chains
-  const allParsed = [];
-  for (const line of lines) {
-    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
-    if (!m) continue;
-    const [, date, time, agent, tag, message] = m;
-    const secs = time.split(':').length === 2 ? ':00' : '';
-    const iso = date + 'T' + time + secs + 'Z';
-    const ts = new Date(iso).getTime();
-    if (isNaN(ts) || ts < cutoff) continue;
-    const tagLower = tag.toLowerCase();
-    allParsed.push({ iso, ts, agent: agent.toLowerCase(), tag, tagLower, message });
-  }
-
-  // Group by task text (first 80 chars as key)
-  const taskMap = new Map();
-  for (const e of allParsed) {
-    const key = e.message.slice(0, 80).replace(/\]\s*\[[^\]]+\]\s*/g, ']').replace(/\s+/g, ' ').trim();
-    if (!taskMap.has(key)) taskMap.set(key, []);
-    taskMap.get(key).push(e);
-  }
-
-  // Per-agent stats — use actual agents from log + configured agents so no one is missed
-  const stats = {};
   const AGENT_LIST = ['spike', 'jet', 'faye', 'ein', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy', 'sanji', 'vicious', 'zoro', 'dispatch'];
+  const stats = {};
   for (const a of AGENT_LIST) {
-    stats[a] = { completed: 0, totalTimeMs: 0, blockers: 0, tasks: [] };
+    stats[a] = { completed: 0, lastDone: 0 };
   }
 
-  for (const [key, evts] of taskMap) {
-    evts.sort((a, b) => a.ts - b.ts);
-
-    let started = null;
-    let completed = null;
-    let owner = null;
-    let wasBlocked = false;
-
-    for (const e of evts) {
-      const tagLower = e.tagLower;
-
-      if (tagLower.startsWith('acknowledged') || tagLower.startsWith('taken')) {
-        if (!started) {
-          started = e;
-          owner = e.agent;
-        }
-      } else if (tagLower.startsWith('done') || tagLower.startsWith('partial')) {
-        if (started && !completed) {
-          completed = e;
-          if (owner && stats[owner]) {
-            const dur = completed.ts - started.ts;
-            stats[owner].completed++;
-            stats[owner].totalTimeMs += dur;
-            stats[owner].tasks.push({ dur, key });
-          }
-        }
-      } else if (tagLower.startsWith('blocked') || tagLower.includes('blocked')) {
-        wasBlocked = true;
-        if (owner && stats[owner]) stats[owner].blockers++;
+  // Count [done] entries per agent (most log entries are standalone done markers, not ack→done chains)
+  for (const e of allParsed) {
+    const t = e.tag.toLowerCase();
+    if (t.startsWith('done') || t.startsWith('partial') || t.startsWith('acknowledged')) {
+      if (stats[e.agent]) {
+        stats[e.agent].completed++;
+        if (e.ts > stats[e.agent].lastDone) stats[e.agent].lastDone = e.ts;
       }
     }
   }
 
   const leaderboard = [];
   for (const [agentKey, s] of Object.entries(stats)) {
-    const avgTime = s.completed > 0 ? Math.round(s.totalTimeMs / s.completed / 1000) : 0;
-    const efficiency = s.completed > 0 ? Math.round((s.completed / Math.max(1, s.completed + s.blockers)) * 100) : 0;
+    const hasActivity = s.completed > 0 || s.lastDone > 0;
     leaderboard.push({
       agent: AGENT_DISPLAY[agentKey] ?? agentKey,
       agentKey,
       color: AGENT_COLORS[agentKey] ?? '#94a3b8',
       completed: s.completed,
-      avgTimeSec: avgTime,
-      blockers: s.blockers,
-      efficiency,
+      avgTimeSec: 0,
+      blockers: 0,
+      efficiency: hasActivity ? 50 : 0, // placeholder — full chain tracking needs ack→done pairs
     });
   }
 
-  leaderboard.sort((a, b) => b.efficiency - a.efficiency || b.completed - a.completed);
+  // Sort: active agents first, then alphabetical
+  leaderboard.sort((a, b) => {
+    if (b.completed !== a.completed) return b.completed - a.completed;
+    return a.agent.localeCompare(b.agent);
+  });
   return leaderboard;
 }
 
