@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-09T16:26:20.325Z",
+  "updatedAt": "2026-04-09T16:31:20.448Z",
   "deploy": {
     "state": "idle",
     "lastDeploy": null,
@@ -60,21 +60,21 @@
     {
       "id": 2,
       "agent": "sanji",
-      "line": "[done] MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx. Root cause: ",
+      "line": "[done] MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), pushed + deployed to nginx. Nginx",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 3,
       "agent": "sanji",
-      "line": "[done] PONG test",
+      "line": "[done] pong debug test",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "sanji",
-      "line": "[done] PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
+      "line": "[done] PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
@@ -88,105 +88,105 @@
     {
       "id": 6,
       "agent": "sanji",
-      "line": "[done] MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Nginx verified: s",
+      "line": "[done] MC deploy state fully resolved: committed 78252ce (deployHistory cleanup + sync script fix), pushed + deployed to nginx. Root cause: ",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 7,
       "agent": "sanji",
-      "line": "[error]  (exit=124)",
+      "line": "[done] PONG test",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
       "id": 8,
+      "agent": "sanji",
+      "line": "[done] PONG test — agent operational, jarvis host, uptime 8h22m, load 0.16",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 9,
+      "agent": "sanji",
+      "line": "[done]",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 10,
+      "agent": "sanji",
+      "line": "[done] MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ran successfully. Nginx verified: s",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 11,
+      "agent": "sanji",
+      "line": "[error]  (exit=124)",
+      "time": "NaNh ago",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 12,
       "agent": "zoro",
       "line": "[done] [deploy] MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to nginx",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 9,
+      "id": 13,
       "agent": "zoro",
       "line": "[done] [deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 10,
+      "id": 14,
       "agent": "zoro",
       "line": "[done] [deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to nginx — nginx",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 11,
+      "id": 15,
       "agent": "zoro",
       "line": "[done] [deploy] MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to nginx",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 12,
+      "id": 16,
       "agent": "sanji",
       "line": "[done] sanji PONG test",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 13,
+      "id": 17,
       "agent": "sanji",
       "line": "[done] PONG test — agent operational, jarvis host, uptime 8h11m, load 1.00",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 14,
+      "id": 18,
       "agent": "sanji",
       "line": "[done]",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 15,
+      "id": 19,
       "agent": "sanji",
       "line": "[done] MC deploy state fix: sync-live-json.js getDeployInfo() now reads deployHistory.json (authoritative) instead of index.html mtime. mc-d",
       "time": "NaNh ago",
       "color": "#38bdf8"
     },
     {
-      "id": 16,
-      "agent": "sanji",
-      "line": "[done] MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy state=deploye",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 17,
-      "agent": "sanji",
-      "line": "[done]",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 18,
-      "agent": "sanji",
-      "line": "[done] MC live JSON full restore: committed e5ea9e3 (deploy state + sync script fix), workspace restored from HEAD with deploy section fixed",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 19,
-      "agent": "zoro",
-      "line": "[done] stale board deploy tasks cleared — 4 queued items from needs-andy deploy cycle were completed but task keys didn't match (done entry ",
-      "time": "NaNh ago",
-      "color": "#38bdf8"
-    },
-    {
       "id": 20,
       "agent": "sanji",
-      "line": "[done]",
+      "line": "[done] MC staging fully synced: e5ea9e3 deployed to staging, nginx live @ jarvis:8090, board.html + live JSON verified. Deploy state=deploye",
       "time": "NaNh ago",
       "color": "#38bdf8"
     }
@@ -289,26 +289,6 @@
     "inprogress": [],
     "done": [
       {
-        "agent": "zoro",
-        "text": "MC has 2 unpushed commits (6f1600f, 8a2ecd6) — needs mc-deploy.sh from host to push + deploy to ngin",
-        "ts": "2026-04-09T16:17:00Z"
-      },
-      {
-        "agent": "zoro",
-        "text": "MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to cop",
-        "ts": "2026-04-09T16:17:01Z"
-      },
-      {
-        "agent": "zoro",
-        "text": "MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-        "ts": "2026-04-09T16:17:02Z"
-      },
-      {
-        "agent": "zoro",
-        "text": "MC has 1 unpushed commit (deployHistory update) — needs mc-deploy.sh from host to push + copy to ngi",
-        "ts": "2026-04-09T16:17:03Z"
-      },
-      {
         "agent": "sanji",
         "text": "MC deploy state fully synced: committed 96f469e (live JSON state), pushed to origin, mc-deploy.sh ra",
         "ts": "2026-04-09T16:22:00Z"
@@ -337,6 +317,26 @@
         "agent": "sanji",
         "text": "",
         "ts": "2026-04-09T16:25:46Z"
+      },
+      {
+        "agent": "sanji",
+        "text": "PONG test — agent operational, jarvis host, uptime 8h26m, load 1.59",
+        "ts": "2026-04-09T16:27:03Z"
+      },
+      {
+        "agent": "sanji",
+        "text": "pong debug test",
+        "ts": "2026-04-09T16:27:08Z"
+      },
+      {
+        "agent": "sanji",
+        "text": "MC deploy state fully synced: committed 29544e9 (deployHistory + live JSON v3 post 78252ce deploy), ",
+        "ts": "2026-04-09T16:27:12Z"
+      },
+      {
+        "agent": "sanji",
+        "text": "",
+        "ts": "2026-04-09T16:27:41Z"
       }
     ]
   }
