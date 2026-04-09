@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T02:57:19.420Z",
+  "updatedAt": "2026-04-09T03:21:19.385Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 9,
-    "memory": 35,
+    "cpu": 4,
+    "memory": 30,
     "disk": 1
   },
   "agents": [
@@ -247,49 +247,49 @@
       "id": 1,
       "agent": "System",
       "line": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
-      "time": "11m",
+      "time": "35m",
       "color": "#38bdf8"
     },
     {
       "id": 2,
       "agent": "System",
       "line": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recovery: still de | [202",
-      "time": "11m",
+      "time": "35m",
       "color": "#38bdf8"
     },
     {
       "id": 3,
       "agent": "Spike",
       "line": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from host to copy files to ",
-      "time": "29m",
+      "time": "53m",
       "color": "#4a9eff"
     },
     {
       "id": 4,
       "agent": "sanji",
       "line": "session complete",
-      "time": "32m",
+      "time": "56m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
       "agent": "sanji",
       "line": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623722791080009, ID 149",
-      "time": "32m",
+      "time": "56m",
       "color": "#38bdf8"
     },
     {
       "id": 6,
       "agent": "System",
       "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "34m",
+      "time": "58m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
       "agent": "System",
       "line": "Unknown tag [needs-sanji] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "34m",
+      "time": "58m",
       "color": "#38bdf8"
     },
     {
@@ -324,21 +324,21 @@
       "id": 12,
       "agent": "sanji",
       "line": "MC deployed d8fe768 to nginx. Verifications all OK.",
-      "time": "2h",
+      "time": "3h",
       "color": "#38bdf8"
     },
     {
       "id": 13,
       "agent": "sanji",
       "line": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
-      "time": "2h",
+      "time": "3h",
       "color": "#38bdf8"
     },
     {
       "id": 14,
       "agent": "sanji",
       "line": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
-      "time": "2h",
+      "time": "3h",
       "color": "#38bdf8"
     },
     {
@@ -355,13 +355,13 @@
         "id": 1775701680000,
         "text": "[deploy] MC has unpushed commits (board.html, mission-control-live.json), needs mc-deploy.sh from ho",
         "agent": "Spike",
-        "ts": "29m"
+        "ts": "53m"
       },
       {
         "id": 1775693671000,
         "text": "[deploy] MC staging has unpushed commit d8fe768 — run mc-deploy.sh to push + copy to nginx",
         "agent": "sanji",
-        "ts": "2h"
+        "ts": "3h"
       },
       {
         "id": 1775687280000,
@@ -376,25 +376,25 @@
         "id": 1775702778000,
         "text": "memory-prune: sqlite: 2 flushed, cold: 1 purged",
         "agent": "System",
-        "ts": "11m"
+        "ts": "35m"
       },
       {
         "id": 1775702762000,
         "text": "dreaming: 2 scored, 3 discovered, 0 cleaned. Top: # Session: 2026-04-07 ## Key F | - Cryptobot recov",
         "agent": "System",
-        "ts": "11m"
+        "ts": "35m"
       },
       {
         "id": 1775701510000,
         "text": "session complete",
         "agent": "sanji",
-        "ts": "32m"
+        "ts": "56m"
       },
       {
         "id": 1775701500000,
         "text": "pipeline-test — zoro-sanji bridge verified alive. Test message sent to direct bridge channel 1491623",
         "agent": "sanji",
-        "ts": "32m"
+        "ts": "56m"
       },
       {
         "id": 1775699400000,
@@ -412,13 +412,13 @@
         "id": 1775693741000,
         "text": "MC deployed d8fe768 to nginx. Verifications all OK.",
         "agent": "sanji",
-        "ts": "2h"
+        "ts": "3h"
       },
       {
         "id": 1775693717000,
         "text": "MC deployed d8fe768 to nginx (git push + mc-deploy.sh). Verifications all OK.",
         "agent": "sanji",
-        "ts": "2h"
+        "ts": "3h"
       }
     ]
   },
@@ -428,7 +428,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "14h",
+      "lastRun": "15h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -460,15 +460,15 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "error",
       "errors": 2,
       "enabled": true,
       "errorHistory": [
-        1,
-        1,
-        1,
-        1,
+        2,
+        2,
+        2,
+        2,
         2,
         2,
         2,
@@ -492,7 +492,7 @@
       "label": "Evolve Exe",
       "schedule": "0 6 * * 1,3",
       "next": "now",
-      "lastRun": "16h",
+      "lastRun": "17h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -524,7 +524,7 @@
       "label": "Upgrade Scanner",
       "schedule": "0 7 * * 3",
       "next": "now",
-      "lastRun": "15h",
+      "lastRun": "16h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -588,15 +588,15 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "13h",
+      "lastRun": "14h",
       "state": "error",
       "errors": 1,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -684,7 +684,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -972,7 +972,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "28m",
+      "lastRun": "52m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1068,7 +1068,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "5m",
+      "lastRun": "14m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1100,15 +1100,15 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
       "errorHistory": [
-        1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -1164,7 +1164,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "9h",
+      "lastRun": "10h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
