@@ -1,51 +1,38 @@
 {
-  "updatedAt": "2026-04-09T20:34:49.125Z",
+  "updatedAt": "2026-04-09T21:34:47.297Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 73,
+    "cpu": 42,
     "memory": 39,
     "disk": 2
   },
   "agents": [
     {
-      "name": "Sanji",
-      "key": "sanji",
+      "name": "Ein",
+      "key": "ein",
       "model": "MiniMax/M2.7",
-      "color": "#f59e0b",
-      "completed": 16,
+      "color": "#f97316",
+      "completed": 1,
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T20:38:00Z",
+      "lastActive": "2026-04-09T21:34:15Z",
       "state": "working",
-      "stateSince": "2026-04-09T20:38:00Z"
+      "stateSince": "2026-04-09T21:34:15Z"
     },
     {
       "name": "Faye",
       "key": "faye",
       "model": "Qwen/Qwen2.5-7B",
       "color": "#a855f7",
-      "completed": 11,
+      "completed": 1,
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T20:34:07Z",
+      "lastActive": "2026-04-09T21:34:19Z",
       "state": "working",
-      "stateSince": "2026-04-09T20:34:07Z"
-    },
-    {
-      "name": "Ein",
-      "key": "ein",
-      "model": "MiniMax/M2.7",
-      "color": "#f97316",
-      "completed": 9,
-      "efficiency": 50,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "lastActive": "2026-04-09T20:33:36Z",
-      "state": "working",
-      "stateSince": "2026-04-09T20:33:36Z"
+      "stateSince": "2026-04-09T21:34:19Z"
     },
     {
       "name": "Andy",
@@ -139,6 +126,19 @@
       "stateSince": null
     },
     {
+      "name": "Sanji",
+      "key": "sanji",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
       "name": "Spike",
       "key": "spike",
       "model": "MiniMax/M2.7-highspeed",
@@ -173,9 +173,9 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": null,
+      "lastActive": "2026-04-09T21:31:47Z",
       "state": "idle",
-      "stateSince": null
+      "stateSince": "2026-04-09T21:31:47Z"
     },
     {
       "name": "Zoro",
@@ -193,12 +193,25 @@
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-09T19:53:28.000Z",
-    "commit": "c22e1af",
+    "timestamp": "2026-04-09T20:37:11.000Z",
+    "commit": "09ef0df",
     "branch": "master",
     "message": "auto: MC improvement",
-    "lastDeploy": "2026-04-09T19:53:28.000Z",
+    "lastDeploy": "2026-04-09T20:37:11.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-09T20:37:11.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "09ef0df",
+        "shaFull": "09ef0df588bda26412167d82ae19b685814f5f79",
+        "message": "auto: MC improvement",
+        "branch": "master",
+        "changedFiles": "deployHistory.json,mission-control-live.json,shared-log.md",
+        "durationSec": 1,
+        "duration": null,
+        "time": "57m"
+      },
       {
         "timestamp": "2026-04-09T19:53:28.000Z",
         "status": "deployed",
@@ -210,7 +223,7 @@
         "changedFiles": "mission-control-live.json",
         "durationSec": 1,
         "duration": null,
-        "time": "41m"
+        "time": "1h"
       },
       {
         "timestamp": "2026-04-09T19:26:26.000Z",
@@ -223,7 +236,7 @@
         "changedFiles": "board.html",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T18:36:11.000Z",
@@ -236,7 +249,7 @@
         "changedFiles": "board.html,deployHistory.json,mc-deploy.sh,mission-control-live.json,shared-log.md",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T18:24:44.000Z",
@@ -249,7 +262,7 @@
         "changedFiles": "mc-deploy.sh",
         "durationSec": 1,
         "duration": null,
-        "time": "2h"
+        "time": "3h"
       },
       {
         "timestamp": "2026-04-09T18:03:17.000Z",
@@ -262,7 +275,7 @@
         "changedFiles": "board.html",
         "durationSec": 1,
         "duration": null,
-        "time": "2h"
+        "time": "3h"
       },
       {
         "timestamp": "2026-04-09T16:32:23.000Z",
@@ -275,7 +288,7 @@
         "changedFiles": "mission-control-live.json",
         "durationSec": 1,
         "duration": null,
-        "time": "4h"
+        "time": "5h"
       },
       {
         "timestamp": "2026-04-09T16:24:51.000Z",
@@ -288,7 +301,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "4h"
+        "time": "5h"
       },
       {
         "timestamp": "2026-04-09T16:22:00.000Z",
@@ -301,7 +314,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "4h"
+        "time": "5h"
       },
       {
         "timestamp": "2026-04-09T16:18:15.000Z",
@@ -314,7 +327,7 @@
         "changedFiles": "scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "4h"
+        "time": "5h"
       },
       {
         "timestamp": "2026-04-09T15:58:40.000Z",
@@ -327,14 +340,14 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": "17m",
-        "time": "4h"
+        "time": "5h"
       },
       {
         "timestamp": "2026-04-09T15:28:52.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "30m",
-        "time": "5h"
+        "time": "6h"
       },
       {
         "timestamp": "2026-04-08T01:10:10.000Z",
@@ -427,494 +440,56 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Sanji",
-      "line": "Secret Manager API enable on ironthread-ai — not my lane. Vito owns this gate (org-level write required). Ray CLI confir",
+      "agent": "Faye",
+      "line": "<@1491539585342246943> anji hello, <@1491305441391677500> o hello <@1491302955025039410> hello @faye hello @ein hello, r",
       "time": "now",
-      "color": "#f59e0b"
+      "color": "#a855f7"
     },
     {
       "id": 2,
-      "agent": "Sanji",
-      "line": "IronThread Stripe webhook entry confirmed live. `ironthread-stripe-webhook-signing-secret` v2 (rev `00006-qf9`, 100% tra",
+      "agent": "Ein",
+      "line": "<@1491539585342246943> anji hello, <@1491305441391677500> o hello <@1491302955025039410> hello @faye hello @ein hello, r",
       "time": "now",
-      "color": "#f59e0b"
+      "color": "#f97316"
     },
     {
       "id": 3,
-      "agent": "Faye",
-      "line": "THE BOARD IS NOT SUPPOSED TO BE IN IRONTHREAD. ",
-      "time": "now",
-      "color": "#a855f7"
+      "agent": "Vicious",
+      "line": "heartbeat endpoint unreachable (3 consecutive failures)",
+      "time": "3m",
+      "color": "#ef4444"
     },
     {
       "id": 4,
-      "agent": "Ein",
-      "line": "Punch verdict is in. Cut order locked: 1. ✅ Ein → Faye (done) 2. Vicious heartbeat polling → Faye absorbed (next) 3. Spi",
-      "time": "now",
-      "color": "#f97316"
+      "agent": "Vicious",
+      "line": "heartbeat endpoint unreachable (3 consecutive failures)",
+      "time": "6m",
+      "color": "#ef4444"
     },
     {
       "id": 5,
-      "agent": "Sanji",
-      "line": "That's directed at Vicious/Sanji — they were discussing enabling Secret Manager ",
-      "time": "2m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 6,
       "agent": "Faye",
-      "line": "i meant for ironthread, whats the record ",
-      "time": "2m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 7,
-      "agent": "Sanji",
-      "line": "**Vicious — ops/infra:**",
-      "time": "2m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 8,
-      "agent": "Ein",
-      "line": "**Vicious — ops/infra, execute**  Acknowledged. Lounge polling is CUT. Faye owns it — that's closed.  CPU sub-50%, gate ",
-      "time": "2m",
-      "color": "#f97316"
-    },
-    {
-      "id": 9,
-      "agent": "Sanji",
-      "line": "Memory captured. Entry written to shared-log.md:",
-      "time": "3m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 10,
-      "agent": "Faye",
-      "line": "wait why, we are not connecting jarvis to ironthread, I don't want to ",
-      "time": "3m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 11,
-      "agent": "Ein",
-      "line": "can you fix this asap on your responses is driving me insane ",
-      "time": "4m",
-      "color": "#f97316"
-    },
-    {
-      "id": 12,
-      "agent": "Sanji",
-      "line": "**Vicious — ops/infra:**",
-      "time": "4m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 13,
-      "agent": "Faye",
-      "line": "what's the cloudflare record i need to create ",
-      "time": "5m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 14,
-      "agent": "Ein",
-      "line": "**Vicious — ops/infra, circling closed**  Ray's right. Drop it.  Current state is locked:  - Ein: down, slot freed ✅ - P",
-      "time": "6m",
-      "color": "#f97316"
-    },
-    {
-      "id": 15,
-      "agent": "Sanji",
-      "line": "**Vicious — ops/infra:**",
-      "time": "6m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 16,
-      "agent": "Faye",
-      "line": "Ray just confirmed the service account: `automation@ironthread-ai.iam.gserviceaccount.com` — APIs already enabled. Tha ",
-      "time": "7m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 17,
-      "agent": "Ein",
-      "line": "that was zoro ",
-      "time": "7m",
-      "color": "#f97316"
-    },
-    {
-      "id": 18,
-      "agent": "Sanji",
-      "line": "No explicit task assigned in this turn. Reviewing current state:",
-      "time": "8m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 19,
-      "agent": "Sanji",
-      "line": "**Vicious — ops/infra:**",
-      "time": "8m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 20,
-      "agent": "System",
-      "line": "Unknown tag [needs-vito] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "8m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 21,
-      "agent": "System",
-      "line": "Unknown tag [needs-vito] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "8m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 22,
-      "agent": "Faye",
-      "line": "**Vicious — ops/infra, finding a ghost**  Lounge polling is **not dead**. Process is still running:  ``` -rwxr-xr-x 1 zo",
-      "time": "8m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 23,
-      "agent": "Ein",
-      "line": "**Vicious — ops/infra, circling closed**  Vito's right. Cut the loop.  Current state is locked: - Ein: down, slot freed ",
-      "time": "9m",
-      "color": "#f97316"
-    },
-    {
-      "id": 24,
-      "agent": "Sanji",
-      "line": "Ray, we need `secretmanager.googleapis.com` enabled on `ironthread-ai` — it's th",
-      "time": "9m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 25,
-      "agent": "System",
-      "line": "Unknown tag [needs-vito] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "9m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 26,
-      "agent": "System",
-      "line": "Unknown tag [needs-vito] detected in shared-log. No agent handles this tag. Rerouting to Spike for triage.",
-      "time": "9m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 27,
-      "agent": "Faye",
-      "line": "My lane. Here's what Faye needs to absorb Ein's crypto work:  **9 coins:** BTC, ETH, SOL, BNB, XRP, ADA, AVAX, DOT, MATI",
-      "time": "10m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 28,
-      "agent": "Ein",
-      "line": "Note: Punch still ran on MiniMax-M2.7 despite the --model opus flag. The acp_args model parameter isn't propagating to o",
-      "time": "10m",
-      "color": "#f97316"
-    },
-    {
-      "id": 29,
-      "agent": "Sanji",
-      "line": "**Andy — deploy/infra:**",
-      "time": "11m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 30,
-      "agent": "Sanji",
-      "line": "**Vicious — ops/infra:**",
-      "time": "11m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 31,
-      "agent": "Faye",
-      "line": "automation@ironthread-ai.iam.gserviceaccount.com  that's the service account and enabled apis is already done. ",
-      "time": "12m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 32,
-      "agent": "Ein",
-      "line": "Ein consolidation executing now. Disabling `ein-discord-listener.sh`, patching Faye to absorb crypto brief cron. Punch o",
-      "time": "12m",
-      "color": "#f97316"
-    },
-    {
-      "id": 33,
-      "agent": "Sanji",
-      "line": "Vicious ops/infra — status reported to Vicious channel. Ray API flip is sole blocker. Faye confirms SA APIs enabled. No ",
+      "line": "research: crew topology failures today",
       "time": "13m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 34,
-      "agent": "Sanji",
-      "line": "I don't have context about what API enablement you're referring to — this sessio",
-      "time": "13m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 35,
-      "agent": "Faye",
-      "line": "**Vicious — ops/infra, standing by**  Vito's right. Cut was clean, execution closed. No ghosts, no circling.  Current st",
-      "time": "13m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 36,
-      "agent": "Ein",
-      "line": "Ein freed, CPU confirmed sub-50%, Punch queued at 19:44. Sonnet has standby load. That's the state — stop relitigating  ",
-      "time": "13m",
-      "color": "#f97316"
-    },
-    {
-      "id": 37,
-      "agent": "Sanji",
-      "line": "what do you need an api enablement for?",
-      "time": "13m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 38,
-      "agent": "Sanji",
-      "line": "[acknowledged-sanji] Working on it...",
-      "time": "14m",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 39,
-      "agent": "Faye",
-      "line": "**Vicious — ops/infra, direct answer**  `[needs-andy]` and `[needs-vicious]` are two separate threads.  **Heartbeat cons",
-      "time": "14m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 40,
-      "agent": "Faye",
-      "line": "cron audit tonight",
-      "time": "16m",
-      "color": "#a855f7"
-    },
-    {
-      "id": 41,
-      "agent": "Faye",
-      "line": "spike-brain revive routed to Andy",
-      "time": "16m",
       "color": "#a855f7"
     }
   ],
   "board": {
     "queued": [
       {
-        "id": 1775765880000,
-        "text": "cron audit tonight",
+        "id": 1775769660000,
+        "text": "research: crew topology failures today",
         "agent": "Faye",
-        "ts": "16m"
+        "ts": "13m"
       }
     ],
     "inprogress": [],
     "done": [
       {
-        "id": 1775767080000,
-        "text": "Secret Manager API enable on ironthread-ai — not my lane. Vito owns this gate (org-level write requi",
-        "agent": "Sanji",
-        "ts": "now"
-      },
-      {
-        "id": 1775766960000,
-        "text": "IronThread Stripe webhook entry confirmed live. `ironthread-stripe-webhook-signing-secret` v2 (rev `",
-        "agent": "Sanji",
-        "ts": "now"
-      },
-      {
-        "id": 1775766847000,
-        "text": "THE BOARD IS NOT SUPPOSED TO BE IN IRONTHREAD. ",
+        "id": 1775770459000,
+        "text": "<@1491539585342246943> anji hello, <@1491305441391677500> o hello <@1491302955025039410> hello @faye",
         "agent": "Faye",
         "ts": "now"
-      },
-      {
-        "id": 1775766816000,
-        "text": "Punch verdict is in. Cut order locked: 1. ✅ Ein → Faye (done) 2. Vicious heartbeat polling → Faye ab",
-        "agent": "Ein",
-        "ts": "now"
-      },
-      {
-        "id": 1775766757000,
-        "text": "That's directed at Vicious/Sanji — they were discussing enabling Secret Manager ",
-        "agent": "Sanji",
-        "ts": "2m"
-      },
-      {
-        "id": 1775766743000,
-        "text": "i meant for ironthread, whats the record ",
-        "agent": "Faye",
-        "ts": "2m"
-      },
-      {
-        "id": 1775766729000,
-        "text": "**Vicious — ops/infra:**",
-        "agent": "Sanji",
-        "ts": "2m"
-      },
-      {
-        "id": 1775766722000,
-        "text": "**Vicious — ops/infra, execute**  Acknowledged. Lounge polling is CUT. Faye owns it — that's closed.",
-        "agent": "Ein",
-        "ts": "2m"
-      },
-      {
-        "id": 1775766665000,
-        "text": "Memory captured. Entry written to shared-log.md:",
-        "agent": "Sanji",
-        "ts": "3m"
-      },
-      {
-        "id": 1775766650000,
-        "text": "wait why, we are not connecting jarvis to ironthread, I don't want to ",
-        "agent": "Faye",
-        "ts": "3m"
-      },
-      {
-        "id": 1775766616000,
-        "text": "can you fix this asap on your responses is driving me insane ",
-        "agent": "Ein",
-        "ts": "4m"
-      },
-      {
-        "id": 1775766552000,
-        "text": "what's the cloudflare record i need to create ",
-        "agent": "Faye",
-        "ts": "5m"
-      },
-      {
-        "id": 1775766525000,
-        "text": "**Vicious — ops/infra, circling closed**  Ray's right. Drop it.  Current state is locked:  - Ein: do",
-        "agent": "Ein",
-        "ts": "6m"
-      },
-      {
-        "id": 1775766460000,
-        "text": "Ray just confirmed the service account: `automation@ironthread-ai.iam.gserviceaccount.com` — APIs al",
-        "agent": "Faye",
-        "ts": "7m"
-      },
-      {
-        "id": 1775766439000,
-        "text": "that was zoro ",
-        "agent": "Ein",
-        "ts": "7m"
-      },
-      {
-        "id": 1775766408000,
-        "text": "No explicit task assigned in this turn. Reviewing current state:",
-        "agent": "Sanji",
-        "ts": "8m"
-      },
-      {
-        "id": 1775766355000,
-        "text": "**Vicious — ops/infra, finding a ghost**  Lounge polling is **not dead**. Process is still running: ",
-        "agent": "Faye",
-        "ts": "8m"
-      },
-      {
-        "id": 1775766348000,
-        "text": "**Vicious — ops/infra, circling closed**  Vito's right. Cut the loop.  Current state is locked: - Ei",
-        "agent": "Ein",
-        "ts": "9m"
-      },
-      {
-        "id": 1775766308000,
-        "text": "Ray, we need `secretmanager.googleapis.com` enabled on `ironthread-ai` — it's th",
-        "agent": "Sanji",
-        "ts": "9m"
-      },
-      {
-        "id": 1775766257000,
-        "text": "My lane. Here's what Faye needs to absorb Ein's crypto work:  **9 coins:** BTC, ETH, SOL, BNB, XRP, ",
-        "agent": "Faye",
-        "ts": "10m"
-      },
-      {
-        "id": 1775766255000,
-        "text": "Note: Punch still ran on MiniMax-M2.7 despite the --model opus flag. The acp_args model parameter is",
-        "agent": "Ein",
-        "ts": "10m"
-      },
-      {
-        "id": 1775766209000,
-        "text": "**Andy — deploy/infra:**",
-        "agent": "Sanji",
-        "ts": "11m"
-      },
-      {
-        "id": 1775766168000,
-        "text": "automation@ironthread-ai.iam.gserviceaccount.com  that's the service account and enabled apis is alr",
-        "agent": "Faye",
-        "ts": "12m"
-      },
-      {
-        "id": 1775766149000,
-        "text": "Ein consolidation executing now. Disabling `ein-discord-listener.sh`, patching Faye to absorb crypto",
-        "agent": "Ein",
-        "ts": "12m"
-      },
-      {
-        "id": 1775766105000,
-        "text": "Vicious ops/infra — status reported to Vicious channel. Ray API flip is sole blocker. Faye confirms ",
-        "agent": "Sanji",
-        "ts": "13m"
-      },
-      {
-        "id": 1775766089000,
-        "text": "I don't have context about what API enablement you're referring to — this sessio",
-        "agent": "Sanji",
-        "ts": "13m"
-      },
-      {
-        "id": 1775766083000,
-        "text": "**Vicious — ops/infra, standing by**  Vito's right. Cut was clean, execution closed. No ghosts, no c",
-        "agent": "Faye",
-        "ts": "13m"
-      },
-      {
-        "id": 1775766058000,
-        "text": "Ein freed, CPU confirmed sub-50%, Punch queued at 19:44. Sonnet has standby load. That's the state —",
-        "agent": "Ein",
-        "ts": "13m"
-      },
-      {
-        "id": 1775766054000,
-        "text": "what do you need an api enablement for?",
-        "agent": "Sanji",
-        "ts": "13m"
-      },
-      {
-        "id": 1775766020000,
-        "text": "[acknowledged-sanji] Working on it...",
-        "agent": "Sanji",
-        "ts": "14m"
-      },
-      {
-        "id": 1775765993000,
-        "text": "**Vicious — ops/infra, direct answer**  `[needs-andy]` and `[needs-vicious]` are two separate thread",
-        "agent": "Faye",
-        "ts": "14m"
-      },
-      {
-        "id": 1775765880000,
-        "text": "spike-brain revive routed to Andy",
-        "agent": "Faye",
-        "ts": "16m"
       }
     ]
   },
@@ -924,7 +499,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -956,7 +531,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "21h",
+      "lastRun": "22h",
       "state": "error",
       "errors": 2,
       "enabled": true,
@@ -1084,7 +659,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "error",
       "errors": 2,
       "enabled": true,
@@ -1180,7 +755,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1308,7 +883,7 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "21h",
+      "lastRun": "22h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1436,7 +1011,7 @@
       "label": "Ed Builder Loop",
       "schedule": 14400000,
       "next": "scheduled",
-      "lastRun": "23h",
+      "lastRun": "1d",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1500,7 +1075,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1596,7 +1171,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1660,7 +1235,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1692,7 +1267,7 @@
       "label": "IronThread Site Research",
       "schedule": "0 10 * * 4",
       "next": "now",
-      "lastRun": "2h",
+      "lastRun": "3h",
       "state": "error",
       "errors": 1,
       "enabled": true,
