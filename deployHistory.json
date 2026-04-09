@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T15:08:25.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "sha": "5907e25",
+    "shaFull": "5907e2503971d080fe46d82dceab1b0b64027c27",
+    "message": "fix: MC live JSON latest state + deployHistory entry for 6f1600f",
+    "branch": "master",
+    "changedFiles": "deployHistory.json,mission-control-live.json",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T15:06:21.000Z",
     "status": "deployed",
     "trigger": "manual",
