@@ -18,7 +18,7 @@ const SHARED_LOG = `${WORKSPACE}/memory/shared-log.md`;
 const OUT_WORKSPACE = `${WORKSPACE}/mission-control/mission-control-live.json`;
 const OUT_STAGING  = '/mnt/spike-storage/mission-control-staging/mission-control-live.json';
 const CRON_JOBS_PATH = '/home/node/.openclaw/cron/jobs.json';
-const DEPLOY_HISTORY_PATH   = `${WORKSPACE}/mission-control/deployHistory.json`;
+const DEPLOY_HISTORY_PATH   = null; // deprecated — mc-deploy.sh is the authoritative source
 const CRON_ERROR_HISTORY_PATH = `${WORKSPACE}/mission-control/cron-error-history.json`;
 
 const AGENT_COLORS = {
@@ -279,52 +279,6 @@ function getDeployInfo() {
     if (gitMsg) info.message = gitMsg;
   } catch {}
   return info;
-}
-
-function updateDeployHistory(deployTimestamp, gitInfo = {}) {
-  let history = [];
-  if (existsSync(DEPLOY_HISTORY_PATH)) {
-    try {
-      history = JSON.parse(readFileSync(DEPLOY_HISTORY_PATH, 'utf8'));
-    } catch {}
-  }
-
-  // Only add if this deploy is new (not the latest entry)
-  if (deployTimestamp && history.length > 0 && history[0]?.timestamp === deployTimestamp) {
-    return history.slice(0, 10);
-  }
-
-  const entry = {
-    timestamp: deployTimestamp || new Date().toISOString(),
-    status: 'deployed',
-    trigger: 'manual',
-    branch: gitInfo.branch || null,
-    commit: gitInfo.commit || null,
-    message: gitInfo.message || null,
-  };
-
-  history.unshift(entry);
-
-  // Compute duration (time since previous deploy) for each entry
-  for (let i = 0; i < history.length; i++) {
-    if (i === 0) {
-      history[i].duration = null; // most recent — no "since previous"
-    } else {
-      const prev = new Date(history[i - 1].timestamp).getTime();
-      const curr = new Date(history[i].timestamp).getTime();
-      const diffMs = prev - curr;
-      const diffMins = Math.round(diffMs / 60000);
-      if (diffMins < 1) history[i].duration = '<1m';
-      else if (diffMins < 60) history[i].duration = diffMins + 'm';
-      else {
-        const h = Math.floor(diffMins / 60);
-        const m = diffMins % 60;
-        history[i].duration = m > 0 ? h + 'h ' + m + 'm' : h + 'h';
-      }
-    }
-  }
-
-  return history.slice(0, 10);
 }
 
 function buildBoardData(entries) {

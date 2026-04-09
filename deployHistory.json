@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T16:22:00.000Z",
+    "status": "deployed",
+    "trigger": "manual",
+    "sha": "96f469e",
+    "shaFull": "96f469e8aab43a03d2d5d600714e4b44e5bdda09",
+    "message": "fix: sync-live-json reads deployHistory not index.html mtime Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+    "branch": "master",
+    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T16:18:15.000Z",
     "status": "deployed",
     "trigger": "manual",
