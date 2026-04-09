@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T00:49:50.000Z",
+    "status": "deployed",
+    "trigger": "sanji",
+    "sha": "2fc54a2",
+    "shaFull": "2fc54a213814bd149e054997538a26796baaf289",
+    "message": "sanji: test deploy feed webhook",
+    "branch": "master",
+    "changedFiles": "deployHistory.json",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T00:15:31.000Z",
     "status": "deployed",
     "trigger": "manual",
