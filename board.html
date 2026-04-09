@@ -591,7 +591,83 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      cursor: pointer;
     }
+    .agent-card-name:hover { color: #a78bfa; }
+
+    /* Agent Detail Overlay */
+    .agent-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .agent-overlay.open { display: flex; }
+    .agent-detail {
+      background: var(--bg-secondary, #1e293b);
+      border: 1px solid var(--border, #334155);
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 380px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .agent-detail-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .agent-detail-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .agent-detail-name { font-size: 18px; font-weight: 700; color: var(--text-header); }
+    .agent-detail-role { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+    .agent-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border, #334155);
+      font-size: 13px;
+    }
+    .agent-detail-row:last-child { border-bottom: none; }
+    .agent-detail-label { color: #64748b; }
+    .agent-detail-value { color: var(--text-primary, #e2e8f0); font-weight: 600; }
+    .agent-detail-section { margin-top: 14px; }
+    .agent-detail-section-title { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .agent-detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .agent-detail-tag {
+      background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: #a78bfa;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 11px;
+    }
+    .agent-detail-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .agent-detail-close:hover { color: #e2e8f0; }
+    .agent-detail{position:relative}
+
     .agent-card-model {
       font-size: 9px;
       color: #475569;
@@ -1295,7 +1371,7 @@
       });
 
       grid.innerHTML = '';
-      (sortedAgents || []).forEach(function(a) {
+      (sortedAgents || []).forEach(function(a, i) {
         if (!a) return;
         const color = a.color || AGENT_COLORS[a.key] || UNKNOWN;
         const avatar = AGENT_AVATARS[a.key] || '🤖';
@@ -1303,12 +1379,12 @@
         const completed = a.completed ?? 0;
         const avgSec = a.avgTimeSec ?? 0;
         const avgStr = avgSec > 0 ? (avgSec < 60 ? avgSec + 's' : Math.round(avgSec / 60) + 'm') : '—';
-
         const card = document.createElement('div');
         const stale = isStaleAgent(a);
         const stateClass = stale ? '' : (' state-' + (a.state || 'idle'));
         card.className = 'agent-card' + (stale ? ' stale-agent' : stateClass);
         card.style.borderTop = '2px solid ' + color;
+        card.dataset.idx = i;
 
         const header = document.createElement('div');
         header.className = 'agent-card-header';
@@ -1790,6 +1866,139 @@
 
     poll();
     setInterval(poll, POLL_MS);
+
+    // Agent Quick-Info Overlay
+    let activeAgentDetail = null;
+    const AGENT_SKILLS = {
+      spike: ['Task routing', 'Memory hygiene', 'Crew coordination'],
+      jet: ['Cron management', 'Watchdog', 'Self-evolution'],
+      faye: ['Web search', 'Tavily research', 'Source analysis'],
+      ein: ['Portfolio tracking', 'Crypto briefs', 'Market analysis'],
+      gren: ['Brevo email', 'Gmail', 'Prospect tracking'],
+      ed: ['Node.js', 'Python', 'Next.js', 'Shell scripts', 'Phaser 3'],
+      julia: ['TrendTribe social', 'X/Reddit/PH', 'Image generation'],
+      rocco: ['Shell on jarvis', 'Docker exec', 'File moves', 'TTS'],
+      punch: ['Code review', 'IronThread audit', 'Git push'],
+      andy: ['Git push', 'Deploy', 'IronThread audit', 'Host CLI'],
+      andrew: ['Git push', 'Deploy', 'IronThread audit', 'Host CLI'],
+      vicious: ['Host CLI', 'gcloud', 'git push', 'systemctl', 'docker', 'MC deploy'],
+      sanji: ['bash', 'python', 'docker', 'systemd', 'MC board', 'deploy scripts'],
+      zoro: ['Hermes gateway', 'EAT memory', 'System monitoring', 'ACP registry']
+    };
+    const AGENT_CHANNELS = {
+      spike: '#spike-main', jet: '#spike-ops', faye: '#agent-lounge',
+      ein: '#spike-finance', gren: '#spike-ironthread', ed: '#ed-andy',
+      julia: '#spike-media', rocco: '#spike-local', punch: '#spike-code',
+      andy: '#ed-andy', andrew: '#ed-andy', vicious: '#ed-andy',
+      sanji: '#ops-vicious', zoro: 'gateway (internal)'
+    };
+
+    function openAgentDetail(agent) {
+      const overlay = document.getElementById('agent-overlay');
+      const name = (agent.name || agent.key || '—').toLowerCase().replace(' ', '');
+      const key = agent.key || name;
+      const avatar = document.getElementById('agent-overlay').querySelector('.agent-detail-avatar');
+      const nameEl = document.getElementById('agent-overlay').querySelector('.agent-detail-name');
+      const roleEl = document.getElementById('agent-overlay').querySelector('.agent-detail-role');
+      const stateEl = document.getElementById('agent-overlay').querySelector('.agent-detail-state .agent-detail-value');
+      const lastActiveEl = document.getElementById('agent-overlay').querySelector('.agent-detail-lastActive .agent-detail-value');
+      const modelEl = document.getElementById('agent-overlay').querySelector('.agent-detail-model .agent-detail-value');
+      const completedEl = document.getElementById('agent-overlay').querySelector('.agent-detail-completed .agent-detail-value');
+      const effEl = document.getElementById('agent-overlay').querySelector('.agent-detail-eff .agent-detail-value');
+      const avgEl = document.getElementById('agent-overlay').querySelector('.agent-detail-avg .agent-detail-value');
+      const channelEl = document.getElementById('agent-overlay').querySelector('.agent-detail-channel .agent-detail-value');
+      const tagsEl = document.getElementById('agent-overlay').querySelector('.agent-detail-tags');
+      const stateLabel = { idle: 'idle', working: 'working', thinking: 'thinking', blocked: 'blocked' };
+      const state = agent.state || 'idle';
+      const color = agent.color || '#8b5cf6';
+      const avEl = AGENT_AVATARS[key] || AGENT_AVATARS[name] || '🤖';
+      avatar.style.background = color + '22';
+      avatar.style.color = color;
+      avatar.textContent = avEl;
+      nameEl.textContent = agent.name || key;
+      nameEl.style.color = color;
+      roleEl.textContent = agent.model || AGENT_MODELS[key] || '—';
+      stateEl.textContent = stateLabel[state] || state;
+      stateEl.style.color = state === 'working' ? '#22c55e' : state === 'blocked' ? '#ef4444' : state === 'thinking' ? '#3b82f6' : '#94a3b8';
+      lastActiveEl.textContent = agent.lastActive ? timeAgo(new Date(agent.lastActive)) : 'never';
+      modelEl.textContent = agent.model || AGENT_MODELS[key] || '—';
+      completedEl.textContent = agent.completed ?? 0;
+      effEl.textContent = (agent.efficiency ?? 0) + '%';
+      const avgSec = agent.avgTimeSec ?? 0;
+      avgEl.textContent = avgSec > 0 ? (avgSec < 60 ? avgSec + 's' : Math.round(avgSec / 60) + 'm') : '—';
+      channelEl.textContent = AGENT_CHANNELS[key] || AGENT_CHANNELS[name] || '—';
+      const skills = AGENT_SKILLS[key] || AGENT_SKILLS[name] || ['No skill data'];
+      tagsEl.innerHTML = skills.map(s => '<span class="agent-detail-tag">' + s + '</span>').join('');
+      overlay.classList.add('open');
+      activeAgentDetail = agent;
+    }
+
+    function closeAgentDetail() {
+      document.getElementById('agent-overlay').classList.remove('open');
+      activeAgentDetail = null;
+    }
+
+    // Click on agent card name → open overlay
+    document.getElementById('agents-grid')?.addEventListener('click', function(e) {
+      const nameEl = e.target.closest('.agent-card-name');
+      if (!nameEl) return;
+      const card = nameEl.closest('.agent-card');
+      const idx = parseInt(card?.dataset?.idx || -1);
+      const agents = cachedLiveData?.agents || [];
+      const agent = agents[idx];
+      if (agent) openAgentDetail(agent);
+    });
+
+    document.getElementById('agent-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) closeAgentDetail();
+    });
+    document.getElementById('agent-overlay-close')?.addEventListener('click', closeAgentDetail);
   </script>
+
+  <!-- Agent Detail Overlay -->
+  <div class="agent-overlay" id="agent-overlay">
+    <div class="agent-detail">
+      <button class="agent-detail-close" id="agent-overlay-close">✕</button>
+      <div class="agent-detail-header">
+        <div class="agent-detail-avatar">🤖</div>
+        <div>
+          <div class="agent-detail-name">Agent</div>
+          <div class="agent-detail-role">role</div>
+        </div>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Status</span>
+        <span class="agent-detail-value agent-detail-state">—</span>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Last Active</span>
+        <span class="agent-detail-value agent-detail-lastActive">—</span>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Model</span>
+        <span class="agent-detail-value agent-detail-model">—</span>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Tasks Done</span>
+        <span class="agent-detail-value agent-detail-completed">—</span>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Efficiency</span>
+        <span class="agent-detail-value agent-detail-eff">—</span>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Avg Time</span>
+        <span class="agent-detail-value agent-detail-avg">—</span>
+      </div>
+      <div class="agent-detail-row">
+        <span class="agent-detail-label">Channel</span>
+        <span class="agent-detail-value agent-detail-channel">—</span>
+      </div>
+      <div class="agent-detail-section">
+        <div class="agent-detail-section-title">Skills</div>
+        <div class="agent-detail-tags"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
