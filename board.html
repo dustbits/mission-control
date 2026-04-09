@@ -1253,7 +1253,8 @@
       const sel = document.getElementById('task-agent-filter');
       if (sel) {
         sel.innerHTML = '<option value="">All agents</option>';
-        _allAgents.forEach(function(a) {
+        (_allAgents || []).forEach(function(a) {
+          if (!a) return;
           var name = a.name || a.key || '';
           if (name) sel.innerHTML += '<option value="' + name + '">' + name + '</option>';
         });
@@ -1272,14 +1273,16 @@
 
       // Sort agents by current sort key before rendering
       const sortKey = typeof agentSortKey !== 'undefined' ? agentSortKey : 'completed';
-      const sortedAgents = [...agents].sort(function(a, b) {
+      const sortedAgents = [...(agents || [])].sort(function(a, b) {
+        if (!a || !b) return 0;
         if (sortKey === 'name') return (a.name || '').localeCompare(b.name || '');
         if (sortKey === 'efficiency') return (b.efficiency ?? 0) - (a.efficiency ?? 0);
         return (b.completed ?? 0) - (a.completed ?? 0); // default: most completed first
       });
 
       grid.innerHTML = '';
-      sortedAgents.forEach(function(a) {
+      (sortedAgents || []).forEach(function(a) {
+        if (!a) return;
         const color = a.color || AGENT_COLORS[a.key] || UNKNOWN;
         const avatar = AGENT_AVATARS[a.key] || '🤖';
         const eff = a.efficiency ?? 0;
