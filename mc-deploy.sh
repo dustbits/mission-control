@@ -14,6 +14,7 @@ if [ -d "$DEST_MNT" ]; then
     cp "$SRC/game.js" "$DEST_MNT/game.js"
     cp "$SRC/config.js" "$DEST_MNT/config.js"
     cp "$SRC/mc-index.html" "$DEST_MNT/mc-index.html"
+    cp "$SRC/board.html" "$DEST_MNT/board.html"
     cp "$SRC/mission-control-live.json" "$DEST_MNT/mission-control-live.json"
     cp "$SRC/deployHistory.json" "$DEST_MNT/deployHistory.json"
     cp -r "$SRC/assets/" "$DEST_MNT/assets/"
@@ -29,6 +30,7 @@ cp "$SRC/index.html" "$DEST_WS/index.html"
 cp "$SRC/game.js" "$DEST_WS/game.js"
 cp "$SRC/config.js" "$DEST_WS/config.js"
 cp "$SRC/mc-index.html" "$DEST_WS/mc-index.html" 2>/dev/null || true
+cp "$SRC/board.html" "$DEST_WS/board.html"
 cp "$SRC/mission-control-live.json" "$DEST_WS/mission-control-live.json"
 cp "$SRC/deployHistory.json" "$DEST_WS/deployHistory.json" 2>/dev/null || true
 cp -r "$SRC/assets/" "$DEST_WS/assets/"
