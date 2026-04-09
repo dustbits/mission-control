@@ -1,38 +1,5 @@
 [
   {
-    "timestamp": "2026-04-09T16:48:01.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "a1d1575",
-    "shaFull": "a1d1575eb7ab51542d19b6ef7577f26923dadf1a",
-    "message": "fix: parseLog millisecond timestamps + Format A agent + agent stats from done-count",
-    "branch": "master",
-    "changedFiles": "mission-control-live.json,scripts/sync-live-json.js",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T16:43:25.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "sha": "4142bba",
-    "shaFull": "4142bba84e0da8a0b8f275855328a02c441ba83e",
-    "message": "chore: add sanji/vicious/zoro agent colors + extend activity cutoff to 72h",
-    "branch": "master",
-    "changedFiles": "scripts/sync-live-json.js",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T16:33:51.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "sha": "e544fac",
-    "shaFull": "e544fac1ab6d596b6faef099226c99f12c33c8a0",
-    "message": "chore: update deployHistory + live JSON post b6ace6d deploy",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json",
-    "durationSec": 2
-  },
-  {
     "timestamp": "2026-04-09T16:32:23.000Z",
     "status": "deployed",
     "trigger": "manual",

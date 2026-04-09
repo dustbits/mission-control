@@ -968,12 +968,14 @@
       spike: 'MiniMax/M2.7-highspeed', jet: 'MiniMax/M2.7', faye: 'Qwen/Qwen2.5-7B',
       ein: 'MiniMax/M2.7', gren: 'MiniMax/M2.7', ed: 'openai/gpt-4o',
       julia: 'Qwen/Qwen2.5-7B', rocco: 'MiniMax/M2.7', punch: 'claude-sonnet-4',
-      andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', vicious: 'MiniMax/M2.7-highspeed', main: 'MiniMax/M2.7'
+      andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', vicious: 'MiniMax/M2.7-highspeed',
+      sanji: 'MiniMax/M2.7', zoro: 'MiniMax/M2.7', dispatch: 'MiniMax/M2.7', main: 'MiniMax/M2.7'
     };
     const AGENT_AVATARS = {
       spike: '🧠', jet: '✈️', faye: '🔬', ein: '💰',
       gren: '🔩', ed: '🔧', julia: '🎬', rocco: '🏥',
-      punch: '🥊', andy: '🤖', andrew: '🤖', vicious: '⚡', main: '🎯'
+      punch: '🥊', andy: '🤖', andrew: '🤖', vicious: '⚡',
+      sanji: '🍳', zoro: '⚔️', dispatch: '📡', main: '🎯'
     };
     const UNKNOWN = '#94a3b8';
     const POLL_MS = 10000;
@@ -1266,8 +1268,16 @@
         return;
       }
 
+      // Sort agents by current sort key before rendering
+      const sortKey = typeof agentSortKey !== 'undefined' ? agentSortKey : 'completed';
+      const sortedAgents = [...agents].sort(function(a, b) {
+        if (sortKey === 'name') return (a.name || '').localeCompare(b.name || '');
+        if (sortKey === 'efficiency') return (b.efficiency ?? 0) - (a.efficiency ?? 0);
+        return (b.completed ?? 0) - (a.completed ?? 0); // default: most completed first
+      });
+
       grid.innerHTML = '';
-      agents.forEach(function(a) {
+      sortedAgents.forEach(function(a) {
         const color = a.color || AGENT_COLORS[a.key] || UNKNOWN;
         const avatar = AGENT_AVATARS[a.key] || '🤖';
         const eff = a.efficiency ?? 0;
