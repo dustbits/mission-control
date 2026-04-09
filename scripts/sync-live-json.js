@@ -82,8 +82,10 @@ const AGENT_DISPLAY = {
 };
 
 function relativeTime(isoStr) {
+  // Normalize common variations: "2026-04-09 04:38:00 UTC" → "2026-04-09T04:38:00Z"
+  const normalized = isoStr.replace(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) UTC$/, '$1T$2:00Z');
   const now = Date.now();
-  const then = new Date(isoStr).getTime();
+  const then = new Date(normalized).getTime();
   if (isNaN(then)) return 'earlier';
   const diffMs = now - then;
   const diffMin = Math.floor(diffMs / 60000);

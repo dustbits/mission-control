@@ -3,18 +3,13 @@
     "timestamp": "2026-04-09T15:28:52.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "sha": "0f25a75",
-    "shaFull": "0f25a757a66901a3678954e9f4a0d36c7dd4f8fa",
-    "message": "MC v3: agents schema, health monitoring, research docs, deployHistory cleanup",
-    "branch": "master",
-    "changedFiles": "MC-Research-v2-SanjiZoro.md,MC-Research-v3-Stack.md,deployHistory.json,mission-control-live.json",
-    "durationSec": 1
+    "duration": null
   },
   {
     "timestamp": "2026-04-08T01:10:10.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "duration": null
+    "duration": "1d 14h"
   },
   {
     "timestamp": "2026-04-07T14:00:01.000Z",
@@ -62,12 +57,6 @@
     "timestamp": "2026-04-06T22:50:02.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "duration": "1h 33m"
-  },
-  {
-    "timestamp": "2026-04-06T22:40:01.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "duration": "10m"
+    "duration": "1h 32m"
   }
 ]
