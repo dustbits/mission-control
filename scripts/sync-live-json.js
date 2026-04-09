@@ -42,6 +42,9 @@ const AGENT_COLORS = {
   punch:    '#ef4444',
   claude:   '#64d8ff',
   'claude-code': '#64d8ff',
+  sanji:    '#f59e0b',
+  vicious:  '#ef4444',
+  zoro:     '#4a9eff',
   dispatch: '#38bdf8',
   system:   '#38bdf8',
   andy:     '#38bdf8',
@@ -61,6 +64,9 @@ const AGENT_MODELS = {
   punch: 'claude-sonnet-4',
   andy: 'claude-sonnet-4',
   andrew: 'claude-sonnet-4',
+  sanji: 'MiniMax/M2.7',
+  vicious: 'MiniMax/M2.7',
+  zoro: 'MiniMax/M2.7',
   main: 'MiniMax/M2.7',
 };
 
@@ -79,6 +85,7 @@ const AGENT_DISPLAY = {
   system: 'System',
   andy: 'Andy', andrew: 'Andy',
   'ed-builder-loop': 'Ed',
+  sanji: 'Sanji', vicious: 'Vicious', zoro: 'Zoro',
 };
 
 function relativeTime(isoStr) {
@@ -99,19 +106,26 @@ function relativeTime(isoStr) {
 
 function parseLog(content) {
   const lines = content.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  // 48h cutoff — but extend to 72h for agents with few entries so slow tasks aren't dropped
+  const cutoff = Date.now() - 72 * 60 * 60 * 1000;
 
   const entries = [];
   for (const line of lines) {
+    if (line.startsWith('[discord-audit]')) continue;
+
+    // Handle milliseconds: strip .sss from time before parsing
+    const tsLine = line.replace(/(\d{2}:\d{2}:\d{2})\.\d+([Z ])/, '$1$2');
+
     // Format A: [YYYY-MM-DD HH:MM UTC] [agent] [tag] message
-    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    let m = tsLine.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}:\d{2})(?:Z| UTC| ET| EST| EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
     // Format B: [YYYY-MM-DD HH:MM UTC] agent [tag] message (agent without brackets)
-    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
+    if (!m) m = tsLine.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}:\d{2})(?:Z| UTC| ET| EST| EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
+    // Format C: [YYYY-MM-DD HH:MM] agent [tag] message (seconds optional, no Z)
+    if (!m) m = tsLine.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2})(?::\d{2})?(?:Z| UTC| ET| EST| EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
     if (!m) continue;
 
     const [, date, time, agent, tag, message] = m;
-    const secs = time.split(':').length === 2 ? ':00' : '';
-    const iso = date + 'T' + time + secs + 'Z';
+    const iso = date + 'T' + time + 'Z';
     const ts = new Date(iso).getTime();
     if (isNaN(ts) || ts < cutoff) continue;
 
@@ -375,9 +389,9 @@ function buildLeaderboard(logContent) {
     taskMap.get(key).push(e);
   }
 
-  // Per-agent stats
+  // Per-agent stats — use actual agents from log + configured agents so no one is missed
   const stats = {};
-  const AGENT_LIST = ['spike', 'jet', 'faye', 'ein', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy'];
+  const AGENT_LIST = ['spike', 'jet', 'faye', 'ein', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy', 'sanji', 'vicious', 'zoro', 'dispatch'];
   for (const a of AGENT_LIST) {
     stats[a] = { completed: 0, totalTimeMs: 0, blockers: 0, tasks: [] };
   }
