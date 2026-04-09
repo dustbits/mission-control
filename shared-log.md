@@ -1,1 +1,2 @@
 [2026-04-09T18:27:00Z] [sanji] [working] Investigating MC board CPU/agent workload display issue. CPU data is live (10-16%), agents panel requires Agents tab click. Hard refresh recommended for browser cache.
+[2026-04-09T19:26:30Z] [sanji] [done] MC board investigation complete. Config verified fine, path mismatch ruled out. Deploy @ 67f7ae0 to jarvis:8090 successful — board.html, mission-control-live.json, deployHistory.json all healthy. raybat_ to hard refresh browser + verify Tailscale auth if any display issues persist.

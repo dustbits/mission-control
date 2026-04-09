@@ -1,5 +1,27 @@
 [
   {
+    "timestamp": "2026-04-09T19:26:26.000Z",
+    "status": "deployed",
+    "trigger": "Ed",
+    "sha": "67f7ae0",
+    "shaFull": "67f7ae0a5593fcb41fe086ea2e8e3a45bae5d935",
+    "message": "MC v10: Agent Quick-Info Overlay \u2014 click agent name to see skills, channel, model, stats",
+    "branch": "master",
+    "changedFiles": "board.html",
+    "durationSec": 1
+  },
+  {
+    "timestamp": "2026-04-09T18:36:11.000Z",
+    "status": "deployed",
+    "trigger": "Ed",
+    "sha": "c38a64c",
+    "shaFull": "c38a64ccdbce31d926a112d7895e7e4ec4d52333",
+    "message": "auto: MC improvement",
+    "branch": "master",
+    "changedFiles": "board.html,deployHistory.json,mc-deploy.sh,mission-control-live.json,shared-log.md",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T18:24:44.000Z",
     "status": "deployed",
     "trigger": "Ed",
