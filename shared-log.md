@@ -1,0 +1,1 @@
+[2026-04-09T18:27:00Z] [sanji] [working] Investigating MC board CPU/agent workload display issue. CPU data is live (10-16%), agents panel requires Agents tab click. Hard refresh recommended for browser cache.

@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T18:24:44.000Z",
+    "status": "deployed",
+    "trigger": "Ed",
+    "sha": "4aaf7d2",
+    "shaFull": "4aaf7d294950f0c102caf31529fd4bfddd4640d4",
+    "message": "fix: add target-side checksum validation guard to mc-deploy.sh",
+    "branch": "master",
+    "changedFiles": "mc-deploy.sh",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T18:03:17.000Z",
     "status": "deployed",
     "trigger": "Ed",

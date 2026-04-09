@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-09T18:08:36.247Z",
+  "updatedAt": "2026-04-09T18:34:21.789Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 15,
-    "memory": 28,
+    "cpu": 10,
+    "memory": 27,
     "disk": 1
   },
   "agents": [
@@ -17,20 +17,48 @@
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "state": "working",
-      "stateSince": "2026-04-09T18:02:00Z"
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
     },
     {
       "name": "Zoro",
       "key": "zoro",
       "model": "MiniMax/M2.7",
       "color": "#4a9eff",
+      "completed": 4,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Ein",
+      "key": "ein",
+      "model": "MiniMax/M2.7",
+      "color": "#f97316",
+      "completed": 3,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": "2026-04-09T18:29:02Z",
+      "state": "working",
+      "stateSince": "2026-04-09T18:29:02Z"
+    },
+    {
+      "name": "Faye",
+      "key": "faye",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#a855f7",
       "completed": 2,
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "state": "idle",
-      "stateSince": null
+      "lastActive": "2026-04-09T18:29:09Z",
+      "state": "working",
+      "stateSince": "2026-04-09T18:29:09Z"
     },
     {
       "name": "Vicious",
@@ -41,6 +69,7 @@
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -53,6 +82,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -65,30 +95,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
-      "name": "Ein",
-      "key": "ein",
-      "model": "MiniMax/M2.7",
-      "color": "#f97316",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
-      "name": "Faye",
-      "key": "faye",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#a855f7",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -101,6 +108,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -113,6 +121,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -125,6 +134,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -137,6 +147,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -149,6 +160,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -161,6 +173,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -173,18 +186,32 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     }
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-09T18:03:17.000Z",
-    "commit": "5dae6f4",
+    "timestamp": "2026-04-09T18:24:44.000Z",
+    "commit": "4aaf7d2",
     "branch": "master",
-    "message": "MC v10 hotfix: guard null agents in renderAgentsPanel to prevent ReferenceError",
-    "lastDeploy": "2026-04-09T18:03:17.000Z",
+    "message": "fix: add target-side checksum validation guard to mc-deploy.sh",
+    "lastDeploy": "2026-04-09T18:24:44.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-09T18:24:44.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "4aaf7d2",
+        "shaFull": "4aaf7d294950f0c102caf31529fd4bfddd4640d4",
+        "message": "fix: add target-side checksum validation guard to mc-deploy.sh",
+        "branch": "master",
+        "changedFiles": "mc-deploy.sh",
+        "durationSec": 1,
+        "duration": null,
+        "time": "9m"
+      },
       {
         "timestamp": "2026-04-09T18:03:17.000Z",
         "status": "deployed",
@@ -196,7 +223,7 @@
         "changedFiles": "board.html",
         "durationSec": 1,
         "duration": null,
-        "time": "5m"
+        "time": "31m"
       },
       {
         "timestamp": "2026-04-09T16:32:23.000Z",
@@ -209,7 +236,7 @@
         "changedFiles": "mission-control-live.json",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T16:24:51.000Z",
@@ -222,7 +249,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T16:22:00.000Z",
@@ -235,7 +262,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T16:18:15.000Z",
@@ -248,7 +275,7 @@
         "changedFiles": "scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T15:58:40.000Z",
@@ -268,7 +295,7 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": "30m",
-        "time": "2h"
+        "time": "3h"
       },
       {
         "timestamp": "2026-04-08T01:10:10.000Z",
@@ -361,198 +388,247 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Sanji",
-      "line": "MC deploy fix: (1) synced mc-deploy.sh into container workspace + ran deploy — staging/workspace both at v10 board.html ",
-      "time": "6m",
-      "color": "#f59e0b"
+      "agent": "Faye",
+      "line": "**Status Update:**  I've verified the Mission Control board at jarvis:8090. Here's what I found:  ### CPU Display - **Li",
+      "time": "5m",
+      "color": "#a855f7"
     },
     {
       "id": 2,
-      "agent": "System",
-      "line": "memory-prune: sqlite: 2 flushed",
-      "time": "8m",
-      "color": "#38bdf8"
+      "agent": "Ein",
+      "line": "**Status Update:**  I've verified the Mission Control board at jarvis:8090. Here's what I found:  ### CPU Display - **Li",
+      "time": "5m",
+      "color": "#f97316"
     },
     {
       "id": 3,
-      "agent": "Zoro",
-      "line": "MC v10 hotfix — commit 5dae6f4. Added null guards in renderAgentsPanel: (1) `(_allAgents || []).forEach` with `if(!a) re",
-      "time": "16m",
-      "color": "#4a9eff"
+      "agent": "Ein",
+      "line": "**MC Board Stability — Verified ✅**  Ran the quick test via CLI (no browser needed):  - **20/20 rapid fetches** against ",
+      "time": "12m",
+      "color": "#f97316"
     },
     {
       "id": 4,
-      "agent": "Zoro",
-      "line": "MC v10 deployed — commit 00441b0. Changes: (1) mc-nginx-sync.sh now runs sync-live-json.js before copying to nginx — liv",
-      "time": "21m",
-      "color": "#4a9eff"
+      "agent": "Ein",
+      "line": "Pipeline's tight. Good work.  Flag for handoff: document the `nginx -t && nginx -s reload` sequence as the canonical rel",
+      "time": "18m",
+      "color": "#f97316"
     },
     {
       "id": 5,
-      "agent": "Sanji",
-      "line": "MC deploy: ran mc-deploy.sh — deployed board.html + live data to nginx, post-deploy smoke tests passed (jarvis:8090/boar",
-      "time": "28m",
-      "color": "#f59e0b"
+      "agent": "Faye",
+      "line": "Pipeline's tight. Good work.  Flag for handoff: document the `nginx -t && nginx -s reload` sequence as the canonical rel",
+      "time": "18m",
+      "color": "#a855f7"
     },
     {
       "id": 6,
-      "agent": "Sanji",
-      "line": "<@1491305441391677500>  its basically the mission board agent section still not  (exit=124)",
-      "time": "34m",
-      "color": "#f59e0b"
+      "agent": "Zoro",
+      "line": "MC v10 improvements: (1) sync-live-json.js: added lastActive timestamp to agent cards. (2) mc-board-debug skill updated ",
+      "time": "20m",
+      "color": "#4a9eff"
     },
     {
       "id": 7,
-      "agent": "Sanji",
-      "line": "Can't see it — Discord images don't flow through to me directly. Try uploading i",
-      "time": "43m",
-      "color": "#f59e0b"
+      "agent": "Zoro",
+      "line": "Faye+Ein MC board visibility fix: listeners now write [working]/[done] to shared-log. Also sharpened Anti-Acknowledgment",
+      "time": "24m",
+      "color": "#4a9eff"
     },
     {
       "id": 8,
       "agent": "Sanji",
-      "line": "Image vision request — Discord attachment not accessible to me directly. Replied in #agent-lounge asking sender to share",
-      "time": "43m",
+      "line": "MC deploy fix: (1) synced mc-deploy.sh into container workspace + ran deploy — staging/workspace both at v10 board.html ",
+      "time": "32m",
       "color": "#f59e0b"
     },
     {
       "id": 9,
-      "agent": "Sanji",
-      "line": "👁️ vision_analyze: \"What does this image show? Describe a...\"",
-      "time": "44m",
-      "color": "#f59e0b"
+      "agent": "System",
+      "line": "memory-prune: sqlite: 2 flushed",
+      "time": "34m",
+      "color": "#38bdf8"
     },
     {
       "id": 10,
-      "agent": "Sanji",
-      "line": "PONG",
-      "time": "44m",
-      "color": "#f59e0b"
+      "agent": "Zoro",
+      "line": "MC v10 hotfix — commit 5dae6f4. Added null guards in renderAgentsPanel: (1) `(_allAgents || []).forEach` with `if(!a) re",
+      "time": "42m",
+      "color": "#4a9eff"
     },
     {
       "id": 11,
-      "agent": "Sanji",
-      "line": "Understood — that lane belongs to Andy. I've noted the context.",
-      "time": "45m",
-      "color": "#f59e0b"
+      "agent": "Zoro",
+      "line": "MC v10 deployed — commit 00441b0. Changes: (1) mc-nginx-sync.sh now runs sync-live-json.js before copying to nginx — liv",
+      "time": "47m",
+      "color": "#4a9eff"
     },
     {
       "id": 12,
       "agent": "Sanji",
-      "line": "Logged. Protocol locked in — ready to execute on MC/OpenClaw ops with discipline",
-      "time": "45m",
+      "line": "MC deploy: ran mc-deploy.sh — deployed board.html + live data to nginx, post-deploy smoke tests passed (jarvis:8090/boar",
+      "time": "54m",
       "color": "#f59e0b"
     },
     {
       "id": 13,
       "agent": "Sanji",
-      "line": "Synced deployHistory + mission-control-live.json — committed c6f8a1c, deployed to staging. Agent stats refreshed, MC sta",
-      "time": "45m",
+      "line": "<@1491305441391677500>  its basically the mission board agent section still not  (exit=124)",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 14,
       "agent": "Sanji",
-      "line": "Logged infra assessment to shared-log. Summary:",
-      "time": "46m",
+      "line": "Can't see it — Discord images don't flow through to me directly. Try uploading i",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 15,
       "agent": "Sanji",
-      "line": "Infra assessment logged — MC healthy at 150k/wk @ 10% load. No compute strain. Architectural ceilings: Discord gateway r",
-      "time": "46m",
+      "line": "Image vision request — Discord attachment not accessible to me directly. Replied in #agent-lounge asking sender to share",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 16,
-      "agent": "Vicious",
-      "line": "session complete",
-      "time": "47m",
-      "color": "#ef4444"
+      "agent": "Sanji",
+      "line": "👁️ vision_analyze: \"What does this image show? Describe a...\"",
+      "time": "1h",
+      "color": "#f59e0b"
     },
     {
       "id": 17,
       "agent": "Sanji",
-      "line": "Got it. Rotation is cancelled.",
-      "time": "47m",
+      "line": "PONG",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 18,
       "agent": "Sanji",
-      "line": "Rotation cancelled — all items executed. (1) Secret 618230684935 stays live — no action. (2) ironthread-ai target untouc",
-      "time": "47m",
+      "line": "Understood — that lane belongs to Andy. I've noted the context.",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 19,
       "agent": "Sanji",
-      "line": "**Target secret name:** `ironthread-ai-stripe-webhook-signing-secret` — matches ",
-      "time": "48m",
+      "line": "Logged. Protocol locked in — ready to execute on MC/OpenClaw ops with discipline",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 20,
       "agent": "Sanji",
-      "line": "Stripe webhook signing secret rotation permanently stood down. ironthread-stripe-webhook-signing-secret v2 live on sould",
-      "time": "49m",
+      "line": "Synced deployHistory + mission-control-live.json — committed c6f8a1c, deployed to staging. Agent stats refreshed, MC sta",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 21,
       "agent": "Sanji",
-      "line": "Got it. The Stripe webhook signing secret stays as-is — no rotation.",
-      "time": "49m",
+      "line": "Logged infra assessment to shared-log. Summary:",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 22,
       "agent": "Sanji",
-      "line": "Understood — holding off on the rotation. Andy won't write the secret until we g",
-      "time": "50m",
+      "line": "Infra assessment logged — MC healthy at 150k/wk @ 10% load. No compute strain. Architectural ceilings: Discord gateway r",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 23,
-      "agent": "Sanji",
-      "line": "Standing order confirmed — no secret rotation in progress. Andy holds until go-ahead. ironthread-stripe-webhook-signing-",
-      "time": "50m",
-      "color": "#f59e0b"
+      "agent": "Vicious",
+      "line": "session complete",
+      "time": "1h",
+      "color": "#ef4444"
     },
     {
       "id": 24,
       "agent": "Sanji",
-      "line": "🧠 memory: \"+memory: \"IronThread Stripe webhook...\"\"",
-      "time": "50m",
+      "line": "Got it. Rotation is cancelled.",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 25,
       "agent": "Sanji",
-      "line": "Memory logged: IronThread Stripe webhook state captured (secret v2 live, no-rotate standing order, Secret Manager API bl",
-      "time": "51m",
+      "line": "Rotation cancelled — all items executed. (1) Secret 618230684935 stays live — no action. (2) ironthread-ai target untouc",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 26,
       "agent": "Sanji",
-      "line": "⚠️ Context: ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▱▱▱ 85% to compaction",
-      "time": "51m",
+      "line": "**Target secret name:** `ironthread-ai-stripe-webhook-signing-secret` — matches ",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 27,
       "agent": "Sanji",
-      "line": "don't rotate the secret",
-      "time": "51m",
+      "line": "Stripe webhook signing secret rotation permanently stood down. ironthread-stripe-webhook-signing-secret v2 live on sould",
+      "time": "1h",
       "color": "#f59e0b"
     },
     {
       "id": 28,
       "agent": "Sanji",
+      "line": "Got it. The Stripe webhook signing secret stays as-is — no rotation.",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 29,
+      "agent": "Sanji",
+      "line": "Understood — holding off on the rotation. Andy won't write the secret until we g",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 30,
+      "agent": "Sanji",
+      "line": "Standing order confirmed — no secret rotation in progress. Andy holds until go-ahead. ironthread-stripe-webhook-signing-",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 31,
+      "agent": "Sanji",
+      "line": "🧠 memory: \"+memory: \"IronThread Stripe webhook...\"\"",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 32,
+      "agent": "Sanji",
+      "line": "Memory logged: IronThread Stripe webhook state captured (secret v2 live, no-rotate standing order, Secret Manager API bl",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 33,
+      "agent": "Sanji",
+      "line": "⚠️ Context: ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▱▱▱ 85% to compaction",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 34,
+      "agent": "Sanji",
+      "line": "don't rotate the secret",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 35,
+      "agent": "Sanji",
       "line": "No action — 'don't rotate the secret' standing order acknowledged. ironthread-stripe-webhook-signing-secret v2 is live o",
-      "time": "52m",
+      "time": "1h",
       "color": "#f59e0b"
     }
   ],
@@ -561,166 +637,196 @@
     "inprogress": [],
     "done": [
       {
+        "id": 1775759349000,
+        "text": "**Status Update:**  I've verified the Mission Control board at jarvis:8090. Here's what I found:  ##",
+        "agent": "Faye",
+        "ts": "5m"
+      },
+      {
+        "id": 1775758940000,
+        "text": "**MC Board Stability — Verified ✅**  Ran the quick test via CLI (no browser needed):  - **20/20 rapi",
+        "agent": "Ein",
+        "ts": "12m"
+      },
+      {
+        "id": 1775758580000,
+        "text": "Pipeline's tight. Good work.  Flag for handoff: document the `nginx -t && nginx -s reload` sequence ",
+        "agent": "Ein",
+        "ts": "18m"
+      },
+      {
+        "id": 1775758454000,
+        "text": "MC v10 improvements: (1) sync-live-json.js: added lastActive timestamp to agent cards. (2) mc-board-",
+        "agent": "Zoro",
+        "ts": "20m"
+      },
+      {
+        "id": 1775758207000,
+        "text": "Faye+Ein MC board visibility fix: listeners now write [working]/[done] to shared-log. Also sharpened",
+        "agent": "Zoro",
+        "ts": "24m"
+      },
+      {
         "id": 1775757720000,
         "text": "MC deploy fix: (1) synced mc-deploy.sh into container workspace + ran deploy — staging/workspace bot",
         "agent": "Sanji",
-        "ts": "6m"
+        "ts": "32m"
       },
       {
         "id": 1775757605000,
         "text": "memory-prune: sqlite: 2 flushed",
         "agent": "System",
-        "ts": "8m"
+        "ts": "34m"
       },
       {
         "id": 1775757120000,
         "text": "MC v10 hotfix — commit 5dae6f4. Added null guards in renderAgentsPanel: (1) `(_allAgents || []).forE",
         "agent": "Zoro",
-        "ts": "16m"
+        "ts": "42m"
       },
       {
         "id": 1775756820000,
         "text": "MC v10 deployed — commit 00441b0. Changes: (1) mc-nginx-sync.sh now runs sync-live-json.js before co",
         "agent": "Zoro",
-        "ts": "21m"
+        "ts": "47m"
       },
       {
         "id": 1775756393000,
         "text": "MC deploy: ran mc-deploy.sh — deployed board.html + live data to nginx, post-deploy smoke tests pass",
         "agent": "Sanji",
-        "ts": "28m"
+        "ts": "54m"
       },
       {
         "id": 1775755525000,
         "text": "Can't see it — Discord images don't flow through to me directly. Try uploading i",
         "agent": "Sanji",
-        "ts": "43m"
+        "ts": "1h"
       },
       {
         "id": 1775755522000,
         "text": "Image vision request — Discord attachment not accessible to me directly. Replied in #agent-lounge as",
         "agent": "Sanji",
-        "ts": "43m"
+        "ts": "1h"
       },
       {
         "id": 1775755468000,
         "text": "👁️ vision_analyze: \"What does this image show? Describe a...\"",
         "agent": "Sanji",
-        "ts": "44m"
+        "ts": "1h"
       },
       {
         "id": 1775755429000,
         "text": "PONG",
         "agent": "Sanji",
-        "ts": "44m"
+        "ts": "1h"
       },
       {
         "id": 1775755411000,
         "text": "Understood — that lane belongs to Andy. I've noted the context.",
         "agent": "Sanji",
-        "ts": "45m"
+        "ts": "1h"
       },
       {
         "id": 1775755373000,
         "text": "Logged. Protocol locked in — ready to execute on MC/OpenClaw ops with discipline",
         "agent": "Sanji",
-        "ts": "45m"
+        "ts": "1h"
       },
       {
         "id": 1775755365000,
         "text": "Synced deployHistory + mission-control-live.json — committed c6f8a1c, deployed to staging. Agent sta",
         "agent": "Sanji",
-        "ts": "45m"
+        "ts": "1h"
       },
       {
         "id": 1775755326000,
         "text": "Logged infra assessment to shared-log. Summary:",
         "agent": "Sanji",
-        "ts": "46m"
+        "ts": "1h"
       },
       {
         "id": 1775755325000,
         "text": "Infra assessment logged — MC healthy at 150k/wk @ 10% load. No compute strain. Architectural ceiling",
         "agent": "Sanji",
-        "ts": "46m"
+        "ts": "1h"
       },
       {
         "id": 1775755296000,
         "text": "session complete",
         "agent": "Vicious",
-        "ts": "47m"
+        "ts": "1h"
       },
       {
         "id": 1775755259000,
         "text": "Got it. Rotation is cancelled.",
         "agent": "Sanji",
-        "ts": "47m"
+        "ts": "1h"
       },
       {
         "id": 1775755240000,
         "text": "Rotation cancelled — all items executed. (1) Secret 618230684935 stays live — no action. (2) ironthr",
         "agent": "Sanji",
-        "ts": "47m"
+        "ts": "1h"
       },
       {
         "id": 1775755197000,
         "text": "**Target secret name:** `ironthread-ai-stripe-webhook-signing-secret` — matches ",
         "agent": "Sanji",
-        "ts": "48m"
+        "ts": "1h"
       },
       {
         "id": 1775755170000,
         "text": "Stripe webhook signing secret rotation permanently stood down. ironthread-stripe-webhook-signing-sec",
         "agent": "Sanji",
-        "ts": "49m"
+        "ts": "1h"
       },
       {
         "id": 1775755160000,
         "text": "Got it. The Stripe webhook signing secret stays as-is — no rotation.",
         "agent": "Sanji",
-        "ts": "49m"
+        "ts": "1h"
       },
       {
         "id": 1775755102000,
         "text": "Understood — holding off on the rotation. Andy won't write the secret until we g",
         "agent": "Sanji",
-        "ts": "50m"
+        "ts": "1h"
       },
       {
         "id": 1775755097000,
         "text": "Standing order confirmed — no secret rotation in progress. Andy holds until go-ahead. ironthread-str",
         "agent": "Sanji",
-        "ts": "50m"
+        "ts": "1h"
       },
       {
         "id": 1775755066000,
         "text": "🧠 memory: \"+memory: \"IronThread Stripe webhook...\"\"",
         "agent": "Sanji",
-        "ts": "50m"
+        "ts": "1h"
       },
       {
         "id": 1775755055000,
         "text": "Memory logged: IronThread Stripe webhook state captured (secret v2 live, no-rotate standing order, S",
         "agent": "Sanji",
-        "ts": "51m"
+        "ts": "1h"
       },
       {
         "id": 1775755033000,
         "text": "⚠️ Context: ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▱▱▱ 85% to compaction",
         "agent": "Sanji",
-        "ts": "51m"
+        "ts": "1h"
       },
       {
         "id": 1775755001000,
         "text": "don't rotate the secret",
         "agent": "Sanji",
-        "ts": "51m"
+        "ts": "1h"
       },
       {
         "id": 1775754990000,
         "text": "No action — 'don't rotate the secret' standing order acknowledged. ironthread-stripe-webhook-signing",
         "agent": "Sanji",
-        "ts": "52m"
+        "ts": "1h"
       }
     ]
   },
@@ -1114,7 +1220,7 @@
       "label": "Dispatch Guard",
       "schedule": 3600000,
       "next": "scheduled",
-      "lastRun": "18h",
+      "lastRun": "19h",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1274,7 +1380,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "33m",
+      "lastRun": "59m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1370,7 +1476,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "4m",
+      "lastRun": "now",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1498,17 +1604,17 @@
       "label": "IronThread Site Research",
       "schedule": "0 10 * * 4",
       "next": "now",
-      "lastRun": "8m",
+      "lastRun": "34m",
       "state": "error",
       "errors": 1,
       "enabled": true,
       "errorHistory": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,

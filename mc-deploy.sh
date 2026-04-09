@@ -38,13 +38,18 @@ fi
 echo "[validate] All checks passed"
 
 # === DEPLOY ===
+# Inject deploy timestamp into board.html data-board-version for cache-busting
+# This ensures browsers always load the fresh HTML after each deploy
+DEPLOY_TS=$(date +%s)
+sed -i "s|data-board-version=\"\"|data-board-version=\"$DEPLOY_TS\"|" "$STAGING/board.html"
+
 echo "$PW" | sudo -S cp "$STAGING/index.html" "$STAGING/game.js" "$STAGING/config.js" "$STAGING/board.html" "$LIVE/" 2>/dev/null
 [ -f "$STAGING/manifest.json" ] && echo "$PW" | sudo -S cp "$STAGING/manifest.json" "$LIVE/" 2>/dev/null
 [ -f "$STAGING/sw.js" ] && echo "$PW" | sudo -S cp "$STAGING/sw.js" "$LIVE/" 2>/dev/null
 
 echo "$PW" | sudo -S mkdir -p "$LIVE/assets" "$LIVE/scripts"
 echo "$PW" | sudo -S rsync -a "$STAGING/scripts/" "$LIVE/scripts/" 2>/dev/null
-[ -f "$STAGING/cost-data.json" ] && echo "$PW" | sudo -S cp "$STAGING/cost-data.json" "$LIVE/" 2>/dev/null
+[ -f "$STAGING/cost-data.json" ] && echo "$PW" | sudo -S cp --remove-destination "$STAGING/cost-data.json" "$LIVE/" 2>/dev/null
 
 # Copy live data files directly (nginx serves them directly, not via symlink)
 # NOTE: deployHistory.json is copied BEFORE mission-control-live.json so that

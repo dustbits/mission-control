@@ -1,8 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-board-version="1775759651">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Cache-bust: force fresh load if restored from bfcache or if HTML is stale -->
+  <script>
+    (function() {
+      var nav = performance.getEntriesByType('navigation')[0];
+      var fromCache = nav && (nav.type === 'back_forward' || nav.type === 'restore');
+      var versionMarker = document.documentElement.getAttribute('data-board-version');
+      // If board.html itself has no version marker (pre-fix deploy) OR restored from bfcache, reload with version bust
+      if (fromCache || !versionMarker) {
+        var bust = Date.now();
+        var url = window.location.pathname + '?v=' + bust + window.location.hash;
+        window.location.replace(url);
+      }
+    })();
+  </script>
   <title>Mission Control · Board</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
   <style>
