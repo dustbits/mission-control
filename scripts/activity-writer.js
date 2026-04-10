@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * Lightweight HTTP endpoint for real-time MC activity writes.
- * game.js POSTs here when gateway events fire.
- * Replaces shared-log polling for the activity feed in mission-control-live.json.
+ * Receives POST /activity from openclaw gateway when events fire.
+ * Writes to mission-control-live.json — uses atomic merge to avoid
+ * write-write races with sync-live-json.js.
  *
  * Usage: node activity-writer.js [port]
  * Default port: 8091
@@ -19,6 +20,19 @@ const FLUSH_MS      = 8000; // debounce interval
 
 let activityBuffer = [];
 let flushTimer     = null;
+let flushing       = false; // prevent concurrent flushes
+
+function relativeTime(isoStr) {
+  const now  = Date.now();
+  const then = new Date(isoStr).getTime();
+  if (isNaN(then)) return 'now';
+  const diffMin = Math.floor((now - then) / 60000);
+  if (diffMin < 2)  return 'now';
+  if (diffMin < 60) return `${diffMin}m`;
+  const diffH = Math.floor(diffMin / 60);
+  if (diffH < 24)   return `${diffH}h`;
+  return `${Math.floor(diffH / 24)}d`;
+}
 
 function loadJson() {
   try {
@@ -29,33 +43,65 @@ function loadJson() {
   }
 }
 
+/**
+ * Atomic write: write to temp file, then rename. Prevents partial writes
+ * from being read by sync-live-json.js mid-flush.
+ */
+function atomicWrite(filePath, json) {
+  const tmp = filePath + '.tmp.' + process.pid + '.' + Date.now();
+  fs.writeFileSync(tmp, JSON.stringify(json, null, 2), 'utf8');
+  fs.renameSync(tmp, filePath);
+}
+
 function writeJson(json) {
   try {
-    fs.writeFileSync(LIVE_JSON_SRC, JSON.stringify(json, null, 2), 'utf8');
+    atomicWrite(LIVE_JSON_SRC, json);
     // Mirror to staging so nginx serves it immediately
-    fs.writeFileSync(LIVE_JSON_DST, JSON.stringify(json, null, 2), 'utf8');
+    atomicWrite(LIVE_JSON_DST, json);
   } catch (e) {
     console.error('[activity-writer] write error:', e.message);
   }
 }
 
 function flushBuffer() {
-  if (activityBuffer.length === 0) return;
-  const data = loadJson();
-  // Prepend new entries (newest first, matching state.activity.unshift)
-  for (const entry of activityBuffer) {
-    data.activity.unshift({
-      id: (data.activity.length || 0) + 1,
-      agent: entry.agent || 'Spike',
-      line: entry.text || '',
-      time: 'just now',
-      color: entry.color || '#4a9eff',
-    });
+  if (activityBuffer.length === 0 || flushing) return;
+  flushing = true;
+
+  try {
+    const data     = loadJson();
+    const now      = new Date().toISOString();
+    const newItems = [];
+
+    // Prepend new entries with real ISO timestamp + computed relative time
+    for (const entry of activityBuffer) {
+      newItems.push({
+        id:    (data.activity.length || 0) + 1,
+        agent: entry.agent || 'Spike',
+        line:  entry.text || '',
+        time:  relativeTime(now),   // computed at flush time, not hardcoded 'just now'
+        _iso:  now,                // stored ISO for next flush to use as baseline
+        color: entry.color || '#4a9eff',
+      });
+    }
+
+    // Merge: prepend newItems BEFORE existing data.activity.
+    // This preserves sync-live-json entries and avoids overwriting them.
+    data.activity = [...newItems, ...data.activity].slice(0, 30);
+
+    // Rebuild relativeTime for all entries using stored _iso
+    if (data.activity.length > 0) {
+      data.activity = data.activity.map(item => ({
+        ...item,
+        time: item._iso ? relativeTime(item._iso) : item.time,
+      }));
+    }
+
+    writeJson(data);
+    console.log(`[activity-writer] flushed ${activityBuffer.length} entries (total: ${data.activity.length})`);
+  } finally {
+    activityBuffer = [];
+    flushing       = false;
   }
-  data.activity = data.activity.slice(0, 30);
-  writeJson(data);
-  console.log(`[activity-writer] flushed ${activityBuffer.length} entries (total activity: ${data.activity.length})`);
-  activityBuffer = [];
 }
 
 const server = http.createServer((req, res) => {

@@ -1,22 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" data-board-version="1775759651">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Cache-bust: force fresh load if restored from bfcache or if HTML is stale -->
-  <script>
-    (function() {
-      var nav = performance.getEntriesByType('navigation')[0];
-      var fromCache = nav && (nav.type === 'back_forward' || nav.type === 'restore');
-      var versionMarker = document.documentElement.getAttribute('data-board-version');
-      // If board.html itself has no version marker (pre-fix deploy) OR restored from bfcache, reload with version bust
-      if (fromCache || !versionMarker) {
-        var bust = Date.now();
-        var url = window.location.pathname + '?v=' + bust + window.location.hash;
-        window.location.replace(url);
-      }
-    })();
-  </script>
   <title>Mission Control · Board</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
   <style>
@@ -357,8 +343,6 @@
     .deploy-panel, .agents-panel, .finance-panel, .ironthread-panel {
       display: none;
       padding: 16px 24px 24px;
-      overflow-y: auto;
-      max-height: calc(100vh - 120px);
     }
     .deploy-panel.visible,
     .agents-panel.visible,
@@ -591,83 +575,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      cursor: pointer;
     }
-    .agent-card-name:hover { color: #a78bfa; }
-
-    /* Agent Detail Overlay */
-    .agent-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(4px);
-    }
-    .agent-overlay.open { display: flex; }
-    .agent-detail {
-      background: var(--bg-secondary, #1e293b);
-      border: 1px solid var(--border, #334155);
-      border-radius: 12px;
-      padding: 24px;
-      max-width: 380px;
-      width: 90%;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .agent-detail-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .agent-detail-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-    .agent-detail-name { font-size: 18px; font-weight: 700; color: var(--text-header); }
-    .agent-detail-role { font-size: 12px; color: #94a3b8; margin-top: 2px; }
-    .agent-detail-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border, #334155);
-      font-size: 13px;
-    }
-    .agent-detail-row:last-child { border-bottom: none; }
-    .agent-detail-label { color: #64748b; }
-    .agent-detail-value { color: var(--text-primary, #e2e8f0); font-weight: 600; }
-    .agent-detail-section { margin-top: 14px; }
-    .agent-detail-section-title { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
-    .agent-detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .agent-detail-tag {
-      background: rgba(139,92,246,0.15);
-      border: 1px solid rgba(139,92,246,0.3);
-      color: #a78bfa;
-      border-radius: 6px;
-      padding: 3px 10px;
-      font-size: 11px;
-    }
-    .agent-detail-close {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: #64748b;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    .agent-detail-close:hover { color: #e2e8f0; }
-    .agent-detail{position:relative}
-
     .agent-card-model {
       font-size: 9px;
       color: #475569;
@@ -828,14 +736,6 @@
       .task-filter-bar input { width: 100%; }
       .activity-panel { font-size: 12px; }
     }
-  
-    .priority-critical { color:#ef4444;font-weight:700;font-size:10px; }
-    .priority-high     { color:#f97316;font-weight:700;font-size:10px; }
-    .priority-medium   { color:#3b82f6;font-size:10px; }
-    .priority-low      { color:#6b7280;font-size:10px; }
-    .card-priority     { position:absolute;top:6px;right:6px; }
-    .card.isTask       { padding-right:28px; }
-
   </style>
 </head>
 <body>
@@ -885,7 +785,6 @@
     <input id="task-filter" type="text" placeholder="Filter tasks…" style="flex:1;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:5px 10px;font-size:12px;outline:none;" />
     <select id="task-agent-filter" style="background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:5px 8px;font-size:12px;cursor:pointer;"><option value="">All agents</option></select>
     <button id="sort-toggle" title="Toggle sort (newest/oldest)" style="background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;">↓ New</button>
-    <button id="add-task-btn" title="Create new task" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:5px 12px;font-size:11px;cursor:pointer;font-weight:700;">+ Add Task</button>
   </div>
   <div class="board" id="board-view">
     <div class="column col-queued">
@@ -1069,14 +968,12 @@
       spike: 'MiniMax/M2.7-highspeed', jet: 'MiniMax/M2.7', faye: 'Qwen/Qwen2.5-7B',
       ein: 'MiniMax/M2.7', gren: 'MiniMax/M2.7', ed: 'openai/gpt-4o',
       julia: 'Qwen/Qwen2.5-7B', rocco: 'MiniMax/M2.7', punch: 'claude-sonnet-4',
-      andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', vicious: 'MiniMax/M2.7-highspeed',
-      sanji: 'MiniMax/M2.7', zoro: 'MiniMax/M2.7', dispatch: 'MiniMax/M2.7', main: 'MiniMax/M2.7'
+      andy: 'claude-sonnet-4', andrew: 'claude-sonnet-4', vicious: 'MiniMax/M2.7-highspeed', main: 'MiniMax/M2.7'
     };
     const AGENT_AVATARS = {
       spike: '🧠', jet: '✈️', faye: '🔬', ein: '💰',
       gren: '🔩', ed: '🔧', julia: '🎬', rocco: '🏥',
-      punch: '🥊', andy: '🤖', andrew: '🤖', vicious: '⚡',
-      sanji: '🍳', zoro: '⚔️', dispatch: '📡', main: '🎯'
+      punch: '🥊', andy: '🤖', andrew: '🤖', vicious: '⚡', main: '🎯'
     };
     const UNKNOWN = '#94a3b8';
     const POLL_MS = 10000;
@@ -1158,7 +1055,7 @@
             <div class="dde-header">
               <span class="dde-time">${timeStr}</span>
               <span class="dde-branch">${entry.branch || 'main'}</span>
-              <span class="dde-commit">${(entry.sha || entry.commit) ? '@' + (entry.sha || entry.commit) : ''}</span>
+              <span class="dde-commit">${entry.commit ? '@' + entry.commit : ''}</span>
             </div>
             <div class="dde-row">
               <div>Status: <span>${entry.status || 'deployed'}</span></div>
@@ -1172,7 +1069,7 @@
       logEl.innerHTML = sorted.slice(0, 20).map(entry => {
         const ts = entry.timestamp ? new Date(entry.timestamp) : null;
         const timeStr = ts ? ts.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '—';
-        return `<div class="deploy-log-entry"><span class="dle-time">${timeStr}</span><span class="dle-msg">[${entry.trigger || 'deploy'}] ${entry.branch || 'main'}${(entry.sha || entry.commit) ? ' @' + (entry.sha || entry.commit) : ''} — ${entry.status || 'deployed'}${entry.duration ? ' (' + entry.duration + ')' : ''}</span></div>`;
+        return `<div class="deploy-log-entry"><span class="dle-time">${timeStr}</span><span class="dle-msg">[${entry.trigger || 'deploy'}] ${entry.branch || 'main'}${entry.commit ? ' @' + entry.commit : ''} — ${entry.status || 'deployed'}${entry.duration ? ' (' + entry.duration + ')' : ''}</span></div>`;
       }).join('');
     }
 
@@ -1263,7 +1160,7 @@
           : computeDuration(entry.timestamp, prevEntry ? prevEntry.timestamp : null);
 
         const branch = entry.branch || '';
-        const commit = entry.sha || entry.commit || entry.hash || '';
+        const commit = entry.commit || entry.hash || '';
         const msg = entry.message || '';
         const desc = branch || commit || msg
           ? (branch ? branch + (commit ? ' @' + commit : '') + (msg ? ' — ' + msg : '') : (commit ? commit + (msg ? ' — ' + msg : '') : msg))
@@ -1351,9 +1248,8 @@
       _allAgents = data?.agents || [];
       const sel = document.getElementById('task-agent-filter');
       if (sel) {
-        sel.innerHTML = '<option value="">All agents</option>';
-        (_allAgents || []).forEach(function(a) {
-          if (!a) return;
+        sel.innerHTML = '<option value=>All agents</option>';
+        _allAgents.forEach(function(a) {
           var name = a.name || a.key || '';
           if (name) sel.innerHTML += '<option value="' + name + '">' + name + '</option>';
         });
@@ -1370,30 +1266,20 @@
         return;
       }
 
-      // Sort agents by current sort key before rendering
-      const sortKey = typeof agentSortKey !== 'undefined' ? agentSortKey : 'completed';
-      const sortedAgents = [...(agents || [])].sort(function(a, b) {
-        if (!a || !b) return 0;
-        if (sortKey === 'name') return (a.name || '').localeCompare(b.name || '');
-        if (sortKey === 'efficiency') return (b.efficiency ?? 0) - (a.efficiency ?? 0);
-        return (b.completed ?? 0) - (a.completed ?? 0); // default: most completed first
-      });
-
       grid.innerHTML = '';
-      (sortedAgents || []).forEach(function(a, i) {
-        if (!a) return;
+      agents.forEach(function(a) {
         const color = a.color || AGENT_COLORS[a.key] || UNKNOWN;
         const avatar = AGENT_AVATARS[a.key] || '🤖';
         const eff = a.efficiency ?? 0;
         const completed = a.completed ?? 0;
         const avgSec = a.avgTimeSec ?? 0;
         const avgStr = avgSec > 0 ? (avgSec < 60 ? avgSec + 's' : Math.round(avgSec / 60) + 'm') : '—';
+
         const card = document.createElement('div');
         const stale = isStaleAgent(a);
         const stateClass = stale ? '' : (' state-' + (a.state || 'idle'));
         card.className = 'agent-card' + (stale ? ' stale-agent' : stateClass);
         card.style.borderTop = '2px solid ' + color;
-        card.dataset.idx = i;
 
         const header = document.createElement('div');
         header.className = 'agent-card-header';
@@ -1412,7 +1298,7 @@
           ? `<span class="agent-state-badge state-${agentState}-badge">${stateLabel[agentState] || agentState}</span>`
           : '';
         info.innerHTML = `
-          <div class="agent-card-name">${a.name || a.key || '—'}${stateBadge ? ' · ' + stateBadge : ''}</div>
+          <div class="agent-card-name">${a.name || a.key || '—'}${stateBadge}</div>
           <div class="agent-card-model">${a.model || '—'}</div><div class="agent-card-last" style="font-size:10px;color:#475569;margin-top:2px;">${a.lastActive ? timeAgo(new Date(a.lastActive)) : '—'}</div>
         `;
 
@@ -1623,16 +1509,9 @@
         card.dataset.colId = colId;
         card.dataset.agent = agent;
 
-        // Render card title — convert Discord mentions <@SnowflakeID> to clickable links
-        // and wrap the whole text so it can be truncated with ellipsis
         const title = document.createElement('div');
         title.className = 'card-title';
-        var rawText = (item.text || '');
-        var displayText = rawText.length > 120 ? rawText.slice(0, 120) + '…' : rawText;
-        // Replace <@SnowflakeID> with anchor links (Discord mention style)
-        var linkedText = displayText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          .replace(/&lt;@(\d+)&gt;/g, '<a href="javascript:void(0)" onclick="window.openDiscordMention&&window.openDiscordMention(\'$1\')" style="color:#8b5cf6;text-decoration:none;font-weight:600;" title="Mentioned Discord user">@</a>');
-        title.innerHTML = linkedText;
+        title.textContent = (item.text || '').slice(0, 120);
 
         const meta = document.createElement('div');
         meta.className = 'card-meta';
@@ -1677,82 +1556,6 @@
         meta.appendChild(tsSpan);
         card.appendChild(title);
         card.appendChild(meta);
-
-        // Click to dispatch: all board cards are clickable
-        // Non-task activity cards → append [acknowledged] dispatch to shared-log
-        // Task cards → open task detail drawer (handled below when isTask)
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', function(ev) {
-          // Don't fire if clicking the status badge (already has its own handler)
-          if (ev.target.closest('.card-status-badge')) return;
-          // If it's a real task card, open the task detail drawer
-          if (item.isTask) {
-            openTaskDetail(item.id);
-            return;
-          }
-          // For activity/board items: dispatch [acknowledged] to shared-log
-          // This is the "click on task card → notify crew" flow
-          var dispEntry = '\n[' + new Date().toISOString().replace('.000Z', 'Z') + '] [sanji] [acknowledged-sanji] ' + (item.text || '').slice(0, 80) + '\n';
-          fetch('https://gateway.openclaw.ai/shared-log/append', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ entry: dispEntry })
-          }).catch(function() {});
-          // Brief visual feedback
-          card.style.boxShadow = '0 0 0 2px #8b5cf6';
-          setTimeout(function() { card.style.boxShadow = ''; }, 1500);
-        });
-
-        // Task cards: status badge + priority badge + click to detail
-        if (item.isTask) {
-          card.className = 'card isTask';
-          card.style.cursor = 'pointer';
-
-          // Status badge (clickable cycle: todo→in-progress→review→done)
-          var statusBadge = document.createElement('span');
-          statusBadge.className = 'card-status-badge';
-          var statusMap = { 'todo': ['#64748b','○'], 'in-progress': ['#f59e0b','◐'], 'done': ['#22c55e','●'], 'blocked': ['#ef4444','⊘'], 'review': ['#8b5cf6','◑'] };
-          var curS = item.status || 'todo';
-          var sm = statusMap[curS] || statusMap['todo'];
-          statusBadge.textContent = sm[1];
-          statusBadge.style.cssText = 'color:' + sm[0] + ';font-size:13px;cursor:pointer;margin-right:5px;flex-shrink:0;line-height:1;';
-          statusBadge.title = 'Status: ' + curS + ' — click to change';
-          statusBadge.dataset.taskId = item.id;
-          statusBadge.dataset.currentStatus = curS;
-          statusBadge.addEventListener('click', function(ev) {
-            ev.stopPropagation();
-            var tid = this.dataset.taskId;
-            var cur = this.dataset.currentStatus;
-            var next = cur === 'todo' ? 'in-progress' : cur === 'in-progress' ? 'review' : cur === 'review' ? 'done' : 'todo';
-            fetch('http://localhost:8092/tasks/' + tid + '/status', {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ status: next })
-            }).then(function(r) { return r.json(); }).then(function(d) {
-              if (d.ok) { if (typeof refreshData === 'function') refreshData(); }
-              else { alert('Failed: ' + (d.error || '?')); }
-            }).catch(function(err) { alert('Error: ' + err.message); });
-            var nm = statusMap[next] || statusMap['todo'];
-            this.textContent = nm[1]; this.style.color = nm[0];
-            this.dataset.currentStatus = next; this.title = 'Status: ' + next + ' — click to change';
-          });
-          meta.insertBefore(statusBadge, meta.firstChild);
-
-          // Priority badge (top-right corner)
-          if (item.priority && item.priority !== 'medium') {
-            var pBadge = document.createElement('span');
-            pBadge.textContent = item.priority === 'critical' ? '🔥' : item.priority === 'high' ? '⚡' : item.priority === 'low' ? '○' : '';
-            pBadge.style.cssText = 'position:absolute;top:5px;right:5px;font-size:11px;';
-            pBadge.title = 'Priority: ' + item.priority;
-            card.appendChild(pBadge);
-          }
-
-          // Click to open task detail (not on status badge)
-          card.addEventListener('click', function(ev) {
-            if (ev.target === statusBadge) return;
-            openTaskDetail(item.id);
-          });
-        }
 
         card.addEventListener('contextmenu', function(e) {
           e.preventDefault();
@@ -1930,7 +1733,7 @@
 
         // Update agents panel if visible
         const agentsPanel = document.getElementById('agents-panel');
-        if (agentsPanel) {
+        if (agentsPanel && agentsPanel.classList.contains('visible')) {
           renderAgentsPanel(data);
         }
 
@@ -1958,374 +1761,6 @@
 
     poll();
     setInterval(poll, POLL_MS);
-
-    // Agent Quick-Info Overlay
-    let activeAgentDetail = null;
-    const AGENT_SKILLS = {
-      spike: ['Task routing', 'Memory hygiene', 'Crew coordination'],
-      jet: ['Cron management', 'Watchdog', 'Self-evolution'],
-      faye: ['Web search', 'Tavily research', 'Source analysis'],
-      ein: ['Portfolio tracking', 'Crypto briefs', 'Market analysis'],
-      gren: ['Brevo email', 'Gmail', 'Prospect tracking'],
-      ed: ['Node.js', 'Python', 'Next.js', 'Shell scripts', 'Phaser 3'],
-      julia: ['TrendTribe social', 'X/Reddit/PH', 'Image generation'],
-      rocco: ['Shell on jarvis', 'Docker exec', 'File moves', 'TTS'],
-      punch: ['Code review', 'IronThread audit', 'Git push'],
-      andy: ['Git push', 'Deploy', 'IronThread audit', 'Host CLI'],
-      andrew: ['Git push', 'Deploy', 'IronThread audit', 'Host CLI'],
-      vicious: ['Host CLI', 'gcloud', 'git push', 'systemctl', 'docker', 'MC deploy'],
-      sanji: ['bash', 'python', 'docker', 'systemd', 'MC board', 'deploy scripts'],
-      zoro: ['Hermes gateway', 'EAT memory', 'System monitoring', 'ACP registry']
-    };
-    const AGENT_CHANNELS = {
-      spike: '#spike-main', jet: '#spike-ops', faye: '#agent-lounge',
-      ein: '#spike-finance', gren: '#spike-ironthread', ed: '#ed-andy',
-      julia: '#spike-media', rocco: '#spike-local', punch: '#spike-code',
-      andy: '#ed-andy', andrew: '#ed-andy', vicious: '#ed-andy',
-      sanji: '#ops-vicious', zoro: 'gateway (internal)'
-    };
-
-    function openAgentDetail(agent) {
-      const overlay = document.getElementById('agent-overlay');
-      const name = (agent.name || agent.key || '—').toLowerCase().replace(' ', '');
-      const key = agent.key || name;
-      const avatar = document.getElementById('agent-overlay').querySelector('.agent-detail-avatar');
-      const nameEl = document.getElementById('agent-overlay').querySelector('.agent-detail-name');
-      const roleEl = document.getElementById('agent-overlay').querySelector('.agent-detail-role');
-      const stateEl = document.getElementById('agent-overlay').querySelector('.agent-detail-state .agent-detail-value');
-      const lastActiveEl = document.getElementById('agent-overlay').querySelector('.agent-detail-lastActive .agent-detail-value');
-      const modelEl = document.getElementById('agent-overlay').querySelector('.agent-detail-model .agent-detail-value');
-      const completedEl = document.getElementById('agent-overlay').querySelector('.agent-detail-completed .agent-detail-value');
-      const effEl = document.getElementById('agent-overlay').querySelector('.agent-detail-eff .agent-detail-value');
-      const avgEl = document.getElementById('agent-overlay').querySelector('.agent-detail-avg .agent-detail-value');
-      const channelEl = document.getElementById('agent-overlay').querySelector('.agent-detail-channel .agent-detail-value');
-      const tagsEl = document.getElementById('agent-overlay').querySelector('.agent-detail-tags');
-      const stateLabel = { idle: 'idle', working: 'working', thinking: 'thinking', blocked: 'blocked' };
-      const state = agent.state || 'idle';
-      const color = agent.color || '#8b5cf6';
-      const avEl = AGENT_AVATARS[key] || AGENT_AVATARS[name] || '🤖';
-      avatar.style.background = color + '22';
-      avatar.style.color = color;
-      avatar.textContent = avEl;
-      nameEl.textContent = agent.name || key;
-      nameEl.style.color = color;
-      roleEl.textContent = agent.model || AGENT_MODELS[key] || '—';
-      stateEl.textContent = stateLabel[state] || state;
-      stateEl.style.color = state === 'working' ? '#22c55e' : state === 'blocked' ? '#ef4444' : state === 'thinking' ? '#3b82f6' : '#94a3b8';
-      lastActiveEl.textContent = agent.lastActive ? timeAgo(new Date(agent.lastActive)) : 'never';
-      modelEl.textContent = agent.model || AGENT_MODELS[key] || '—';
-      completedEl.textContent = agent.completed ?? 0;
-      effEl.textContent = (agent.efficiency ?? 0) + '%';
-      const avgSec = agent.avgTimeSec ?? 0;
-      avgEl.textContent = avgSec > 0 ? (avgSec < 60 ? avgSec + 's' : Math.round(avgSec / 60) + 'm') : '—';
-      channelEl.textContent = AGENT_CHANNELS[key] || AGENT_CHANNELS[name] || '—';
-      const skills = AGENT_SKILLS[key] || AGENT_SKILLS[name] || ['No skill data'];
-      tagsEl.innerHTML = skills.map(s => '<span class="agent-detail-tag">' + s + '</span>').join('');
-      overlay.classList.add('open');
-      activeAgentDetail = agent;
-    }
-
-    function closeAgentDetail() {
-      document.getElementById('agent-overlay').classList.remove('open');
-      activeAgentDetail = null;
-    }
-
-    // Click on agent card name → open overlay
-    document.getElementById('agents-grid')?.addEventListener('click', function(e) {
-      const nameEl = e.target.closest('.agent-card-name');
-      if (!nameEl) return;
-      const card = nameEl.closest('.agent-card');
-      const idx = parseInt(card?.dataset?.idx || -1);
-      const agents = cachedLiveData?.agents || [];
-      const agent = agents[idx];
-      if (agent) openAgentDetail(agent);
-    });
-
-    document.getElementById('agent-overlay')?.addEventListener('click', function(e) {
-      if (e.target === this) closeAgentDetail();
-    });
-    document.getElementById('agent-overlay-close')?.addEventListener('click', closeAgentDetail);
-
-    // ── Task Modal Handlers ─────────────────────────────────────────────
-    var _taskDetailId = null;
-    var _taskBoardLoaded = false;
-
-    document.getElementById('add-task-btn')?.addEventListener('click', function() {
-      var m = document.getElementById('task-modal');
-      m.style.display = 'flex';
-      document.getElementById('task-input-title').value = '';
-      document.getElementById('task-input-desc').value = '';
-      document.getElementById('task-input-project').value = 'openclaw';
-      document.getElementById('task-input-priority').value = 'medium';
-      document.getElementById('task-input-assignee').value = 'spike';
-      document.getElementById('task-modal-error').style.display = 'none';
-      document.getElementById('task-input-title').focus();
-    });
-
-    document.getElementById('task-modal-close')?.addEventListener('click', function(e) {
-      e.stopPropagation();
-      document.getElementById('task-modal').style.display = 'none';
-    });
-    document.getElementById('task-modal-cancel')?.addEventListener('click', function() {
-      document.getElementById('task-modal').style.display = 'none';
-    });
-    document.getElementById('task-modal').addEventListener('click', function(e) {
-      if (e.target === this) this.style.display = 'none';
-    });
-
-    document.getElementById('task-modal-submit')?.addEventListener('click', async function() {
-      var title = document.getElementById('task-input-title').value.trim();
-      if (!title) {
-        var err = document.getElementById('task-modal-error');
-        err.textContent = 'Title is required'; err.style.display = 'block';
-        return;
-      }
-      var btn = this;
-      btn.textContent = 'Creating…'; btn.disabled = true;
-      try {
-        var res = await fetch('http://localhost:8092/tasks', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title: title,
-            description: document.getElementById('task-input-desc').value.trim(),
-            project: document.getElementById('task-input-project').value,
-            priority: document.getElementById('task-input-priority').value,
-            assignee: document.getElementById('task-input-assignee').value,
-            createdBy: 'spike'
-          })
-        });
-        var json = await res.json();
-        if (json.ok) {
-          document.getElementById('task-modal').style.display = 'none';
-          if (typeof refreshData === 'function') refreshData();
-        } else {
-          var e2 = document.getElementById('task-modal-error');
-          e2.textContent = json.error || 'Failed to create task'; e2.style.display = 'block';
-        }
-      } catch(e) {
-        var e3 = document.getElementById('task-modal-error');
-        e3.textContent = 'Error: ' + e.message; e3.style.display = 'block';
-      } finally {
-        btn.textContent = 'Create Task'; btn.disabled = false;
-      }
-    });
-
-    // ── Task Detail Drawer ───────────────────────────────────────────────
-    window.openTaskDetail = function(taskId) {
-      _taskDetailId = taskId;
-      var task = (window._taskCache || []).find(function(t) { return t.id === taskId; });
-      if (!task) { alert('Task not found in cache — try refreshing'); return; }
-      document.getElementById('task-detail-title').textContent = task.title || '';
-      var meta = (task.project ? task.project + ' · ' : '') + (task.assignee || '') + (task.ts ? ' · ' + task.ts : '');
-      document.getElementById('task-detail-meta').textContent = meta;
-      document.getElementById('task-detail-desc').textContent = task.description || 'No description';
-      document.getElementById('task-detail-status').value = task.status || 'todo';
-      document.getElementById('task-detail-priority').value = task.priority || 'medium';
-      document.getElementById('task-detail-assignee').value = task.assignee || 'spike';
-      document.getElementById('task-detail').style.display = 'flex';
-    };
-
-    document.getElementById('task-detail-close')?.addEventListener('click', function() {
-      document.getElementById('task-detail').style.display = 'none'; _taskDetailId = null;
-    });
-    document.getElementById('task-detail').addEventListener('click', function(e) {
-      if (e.target === this) { this.style.display = 'none'; _taskDetailId = null; }
-    });
-
-    document.getElementById('task-detail-save')?.addEventListener('click', async function() {
-      if (!_taskDetailId) return;
-      var btn = this;
-      btn.textContent = 'Saving…'; btn.disabled = true;
-      try {
-        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            status: document.getElementById('task-detail-status').value,
-            priority: document.getElementById('task-detail-priority').value,
-            assignee: document.getElementById('task-detail-assignee').value
-          })
-        });
-        var json = await res.json();
-        if (json.ok) {
-          document.getElementById('task-detail').style.display = 'none';
-          if (typeof refreshData === 'function') refreshData();
-        } else { alert(json.error || 'Save failed'); }
-      } catch(e) { alert('Error: ' + e.message); }
-      finally { btn.textContent = 'Save'; btn.disabled = false; }
-    });
-
-    document.getElementById('task-detail-delete')?.addEventListener('click', async function() {
-      if (!_taskDetailId || !confirm('Delete this task?')) return;
-      try {
-        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, { method: 'DELETE' });
-        var json = await res.json();
-        if (json.ok) {
-          document.getElementById('task-detail').style.display = 'none';
-          if (typeof refreshData === 'function') refreshData();
-        } else { alert(json.error || 'Delete failed'); }
-      } catch(e) { alert('Error: ' + e.message); }
-    });
-
-    // Load task cache into window for detail lookup
-    window._taskCache = [];
-    fetch('http://localhost:8092/tasks').then(function(r) { return r.json(); }).then(function(d) {
-      if (d.tasks) window._taskCache = d.tasks;
-    }).catch(function() {});
   </script>
-
-  <!-- Agent Detail Overlay -->
-  <div class="agent-overlay" id="agent-overlay">
-    <div class="agent-detail">
-      <button class="agent-detail-close" id="agent-overlay-close">✕</button>
-      <div class="agent-detail-header">
-        <div class="agent-detail-avatar">🤖</div>
-        <div>
-          <div class="agent-detail-name">Agent</div>
-          <div class="agent-detail-role">role</div>
-        </div>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Status</span>
-        <span class="agent-detail-value agent-detail-state">—</span>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Last Active</span>
-        <span class="agent-detail-value agent-detail-lastActive">—</span>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Model</span>
-        <span class="agent-detail-value agent-detail-model">—</span>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Tasks Done</span>
-        <span class="agent-detail-value agent-detail-completed">—</span>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Efficiency</span>
-        <span class="agent-detail-value agent-detail-eff">—</span>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Avg Time</span>
-        <span class="agent-detail-value agent-detail-avg">—</span>
-      </div>
-      <div class="agent-detail-row">
-        <span class="agent-detail-label">Channel</span>
-        <span class="agent-detail-value agent-detail-channel">—</span>
-      </div>
-      <div class="agent-detail-section">
-        <div class="agent-detail-section-title">Skills</div>
-        <div class="agent-detail-tags"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Add Task Modal -->
-  <div id="task-modal" class="agent-overlay" style="display:none;z-index:9999;background:rgba(0,0,0,0.6);">
-    <div class="agent-detail" style="max-width:480px;width:90%;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-        <h3 style="margin:0;font-size:16px;color:var(--text-primary);">New Task</h3>
-        <button id="task-modal-close" style="background:transparent;border:none;color:var(--text-secondary);font-size:18px;cursor:pointer;">✕</button>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">TITLE *</label>
-          <input id="task-input-title" type="text" placeholder="e.g. Deploy v3 to prod" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;box-sizing:border-box;" />
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">DESCRIPTION</label>
-          <textarea id="task-input-desc" placeholder="Optional details..." style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;box-sizing:border-box;min-height:60px;resize:vertical;"></textarea>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div>
-            <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PROJECT</label>
-            <select id="task-input-project" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-              <option value="openclaw">openclaw</option>
-              <option value="ironthread">ironthread</option>
-              <option value="crypto">crypto</option>
-              <option value="artsite">artsite</option>
-              <option value="mc">mc</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PRIORITY</label>
-            <select id="task-input-priority" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-              <option value="medium">medium</option>
-              <option value="high">high</option>
-              <option value="critical">critical</option>
-              <option value="low">low</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">ASSIGNEE</label>
-          <select id="task-input-assignee" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="spike">spike</option>
-            <option value="sanji">sanji</option>
-            <option value="vicious">vicious</option>
-            <option value="faye">faye</option>
-            <option value="ed">ed</option>
-            <option value="gren">gren</option>
-            <option value="jet">jet</option>
-            <option value="zoro">zoro</option>
-          </select>
-        </div>
-        <div id="task-modal-error" style="color:#ef4444;font-size:12px;display:none;"></div>
-        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px;">
-          <button id="task-modal-cancel" style="background:transparent;border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 14px;font-size:12px;cursor:pointer;">Cancel</button>
-          <button id="task-modal-submit" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;">Create Task</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Task Detail Drawer -->
-  <div id="task-detail" class="agent-overlay" style="display:none;z-index:9998;background:rgba(0,0,0,0.6);">
-    <div class="agent-detail" style="max-width:440px;width:90%;">
-      <button class="agent-detail-close" id="task-detail-close">✕</button>
-      <div id="task-detail-title" style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;"></div>
-      <div id="task-detail-meta" style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;"></div>
-      <div id="task-detail-desc" style="font-size:12px;color:var(--text-primary);margin-bottom:12px;line-height:1.5;"></div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">STATUS</label>
-          <select id="task-detail-status" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="todo">Todo</option>
-            <option value="in-progress">In Progress</option>
-            <option value="done">Done</option>
-            <option value="blocked">Blocked</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PRIORITY</label>
-          <select id="task-detail-priority" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="low">low</option>
-            <option value="medium">medium</option>
-            <option value="high">high</option>
-            <option value="critical">critical</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">ASSIGNEE</label>
-          <select id="task-detail-assignee" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="spike">spike</option>
-            <option value="sanji">sanji</option>
-            <option value="vicious">vicious</option>
-            <option value="faye">faye</option>
-            <option value="ed">ed</option>
-            <option value="gren">gren</option>
-            <option value="jet">jet</option>
-            <option value="zoro">zoro</option>
-          </select>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:4px;">
-          <button id="task-detail-save" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;">Save</button>
-          <button id="task-detail-delete" style="background:#ef4444;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>

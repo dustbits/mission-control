@@ -828,14 +828,6 @@
       .task-filter-bar input { width: 100%; }
       .activity-panel { font-size: 12px; }
     }
-  
-    .priority-critical { color:#ef4444;font-weight:700;font-size:10px; }
-    .priority-high     { color:#f97316;font-weight:700;font-size:10px; }
-    .priority-medium   { color:#3b82f6;font-size:10px; }
-    .priority-low      { color:#6b7280;font-size:10px; }
-    .card-priority     { position:absolute;top:6px;right:6px; }
-    .card.isTask       { padding-right:28px; }
-
   </style>
 </head>
 <body>
@@ -885,7 +877,6 @@
     <input id="task-filter" type="text" placeholder="Filter tasks…" style="flex:1;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:5px 10px;font-size:12px;outline:none;" />
     <select id="task-agent-filter" style="background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:5px 8px;font-size:12px;cursor:pointer;"><option value="">All agents</option></select>
     <button id="sort-toggle" title="Toggle sort (newest/oldest)" style="background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;">↓ New</button>
-    <button id="add-task-btn" title="Create new task" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:5px 12px;font-size:11px;cursor:pointer;font-weight:700;">+ Add Task</button>
   </div>
   <div class="board" id="board-view">
     <div class="column col-queued">
@@ -1623,16 +1614,9 @@
         card.dataset.colId = colId;
         card.dataset.agent = agent;
 
-        // Render card title — convert Discord mentions <@SnowflakeID> to clickable links
-        // and wrap the whole text so it can be truncated with ellipsis
         const title = document.createElement('div');
         title.className = 'card-title';
-        var rawText = (item.text || '');
-        var displayText = rawText.length > 120 ? rawText.slice(0, 120) + '…' : rawText;
-        // Replace <@SnowflakeID> with anchor links (Discord mention style)
-        var linkedText = displayText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          .replace(/&lt;@(\d+)&gt;/g, '<a href="javascript:void(0)" onclick="window.openDiscordMention&&window.openDiscordMention(\'$1\')" style="color:#8b5cf6;text-decoration:none;font-weight:600;" title="Mentioned Discord user">@</a>');
-        title.innerHTML = linkedText;
+        title.textContent = (item.text || '').slice(0, 120);
 
         const meta = document.createElement('div');
         meta.className = 'card-meta';
@@ -1677,82 +1661,6 @@
         meta.appendChild(tsSpan);
         card.appendChild(title);
         card.appendChild(meta);
-
-        // Click to dispatch: all board cards are clickable
-        // Non-task activity cards → append [acknowledged] dispatch to shared-log
-        // Task cards → open task detail drawer (handled below when isTask)
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', function(ev) {
-          // Don't fire if clicking the status badge (already has its own handler)
-          if (ev.target.closest('.card-status-badge')) return;
-          // If it's a real task card, open the task detail drawer
-          if (item.isTask) {
-            openTaskDetail(item.id);
-            return;
-          }
-          // For activity/board items: dispatch [acknowledged] to shared-log
-          // This is the "click on task card → notify crew" flow
-          var dispEntry = '\n[' + new Date().toISOString().replace('.000Z', 'Z') + '] [sanji] [acknowledged-sanji] ' + (item.text || '').slice(0, 80) + '\n';
-          fetch('https://gateway.openclaw.ai/shared-log/append', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ entry: dispEntry })
-          }).catch(function() {});
-          // Brief visual feedback
-          card.style.boxShadow = '0 0 0 2px #8b5cf6';
-          setTimeout(function() { card.style.boxShadow = ''; }, 1500);
-        });
-
-        // Task cards: status badge + priority badge + click to detail
-        if (item.isTask) {
-          card.className = 'card isTask';
-          card.style.cursor = 'pointer';
-
-          // Status badge (clickable cycle: todo→in-progress→review→done)
-          var statusBadge = document.createElement('span');
-          statusBadge.className = 'card-status-badge';
-          var statusMap = { 'todo': ['#64748b','○'], 'in-progress': ['#f59e0b','◐'], 'done': ['#22c55e','●'], 'blocked': ['#ef4444','⊘'], 'review': ['#8b5cf6','◑'] };
-          var curS = item.status || 'todo';
-          var sm = statusMap[curS] || statusMap['todo'];
-          statusBadge.textContent = sm[1];
-          statusBadge.style.cssText = 'color:' + sm[0] + ';font-size:13px;cursor:pointer;margin-right:5px;flex-shrink:0;line-height:1;';
-          statusBadge.title = 'Status: ' + curS + ' — click to change';
-          statusBadge.dataset.taskId = item.id;
-          statusBadge.dataset.currentStatus = curS;
-          statusBadge.addEventListener('click', function(ev) {
-            ev.stopPropagation();
-            var tid = this.dataset.taskId;
-            var cur = this.dataset.currentStatus;
-            var next = cur === 'todo' ? 'in-progress' : cur === 'in-progress' ? 'review' : cur === 'review' ? 'done' : 'todo';
-            fetch('http://localhost:8092/tasks/' + tid + '/status', {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ status: next })
-            }).then(function(r) { return r.json(); }).then(function(d) {
-              if (d.ok) { if (typeof refreshData === 'function') refreshData(); }
-              else { alert('Failed: ' + (d.error || '?')); }
-            }).catch(function(err) { alert('Error: ' + err.message); });
-            var nm = statusMap[next] || statusMap['todo'];
-            this.textContent = nm[1]; this.style.color = nm[0];
-            this.dataset.currentStatus = next; this.title = 'Status: ' + next + ' — click to change';
-          });
-          meta.insertBefore(statusBadge, meta.firstChild);
-
-          // Priority badge (top-right corner)
-          if (item.priority && item.priority !== 'medium') {
-            var pBadge = document.createElement('span');
-            pBadge.textContent = item.priority === 'critical' ? '🔥' : item.priority === 'high' ? '⚡' : item.priority === 'low' ? '○' : '';
-            pBadge.style.cssText = 'position:absolute;top:5px;right:5px;font-size:11px;';
-            pBadge.title = 'Priority: ' + item.priority;
-            card.appendChild(pBadge);
-          }
-
-          // Click to open task detail (not on status badge)
-          card.addEventListener('click', function(ev) {
-            if (ev.target === statusBadge) return;
-            openTaskDetail(item.id);
-          });
-        }
 
         card.addEventListener('contextmenu', function(e) {
           e.preventDefault();
@@ -2045,134 +1953,6 @@
       if (e.target === this) closeAgentDetail();
     });
     document.getElementById('agent-overlay-close')?.addEventListener('click', closeAgentDetail);
-
-    // ── Task Modal Handlers ─────────────────────────────────────────────
-    var _taskDetailId = null;
-    var _taskBoardLoaded = false;
-
-    document.getElementById('add-task-btn')?.addEventListener('click', function() {
-      var m = document.getElementById('task-modal');
-      m.style.display = 'flex';
-      document.getElementById('task-input-title').value = '';
-      document.getElementById('task-input-desc').value = '';
-      document.getElementById('task-input-project').value = 'openclaw';
-      document.getElementById('task-input-priority').value = 'medium';
-      document.getElementById('task-input-assignee').value = 'spike';
-      document.getElementById('task-modal-error').style.display = 'none';
-      document.getElementById('task-input-title').focus();
-    });
-
-    document.getElementById('task-modal-close')?.addEventListener('click', function(e) {
-      e.stopPropagation();
-      document.getElementById('task-modal').style.display = 'none';
-    });
-    document.getElementById('task-modal-cancel')?.addEventListener('click', function() {
-      document.getElementById('task-modal').style.display = 'none';
-    });
-    document.getElementById('task-modal').addEventListener('click', function(e) {
-      if (e.target === this) this.style.display = 'none';
-    });
-
-    document.getElementById('task-modal-submit')?.addEventListener('click', async function() {
-      var title = document.getElementById('task-input-title').value.trim();
-      if (!title) {
-        var err = document.getElementById('task-modal-error');
-        err.textContent = 'Title is required'; err.style.display = 'block';
-        return;
-      }
-      var btn = this;
-      btn.textContent = 'Creating…'; btn.disabled = true;
-      try {
-        var res = await fetch('http://localhost:8092/tasks', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title: title,
-            description: document.getElementById('task-input-desc').value.trim(),
-            project: document.getElementById('task-input-project').value,
-            priority: document.getElementById('task-input-priority').value,
-            assignee: document.getElementById('task-input-assignee').value,
-            createdBy: 'spike'
-          })
-        });
-        var json = await res.json();
-        if (json.ok) {
-          document.getElementById('task-modal').style.display = 'none';
-          if (typeof refreshData === 'function') refreshData();
-        } else {
-          var e2 = document.getElementById('task-modal-error');
-          e2.textContent = json.error || 'Failed to create task'; e2.style.display = 'block';
-        }
-      } catch(e) {
-        var e3 = document.getElementById('task-modal-error');
-        e3.textContent = 'Error: ' + e.message; e3.style.display = 'block';
-      } finally {
-        btn.textContent = 'Create Task'; btn.disabled = false;
-      }
-    });
-
-    // ── Task Detail Drawer ───────────────────────────────────────────────
-    window.openTaskDetail = function(taskId) {
-      _taskDetailId = taskId;
-      var task = (window._taskCache || []).find(function(t) { return t.id === taskId; });
-      if (!task) { alert('Task not found in cache — try refreshing'); return; }
-      document.getElementById('task-detail-title').textContent = task.title || '';
-      var meta = (task.project ? task.project + ' · ' : '') + (task.assignee || '') + (task.ts ? ' · ' + task.ts : '');
-      document.getElementById('task-detail-meta').textContent = meta;
-      document.getElementById('task-detail-desc').textContent = task.description || 'No description';
-      document.getElementById('task-detail-status').value = task.status || 'todo';
-      document.getElementById('task-detail-priority').value = task.priority || 'medium';
-      document.getElementById('task-detail-assignee').value = task.assignee || 'spike';
-      document.getElementById('task-detail').style.display = 'flex';
-    };
-
-    document.getElementById('task-detail-close')?.addEventListener('click', function() {
-      document.getElementById('task-detail').style.display = 'none'; _taskDetailId = null;
-    });
-    document.getElementById('task-detail').addEventListener('click', function(e) {
-      if (e.target === this) { this.style.display = 'none'; _taskDetailId = null; }
-    });
-
-    document.getElementById('task-detail-save')?.addEventListener('click', async function() {
-      if (!_taskDetailId) return;
-      var btn = this;
-      btn.textContent = 'Saving…'; btn.disabled = true;
-      try {
-        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            status: document.getElementById('task-detail-status').value,
-            priority: document.getElementById('task-detail-priority').value,
-            assignee: document.getElementById('task-detail-assignee').value
-          })
-        });
-        var json = await res.json();
-        if (json.ok) {
-          document.getElementById('task-detail').style.display = 'none';
-          if (typeof refreshData === 'function') refreshData();
-        } else { alert(json.error || 'Save failed'); }
-      } catch(e) { alert('Error: ' + e.message); }
-      finally { btn.textContent = 'Save'; btn.disabled = false; }
-    });
-
-    document.getElementById('task-detail-delete')?.addEventListener('click', async function() {
-      if (!_taskDetailId || !confirm('Delete this task?')) return;
-      try {
-        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, { method: 'DELETE' });
-        var json = await res.json();
-        if (json.ok) {
-          document.getElementById('task-detail').style.display = 'none';
-          if (typeof refreshData === 'function') refreshData();
-        } else { alert(json.error || 'Delete failed'); }
-      } catch(e) { alert('Error: ' + e.message); }
-    });
-
-    // Load task cache into window for detail lookup
-    window._taskCache = [];
-    fetch('http://localhost:8092/tasks').then(function(r) { return r.json(); }).then(function(d) {
-      if (d.tasks) window._taskCache = d.tasks;
-    }).catch(function() {});
   </script>
 
   <!-- Agent Detail Overlay -->
@@ -2220,112 +2000,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Add Task Modal -->
-  <div id="task-modal" class="agent-overlay" style="display:none;z-index:9999;background:rgba(0,0,0,0.6);">
-    <div class="agent-detail" style="max-width:480px;width:90%;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-        <h3 style="margin:0;font-size:16px;color:var(--text-primary);">New Task</h3>
-        <button id="task-modal-close" style="background:transparent;border:none;color:var(--text-secondary);font-size:18px;cursor:pointer;">✕</button>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">TITLE *</label>
-          <input id="task-input-title" type="text" placeholder="e.g. Deploy v3 to prod" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;box-sizing:border-box;" />
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">DESCRIPTION</label>
-          <textarea id="task-input-desc" placeholder="Optional details..." style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;box-sizing:border-box;min-height:60px;resize:vertical;"></textarea>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div>
-            <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PROJECT</label>
-            <select id="task-input-project" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-              <option value="openclaw">openclaw</option>
-              <option value="ironthread">ironthread</option>
-              <option value="crypto">crypto</option>
-              <option value="artsite">artsite</option>
-              <option value="mc">mc</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PRIORITY</label>
-            <select id="task-input-priority" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-              <option value="medium">medium</option>
-              <option value="high">high</option>
-              <option value="critical">critical</option>
-              <option value="low">low</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">ASSIGNEE</label>
-          <select id="task-input-assignee" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="spike">spike</option>
-            <option value="sanji">sanji</option>
-            <option value="vicious">vicious</option>
-            <option value="faye">faye</option>
-            <option value="ed">ed</option>
-            <option value="gren">gren</option>
-            <option value="jet">jet</option>
-            <option value="zoro">zoro</option>
-          </select>
-        </div>
-        <div id="task-modal-error" style="color:#ef4444;font-size:12px;display:none;"></div>
-        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px;">
-          <button id="task-modal-cancel" style="background:transparent;border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 14px;font-size:12px;cursor:pointer;">Cancel</button>
-          <button id="task-modal-submit" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;">Create Task</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Task Detail Drawer -->
-  <div id="task-detail" class="agent-overlay" style="display:none;z-index:9998;background:rgba(0,0,0,0.6);">
-    <div class="agent-detail" style="max-width:440px;width:90%;">
-      <button class="agent-detail-close" id="task-detail-close">✕</button>
-      <div id="task-detail-title" style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;"></div>
-      <div id="task-detail-meta" style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;"></div>
-      <div id="task-detail-desc" style="font-size:12px;color:var(--text-primary);margin-bottom:12px;line-height:1.5;"></div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">STATUS</label>
-          <select id="task-detail-status" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="todo">Todo</option>
-            <option value="in-progress">In Progress</option>
-            <option value="done">Done</option>
-            <option value="blocked">Blocked</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PRIORITY</label>
-          <select id="task-detail-priority" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="low">low</option>
-            <option value="medium">medium</option>
-            <option value="high">high</option>
-            <option value="critical">critical</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">ASSIGNEE</label>
-          <select id="task-detail-assignee" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="spike">spike</option>
-            <option value="sanji">sanji</option>
-            <option value="vicious">vicious</option>
-            <option value="faye">faye</option>
-            <option value="ed">ed</option>
-            <option value="gren">gren</option>
-            <option value="jet">jet</option>
-            <option value="zoro">zoro</option>
-          </select>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:4px;">
-          <button id="task-detail-save" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;">Save</button>
-          <button id="task-detail-delete" style="background:#ef4444;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>
