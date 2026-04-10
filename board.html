@@ -1671,6 +1671,56 @@
         card.appendChild(title);
         card.appendChild(meta);
 
+        // Task cards: status badge + priority badge + click to detail
+        if (item.isTask) {
+          card.className = 'card isTask';
+          card.style.cursor = 'pointer';
+
+          // Status badge (clickable cycle: todo→in-progress→review→done)
+          var statusBadge = document.createElement('span');
+          var statusMap = { 'todo': ['#64748b','○'], 'in-progress': ['#f59e0b','◐'], 'done': ['#22c55e','●'], 'blocked': ['#ef4444','⊘'], 'review': ['#8b5cf6','◑'] };
+          var curS = item.status || 'todo';
+          var sm = statusMap[curS] || statusMap['todo'];
+          statusBadge.textContent = sm[1];
+          statusBadge.style.cssText = 'color:' + sm[0] + ';font-size:13px;cursor:pointer;margin-right:5px;flex-shrink:0;line-height:1;';
+          statusBadge.title = 'Status: ' + curS + ' — click to change';
+          statusBadge.dataset.taskId = item.id;
+          statusBadge.dataset.currentStatus = curS;
+          statusBadge.addEventListener('click', function(ev) {
+            ev.stopPropagation();
+            var tid = this.dataset.taskId;
+            var cur = this.dataset.currentStatus;
+            var next = cur === 'todo' ? 'in-progress' : cur === 'in-progress' ? 'review' : cur === 'review' ? 'done' : 'todo';
+            fetch('http://localhost:8092/tasks/' + tid + '/status', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ status: next })
+            }).then(function(r) { return r.json(); }).then(function(d) {
+              if (d.ok) { if (typeof refreshData === 'function') refreshData(); }
+              else { alert('Failed: ' + (d.error || '?')); }
+            }).catch(function(err) { alert('Error: ' + err.message); });
+            var nm = statusMap[next] || statusMap['todo'];
+            this.textContent = nm[1]; this.style.color = nm[0];
+            this.dataset.currentStatus = next; this.title = 'Status: ' + next + ' — click to change';
+          });
+          meta.insertBefore(statusBadge, meta.firstChild);
+
+          // Priority badge (top-right corner)
+          if (item.priority && item.priority !== 'medium') {
+            var pBadge = document.createElement('span');
+            pBadge.textContent = item.priority === 'critical' ? '🔥' : item.priority === 'high' ? '⚡' : item.priority === 'low' ? '○' : '';
+            pBadge.style.cssText = 'position:absolute;top:5px;right:5px;font-size:11px;';
+            pBadge.title = 'Priority: ' + item.priority;
+            card.appendChild(pBadge);
+          }
+
+          // Click to open task detail (not on status badge)
+          card.addEventListener('click', function(ev) {
+            if (ev.target === statusBadge) return;
+            openTaskDetail(item.id);
+          });
+        }
+
         card.addEventListener('contextmenu', function(e) {
           e.preventDefault();
           showContextMenu(e.clientX, e.clientY, item, colId);
@@ -1962,6 +2012,134 @@
       if (e.target === this) closeAgentDetail();
     });
     document.getElementById('agent-overlay-close')?.addEventListener('click', closeAgentDetail);
+
+    // ── Task Modal Handlers ─────────────────────────────────────────────
+    var _taskDetailId = null;
+    var _taskBoardLoaded = false;
+
+    document.getElementById('add-task-btn')?.addEventListener('click', function() {
+      var m = document.getElementById('task-modal');
+      m.style.display = 'flex';
+      document.getElementById('task-input-title').value = '';
+      document.getElementById('task-input-desc').value = '';
+      document.getElementById('task-input-project').value = 'openclaw';
+      document.getElementById('task-input-priority').value = 'medium';
+      document.getElementById('task-input-assignee').value = 'spike';
+      document.getElementById('task-modal-error').style.display = 'none';
+      document.getElementById('task-input-title').focus();
+    });
+
+    document.getElementById('task-modal-close')?.addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('task-modal').style.display = 'none';
+    });
+    document.getElementById('task-modal-cancel')?.addEventListener('click', function() {
+      document.getElementById('task-modal').style.display = 'none';
+    });
+    document.getElementById('task-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+
+    document.getElementById('task-modal-submit')?.addEventListener('click', async function() {
+      var title = document.getElementById('task-input-title').value.trim();
+      if (!title) {
+        var err = document.getElementById('task-modal-error');
+        err.textContent = 'Title is required'; err.style.display = 'block';
+        return;
+      }
+      var btn = this;
+      btn.textContent = 'Creating…'; btn.disabled = true;
+      try {
+        var res = await fetch('http://localhost:8092/tasks', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: title,
+            description: document.getElementById('task-input-desc').value.trim(),
+            project: document.getElementById('task-input-project').value,
+            priority: document.getElementById('task-input-priority').value,
+            assignee: document.getElementById('task-input-assignee').value,
+            createdBy: 'spike'
+          })
+        });
+        var json = await res.json();
+        if (json.ok) {
+          document.getElementById('task-modal').style.display = 'none';
+          if (typeof refreshData === 'function') refreshData();
+        } else {
+          var e2 = document.getElementById('task-modal-error');
+          e2.textContent = json.error || 'Failed to create task'; e2.style.display = 'block';
+        }
+      } catch(e) {
+        var e3 = document.getElementById('task-modal-error');
+        e3.textContent = 'Error: ' + e.message; e3.style.display = 'block';
+      } finally {
+        btn.textContent = 'Create Task'; btn.disabled = false;
+      }
+    });
+
+    // ── Task Detail Drawer ───────────────────────────────────────────────
+    window.openTaskDetail = function(taskId) {
+      _taskDetailId = taskId;
+      var task = (window._taskCache || []).find(function(t) { return t.id === taskId; });
+      if (!task) { alert('Task not found in cache — try refreshing'); return; }
+      document.getElementById('task-detail-title').textContent = task.title || '';
+      var meta = (task.project ? task.project + ' · ' : '') + (task.assignee || '') + (task.ts ? ' · ' + task.ts : '');
+      document.getElementById('task-detail-meta').textContent = meta;
+      document.getElementById('task-detail-desc').textContent = task.description || 'No description';
+      document.getElementById('task-detail-status').value = task.status || 'todo';
+      document.getElementById('task-detail-priority').value = task.priority || 'medium';
+      document.getElementById('task-detail-assignee').value = task.assignee || 'spike';
+      document.getElementById('task-detail').style.display = 'flex';
+    };
+
+    document.getElementById('task-detail-close')?.addEventListener('click', function() {
+      document.getElementById('task-detail').style.display = 'none'; _taskDetailId = null;
+    });
+    document.getElementById('task-detail').addEventListener('click', function(e) {
+      if (e.target === this) { this.style.display = 'none'; _taskDetailId = null; }
+    });
+
+    document.getElementById('task-detail-save')?.addEventListener('click', async function() {
+      if (!_taskDetailId) return;
+      var btn = this;
+      btn.textContent = 'Saving…'; btn.disabled = true;
+      try {
+        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            status: document.getElementById('task-detail-status').value,
+            priority: document.getElementById('task-detail-priority').value,
+            assignee: document.getElementById('task-detail-assignee').value
+          })
+        });
+        var json = await res.json();
+        if (json.ok) {
+          document.getElementById('task-detail').style.display = 'none';
+          if (typeof refreshData === 'function') refreshData();
+        } else { alert(json.error || 'Save failed'); }
+      } catch(e) { alert('Error: ' + e.message); }
+      finally { btn.textContent = 'Save'; btn.disabled = false; }
+    });
+
+    document.getElementById('task-detail-delete')?.addEventListener('click', async function() {
+      if (!_taskDetailId || !confirm('Delete this task?')) return;
+      try {
+        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, { method: 'DELETE' });
+        var json = await res.json();
+        if (json.ok) {
+          document.getElementById('task-detail').style.display = 'none';
+          if (typeof refreshData === 'function') refreshData();
+        } else { alert(json.error || 'Delete failed'); }
+      } catch(e) { alert('Error: ' + e.message); }
+    });
+
+    // Load task cache into window for detail lookup
+    window._taskCache = [];
+    fetch('http://localhost:8092/tasks').then(function(r) { return r.json(); }).then(function(d) {
+      if (d.tasks) window._taskCache = d.tasks;
+    }).catch(function() {});
   </script>
 
   <!-- Agent Detail Overlay -->
