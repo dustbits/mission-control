@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-10T05:48:17.905Z",
+  "updatedAt": "2026-04-10T05:51:23.766Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 14,
-    "memory": 24,
+    "cpu": 24,
+    "memory": 26,
     "disk": 2
   },
   "agents": [
@@ -184,7 +184,7 @@
         "changedFiles": "board.html,mission-control-live.json",
         "durationSec": 1,
         "duration": null,
-        "time": "22m"
+        "time": "25m"
       },
       {
         "timestamp": "2026-04-09T18:00:33.000Z",
@@ -314,14 +314,28 @@
       "id": 3,
       "agent": "System",
       "line": "spawning andy session (OpenClaw/andy)",
-      "time": "5m",
+      "time": "4m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "System",
       "line": "spawning andy session (OpenClaw/andy)",
-      "time": "7m",
+      "time": "6m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 5,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "8m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 6,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "10m",
       "color": "#38bdf8"
     }
   ],
@@ -394,7 +408,7 @@
         "id": "task-mnsgpgpu-lip3",
         "text": "test",
         "agent": "Spike",
-        "ts": "22m",
+        "ts": "26m",
         "priority": "medium",
         "project": "openclaw",
         "isTask": true
@@ -1084,7 +1098,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "9m",
+      "lastRun": "12m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1180,7 +1194,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "10m",
+      "lastRun": "13m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1340,7 +1354,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "now",
-      "lastRun": "2m",
+      "lastRun": "now",
       "state": "ok",
       "errors": 0,
       "enabled": true,
