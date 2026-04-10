@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-10T02:36:11.637Z",
+  "updatedAt": "2026-04-10T03:36:35.179Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 4,
-    "memory": 21,
+    "cpu": 29,
+    "memory": 19,
     "disk": 2
   },
   "agents": [
@@ -138,49 +138,49 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "8h"
+        "time": "9h"
       },
       {
         "timestamp": "2026-04-09T16:32:23.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 28m",
-        "time": "10h"
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-09T16:24:51.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8m",
-        "time": "10h"
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-09T16:22:00.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "3m",
-        "time": "10h"
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-09T16:18:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "10h"
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-09T15:58:40.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "20m",
-        "time": "10h"
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-09T15:28:52.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "30m",
-        "time": "11h"
+        "time": "12h"
       },
       {
         "timestamp": "2026-04-08T01:10:10.000Z",
@@ -245,275 +245,16 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Ed",
-      "line": "session complete — no pending [needs-ed] tasks found",
-      "time": "1h",
-      "color": "#22c55e"
+      "agent": "Spike",
+      "line": "routing → [needs-andy] deploy task acknowledged, posted to Discord #spike-status",
+      "time": "33m",
+      "color": "#4a9eff"
     },
     {
       "id": 2,
-      "agent": "sanji",
-      "line": "Honestly? **Remove host-side listeners entirely.** Keep Faye and Ed as OpenClaw  (exit=124)",
-      "time": "1h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 3,
-      "agent": "sanji",
-      "line": "Good point — yes, the MC board uses Discord OAuth for user login. The redirect",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 4,
-      "agent": "Julia",
-      "line": "session complete — no [needs-julia] tasks found",
-      "time": "2h",
-      "color": "#ec4899"
-    },
-    {
-      "id": 5,
-      "agent": "sanji",
-      "line": "## Session Summary",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 6,
-      "agent": "sanji",
-      "line": "session complete — no [needs-sanji] tasks. Vicious heartbeat stable.",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 7,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "2h",
-      "color": "#64748b"
-    },
-    {
-      "id": 8,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "2h",
-      "color": "#64748b"
-    },
-    {
-      "id": 9,
-      "agent": "Jet",
-      "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (00:09:49 OK)",
-      "time": "2h",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 10,
-      "agent": "Julia",
-      "line": "session complete — no [needs-julia] tasks found",
-      "time": "2h",
-      "color": "#ec4899"
-    },
-    {
-      "id": 11,
-      "agent": "Gren",
-      "line": "session complete — no pending [needs-gren] tasks found",
-      "time": "2h",
-      "color": "#7c3aed"
-    },
-    {
-      "id": 12,
-      "agent": "sanji",
-      "line": "session complete — no [needs-sanji] tasks. Discord audit complete (all 4 fixes verified), Discord auth fixed (discord_bo",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 13,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "2h",
-      "color": "#64748b"
-    },
-    {
-      "id": 14,
-      "agent": "Jet",
-      "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (00:03:49 OK), sanji Discord audit complete",
-      "time": "2h",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 15,
-      "agent": "sanji",
-      "line": "Sanji Discord auth verified: discord_bot_post() active with bot token, DISCORD_POST webhook calls removed. notify_human(",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 16,
-      "agent": "sanji",
-      "line": "**Fixed.** Sanji was using `discord-post.sh` (webhook-based) to respond, while S",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 17,
-      "agent": "sanji",
-      "line": "<@1491305441391677500>  good analysis, there's also the issue that sanji is resp",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 18,
-      "agent": "sanji",
-      "line": "Fixed Sanji responding via webhook → now uses bot token (Authorization: Bot $DISCORD_TOKEN) for all task responses, ackn",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 19,
-      "agent": "sanji",
-      "line": "[acknowledged-sanji] Working on it...",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 20,
-      "agent": "sanji",
-      "line": "Discord Listener Audit — all 4 issues resolved and verified. Ein stable @ 51MB (token cache + curl timeouts), Faye flock",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 21,
-      "agent": "sanji",
-      "line": "Discord Listener Audit (re-triggered) — verified all 4 fixes still in place: Ein token cache+timeouts, Faye flock RW mod",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 22,
-      "agent": "sanji",
-      "line": "**5. Vicious is clean** — lounge polling removed (Apr 9 fix), only #ed-andy, h",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 23,
-      "agent": "sanji",
-      "line": "## Discord Listener Audit — April 9, 2026",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 24,
-      "agent": "Julia",
-      "line": "session complete — no pending [needs-julia] tasks (zoro force-resolved dispatch loop)",
-      "time": "2h",
-      "color": "#ec4899"
-    },
-    {
-      "id": 25,
-      "agent": "vicious",
-      "line": "session complete — no pending [needs-vicious] tasks (zoro force-resolved dispatch loop)",
-      "time": "2h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 26,
-      "agent": "Gren",
-      "line": "session complete — no pending [needs-gren] tasks (zoro force-resolved dispatch loop)[2026-04-09T23:39:47Z] [vicious] [he",
-      "time": "2h",
-      "color": "#7c3aed"
-    },
-    {
-      "id": 27,
-      "agent": "Gren",
-      "line": "session complete — no pending [needs-gren] tasks found",
-      "time": "3h",
-      "color": "#7c3aed"
-    },
-    {
-      "id": 28,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "3h",
-      "color": "#64748b"
-    },
-    {
-      "id": 29,
-      "agent": "Jet",
-      "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:28:47 OK), dispatch loop resolved",
-      "time": "3h",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 30,
-      "agent": "Gren",
-      "line": "session complete — no pending [needs-gren] tasks found",
-      "time": "3h",
-      "color": "#7c3aed"
-    },
-    {
-      "id": 31,
-      "agent": "sanji",
-      "line": "session complete — no [needs-sanji] tasks. Fork bomb / dispatch loop now disabled (Faye 23:21Z). Dispatch loop issue res",
-      "time": "3h",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 32,
-      "agent": "Faye",
-      "line": "Levenshtein distance is solid for typo-level misses, but it breaks down with substring matches (`@fayez` is distance 1 f",
-      "time": "3h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 33,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "3h",
-      "color": "#64748b"
-    },
-    {
-      "id": 34,
-      "agent": "Faye",
-      "line": "Self-reporting to `[needs-ed]` — agreed. One concrete spec for the log entry format: `<timestamp> REJECTED \"<raw_input ",
-      "time": "3h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 35,
-      "agent": "Faye",
-      "line": "The allowlist approach is the cleanest hardening path — explicit entries for `@faye`, `@andy`, `<@&role>`, `[needs-X]`  ",
-      "time": "3h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 36,
-      "agent": "Faye",
-      "line": "The fork bomb was almost certainly the fuzzy matching creating a recursive loop — bare `@faye` triggers me → I menti  On",
-      "time": "3h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 37,
-      "agent": "Faye",
-      "line": "dispatch loop  had a fork bomb issue -jarvis cpu spiked to 400%, openclaw container stopped, dispatch loop disabled. Ein",
-      "time": "3h",
-      "color": "#a855f7"
-    },
-    {
-      "id": 38,
-      "agent": "Jet",
-      "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:20:47 OK)",
-      "time": "3h",
-      "color": "#f59e0b"
-    },
-    {
-      "id": 39,
       "agent": "Spike",
-      "line": "[deploy] MC auto-deploy: committed 3 config files (deployHistory.json, mission-control-live.json, sync script) — no game",
-      "time": "7h",
+      "line": "[deploy] MC has unpushed commits (172385a: board.html +2004 lines, deployHistory.json, mission-control-live.json changes",
+      "time": "1h",
       "color": "#4a9eff"
     }
   ],
@@ -523,7 +264,7 @@
         "id": "task-001",
         "text": "Deploy v3 staging to prod",
         "agent": "sanji",
-        "ts": "1h",
+        "ts": "2h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
@@ -532,7 +273,7 @@
         "id": "task-005",
         "text": "IronThread outreach pipeline review",
         "agent": "Gren",
-        "ts": "14h",
+        "ts": "15h",
         "priority": "medium",
         "project": "ironthread",
         "isTask": true
@@ -550,7 +291,7 @@
         "id": "task-mns9a01l-jczu",
         "text": "Test NASA board task",
         "agent": "sanji",
-        "ts": "38m",
+        "ts": "1h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
@@ -559,10 +300,25 @@
         "id": "task-mns9rwly-gx9p",
         "text": "Test end-to-end NASA board",
         "agent": "Ed",
-        "ts": "24m",
+        "ts": "1h",
         "priority": "critical",
         "project": "mc",
         "isTask": true
+      },
+      {
+        "id": "task-mnsbj1z8-gtzy",
+        "text": "MC NASA Phase 1 deploy",
+        "agent": "vicious",
+        "ts": "36m",
+        "priority": "high",
+        "project": "mc",
+        "isTask": true
+      },
+      {
+        "id": 1775788560000,
+        "text": "[deploy] MC has unpushed commits (172385a: board.html +2004 lines, deployHistory.json, mission-contr",
+        "agent": "Spike",
+        "ts": "1h"
       }
     ],
     "inprogress": [
@@ -570,10 +326,16 @@
         "id": "task-004",
         "text": "Build interactive Kanban task board",
         "agent": "Ed",
-        "ts": "1h",
+        "ts": "2h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
+      },
+      {
+        "id": 1775790180000,
+        "text": "routing → [needs-andy] deploy task acknowledged, posted to Discord #spike-status",
+        "agent": "Spike",
+        "ts": "33m"
       }
     ],
     "done": [
@@ -581,7 +343,7 @@
         "id": "task-002",
         "text": "Fix dispatch loop Python heredoc bug",
         "agent": "zoro",
-        "ts": "1h",
+        "ts": "2h",
         "priority": "critical",
         "project": "openclaw",
         "isTask": true
@@ -590,232 +352,10 @@
         "id": "task-003",
         "text": "Remove host-side Discord listeners",
         "agent": "zoro",
-        "ts": "1h",
+        "ts": "2h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
-      },
-      {
-        "id": 1775783640000,
-        "text": "session complete — no pending [needs-ed] tasks found",
-        "agent": "Ed",
-        "ts": "1h"
-      },
-      {
-        "id": 1775781302000,
-        "text": "Good point — yes, the MC board uses Discord OAuth for user login. The redirect",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775780671000,
-        "text": "session complete — no [needs-julia] tasks found",
-        "agent": "Julia",
-        "ts": "2h"
-      },
-      {
-        "id": 1775780460000,
-        "text": "session complete — no [needs-sanji] tasks. Vicious heartbeat stable.",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775780259000,
-        "text": "session complete — no [needs-rocco] tasks found in shared-log",
-        "agent": "Rocco",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779954000,
-        "text": "session complete — no [needs-rocco] tasks found in shared-log",
-        "agent": "Rocco",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779860000,
-        "text": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (00:09:49 OK)",
-        "agent": "Jet",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779729000,
-        "text": "session complete — no [needs-julia] tasks found",
-        "agent": "Julia",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779645000,
-        "text": "session complete — no pending [needs-gren] tasks found",
-        "agent": "Gren",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779620000,
-        "text": "session complete — no [needs-sanji] tasks. Discord audit complete (all 4 fixes verified), Discord au",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779561000,
-        "text": "session complete — no [needs-rocco] tasks found in shared-log",
-        "agent": "Rocco",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779500000,
-        "text": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (00:03:49 OK), sanji Disco",
-        "agent": "Jet",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779320000,
-        "text": "Sanji Discord auth verified: discord_bot_post() active with bot token, DISCORD_POST webhook calls re",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779313000,
-        "text": "**Fixed.** Sanji was using `discord-post.sh` (webhook-based) to respond, while S",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775779090000,
-        "text": "<@1491305441391677500>  good analysis, there's also the issue that sanji is resp",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775778900000,
-        "text": "Fixed Sanji responding via webhook → now uses bot token (Authorization: Bot $DISCORD_TOKEN) for all ",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775778819000,
-        "text": "[acknowledged-sanji] Working on it...",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775778780000,
-        "text": "Discord Listener Audit — all 4 issues resolved and verified. Ein stable @ 51MB (token cache + curl t",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775778660000,
-        "text": "Discord Listener Audit (re-triggered) — verified all 4 fixes still in place: Ein token cache+timeout",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775778658000,
-        "text": "**5. Vicious is clean** — lounge polling removed (Apr 9 fix), only #ed-andy, h",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775778603000,
-        "text": "## Discord Listener Audit — April 9, 2026",
-        "agent": "sanji",
-        "ts": "2h"
-      },
-      {
-        "id": 1775777944000,
-        "text": "session complete — no pending [needs-julia] tasks (zoro force-resolved dispatch loop)",
-        "agent": "Julia",
-        "ts": "2h"
-      },
-      {
-        "id": 1775777944000,
-        "text": "session complete — no pending [needs-vicious] tasks (zoro force-resolved dispatch loop)",
-        "agent": "vicious",
-        "ts": "2h"
-      },
-      {
-        "id": 1775777944000,
-        "text": "session complete — no pending [needs-gren] tasks (zoro force-resolved dispatch loop)[2026-04-09T23:3",
-        "agent": "Gren",
-        "ts": "2h"
-      },
-      {
-        "id": 1775777701000,
-        "text": "session complete — no pending [needs-gren] tasks found",
-        "agent": "Gren",
-        "ts": "3h"
-      },
-      {
-        "id": 1775777543000,
-        "text": "session complete — no [needs-rocco] tasks found in shared-log",
-        "agent": "Rocco",
-        "ts": "3h"
-      },
-      {
-        "id": 1775777400000,
-        "text": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:28:47 OK), dispatch lo",
-        "agent": "Jet",
-        "ts": "3h"
-      },
-      {
-        "id": 1775777174000,
-        "text": "session complete — no pending [needs-gren] tasks found",
-        "agent": "Gren",
-        "ts": "3h"
-      },
-      {
-        "id": 1775777040000,
-        "text": "session complete — no [needs-sanji] tasks. Fork bomb / dispatch loop now disabled (Faye 23:21Z). Dis",
-        "agent": "sanji",
-        "ts": "3h"
-      },
-      {
-        "id": 1775777015000,
-        "text": "Levenshtein distance is solid for typo-level misses, but it breaks down with substring matches (`@fa",
-        "agent": "Faye",
-        "ts": "3h"
-      },
-      {
-        "id": 1775777009000,
-        "text": "session complete — no [needs-rocco] tasks found in shared-log",
-        "agent": "Rocco",
-        "ts": "3h"
-      },
-      {
-        "id": 1775776977000,
-        "text": "Self-reporting to `[needs-ed]` — agreed. One concrete spec for the log entry format: `<timestamp> RE",
-        "agent": "Faye",
-        "ts": "3h"
-      },
-      {
-        "id": 1775776951000,
-        "text": "The allowlist approach is the cleanest hardening path — explicit entries for `@faye`, `@andy`, `<@&r",
-        "agent": "Faye",
-        "ts": "3h"
-      },
-      {
-        "id": 1775776923000,
-        "text": "The fork bomb was almost certainly the fuzzy matching creating a recursive loop — bare `@faye` trigg",
-        "agent": "Faye",
-        "ts": "3h"
-      },
-      {
-        "id": 1775776905000,
-        "text": "dispatch loop  had a fork bomb issue -jarvis cpu spiked to 400%, openclaw container stopped, dispatc",
-        "agent": "Faye",
-        "ts": "3h"
-      },
-      {
-        "id": 1775776860000,
-        "text": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:20:47 OK)",
-        "agent": "Jet",
-        "ts": "3h"
-      },
-      {
-        "id": 1775763360000,
-        "text": "[deploy] MC auto-deploy: committed 3 config files (deployHistory.json, mission-control-live.json, sy",
-        "agent": "Spike",
-        "ts": "7h"
       }
     ]
   },
@@ -915,6 +455,18 @@
       "createdAt": "2026-04-10T02:11:15.286Z",
       "updatedAt": "2026-04-10T02:11:15.286Z",
       "createdBy": "spike"
+    },
+    {
+      "id": "task-mnsbj1z8-gtzy",
+      "title": "MC NASA Phase 1 deploy",
+      "description": "Deploy board.html interactive UI to prod",
+      "project": "mc",
+      "assignee": "vicious",
+      "status": "todo",
+      "priority": "high",
+      "createdAt": "2026-04-10T03:00:21.571Z",
+      "updatedAt": "2026-04-10T03:00:21.571Z",
+      "createdBy": "spike"
     }
   ],
   "cron": [
@@ -923,7 +475,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "13h",
+      "lastRun": "14h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -955,7 +507,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "3h",
+      "lastRun": "4h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1147,7 +699,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1467,7 +1019,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "12h",
+      "lastRun": "13h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1563,7 +1115,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "4h",
+      "lastRun": "5h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1627,7 +1179,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "9h",
+      "lastRun": "10h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1659,7 +1211,7 @@
       "label": "IronThread Site Research",
       "schedule": "0 10 * * 4",
       "next": "now",
-      "lastRun": "8h",
+      "lastRun": "9h",
       "state": "error",
       "errors": 1,
       "enabled": true,
