@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-09T23:52:46.000Z",
+    "status": "deployed",
+    "trigger": "Ed",
+    "sha": "87d0433",
+    "shaFull": "87d0433cdd04bd88b34e9444eac892abfd1d4f7a",
+    "message": "auto: update deployment config and sync scripts",
+    "branch": "master",
+    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T21:39:46.000Z",
     "status": "deployed",
     "trigger": "sanji",
@@ -173,11 +184,5 @@
     "status": "deployed",
     "trigger": "manual",
     "duration": "4m"
-  },
-  {
-    "timestamp": "2026-04-07T03:29:17.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "duration": "41m"
   }
 ]

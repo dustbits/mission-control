@@ -1,13 +1,26 @@
 {
-  "updatedAt": "2026-04-09T23:36:11.130Z",
+  "updatedAt": "2026-04-10T00:01:29.262Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 38,
-    "memory": 33,
+    "cpu": 10,
+    "memory": 25,
     "disk": 2
   },
   "agents": [
+    {
+      "name": "Sanji",
+      "key": "sanji",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 8,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": "2026-04-09T23:58:10Z",
+      "state": "working",
+      "stateSince": "2026-04-09T23:58:10Z"
+    },
     {
       "name": "Faye",
       "key": "faye",
@@ -17,22 +30,22 @@
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T23:23:35Z",
-      "state": "working",
-      "stateSince": "2026-04-09T23:23:35Z"
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
     },
     {
       "name": "Gren",
       "key": "gren",
       "model": "MiniMax/M2.7",
       "color": "#7c3aed",
-      "completed": 2,
+      "completed": 3,
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T23:35:01Z",
-      "state": "working",
-      "stateSince": "2026-04-09T23:35:01Z"
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
     },
     {
       "name": "Jet",
@@ -43,9 +56,9 @@
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T23:30:00Z",
-      "state": "working",
-      "stateSince": "2026-04-09T23:30:00Z"
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
     },
     {
       "name": "Rocco",
@@ -56,22 +69,35 @@
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T23:32:23Z",
-      "state": "working",
-      "stateSince": "2026-04-09T23:32:23Z"
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
     },
     {
-      "name": "Sanji",
-      "key": "sanji",
-      "model": "MiniMax/M2.7",
-      "color": "#f59e0b",
+      "name": "Julia",
+      "key": "julia",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#ec4899",
       "completed": 1,
       "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "lastActive": "2026-04-09T23:24:00Z",
-      "state": "working",
-      "stateSince": "2026-04-09T23:24:00Z"
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Vicious",
+      "key": "vicious",
+      "model": "MiniMax/M2.7",
+      "color": "#ef4444",
+      "completed": 1,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
     },
     {
       "name": "Andy",
@@ -104,19 +130,6 @@
       "key": "ein",
       "model": "MiniMax/M2.7",
       "color": "#f97316",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "lastActive": null,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
-      "name": "Julia",
-      "key": "julia",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#ec4899",
       "completed": 0,
       "efficiency": 0,
       "avgTimeSec": 0,
@@ -165,19 +178,6 @@
       "stateSince": null
     },
     {
-      "name": "Vicious",
-      "key": "vicious",
-      "model": "MiniMax/M2.7",
-      "color": "#ef4444",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "lastActive": null,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
       "name": "Zoro",
       "key": "zoro",
       "model": "MiniMax/M2.7",
@@ -193,12 +193,25 @@
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-09T21:39:46.000Z",
-    "commit": "6ed6901",
+    "timestamp": "2026-04-09T23:52:46.000Z",
+    "commit": "87d0433",
     "branch": "master",
-    "message": "auto: MC improvement",
-    "lastDeploy": "2026-04-09T21:39:46.000Z",
+    "message": "auto: update deployment config and sync scripts",
+    "lastDeploy": "2026-04-09T23:52:46.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-09T23:52:46.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "87d0433",
+        "shaFull": "87d0433cdd04bd88b34e9444eac892abfd1d4f7a",
+        "message": "auto: update deployment config and sync scripts",
+        "branch": "master",
+        "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
+        "durationSec": 1,
+        "duration": null,
+        "time": "8m"
+      },
       {
         "timestamp": "2026-04-09T21:39:46.000Z",
         "status": "deployed",
@@ -210,7 +223,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/activity-writer.js,shared-log.md",
         "durationSec": 1,
         "duration": null,
-        "time": "1h"
+        "time": "2h"
       },
       {
         "timestamp": "2026-04-09T20:37:11.000Z",
@@ -223,7 +236,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,shared-log.md",
         "durationSec": 1,
         "duration": null,
-        "time": "2h"
+        "time": "3h"
       },
       {
         "timestamp": "2026-04-09T19:53:28.000Z",
@@ -236,7 +249,7 @@
         "changedFiles": "mission-control-live.json",
         "durationSec": 1,
         "duration": null,
-        "time": "3h"
+        "time": "4h"
       },
       {
         "timestamp": "2026-04-09T19:26:26.000Z",
@@ -353,7 +366,7 @@
         "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
         "durationSec": 1,
         "duration": "17m",
-        "time": "7h"
+        "time": "8h"
       },
       {
         "timestamp": "2026-04-09T15:28:52.000Z",
@@ -403,13 +416,6 @@
         "trigger": "manual",
         "duration": "4m",
         "time": "2d"
-      },
-      {
-        "timestamp": "2026-04-07T03:29:17.000Z",
-        "status": "deployed",
-        "trigger": "manual",
-        "duration": "41m",
-        "time": "2d"
       }
     ]
   },
@@ -453,86 +459,156 @@
   "activity": [
     {
       "id": 1,
-      "agent": "Gren",
-      "line": "session complete — no pending [needs-gren] tasks found",
-      "time": "now",
-      "color": "#7c3aed"
+      "agent": "Sanji",
+      "line": "<@1491305441391677500>  good analysis, there's also the issue that sanji is resp",
+      "time": "3m",
+      "color": "#f59e0b"
     },
     {
       "id": 2,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "3m",
-      "color": "#64748b"
-    },
-    {
-      "id": 3,
-      "agent": "Jet",
-      "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:28:47 OK), dispatch loop resolved",
+      "agent": "Sanji",
+      "line": "Fixed Sanji responding via webhook → now uses bot token (Authorization: Bot $DISCORD_TOKEN) for all task responses, ackn",
       "time": "6m",
       "color": "#f59e0b"
     },
     {
+      "id": 3,
+      "agent": "Sanji",
+      "line": "[acknowledged-sanji] Working on it...",
+      "time": "7m",
+      "color": "#f59e0b"
+    },
+    {
       "id": 4,
-      "agent": "Gren",
-      "line": "session complete — no pending [needs-gren] tasks found",
-      "time": "9m",
-      "color": "#7c3aed"
+      "agent": "Sanji",
+      "line": "Discord Listener Audit — all 4 issues resolved and verified. Ein stable @ 51MB (token cache + curl timeouts), Faye flock",
+      "time": "8m",
+      "color": "#f59e0b"
     },
     {
       "id": 5,
       "agent": "Sanji",
-      "line": "session complete — no [needs-sanji] tasks. Fork bomb / dispatch loop now disabled (Faye 23:21Z). Dispatch loop issue res",
-      "time": "12m",
+      "line": "Discord Listener Audit (re-triggered) — verified all 4 fixes still in place: Ein token cache+timeouts, Faye flock RW mod",
+      "time": "10m",
       "color": "#f59e0b"
     },
     {
       "id": 6,
-      "agent": "Faye",
-      "line": "Levenshtein distance is solid for typo-level misses, but it breaks down with substring matches (`@fayez` is distance 1 f",
-      "time": "12m",
-      "color": "#a855f7"
+      "agent": "Sanji",
+      "line": "**5. Vicious is clean** — lounge polling removed (Apr 9 fix), only #ed-andy, h",
+      "time": "10m",
+      "color": "#f59e0b"
     },
     {
       "id": 7,
-      "agent": "Rocco",
-      "line": "session complete — no [needs-rocco] tasks found in shared-log",
-      "time": "12m",
-      "color": "#64748b"
+      "agent": "Sanji",
+      "line": "## Discord Listener Audit — April 9, 2026",
+      "time": "11m",
+      "color": "#f59e0b"
     },
     {
       "id": 8,
-      "agent": "Faye",
-      "line": "Self-reporting to `[needs-ed]` — agreed. One concrete spec for the log entry format: `<timestamp> REJECTED \"<raw_input ",
-      "time": "13m",
-      "color": "#a855f7"
+      "agent": "Julia",
+      "line": "session complete — no pending [needs-julia] tasks (zoro force-resolved dispatch loop)",
+      "time": "22m",
+      "color": "#ec4899"
     },
     {
       "id": 9,
-      "agent": "Faye",
-      "line": "The allowlist approach is the cleanest hardening path — explicit entries for `@faye`, `@andy`, `<@&role>`, `[needs-X]`  ",
-      "time": "13m",
-      "color": "#a855f7"
+      "agent": "Vicious",
+      "line": "session complete — no pending [needs-vicious] tasks (zoro force-resolved dispatch loop)",
+      "time": "22m",
+      "color": "#ef4444"
     },
     {
       "id": 10,
-      "agent": "Faye",
-      "line": "The fork bomb was almost certainly the fuzzy matching creating a recursive loop — bare `@faye` triggers me → I menti  On",
-      "time": "14m",
-      "color": "#a855f7"
+      "agent": "Gren",
+      "line": "session complete — no pending [needs-gren] tasks (zoro force-resolved dispatch loop)[2026-04-09T23:39:47Z] [vicious] [he",
+      "time": "22m",
+      "color": "#7c3aed"
     },
     {
       "id": 11,
-      "agent": "Faye",
-      "line": "dispatch loop  had a fork bomb issue -jarvis cpu spiked to 400%, openclaw container stopped, dispatch loop disabled. Ein",
-      "time": "14m",
-      "color": "#a855f7"
+      "agent": "Gren",
+      "line": "session complete — no pending [needs-gren] tasks found",
+      "time": "26m",
+      "color": "#7c3aed"
     },
     {
       "id": 12,
+      "agent": "Rocco",
+      "line": "session complete — no [needs-rocco] tasks found in shared-log",
+      "time": "29m",
+      "color": "#64748b"
+    },
+    {
+      "id": 13,
+      "agent": "Jet",
+      "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:28:47 OK), dispatch loop resolved",
+      "time": "31m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 14,
+      "agent": "Gren",
+      "line": "session complete — no pending [needs-gren] tasks found",
+      "time": "35m",
+      "color": "#7c3aed"
+    },
+    {
+      "id": 15,
+      "agent": "Sanji",
+      "line": "session complete — no [needs-sanji] tasks. Fork bomb / dispatch loop now disabled (Faye 23:21Z). Dispatch loop issue res",
+      "time": "37m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 16,
+      "agent": "Faye",
+      "line": "Levenshtein distance is solid for typo-level misses, but it breaks down with substring matches (`@fayez` is distance 1 f",
+      "time": "37m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 17,
+      "agent": "Rocco",
+      "line": "session complete — no [needs-rocco] tasks found in shared-log",
+      "time": "38m",
+      "color": "#64748b"
+    },
+    {
+      "id": 18,
+      "agent": "Faye",
+      "line": "Self-reporting to `[needs-ed]` — agreed. One concrete spec for the log entry format: `<timestamp> REJECTED \"<raw_input ",
+      "time": "38m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 19,
+      "agent": "Faye",
+      "line": "The allowlist approach is the cleanest hardening path — explicit entries for `@faye`, `@andy`, `<@&role>`, `[needs-X]`  ",
+      "time": "38m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 20,
+      "agent": "Faye",
+      "line": "The fork bomb was almost certainly the fuzzy matching creating a recursive loop — bare `@faye` triggers me → I menti  On",
+      "time": "39m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 21,
+      "agent": "Faye",
+      "line": "dispatch loop  had a fork bomb issue -jarvis cpu spiked to 400%, openclaw container stopped, dispatch loop disabled. Ein",
+      "time": "39m",
+      "color": "#a855f7"
+    },
+    {
+      "id": 22,
       "agent": "Jet",
       "line": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:20:47 OK)",
-      "time": "15m",
+      "time": "40m",
       "color": "#f59e0b"
     }
   ],
@@ -541,64 +617,124 @@
     "inprogress": [],
     "done": [
       {
+        "id": 1775779090000,
+        "text": "<@1491305441391677500>  good analysis, there's also the issue that sanji is resp",
+        "agent": "Sanji",
+        "ts": "3m"
+      },
+      {
+        "id": 1775778900000,
+        "text": "Fixed Sanji responding via webhook → now uses bot token (Authorization: Bot $DISCORD_TOKEN) for all ",
+        "agent": "Sanji",
+        "ts": "6m"
+      },
+      {
+        "id": 1775778819000,
+        "text": "[acknowledged-sanji] Working on it...",
+        "agent": "Sanji",
+        "ts": "7m"
+      },
+      {
+        "id": 1775778780000,
+        "text": "Discord Listener Audit — all 4 issues resolved and verified. Ein stable @ 51MB (token cache + curl t",
+        "agent": "Sanji",
+        "ts": "8m"
+      },
+      {
+        "id": 1775778660000,
+        "text": "Discord Listener Audit (re-triggered) — verified all 4 fixes still in place: Ein token cache+timeout",
+        "agent": "Sanji",
+        "ts": "10m"
+      },
+      {
+        "id": 1775778658000,
+        "text": "**5. Vicious is clean** — lounge polling removed (Apr 9 fix), only #ed-andy, h",
+        "agent": "Sanji",
+        "ts": "10m"
+      },
+      {
+        "id": 1775778603000,
+        "text": "## Discord Listener Audit — April 9, 2026",
+        "agent": "Sanji",
+        "ts": "11m"
+      },
+      {
+        "id": 1775777944000,
+        "text": "session complete — no pending [needs-julia] tasks (zoro force-resolved dispatch loop)",
+        "agent": "Julia",
+        "ts": "22m"
+      },
+      {
+        "id": 1775777944000,
+        "text": "session complete — no pending [needs-vicious] tasks (zoro force-resolved dispatch loop)",
+        "agent": "Vicious",
+        "ts": "22m"
+      },
+      {
+        "id": 1775777944000,
+        "text": "session complete — no pending [needs-gren] tasks (zoro force-resolved dispatch loop)[2026-04-09T23:3",
+        "agent": "Gren",
+        "ts": "22m"
+      },
+      {
         "id": 1775777701000,
         "text": "session complete — no pending [needs-gren] tasks found",
         "agent": "Gren",
-        "ts": "now"
+        "ts": "26m"
       },
       {
         "id": 1775777543000,
         "text": "session complete — no [needs-rocco] tasks found in shared-log",
         "agent": "Rocco",
-        "ts": "3m"
+        "ts": "29m"
       },
       {
         "id": 1775777400000,
         "text": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:28:47 OK), dispatch lo",
         "agent": "Jet",
-        "ts": "6m"
+        "ts": "31m"
       },
       {
         "id": 1775777040000,
         "text": "session complete — no [needs-sanji] tasks. Fork bomb / dispatch loop now disabled (Faye 23:21Z). Dis",
         "agent": "Sanji",
-        "ts": "12m"
+        "ts": "37m"
       },
       {
         "id": 1775777015000,
         "text": "Levenshtein distance is solid for typo-level misses, but it breaks down with substring matches (`@fa",
         "agent": "Faye",
-        "ts": "12m"
+        "ts": "37m"
       },
       {
         "id": 1775776977000,
         "text": "Self-reporting to `[needs-ed]` — agreed. One concrete spec for the log entry format: `<timestamp> RE",
         "agent": "Faye",
-        "ts": "13m"
+        "ts": "38m"
       },
       {
         "id": 1775776951000,
         "text": "The allowlist approach is the cleanest hardening path — explicit entries for `@faye`, `@andy`, `<@&r",
         "agent": "Faye",
-        "ts": "13m"
+        "ts": "38m"
       },
       {
         "id": 1775776923000,
         "text": "The fork bomb was almost certainly the fuzzy matching creating a recursive loop — bare `@faye` trigg",
         "agent": "Faye",
-        "ts": "14m"
+        "ts": "39m"
       },
       {
         "id": 1775776905000,
         "text": "dispatch loop  had a fork bomb issue -jarvis cpu spiked to 400%, openclaw container stopped, dispatc",
         "agent": "Faye",
-        "ts": "14m"
+        "ts": "39m"
       },
       {
         "id": 1775776860000,
         "text": "session complete — no pending [needs-jet] tasks; vicious heartbeat stable (23:20:47 OK)",
         "agent": "Jet",
-        "ts": "15m"
+        "ts": "40m"
       }
     ]
   },
@@ -640,7 +776,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "18m",
+      "lastRun": "44m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -768,7 +904,7 @@
       "label": "Crypto Daily Brief",
       "schedule": "0 9 * * *",
       "next": "now",
-      "lastRun": "9h",
+      "lastRun": "10h",
       "state": "error",
       "errors": 2,
       "enabled": true,
@@ -1024,7 +1160,7 @@
       "label": "Error Capture",
       "schedule": 1800000,
       "next": "scheduled",
-      "lastRun": "1d",
+      "lastRun": "2d",
       "state": "paused",
       "errors": 0,
       "enabled": false,
@@ -1152,7 +1288,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "1h",
+      "lastRun": "25m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1184,7 +1320,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "9h",
+      "lastRun": "10h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1248,7 +1384,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "3m",
+      "lastRun": "13m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1344,7 +1480,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "6h",
+      "lastRun": "7h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1376,7 +1512,7 @@
       "label": "IronThread Site Research",
       "schedule": "0 10 * * 4",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "6h",
       "state": "error",
       "errors": 1,
       "enabled": true,
