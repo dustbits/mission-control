@@ -1,147 +1,39 @@
 [
   {
-    "timestamp": "2026-04-09T23:52:46.000Z",
+    "timestamp": "2026-04-09T18:00:33.000Z",
     "status": "deployed",
-    "trigger": "Ed",
-    "sha": "87d0433",
-    "shaFull": "87d0433cdd04bd88b34e9444eac892abfd1d4f7a",
-    "message": "auto: update deployment config and sync scripts",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T21:39:46.000Z",
-    "status": "deployed",
-    "trigger": "sanji",
-    "sha": "6ed6901",
-    "shaFull": "6ed69014d5de6bce653378d3996eb59034c3cdfb",
-    "message": "auto: MC improvement",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/activity-writer.js,shared-log.md",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T20:37:11.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "09ef0df",
-    "shaFull": "09ef0df588bda26412167d82ae19b685814f5f79",
-    "message": "auto: MC improvement",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json,shared-log.md",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T19:53:28.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "c22e1af",
-    "shaFull": "c22e1afb941957375711dd2375ec4b17050a2cc3",
-    "message": "auto: MC improvement",
-    "branch": "master",
-    "changedFiles": "mission-control-live.json",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T19:26:26.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "67f7ae0",
-    "shaFull": "67f7ae0a5593fcb41fe086ea2e8e3a45bae5d935",
-    "message": "MC v10: Agent Quick-Info Overlay \u2014 click agent name to see skills, channel, model, stats",
-    "branch": "master",
-    "changedFiles": "board.html",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T18:36:11.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "c38a64c",
-    "shaFull": "c38a64ccdbce31d926a112d7895e7e4ec4d52333",
-    "message": "auto: MC improvement",
-    "branch": "master",
-    "changedFiles": "board.html,deployHistory.json,mc-deploy.sh,mission-control-live.json,shared-log.md",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T18:24:44.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "4aaf7d2",
-    "shaFull": "4aaf7d294950f0c102caf31529fd4bfddd4640d4",
-    "message": "fix: add target-side checksum validation guard to mc-deploy.sh",
-    "branch": "master",
-    "changedFiles": "mc-deploy.sh",
-    "durationSec": 1
-  },
-  {
-    "timestamp": "2026-04-09T18:03:17.000Z",
-    "status": "deployed",
-    "trigger": "Ed",
-    "sha": "5dae6f4",
-    "shaFull": "5dae6f46d1cd0333e9dc1719810af065f656debb",
-    "message": "MC v10 hotfix: guard null agents in renderAgentsPanel to prevent ReferenceError",
-    "branch": "master",
-    "changedFiles": "board.html",
-    "durationSec": 1
+    "trigger": "manual",
+    "duration": null
   },
   {
     "timestamp": "2026-04-09T16:32:23.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "sha": "b6ace6d",
-    "shaFull": "b6ace6d1d09c7831341e69226ee8a38392514ab0",
-    "message": "chore: sync mission-control-live.json \u2014 deploy state active, refreshed activity",
-    "branch": "master",
-    "changedFiles": "mission-control-live.json",
-    "durationSec": 1
+    "duration": "1h 28m"
   },
   {
     "timestamp": "2026-04-09T16:24:51.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "sha": "78252ce",
-    "shaFull": "78252ce9da382b198e531a4300c5a1e6990b3e6a",
-    "message": "fix: clean deployHistory duplicate + remove spurious updateDeployHistory",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
-    "durationSec": 1
+    "duration": "8m"
   },
   {
     "timestamp": "2026-04-09T16:22:00.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "sha": "96f469e",
-    "shaFull": "96f469e8aab43a03d2d5d600714e4b44e5bdda09",
-    "message": "fix: sync-live-json reads deployHistory not index.html mtime Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
-    "durationSec": 1
+    "duration": "3m"
   },
   {
     "timestamp": "2026-04-09T16:18:15.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "sha": "45acc00",
-    "shaFull": "45acc00d08e0576acc8052e53fb8d5cfa4237e41",
-    "message": "fix: sync-live-json reads deployHistory not index.html mtime",
-    "branch": "master",
-    "changedFiles": "scripts/sync-live-json.js",
-    "durationSec": 1
+    "duration": "4m"
   },
   {
     "timestamp": "2026-04-09T15:58:40.000Z",
     "status": "deployed",
     "trigger": "manual",
-    "sha": "e5ea9e3",
-    "shaFull": "e5ea9e34f6170fbf14a028863e017b6e667f2e19",
-    "message": "fix: MC live JSON deploy state + sync script task normalization",
-    "branch": "master",
-    "changedFiles": "deployHistory.json,mission-control-live.json,scripts/sync-live-json.js",
-    "durationSec": 1,
-    "duration": "17m"
+    "duration": "20m"
   },
   {
     "timestamp": "2026-04-09T15:28:52.000Z",
@@ -166,23 +58,5 @@
     "status": "deployed",
     "trigger": "manual",
     "duration": "1h 6m"
-  },
-  {
-    "timestamp": "2026-04-07T04:29:15.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "duration": "8h 24m"
-  },
-  {
-    "timestamp": "2026-04-07T04:15:05.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "duration": "14m"
-  },
-  {
-    "timestamp": "2026-04-07T04:10:40.000Z",
-    "status": "deployed",
-    "trigger": "manual",
-    "duration": "4m"
   }
 ]

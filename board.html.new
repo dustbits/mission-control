@@ -828,14 +828,6 @@
       .task-filter-bar input { width: 100%; }
       .activity-panel { font-size: 12px; }
     }
-  
-    .priority-critical { color:#ef4444;font-weight:700;font-size:10px; }
-    .priority-high     { color:#f97316;font-weight:700;font-size:10px; }
-    .priority-medium   { color:#3b82f6;font-size:10px; }
-    .priority-low      { color:#6b7280;font-size:10px; }
-    .card-priority     { position:absolute;top:6px;right:6px; }
-    .card.isTask       { padding-right:28px; }
-
   </style>
 </head>
 <body>
@@ -2008,112 +2000,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Add Task Modal -->
-  <div id="task-modal" class="agent-overlay" style="display:none;z-index:9999;background:rgba(0,0,0,0.6);">
-    <div class="agent-detail" style="max-width:480px;width:90%;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-        <h3 style="margin:0;font-size:16px;color:var(--text-primary);">New Task</h3>
-        <button id="task-modal-close" style="background:transparent;border:none;color:var(--text-secondary);font-size:18px;cursor:pointer;">✕</button>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">TITLE *</label>
-          <input id="task-input-title" type="text" placeholder="e.g. Deploy v3 to prod" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;box-sizing:border-box;" />
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">DESCRIPTION</label>
-          <textarea id="task-input-desc" placeholder="Optional details..." style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;box-sizing:border-box;min-height:60px;resize:vertical;"></textarea>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div>
-            <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PROJECT</label>
-            <select id="task-input-project" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-              <option value="openclaw">openclaw</option>
-              <option value="ironthread">ironthread</option>
-              <option value="crypto">crypto</option>
-              <option value="artsite">artsite</option>
-              <option value="mc">mc</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PRIORITY</label>
-            <select id="task-input-priority" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-              <option value="medium">medium</option>
-              <option value="high">high</option>
-              <option value="critical">critical</option>
-              <option value="low">low</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">ASSIGNEE</label>
-          <select id="task-input-assignee" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="spike">spike</option>
-            <option value="sanji">sanji</option>
-            <option value="vicious">vicious</option>
-            <option value="faye">faye</option>
-            <option value="ed">ed</option>
-            <option value="gren">gren</option>
-            <option value="jet">jet</option>
-            <option value="zoro">zoro</option>
-          </select>
-        </div>
-        <div id="task-modal-error" style="color:#ef4444;font-size:12px;display:none;"></div>
-        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px;">
-          <button id="task-modal-cancel" style="background:transparent;border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 14px;font-size:12px;cursor:pointer;">Cancel</button>
-          <button id="task-modal-submit" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;">Create Task</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Task Detail Drawer -->
-  <div id="task-detail" class="agent-overlay" style="display:none;z-index:9998;background:rgba(0,0,0,0.6);">
-    <div class="agent-detail" style="max-width:440px;width:90%;">
-      <button class="agent-detail-close" id="task-detail-close">✕</button>
-      <div id="task-detail-title" style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;"></div>
-      <div id="task-detail-meta" style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;"></div>
-      <div id="task-detail-desc" style="font-size:12px;color:var(--text-primary);margin-bottom:12px;line-height:1.5;"></div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">STATUS</label>
-          <select id="task-detail-status" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="todo">Todo</option>
-            <option value="in-progress">In Progress</option>
-            <option value="done">Done</option>
-            <option value="blocked">Blocked</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">PRIORITY</label>
-          <select id="task-detail-priority" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="low">low</option>
-            <option value="medium">medium</option>
-            <option value="high">high</option>
-            <option value="critical">critical</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;color:var(--text-secondary);display:block;margin-bottom:3px;">ASSIGNEE</label>
-          <select id="task-detail-assignee" style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-primary);border-radius:6px;padding:7px 10px;font-size:13px;">
-            <option value="spike">spike</option>
-            <option value="sanji">sanji</option>
-            <option value="vicious">vicious</option>
-            <option value="faye">faye</option>
-            <option value="ed">ed</option>
-            <option value="gren">gren</option>
-            <option value="jet">jet</option>
-            <option value="zoro">zoro</option>
-          </select>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:4px;">
-          <button id="task-detail-save" style="background:#22c55e;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;">Save</button>
-          <button id="task-detail-delete" style="background:#ef4444;border:none;color:#fff;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>
