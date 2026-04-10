@@ -17,9 +17,9 @@ const WORKSPACE = '/mnt/spike-storage/openclaw-live/workspace';
 const SHARED_LOG = `${WORKSPACE}/memory/shared-log.md`;
 const OUT_WORKSPACE = `${WORKSPACE}/mission-control/mission-control-live.json`;
 const OUT_STAGING  = '/mnt/spike-storage/mission-control-staging/mission-control-live.json';
-const CRON_JOBS_PATH = '/home/node/.openclaw/cron/jobs.json';
+const CRON_JOBS_PATH = '/mnt/spike-storage/openclaw-live/cron/jobs.json';
 const TASKS_FILE = `${WORKSPACE}/mission-control/tasks.json`;
-const DEPLOY_HISTORY_PATH   = `${WORKSPACE}/mission-control/deployHistory.json`;
+const DEPLOY_HISTORY_PATH   = null; // deprecated — mc-deploy.sh is the authoritative source
 const CRON_ERROR_HISTORY_PATH = `${WORKSPACE}/mission-control/cron-error-history.json`;
 
 const AGENT_COLORS = {
@@ -75,7 +75,8 @@ const AGENT_DISPLAY = {
   spike: 'Spike', main: 'Spike',
   jet: 'Jet', ops: 'Jet',
   faye: 'Faye', research: 'Faye', 'faye-scan': 'Faye',
-  ein: 'Ein', finance: 'Ein',
+  // ein removed — retired 2026-04-10
+  finance: 'Ein',
   gren: 'Gren', ironthread: 'Gren',
   ed: 'Ed', code: 'Ed',
   julia: 'Julia', media: 'Julia',
