@@ -18,6 +18,7 @@ const SHARED_LOG = `${WORKSPACE}/memory/shared-log.md`;
 const OUT_WORKSPACE = `${WORKSPACE}/mission-control/mission-control-live.json`;
 const OUT_STAGING  = '/mnt/spike-storage/mission-control-staging/mission-control-live.json';
 const CRON_JOBS_PATH = '/home/node/.openclaw/cron/jobs.json';
+const TASKS_FILE = `${WORKSPACE}/mission-control/tasks.json`;
 const DEPLOY_HISTORY_PATH   = `${WORKSPACE}/mission-control/deployHistory.json`;
 const CRON_ERROR_HISTORY_PATH = `${WORKSPACE}/mission-control/cron-error-history.json`;
 
@@ -29,7 +30,7 @@ const AGENT_COLORS = {
   faye:     '#a855f7',
   research: '#a855f7',
   'faye-scan': '#a855f7',
-  ein:      '#f97316',
+  // ein removed — retired 2026-04-10
   finance:  '#f97316',
   gren:     '#7c3aed',
   ironthread: '#7c3aed',
@@ -47,13 +48,16 @@ const AGENT_COLORS = {
   andy:     '#38bdf8',
   andrew:   '#38bdf8',
   'ed-builder-loop': '#22c55e',
+  sanji:    '#f59e0b',
+  vicious:  '#ef4444',
+  zoro:     '#22c55e',
 };
 
 const AGENT_MODELS = {
   spike: 'MiniMax/M2.7-highspeed',
   jet: 'MiniMax/M2.7',
   faye: 'Qwen/Qwen2.5-7B',
-  ein: 'MiniMax/M2.7',
+  // ein removed — retired 2026-04-10
   gren: 'MiniMax/M2.7',
   ed: 'openai/gpt-4o',
   julia: 'Qwen/Qwen2.5-7B',
@@ -62,6 +66,9 @@ const AGENT_MODELS = {
   andy: 'claude-sonnet-4',
   andrew: 'claude-sonnet-4',
   main: 'MiniMax/M2.7',
+  sanji: 'MiniMax/M2.7',
+  vicious: 'MiniMax/M2.7',
+  zoro: 'MiniMax/M2.7',
 };
 
 const AGENT_DISPLAY = {
@@ -79,6 +86,9 @@ const AGENT_DISPLAY = {
   system: 'System',
   andy: 'Andy', andrew: 'Andy',
   'ed-builder-loop': 'Ed',
+  sanji: 'Sanji',
+  vicious: 'Vicious',
+  zoro: 'Zoro',
 };
 
 function relativeTime(isoStr) {
@@ -102,9 +112,9 @@ function parseLog(content) {
   const entries = [];
   for (const line of lines) {
     // Format A: [YYYY-MM-DD HH:MM UTC] [agent] [tag] message
-    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
     // Format B: [YYYY-MM-DD HH:MM UTC] agent [tag] message (agent without brackets)
-    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
+    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
     if (!m) continue;
 
     const [, date, time, agent, tag, message] = m;
@@ -114,7 +124,7 @@ function parseLog(content) {
     if (isNaN(ts) || ts < cutoff) continue;
 
     const tagLower = tag.toLowerCase();
-    if (!tagLower.startsWith('done') && !tagLower.startsWith('needs') && !tagLower.startsWith('partial') && !tagLower.startsWith('acknowledged') && !tagLower.startsWith('alert') && !tagLower.startsWith('failed') && !tagLower.startsWith('error')) continue;
+    if (!tagLower.startsWith('done') && !tagLower.startsWith('needs') && !tagLower.startsWith('partial') && !tagLower.startsWith('acknowledged') && !tagLower.startsWith('alert') && !tagLower.startsWith('failed') && !tagLower.startsWith('error') && !tagLower.startsWith('task-') && !tagLower.startsWith('dispatched-') && !tagLower.startsWith('blocked')) continue;
 
     entries.push({ iso, ts, agent: agent.toLowerCase(), tag, message });
   }
@@ -301,11 +311,33 @@ function updateDeployHistory(deployTimestamp, gitInfo = {}) {
   return history.slice(0, 10);
 }
 
-function buildBoardData(entries) {
+function buildBoardData(entries, tasks = []) {
   const queued = [];
   const inprogress = [];
   const done = [];
 
+  // Add tasks from tasks.json
+  for (const task of tasks) {
+    const item = {
+      id: task.id,
+      text: task.title,
+      agent: AGENT_DISPLAY[task.assignee] ?? task.assignee,
+      ts: task.updatedAt ? relativeTime(task.updatedAt) : 'earlier',
+      priority: task.priority || 'medium',
+      project: task.project,
+      isTask: true,
+    };
+
+    if (task.status === 'done') {
+      done.push(item);
+    } else if (task.status === 'in-progress') {
+      inprogress.push(item);
+    } else {
+      queued.push(item);
+    }
+  }
+
+  // Add log-derived entries (only if not already covered by a matching task)
   for (const e of entries) {
     const msg = e.message;
     const item = {
@@ -331,7 +363,7 @@ function buildBoardData(entries) {
 // --- Detect live agent state from recent log entries ---
 function detectAgentState(allEntries, agentKey) {
   const now = Date.now();
-  const CUTOFF_MS = 2 * 60 * 1000; // 2 minutes
+  const CUTOFF_MS = 10 * 60 * 1000; // 10 minutes — wider window so dispatched entries survive between syncs
   const recent = allEntries.filter(e => {
     if (e.agent !== agentKey) return false;
     if (!e.iso) return false;
@@ -348,7 +380,7 @@ function detectAgentState(allEntries, agentKey) {
   // Check for in-progress work
   const hasWorking = recent.some(e => {
     const tag = (e.tag || '').toLowerCase();
-    return tag.startsWith('acknowledged') || tag.startsWith('taken') || tag.startsWith('partial');
+    return tag.startsWith('acknowledged') || tag.startsWith('taken') || tag.startsWith('partial') || tag.startsWith('dispatched');
   });
   if (hasWorking) return { state: 'working', stateSince: null };
 
@@ -358,12 +390,15 @@ function detectAgentState(allEntries, agentKey) {
 // --- Build per-agent efficiency leaderboard ---
 function buildLeaderboard(logContent) {
   const lines = logContent.split('\n').filter(l => l.trim());
-  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  const cutoff = Date.now() - 72 * 60 * 60 * 1000; // 72h — was 48h, widened to capture more task chains
 
-  // Parse all entries for task chains
+  // Parse all entries for task chains (supports both bracketed and unbracketed agent formats)
   const allParsed = [];
   for (const line of lines) {
-    const m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2})?)(?:Z| UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    // Format A: [YYYY-MM-DD HH:MM UTC] [agent] [tag] message  (bracketed agent)
+    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    // Format B: [YYYY-MM-DD HH:MM UTC] agent [tag] message   (unbracketed agent — most entries)
+    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
     if (!m) continue;
     const [, date, time, agent, tag, message] = m;
     const secs = time.split(':').length === 2 ? ':00' : '';
@@ -384,7 +419,8 @@ function buildLeaderboard(logContent) {
 
   // Per-agent stats
   const stats = {};
-  const AGENT_LIST = ['spike', 'jet', 'faye', 'ein', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy'];
+  // ein removed — retired 2026-04-10; sanji/vicious/zoro added (core ops crew)
+  const AGENT_LIST = ['spike', 'jet', 'faye', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy', 'sanji', 'vicious', 'zoro'];
   for (const a of AGENT_LIST) {
     stats[a] = { completed: 0, totalTimeMs: 0, blockers: 0, tasks: [] };
   }
@@ -406,7 +442,13 @@ function buildLeaderboard(logContent) {
           owner = e.agent;
         }
       } else if (tagLower.startsWith('done') || tagLower.startsWith('partial')) {
-        if (started && !completed) {
+        // If there's no prior acknowledged entry, treat this done as a standalone task
+        // for the agent who posted it (crew often skips acknowledged step)
+        if (!started) {
+          started = e;
+          owner = e.agent;
+        }
+        if (!completed) {
           completed = e;
           if (owner && stats[owner]) {
             const dur = completed.ts - started.ts;
@@ -469,7 +511,7 @@ function getSystemStats() {
   return { cpu, memory, disk };
 }
 
-function buildJson(entries) {
+function buildJson(entries, tasks = []) {
   const stats = getSystemStats();
   const deploy = getDeployInfo();
   const deployHistory = updateDeployHistory(deploy.timestamp, { branch: deploy.branch, commit: deploy.commit, message: deploy.message });
@@ -532,16 +574,29 @@ function buildJson(entries) {
       { id: 'artsite',    name: 'Art Site',    color: '#993556', health: 'green',  note: 'Maintained' },
     ],
     activity,
-    board: buildBoardData(allEntries),
+    board: buildBoardData(allEntries, tasks),
+    tasks,
     cron: cronHealth,
     errors: errorStream,
   };
 }
 
+// --- Read tasks from tasks.json ---
+function readTasks() {
+  try {
+    const raw = readFileSync(TASKS_FILE, 'utf8');
+    const data = JSON.parse(raw);
+    return Array.isArray(data.tasks) ? data.tasks : [];
+  } catch {
+    return [];
+  }
+}
+
 // --- Main ---
 const logContent = readFileSync(SHARED_LOG, 'utf8');
 const entries = parseLog(logContent);
-const json = buildJson(entries);
+const tasks   = readTasks();
+const json = buildJson(entries, tasks);
 const out = JSON.stringify(json, null, 2);
 
 writeFileSync(OUT_WORKSPACE, out, 'utf8');
@@ -571,6 +626,7 @@ if (json.deploy.history?.length > 0) {
 
 console.log(`  Activity items: ${json.activity.length}`);
 console.log(`  Board: ${json.board.queued.length} queued | ${json.board.inprogress.length} in-progress | ${json.board.done.length} done`);
+console.log(`  Tasks: ${json.tasks.length} total`);
 console.log(`  Deploy: ${json.deploy.state}`);
 console.log(`  Cron jobs: ${json.cron.length}`);
 console.log(`  Errors: ${json.errors.length}`);
