@@ -1623,9 +1623,16 @@
         card.dataset.colId = colId;
         card.dataset.agent = agent;
 
+        // Render card title — convert Discord mentions <@SnowflakeID> to clickable links
+        // and wrap the whole text so it can be truncated with ellipsis
         const title = document.createElement('div');
         title.className = 'card-title';
-        title.textContent = (item.text || '').slice(0, 120);
+        var rawText = (item.text || '');
+        var displayText = rawText.length > 120 ? rawText.slice(0, 120) + '…' : rawText;
+        // Replace <@SnowflakeID> with anchor links (Discord mention style)
+        var linkedText = displayText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/&lt;@(\d+)&gt;/g, '<a href="javascript:void(0)" onclick="window.openDiscordMention&&window.openDiscordMention(\'$1\')" style="color:#8b5cf6;text-decoration:none;font-weight:600;" title="Mentioned Discord user">@</a>');
+        title.innerHTML = linkedText;
 
         const meta = document.createElement('div');
         meta.className = 'card-meta';
@@ -1671,6 +1678,31 @@
         card.appendChild(title);
         card.appendChild(meta);
 
+        // Click to dispatch: all board cards are clickable
+        // Non-task activity cards → append [acknowledged] dispatch to shared-log
+        // Task cards → open task detail drawer (handled below when isTask)
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(ev) {
+          // Don't fire if clicking the status badge (already has its own handler)
+          if (ev.target.closest('.card-status-badge')) return;
+          // If it's a real task card, open the task detail drawer
+          if (item.isTask) {
+            openTaskDetail(item.id);
+            return;
+          }
+          // For activity/board items: dispatch [acknowledged] to shared-log
+          // This is the "click on task card → notify crew" flow
+          var dispEntry = '\n[' + new Date().toISOString().replace('.000Z', 'Z') + '] [sanji] [acknowledged-sanji] ' + (item.text || '').slice(0, 80) + '\n';
+          fetch('https://gateway.openclaw.ai/shared-log/append', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ entry: dispEntry })
+          }).catch(function() {});
+          // Brief visual feedback
+          card.style.boxShadow = '0 0 0 2px #8b5cf6';
+          setTimeout(function() { card.style.boxShadow = ''; }, 1500);
+        });
+
         // Task cards: status badge + priority badge + click to detail
         if (item.isTask) {
           card.className = 'card isTask';
@@ -1678,6 +1710,7 @@
 
           // Status badge (clickable cycle: todo→in-progress→review→done)
           var statusBadge = document.createElement('span');
+          statusBadge.className = 'card-status-badge';
           var statusMap = { 'todo': ['#64748b','○'], 'in-progress': ['#f59e0b','◐'], 'done': ['#22c55e','●'], 'blocked': ['#ef4444','⊘'], 'review': ['#8b5cf6','◑'] };
           var curS = item.status || 'todo';
           var sm = statusMap[curS] || statusMap['todo'];

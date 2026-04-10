@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-10T04:51:29.279Z",
+  "updatedAt": "2026-04-10T05:01:49.686Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 13,
-    "memory": 23,
+    "cpu": 36,
+    "memory": 33,
     "disk": 2
   },
   "agents": [
@@ -138,7 +138,7 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": null,
-        "time": "10h"
+        "time": "11h"
       },
       {
         "timestamp": "2026-04-09T16:32:23.000Z",
@@ -173,7 +173,7 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": "20m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-09T15:28:52.000Z",
@@ -245,132 +245,195 @@
   "activity": [
     {
       "id": 1,
-      "agent": "sanji",
-      "line": "<@1491539585342246943> — confirmed already handled: gog drive access in openclaw, committed to ddf72a4",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
       "time": "now",
       "color": "#38bdf8"
     },
     {
       "id": 2,
       "agent": "sanji",
-      "line": "<@1491539585342246943>",
-      "time": "now",
+      "line": "<@1491539585342246943>  draft it",
+      "time": "2m",
       "color": "#38bdf8"
     },
     {
       "id": 3,
-      "agent": "sanji",
-      "line": "<@1491539585342246943>  test",
-      "time": "now",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "2m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
       "agent": "sanji",
-      "line": "test task <@1491539585342246943> — already handled: gog drive access in openclaw confirmed and committed (ddf72a4)",
-      "time": "now",
+      "line": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-click [acknowledged-sanj",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "System",
-      "line": "spawning andy session (OpenClaw/andy)",
-      "time": "4m",
+      "agent": "sanji",
+      "line": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-click [acknowledged-sanj",
+      "time": "3m",
       "color": "#38bdf8"
     },
     {
       "id": 6,
       "agent": "System",
       "line": "spawning andy session (OpenClaw/andy)",
-      "time": "5m",
+      "time": "4m",
       "color": "#38bdf8"
     },
     {
       "id": 7,
-      "agent": "Spike",
-      "line": "[deploy] MC has 2 unpushed commits (ddf72a4) with board.html + mission-control-live.json changes — mc-deploy.sh or host ",
-      "time": "12m",
-      "color": "#4a9eff"
+      "agent": "sanji",
+      "line": "amazing <@&1491306526923690057>, now you said you dispatched an update to click ",
+      "time": "4m",
+      "color": "#38bdf8"
     },
     {
       "id": 8,
-      "agent": "Spike",
-      "line": "[deploy] MC auto-deploy: committed 2 files (board.html, mission-control-live.json) to ddf72a4, but nginx root not writab",
-      "time": "12m",
-      "color": "#4a9eff"
+      "agent": "sanji",
+      "line": "MC task card fixes: (1) Discord <@SnowflakeID> mentions now render as @ links in card titles; (2) clicking any board car",
+      "time": "4m",
+      "color": "#38bdf8"
     },
     {
       "id": 9,
-      "agent": "sanji",
-      "line": "drive is accessible with gog in openclaw also sanji you can do those kind of cha (exit=124)",
-      "time": "28m",
+      "agent": "vicious",
+      "line": "",
+      "time": "9m",
       "color": "#38bdf8"
     },
     {
       "id": 10,
       "agent": "sanji",
-      "line": "<@1491539585342246943> drive is accessible with gog in openclaw also sanji you c",
-      "time": "34m",
+      "line": "<@1491539585342246943> — confirmed already handled: gog drive access in openclaw, committed to ddf72a4",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 11,
       "agent": "sanji",
-      "line": "Added gog to openclaw.json safeBins + safeBinProfiles. gog-drive skill confirmed enabled and functional. Drive accessibl",
-      "time": "35m",
+      "line": "<@1491539585342246943>",
+      "time": "10m",
       "color": "#38bdf8"
     },
     {
       "id": 12,
-      "agent": "Spike",
-      "line": "task task-mnsdvyis-kz1e removed",
-      "time": "45m",
-      "color": "#4a9eff"
+      "agent": "sanji",
+      "line": "<@1491539585342246943>  test",
+      "time": "11m",
+      "color": "#38bdf8"
     },
     {
       "id": 13,
-      "agent": "Spike",
-      "line": "Phase 3 activity test · status changed to done",
-      "time": "45m",
-      "color": "#4a9eff"
+      "agent": "sanji",
+      "line": "test task <@1491539585342246943> — already handled: gog drive access in openclaw confirmed and committed (ddf72a4)",
+      "time": "11m",
+      "color": "#38bdf8"
     },
     {
       "id": 14,
-      "agent": "Spike",
-      "line": "Phase 3 activity test · status changed to in-progress",
-      "time": "45m",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "14m",
+      "color": "#38bdf8"
     },
     {
       "id": 15,
-      "agent": "Spike",
-      "line": "Phase 3 activity test · mc · high priority · assigned spike",
-      "time": "45m",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "15m",
+      "color": "#38bdf8"
     },
     {
       "id": 16,
+      "agent": "Spike",
+      "line": "[deploy] MC has 2 unpushed commits (ddf72a4) with board.html + mission-control-live.json changes — mc-deploy.sh or host ",
+      "time": "22m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 17,
+      "agent": "Spike",
+      "line": "[deploy] MC auto-deploy: committed 2 files (board.html, mission-control-live.json) to ddf72a4, but nginx root not writab",
+      "time": "22m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 18,
+      "agent": "sanji",
+      "line": "drive is accessible with gog in openclaw also sanji you can do those kind of cha (exit=124)",
+      "time": "38m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 19,
+      "agent": "sanji",
+      "line": "<@1491539585342246943> drive is accessible with gog in openclaw also sanji you c",
+      "time": "45m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 20,
+      "agent": "sanji",
+      "line": "Added gog to openclaw.json safeBins + safeBinProfiles. gog-drive skill confirmed enabled and functional. Drive accessibl",
+      "time": "45m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 21,
+      "agent": "Spike",
+      "line": "task task-mnsdvyis-kz1e removed",
+      "time": "55m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 22,
+      "agent": "Spike",
+      "line": "Phase 3 activity test · status changed to done",
+      "time": "55m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 23,
+      "agent": "Spike",
+      "line": "Phase 3 activity test · status changed to in-progress",
+      "time": "55m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 24,
+      "agent": "Spike",
+      "line": "Phase 3 activity test · mc · high priority · assigned spike",
+      "time": "55m",
+      "color": "#4a9eff"
+    },
+    {
+      "id": 25,
       "agent": "Spike",
       "line": "[deploy] MC has unpushed commits (58fd3c1: priority labels + task modal), needs mc-deploy.sh from host to /usr/share/ngi",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 17,
+      "id": 26,
       "agent": "Spike",
       "line": "[deploy] MC auto-check: committed +1 (priority labels + task modal), nginx path missing, escalated to Andy",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 18,
+      "id": 27,
       "agent": "Spike",
       "line": "routing → [needs-andy] deploy task acknowledged, posted to Discord #spike-status",
       "time": "1h",
       "color": "#4a9eff"
     },
     {
-      "id": 19,
+      "id": 28,
       "agent": "Spike",
       "line": "[deploy] MC has unpushed commits (172385a: board.html +2004 lines, deployHistory.json, mission-control-live.json changes",
       "time": "2h",
@@ -383,7 +446,7 @@
         "id": "task-001",
         "text": "Deploy v3 staging to prod",
         "agent": "sanji",
-        "ts": "3h",
+        "ts": "4h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
@@ -392,7 +455,7 @@
         "id": "task-005",
         "text": "IronThread outreach pipeline review",
         "agent": "Gren",
-        "ts": "16h",
+        "ts": "17h",
         "priority": "medium",
         "project": "ironthread",
         "isTask": true
@@ -410,7 +473,7 @@
         "id": "task-mns9a01l-jczu",
         "text": "Test NASA board task",
         "agent": "sanji",
-        "ts": "2h",
+        "ts": "3h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
@@ -428,7 +491,7 @@
         "id": "task-mnsbj1z8-gtzy",
         "text": "MC NASA Phase 1 deploy",
         "agent": "vicious",
-        "ts": "1h",
+        "ts": "2h",
         "priority": "high",
         "project": "mc",
         "isTask": true
@@ -437,7 +500,7 @@
         "id": "task-mnsdpvda-agy5",
         "text": "Phase 2 live test task",
         "agent": "Spike",
-        "ts": "49m",
+        "ts": "1h",
         "priority": "high",
         "project": "mc",
         "isTask": true
@@ -446,7 +509,7 @@
         "id": 1775795940000,
         "text": "[deploy] MC has 2 unpushed commits (ddf72a4) with board.html + mission-control-live.json changes — m",
         "agent": "Spike",
-        "ts": "12m"
+        "ts": "22m"
       },
       {
         "id": 1775792160000,
@@ -466,7 +529,7 @@
         "id": "task-004",
         "text": "Build interactive Kanban task board",
         "agent": "Ed",
-        "ts": "48m",
+        "ts": "58m",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
@@ -498,46 +561,82 @@
         "isTask": true
       },
       {
+        "id": 1775797153000,
+        "text": "<@1491539585342246943>  draft it",
+        "agent": "sanji",
+        "ts": "2m"
+      },
+      {
+        "id": 1775797080000,
+        "text": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-clic",
+        "agent": "sanji",
+        "ts": "3m"
+      },
+      {
+        "id": 1775797080000,
+        "text": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-clic",
+        "agent": "sanji",
+        "ts": "3m"
+      },
+      {
+        "id": 1775797018000,
+        "text": "amazing <@&1491306526923690057>, now you said you dispatched an update to click ",
+        "agent": "sanji",
+        "ts": "4m"
+      },
+      {
+        "id": 1775797011000,
+        "text": "MC task card fixes: (1) Discord <@SnowflakeID> mentions now render as @ links in card titles; (2) cl",
+        "agent": "sanji",
+        "ts": "4m"
+      },
+      {
+        "id": 1775796717000,
+        "text": "",
+        "agent": "vicious",
+        "ts": "9m"
+      },
+      {
         "id": 1775796690000,
         "text": "<@1491539585342246943> — confirmed already handled: gog drive access in openclaw, committed to ddf72",
         "agent": "sanji",
-        "ts": "now"
+        "ts": "10m"
       },
       {
         "id": 1775796688000,
         "text": "<@1491539585342246943>",
         "agent": "sanji",
-        "ts": "now"
+        "ts": "10m"
       },
       {
         "id": 1775796609000,
         "text": "<@1491539585342246943>  test",
         "agent": "sanji",
-        "ts": "now"
+        "ts": "11m"
       },
       {
         "id": 1775796606000,
         "text": "test task <@1491539585342246943> — already handled: gog drive access in openclaw confirmed and commi",
         "agent": "sanji",
-        "ts": "now"
+        "ts": "11m"
       },
       {
         "id": 1775795940000,
         "text": "[deploy] MC auto-deploy: committed 2 files (board.html, mission-control-live.json) to ddf72a4, but n",
         "agent": "Spike",
-        "ts": "12m"
+        "ts": "22m"
       },
       {
         "id": 1775794598000,
         "text": "<@1491539585342246943> drive is accessible with gog in openclaw also sanji you c",
         "agent": "sanji",
-        "ts": "34m"
+        "ts": "45m"
       },
       {
         "id": 1775794560000,
         "text": "Added gog to openclaw.json safeBins + safeBinProfiles. gog-drive skill confirmed enabled and functio",
         "agent": "sanji",
-        "ts": "35m"
+        "ts": "45m"
       },
       {
         "id": 1775792160000,
@@ -899,7 +998,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "49m",
+      "lastRun": "59m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1187,7 +1286,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "12m",
+      "lastRun": "22m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1283,7 +1382,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "13m",
+      "lastRun": "8m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1315,7 +1414,7 @@
       "label": "Memory Hygiene",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "49m",
+      "lastRun": "1h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1379,7 +1478,7 @@
       "label": "IronThread Git Push",
       "schedule": "0 13 * * 1,2,3,4,5",
       "next": "now",
-      "lastRun": "11h",
+      "lastRun": "12h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1411,7 +1510,7 @@
       "label": "IronThread Site Research",
       "schedule": "0 10 * * 4",
       "next": "now",
-      "lastRun": "10h",
+      "lastRun": "11h",
       "state": "error",
       "errors": 1,
       "enabled": true,
