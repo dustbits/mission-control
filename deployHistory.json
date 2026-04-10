@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-04-10T05:26:14.000Z",
+    "status": "deployed",
+    "trigger": "Ed",
+    "sha": "3858022",
+    "shaFull": "3858022f6699616e57e4aa701a246d6f0efbb8c7",
+    "message": "feat: MC task card improvements \u2014 Discord mentions, card-click dispatch, status badge guard",
+    "branch": "master",
+    "changedFiles": "board.html,mission-control-live.json",
+    "durationSec": 1
+  },
+  {
     "timestamp": "2026-04-09T18:00:33.000Z",
     "status": "deployed",
     "trigger": "manual",

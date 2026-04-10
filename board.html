@@ -1724,7 +1724,7 @@
             var tid = this.dataset.taskId;
             var cur = this.dataset.currentStatus;
             var next = cur === 'todo' ? 'in-progress' : cur === 'in-progress' ? 'review' : cur === 'review' ? 'done' : 'todo';
-            fetch('http://localhost:8092/tasks/' + tid + '/status', {
+            fetch('http://jarvis:8092/tasks/' + tid + '/status', {
               method: 'PATCH',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ status: next })
@@ -2046,7 +2046,8 @@
     });
     document.getElementById('agent-overlay-close')?.addEventListener('click', closeAgentDetail);
 
-    // ── Task Modal Handlers ─────────────────────────────────────────────
+    // ── Task Modal Handlers (wrapped in DOMContentLoaded) ──────────────
+    document.addEventListener('DOMContentLoaded', function() {
     var _taskDetailId = null;
     var _taskBoardLoaded = false;
 
@@ -2069,7 +2070,7 @@
     document.getElementById('task-modal-cancel')?.addEventListener('click', function() {
       document.getElementById('task-modal').style.display = 'none';
     });
-    document.getElementById('task-modal').addEventListener('click', function(e) {
+    document.getElementById('task-modal')?.addEventListener('click', function(e) {
       if (e.target === this) this.style.display = 'none';
     });
 
@@ -2083,7 +2084,7 @@
       var btn = this;
       btn.textContent = 'Creating…'; btn.disabled = true;
       try {
-        var res = await fetch('http://localhost:8092/tasks', {
+        var res = await fetch('http://jarvis:8092/tasks', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -2129,7 +2130,7 @@
     document.getElementById('task-detail-close')?.addEventListener('click', function() {
       document.getElementById('task-detail').style.display = 'none'; _taskDetailId = null;
     });
-    document.getElementById('task-detail').addEventListener('click', function(e) {
+    document.getElementById('task-detail')?.addEventListener('click', function(e) {
       if (e.target === this) { this.style.display = 'none'; _taskDetailId = null; }
     });
 
@@ -2138,7 +2139,7 @@
       var btn = this;
       btn.textContent = 'Saving…'; btn.disabled = true;
       try {
-        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, {
+        var res = await fetch('http://jarvis:8092/tasks/' + _taskDetailId, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -2159,7 +2160,7 @@
     document.getElementById('task-detail-delete')?.addEventListener('click', async function() {
       if (!_taskDetailId || !confirm('Delete this task?')) return;
       try {
-        var res = await fetch('http://localhost:8092/tasks/' + _taskDetailId, { method: 'DELETE' });
+        var res = await fetch('http://jarvis:8092/tasks/' + _taskDetailId, { method: 'DELETE' });
         var json = await res.json();
         if (json.ok) {
           document.getElementById('task-detail').style.display = 'none';
@@ -2170,9 +2171,10 @@
 
     // Load task cache into window for detail lookup
     window._taskCache = [];
-    fetch('http://localhost:8092/tasks').then(function(r) { return r.json(); }).then(function(d) {
+    fetch('http://jarvis:8092/tasks').then(function(r) { return r.json(); }).then(function(d) {
       if (d.tasks) window._taskCache = d.tasks;
     }).catch(function() {});
+    }); // end DOMContentLoaded task modal/detail
   </script>
 
   <!-- Agent Detail Overlay -->

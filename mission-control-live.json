@@ -1,70 +1,62 @@
 {
-  "updatedAt": "2026-04-10T05:01:49.686Z",
+  "updatedAt": "2026-04-10T05:39:00.408Z",
   "health": {
     "node": "jarvis",
     "uptime": "stable",
-    "cpu": 36,
+    "cpu": 27,
     "memory": 33,
     "disk": 2
   },
   "agents": [
     {
-      "name": "Spike",
-      "key": "spike",
-      "model": "MiniMax/M2.7-highspeed",
-      "color": "#4a9eff",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
-      "name": "Jet",
-      "key": "jet",
+      "name": "Sanji",
+      "key": "sanji",
       "model": "MiniMax/M2.7",
       "color": "#f59e0b",
-      "completed": 0,
-      "efficiency": 0,
+      "completed": 19,
+      "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
-      "state": "idle",
-      "stateSince": null
+      "lastActive": "2026-04-10T05:26:21Z",
+      "state": "working",
+      "stateSince": "2026-04-10T05:26:21Z"
     },
     {
-      "name": "Faye",
-      "key": "faye",
-      "model": "Qwen/Qwen2.5-7B",
-      "color": "#a855f7",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
-      "name": "Ein",
-      "key": "ein",
+      "name": "Vicious",
+      "key": "vicious",
       "model": "MiniMax/M2.7",
-      "color": "#f97316",
-      "completed": 0,
-      "efficiency": 0,
+      "color": "#ef4444",
+      "completed": 7,
+      "efficiency": 50,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
     {
-      "name": "Gren",
-      "key": "gren",
+      "name": "Zoro",
+      "key": "zoro",
       "model": "MiniMax/M2.7",
-      "color": "#7c3aed",
+      "color": "#22c55e",
+      "completed": 1,
+      "efficiency": 50,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": "2026-04-10T05:25Z",
+      "state": "working",
+      "stateSince": "2026-04-10T05:25Z"
+    },
+    {
+      "name": "Andy",
+      "key": "andy",
+      "model": "claude-sonnet-4",
+      "color": "#38bdf8",
       "completed": 0,
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -77,6 +69,46 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Faye",
+      "key": "faye",
+      "model": "Qwen/Qwen2.5-7B",
+      "color": "#a855f7",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Gren",
+      "key": "gren",
+      "model": "MiniMax/M2.7",
+      "color": "#7c3aed",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Jet",
+      "key": "jet",
+      "model": "MiniMax/M2.7",
+      "color": "#f59e0b",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -89,18 +121,7 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
-      "state": "idle",
-      "stateSince": null
-    },
-    {
-      "name": "Rocco",
-      "key": "rocco",
-      "model": "MiniMax/M2.7",
-      "color": "#64748b",
-      "completed": 0,
-      "efficiency": 0,
-      "avgTimeSec": 0,
-      "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
@@ -113,26 +134,58 @@
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     },
     {
-      "name": "Andy",
-      "key": "andy",
-      "model": "claude-sonnet-4",
-      "color": "#38bdf8",
+      "name": "Rocco",
+      "key": "rocco",
+      "model": "MiniMax/M2.7",
+      "color": "#64748b",
       "completed": 0,
       "efficiency": 0,
       "avgTimeSec": 0,
       "blockers": 0,
+      "lastActive": null,
+      "state": "idle",
+      "stateSince": null
+    },
+    {
+      "name": "Spike",
+      "key": "spike",
+      "model": "MiniMax/M2.7-highspeed",
+      "color": "#4a9eff",
+      "completed": 0,
+      "efficiency": 0,
+      "avgTimeSec": 0,
+      "blockers": 0,
+      "lastActive": null,
       "state": "idle",
       "stateSince": null
     }
   ],
   "deploy": {
     "state": "deployed",
-    "timestamp": "2026-04-09T18:00:33.000Z",
+    "timestamp": "2026-04-10T05:26:14.000Z",
+    "commit": "3858022",
+    "branch": "master",
+    "message": "feat: MC task card improvements — Discord mentions, card-click dispatch, status badge guard",
+    "lastDeploy": "2026-04-10T05:26:14.000Z",
     "history": [
+      {
+        "timestamp": "2026-04-10T05:26:14.000Z",
+        "status": "deployed",
+        "trigger": "Ed",
+        "sha": "3858022",
+        "shaFull": "3858022f6699616e57e4aa701a246d6f0efbb8c7",
+        "message": "feat: MC task card improvements — Discord mentions, card-click dispatch, status badge guard",
+        "branch": "master",
+        "changedFiles": "board.html,mission-control-live.json",
+        "durationSec": 1,
+        "duration": null,
+        "time": "12m"
+      },
       {
         "timestamp": "2026-04-09T18:00:33.000Z",
         "status": "deployed",
@@ -145,28 +198,28 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": "1h 28m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-09T16:24:51.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "8m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-09T16:22:00.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "3m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-09T16:18:15.000Z",
         "status": "deployed",
         "trigger": "manual",
         "duration": "4m",
-        "time": "12h"
+        "time": "13h"
       },
       {
         "timestamp": "2026-04-09T15:58:40.000Z",
@@ -180,7 +233,7 @@
         "status": "deployed",
         "trigger": "manual",
         "duration": "30m",
-        "time": "13h"
+        "time": "14h"
       },
       {
         "timestamp": "2026-04-08T01:10:10.000Z",
@@ -252,8 +305,8 @@
     },
     {
       "id": 2,
-      "agent": "sanji",
-      "line": "<@1491539585342246943>  draft it",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
       "time": "2m",
       "color": "#38bdf8"
     },
@@ -261,183 +314,358 @@
       "id": 3,
       "agent": "System",
       "line": "spawning andy session (OpenClaw/andy)",
-      "time": "2m",
+      "time": "4m",
       "color": "#38bdf8"
     },
     {
       "id": 4,
-      "agent": "sanji",
-      "line": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-click [acknowledged-sanj",
-      "time": "3m",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "5m",
       "color": "#38bdf8"
     },
     {
       "id": 5,
-      "agent": "sanji",
-      "line": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-click [acknowledged-sanj",
-      "time": "3m",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "7m",
       "color": "#38bdf8"
     },
     {
       "id": 6,
       "agent": "System",
       "line": "spawning andy session (OpenClaw/andy)",
-      "time": "4m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 7,
-      "agent": "sanji",
-      "line": "amazing <@&1491306526923690057>, now you said you dispatched an update to click ",
-      "time": "4m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 8,
-      "agent": "sanji",
-      "line": "MC task card fixes: (1) Discord <@SnowflakeID> mentions now render as @ links in card titles; (2) clicking any board car",
-      "time": "4m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 9,
-      "agent": "vicious",
-      "line": "",
       "time": "9m",
       "color": "#38bdf8"
     },
     {
+      "id": 7,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "11m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 8,
+      "agent": "Sanji",
+      "line": "when i click on a task i get Task not found in cache — try refreshing and when i",
+      "time": "12m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 9,
+      "agent": "Sanji",
+      "line": "board.html: replaced all http://localhost:8092 → http://jarvis:8092 for task API fetches (create/open/save/delete/status",
+      "time": "12m",
+      "color": "#f59e0b"
+    },
+    {
       "id": 10,
-      "agent": "sanji",
-      "line": "<@1491539585342246943> — confirmed already handled: gog drive access in openclaw, committed to ddf72a4",
-      "time": "10m",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "13m",
       "color": "#38bdf8"
     },
     {
       "id": 11,
-      "agent": "sanji",
-      "line": "<@1491539585342246943>",
-      "time": "10m",
-      "color": "#38bdf8"
+      "agent": "Zoro",
+      "line": "board.html X button fix — task-modal-close given class=agent-detail-close + position:absolute (matching task-detail-clos",
+      "time": "14m",
+      "color": "#22c55e"
     },
     {
       "id": 12,
-      "agent": "sanji",
-      "line": "<@1491539585342246943>  test",
-      "time": "11m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 13,
-      "agent": "sanji",
-      "line": "test task <@1491539585342246943> — already handled: gog drive access in openclaw confirmed and committed (ddf72a4)",
-      "time": "11m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 14,
-      "agent": "System",
-      "line": "spawning andy session (OpenClaw/andy)",
-      "time": "14m",
-      "color": "#38bdf8"
-    },
-    {
-      "id": 15,
       "agent": "System",
       "line": "spawning andy session (OpenClaw/andy)",
       "time": "15m",
       "color": "#38bdf8"
     },
     {
+      "id": 13,
+      "agent": "Vicious",
+      "line": "",
+      "time": "16m",
+      "color": "#ef4444"
+    },
+    {
+      "id": 14,
+      "agent": "Vicious",
+      "line": "board.html: wrapped all task-modal + task-detail addEventListener in DOMContentLoaded — fixes null ref crash on X button",
+      "time": "16m",
+      "color": "#ef4444"
+    },
+    {
+      "id": 15,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "17m",
+      "color": "#38bdf8"
+    },
+    {
       "id": 16,
-      "agent": "Spike",
-      "line": "[deploy] MC has 2 unpushed commits (ddf72a4) with board.html + mission-control-live.json changes — mc-deploy.sh or host ",
-      "time": "22m",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "19m",
+      "color": "#38bdf8"
     },
     {
       "id": 17,
-      "agent": "Spike",
-      "line": "[deploy] MC auto-deploy: committed 2 files (board.html, mission-control-live.json) to ddf72a4, but nginx root not writab",
-      "time": "22m",
-      "color": "#4a9eff"
+      "agent": "Sanji",
+      "line": "<@1491539585342246943>  still not working for the X- new task-mission board",
+      "time": "20m",
+      "color": "#f59e0b"
     },
     {
       "id": 18,
-      "agent": "sanji",
-      "line": "drive is accessible with gog in openclaw also sanji you can do those kind of cha (exit=124)",
-      "time": "38m",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "21m",
       "color": "#38bdf8"
     },
     {
       "id": 19,
-      "agent": "sanji",
-      "line": "<@1491539585342246943> drive is accessible with gog in openclaw also sanji you c",
-      "time": "45m",
-      "color": "#38bdf8"
+      "agent": "Sanji",
+      "line": "Fixed X (close) button in New Task modal — wrapped task-modal-close/cancel/backdrop click listeners in DOMContentLoaded ",
+      "time": "22m",
+      "color": "#f59e0b"
     },
     {
       "id": 20,
-      "agent": "sanji",
-      "line": "Added gog to openclaw.json safeBins + safeBinProfiles. gog-drive skill confirmed enabled and functional. Drive accessibl",
-      "time": "45m",
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "22m",
       "color": "#38bdf8"
     },
     {
       "id": 21,
-      "agent": "Spike",
-      "line": "task task-mnsdvyis-kz1e removed",
-      "time": "55m",
-      "color": "#4a9eff"
+      "agent": "Vicious",
+      "line": "MC workload board fix: (1) removed Ein from agent roster — retired 2026-04-10 per Ray; (2) added sanji/vicious/zoro to A",
+      "time": "24m",
+      "color": "#ef4444"
     },
     {
       "id": 22,
-      "agent": "Spike",
-      "line": "Phase 3 activity test · status changed to done",
-      "time": "55m",
-      "color": "#4a9eff"
+      "agent": "Vicious",
+      "line": "",
+      "time": "24m",
+      "color": "#ef4444"
     },
     {
       "id": 23,
-      "agent": "Spike",
-      "line": "Phase 3 activity test · status changed to in-progress",
-      "time": "55m",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "24m",
+      "color": "#38bdf8"
     },
     {
       "id": 24,
-      "agent": "Spike",
-      "line": "Phase 3 activity test · mc · high priority · assigned spike",
-      "time": "55m",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "26m",
+      "color": "#38bdf8"
     },
     {
       "id": 25,
-      "agent": "Spike",
-      "line": "[deploy] MC has unpushed commits (58fd3c1: priority labels + task modal), needs mc-deploy.sh from host to /usr/share/ngi",
-      "time": "1h",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "28m",
+      "color": "#38bdf8"
     },
     {
       "id": 26,
-      "agent": "Spike",
-      "line": "[deploy] MC auto-check: committed +1 (priority labels + task modal), nginx path missing, escalated to Andy",
-      "time": "1h",
-      "color": "#4a9eff"
+      "agent": "Sanji",
+      "line": "<@1491539585342246943> the X in new task still not working.",
+      "time": "29m",
+      "color": "#f59e0b"
     },
     {
       "id": 27,
-      "agent": "Spike",
-      "line": "routing → [needs-andy] deploy task acknowledged, posted to Discord #spike-status",
-      "time": "1h",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "30m",
+      "color": "#38bdf8"
     },
     {
       "id": 28,
-      "agent": "Spike",
-      "line": "[deploy] MC has unpushed commits (172385a: board.html +2004 lines, deployHistory.json, mission-control-live.json changes",
-      "time": "2h",
-      "color": "#4a9eff"
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "32m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 29,
+      "agent": "Vicious",
+      "line": "",
+      "time": "34m",
+      "color": "#ef4444"
+    },
+    {
+      "id": 30,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "34m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 31,
+      "agent": "Vicious",
+      "line": "health check ping — INCIDENT-2026-04-09.md stale container status corrected (running), MC board 200 OK at jarvis:8090, 1",
+      "time": "35m",
+      "color": "#ef4444"
+    },
+    {
+      "id": 32,
+      "agent": "Sanji",
+      "line": "Fixed X (close) button in New Task modal — restructured header to use .agent-detail-close class (position:absolute, top:",
+      "time": "35m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 33,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "36m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 34,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943>",
+      "time": "36m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 35,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943> — committed 3858022: MC task card fixes (Discord mention links, card-click [acknowledged-sanji] d",
+      "time": "36m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 36,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "37m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 37,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943>  draft it",
+      "time": "39m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 38,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "39m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 39,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-click [acknowledged-sanj",
+      "time": "41m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 40,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-click [acknowledged-sanj",
+      "time": "41m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 41,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "41m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 42,
+      "agent": "Sanji",
+      "line": "amazing <@&1491306526923690057>, now you said you dispatched an update to click ",
+      "time": "42m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 43,
+      "agent": "Sanji",
+      "line": "MC task card fixes: (1) Discord <@SnowflakeID> mentions now render as @ links in card titles; (2) clicking any board car",
+      "time": "42m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 44,
+      "agent": "Vicious",
+      "line": "",
+      "time": "47m",
+      "color": "#ef4444"
+    },
+    {
+      "id": 45,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943> — confirmed already handled: gog drive access in openclaw, committed to ddf72a4",
+      "time": "47m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 46,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943>",
+      "time": "47m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 47,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943>  test",
+      "time": "48m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 48,
+      "agent": "Sanji",
+      "line": "test task <@1491539585342246943> — already handled: gog drive access in openclaw confirmed and committed (ddf72a4)",
+      "time": "48m",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 49,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "52m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 50,
+      "agent": "System",
+      "line": "spawning andy session (OpenClaw/andy)",
+      "time": "53m",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 51,
+      "agent": "Sanji",
+      "line": "drive is accessible with gog in openclaw also sanji you can do those kind of cha (exit=124)",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 52,
+      "agent": "Sanji",
+      "line": "<@1491539585342246943> drive is accessible with gog in openclaw also sanji you c",
+      "time": "1h",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 53,
+      "agent": "Sanji",
+      "line": "Added gog to openclaw.json safeBins + safeBinProfiles. gog-drive skill confirmed enabled and functional. Drive accessibl",
+      "time": "1h",
+      "color": "#f59e0b"
     }
   ],
   "board": {
@@ -445,7 +673,7 @@
       {
         "id": "task-001",
         "text": "Deploy v3 staging to prod",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "4h",
         "priority": "high",
         "project": "openclaw",
@@ -472,7 +700,7 @@
       {
         "id": "task-mns9a01l-jczu",
         "text": "Test NASA board task",
-        "agent": "sanji",
+        "agent": "Sanji",
         "ts": "3h",
         "priority": "high",
         "project": "openclaw",
@@ -482,7 +710,7 @@
         "id": "task-mns9rwly-gx9p",
         "text": "Test end-to-end NASA board",
         "agent": "Ed",
-        "ts": "2h",
+        "ts": "3h",
         "priority": "critical",
         "project": "mc",
         "isTask": true
@@ -490,7 +718,7 @@
       {
         "id": "task-mnsbj1z8-gtzy",
         "text": "MC NASA Phase 1 deploy",
-        "agent": "vicious",
+        "agent": "Vicious",
         "ts": "2h",
         "priority": "high",
         "project": "mc",
@@ -506,22 +734,13 @@
         "isTask": true
       },
       {
-        "id": 1775795940000,
-        "text": "[deploy] MC has 2 unpushed commits (ddf72a4) with board.html + mission-control-live.json changes — m",
+        "id": "task-mnsgpgpu-lip3",
+        "text": "test",
         "agent": "Spike",
-        "ts": "22m"
-      },
-      {
-        "id": 1775792160000,
-        "text": "[deploy] MC has unpushed commits (58fd3c1: priority labels + task modal), needs mc-deploy.sh from ho",
-        "agent": "Spike",
-        "ts": "1h"
-      },
-      {
-        "id": 1775788560000,
-        "text": "[deploy] MC has unpushed commits (172385a: board.html +2004 lines, deployHistory.json, mission-contr",
-        "agent": "Spike",
-        "ts": "2h"
+        "ts": "13m",
+        "priority": "medium",
+        "project": "openclaw",
+        "isTask": true
       }
     ],
     "inprogress": [
@@ -529,24 +748,18 @@
         "id": "task-004",
         "text": "Build interactive Kanban task board",
         "agent": "Ed",
-        "ts": "58m",
+        "ts": "1h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
-      },
-      {
-        "id": 1775790180000,
-        "text": "routing → [needs-andy] deploy task acknowledged, posted to Discord #spike-status",
-        "agent": "Spike",
-        "ts": "1h"
       }
     ],
     "done": [
       {
         "id": "task-002",
         "text": "Fix dispatch loop Python heredoc bug",
-        "agent": "zoro",
-        "ts": "3h",
+        "agent": "Zoro",
+        "ts": "4h",
         "priority": "critical",
         "project": "openclaw",
         "isTask": true
@@ -554,94 +767,142 @@
       {
         "id": "task-003",
         "text": "Remove host-side Discord listeners",
-        "agent": "zoro",
-        "ts": "3h",
+        "agent": "Zoro",
+        "ts": "4h",
         "priority": "high",
         "project": "openclaw",
         "isTask": true
       },
       {
+        "id": 1775798781000,
+        "text": "when i click on a task i get Task not found in cache — try refreshing and when i",
+        "agent": "Sanji",
+        "ts": "12m"
+      },
+      {
+        "id": 1775798776000,
+        "text": "board.html: replaced all http://localhost:8092 → http://jarvis:8092 for task API fetches (create/ope",
+        "agent": "Sanji",
+        "ts": "12m"
+      },
+      {
+        "id": 1775798700000,
+        "text": "board.html X button fix — task-modal-close given class=agent-detail-close + position:absolute (match",
+        "agent": "Zoro",
+        "ts": "14m"
+      },
+      {
+        "id": 1775798560000,
+        "text": "",
+        "agent": "Vicious",
+        "ts": "16m"
+      },
+      {
+        "id": 1775798552000,
+        "text": "board.html: wrapped all task-modal + task-detail addEventListener in DOMContentLoaded — fixes null r",
+        "agent": "Vicious",
+        "ts": "16m"
+      },
+      {
+        "id": 1775798283000,
+        "text": "<@1491539585342246943>  still not working for the X- new task-mission board",
+        "agent": "Sanji",
+        "ts": "20m"
+      },
+      {
+        "id": 1775798220000,
+        "text": "Fixed X (close) button in New Task modal — wrapped task-modal-close/cancel/backdrop click listeners ",
+        "agent": "Sanji",
+        "ts": "22m"
+      },
+      {
+        "id": 1775798100000,
+        "text": "MC workload board fix: (1) removed Ein from agent roster — retired 2026-04-10 per Ray; (2) added san",
+        "agent": "Vicious",
+        "ts": "24m"
+      },
+      {
+        "id": 1775797781000,
+        "text": "<@1491539585342246943> the X in new task still not working.",
+        "agent": "Sanji",
+        "ts": "29m"
+      },
+      {
+        "id": 1775797440000,
+        "text": "health check ping — INCIDENT-2026-04-09.md stale container status corrected (running), MC board 200 ",
+        "agent": "Vicious",
+        "ts": "35m"
+      },
+      {
+        "id": 1775797440000,
+        "text": "Fixed X (close) button in New Task modal — restructured header to use .agent-detail-close class (pos",
+        "agent": "Sanji",
+        "ts": "35m"
+      },
+      {
+        "id": 1775797357000,
+        "text": "<@1491539585342246943>",
+        "agent": "Sanji",
+        "ts": "36m"
+      },
+      {
+        "id": 1775797346000,
+        "text": "<@1491539585342246943> — committed 3858022: MC task card fixes (Discord mention links, card-click [a",
+        "agent": "Sanji",
+        "ts": "36m"
+      },
+      {
         "id": 1775797153000,
         "text": "<@1491539585342246943>  draft it",
-        "agent": "sanji",
-        "ts": "2m"
+        "agent": "Sanji",
+        "ts": "39m"
       },
       {
         "id": 1775797080000,
         "text": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-clic",
-        "agent": "sanji",
-        "ts": "3m"
-      },
-      {
-        "id": 1775797080000,
-        "text": "<@1491539585342246943> — gog drive access in OpenClaw: confirmed, committed ddf72a4. Board card-clic",
-        "agent": "sanji",
-        "ts": "3m"
+        "agent": "Sanji",
+        "ts": "41m"
       },
       {
         "id": 1775797018000,
         "text": "amazing <@&1491306526923690057>, now you said you dispatched an update to click ",
-        "agent": "sanji",
-        "ts": "4m"
+        "agent": "Sanji",
+        "ts": "42m"
       },
       {
         "id": 1775797011000,
         "text": "MC task card fixes: (1) Discord <@SnowflakeID> mentions now render as @ links in card titles; (2) cl",
-        "agent": "sanji",
-        "ts": "4m"
-      },
-      {
-        "id": 1775796717000,
-        "text": "",
-        "agent": "vicious",
-        "ts": "9m"
+        "agent": "Sanji",
+        "ts": "42m"
       },
       {
         "id": 1775796690000,
         "text": "<@1491539585342246943> — confirmed already handled: gog drive access in openclaw, committed to ddf72",
-        "agent": "sanji",
-        "ts": "10m"
-      },
-      {
-        "id": 1775796688000,
-        "text": "<@1491539585342246943>",
-        "agent": "sanji",
-        "ts": "10m"
+        "agent": "Sanji",
+        "ts": "47m"
       },
       {
         "id": 1775796609000,
         "text": "<@1491539585342246943>  test",
-        "agent": "sanji",
-        "ts": "11m"
+        "agent": "Sanji",
+        "ts": "48m"
       },
       {
         "id": 1775796606000,
         "text": "test task <@1491539585342246943> — already handled: gog drive access in openclaw confirmed and commi",
-        "agent": "sanji",
-        "ts": "11m"
-      },
-      {
-        "id": 1775795940000,
-        "text": "[deploy] MC auto-deploy: committed 2 files (board.html, mission-control-live.json) to ddf72a4, but n",
-        "agent": "Spike",
-        "ts": "22m"
+        "agent": "Sanji",
+        "ts": "48m"
       },
       {
         "id": 1775794598000,
         "text": "<@1491539585342246943> drive is accessible with gog in openclaw also sanji you c",
-        "agent": "sanji",
-        "ts": "45m"
+        "agent": "Sanji",
+        "ts": "1h"
       },
       {
         "id": 1775794560000,
         "text": "Added gog to openclaw.json safeBins + safeBinProfiles. gog-drive skill confirmed enabled and functio",
-        "agent": "sanji",
-        "ts": "45m"
-      },
-      {
-        "id": 1775792160000,
-        "text": "[deploy] MC auto-check: committed +1 (priority labels + task modal), nginx path missing, escalated t",
-        "agent": "Spike",
+        "agent": "Sanji",
         "ts": "1h"
       }
     ]
@@ -766,6 +1027,18 @@
       "createdAt": "2026-04-10T04:01:38.830Z",
       "updatedAt": "2026-04-10T04:01:38.830Z",
       "createdBy": "spike"
+    },
+    {
+      "id": "task-mnsgpgpu-lip3",
+      "title": "test",
+      "description": "",
+      "project": "openclaw",
+      "assignee": "spike",
+      "status": "todo",
+      "priority": "medium",
+      "createdAt": "2026-04-10T05:25:18.690Z",
+      "updatedAt": "2026-04-10T05:25:18.690Z",
+      "createdBy": "spike"
     }
   ],
   "cron": [
@@ -774,7 +1047,7 @@
       "label": "Morning Briefing",
       "schedule": "0 8 * * *",
       "next": "now",
-      "lastRun": "15h",
+      "lastRun": "16h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -806,7 +1079,7 @@
       "label": "Daily Memory Capture",
       "schedule": "0 19 * * *",
       "next": "now",
-      "lastRun": "5h",
+      "lastRun": "6h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -998,7 +1271,7 @@
       "label": "Job Error Watchdog",
       "schedule": "0 */6 * * *",
       "next": "now",
-      "lastRun": "59m",
+      "lastRun": "1h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1286,7 +1559,7 @@
       "label": "MC Auto Deploy",
       "schedule": 3600000,
       "next": "now",
-      "lastRun": "22m",
+      "lastRun": "59m",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1318,7 +1591,7 @@
       "label": "IronThread Competitive Scan",
       "schedule": "0 8 * * 2,4",
       "next": "now",
-      "lastRun": "15h",
+      "lastRun": "16h",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1382,7 +1655,7 @@
       "label": "Spike Task Router",
       "schedule": 900000,
       "next": "now",
-      "lastRun": "8m",
+      "lastRun": "now",
       "state": "ok",
       "errors": 0,
       "enabled": true,
@@ -1542,7 +1815,7 @@
       "label": "MC Live Board Sync",
       "schedule": 300000,
       "next": "now",
-      "lastRun": "2m",
+      "lastRun": "4m",
       "state": "ok",
       "errors": 0,
       "enabled": true,

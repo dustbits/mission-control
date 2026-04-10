@@ -17,8 +17,9 @@ const WORKSPACE = '/mnt/spike-storage/openclaw-live/workspace';
 const SHARED_LOG = `${WORKSPACE}/memory/shared-log.md`;
 const OUT_WORKSPACE = `${WORKSPACE}/mission-control/mission-control-live.json`;
 const OUT_STAGING  = '/mnt/spike-storage/mission-control-staging/mission-control-live.json';
-const CRON_JOBS_PATH = '/mnt/spike-storage/openclaw-live/cron/jobs.json';
-const DEPLOY_HISTORY_PATH   = null; // deprecated — mc-deploy.sh is the authoritative source
+const CRON_JOBS_PATH = '/home/node/.openclaw/cron/jobs.json';
+const TASKS_FILE = `${WORKSPACE}/mission-control/tasks.json`;
+const DEPLOY_HISTORY_PATH   = `${WORKSPACE}/mission-control/deployHistory.json`;
 const CRON_ERROR_HISTORY_PATH = `${WORKSPACE}/mission-control/cron-error-history.json`;
 
 const AGENT_COLORS = {
@@ -29,7 +30,7 @@ const AGENT_COLORS = {
   faye:     '#a855f7',
   research: '#a855f7',
   'faye-scan': '#a855f7',
-  ein:      '#f97316',
+  // ein removed — retired 2026-04-10
   finance:  '#f97316',
   gren:     '#7c3aed',
   ironthread: '#7c3aed',
@@ -42,21 +43,21 @@ const AGENT_COLORS = {
   punch:    '#ef4444',
   claude:   '#64d8ff',
   'claude-code': '#64d8ff',
-  sanji:    '#f59e0b',
-  vicious:  '#ef4444',
-  zoro:     '#4a9eff',
   dispatch: '#38bdf8',
   system:   '#38bdf8',
   andy:     '#38bdf8',
   andrew:   '#38bdf8',
   'ed-builder-loop': '#22c55e',
+  sanji:    '#f59e0b',
+  vicious:  '#ef4444',
+  zoro:     '#22c55e',
 };
 
 const AGENT_MODELS = {
   spike: 'MiniMax/M2.7-highspeed',
   jet: 'MiniMax/M2.7',
   faye: 'Qwen/Qwen2.5-7B',
-  ein: 'MiniMax/M2.7',
+  // ein removed — retired 2026-04-10
   gren: 'MiniMax/M2.7',
   ed: 'openai/gpt-4o',
   julia: 'Qwen/Qwen2.5-7B',
@@ -64,10 +65,10 @@ const AGENT_MODELS = {
   punch: 'claude-sonnet-4',
   andy: 'claude-sonnet-4',
   andrew: 'claude-sonnet-4',
+  main: 'MiniMax/M2.7',
   sanji: 'MiniMax/M2.7',
   vicious: 'MiniMax/M2.7',
   zoro: 'MiniMax/M2.7',
-  main: 'MiniMax/M2.7',
 };
 
 const AGENT_DISPLAY = {
@@ -85,14 +86,14 @@ const AGENT_DISPLAY = {
   system: 'System',
   andy: 'Andy', andrew: 'Andy',
   'ed-builder-loop': 'Ed',
-  sanji: 'Sanji', vicious: 'Vicious', zoro: 'Zoro',
+  sanji: 'Sanji',
+  vicious: 'Vicious',
+  zoro: 'Zoro',
 };
 
 function relativeTime(isoStr) {
-  // Normalize common variations: "2026-04-09 04:38:00 UTC" → "2026-04-09T04:38:00Z"
-  const normalized = isoStr.replace(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) UTC$/, '$1T$2:00Z');
   const now = Date.now();
-  const then = new Date(normalized).getTime();
+  const then = new Date(isoStr).getTime();
   if (isNaN(then)) return 'earlier';
   const diffMs = now - then;
   const diffMin = Math.floor(diffMs / 60000);
@@ -106,31 +107,24 @@ function relativeTime(isoStr) {
 
 function parseLog(content) {
   const lines = content.split('\n').filter(l => l.trim());
-  // 48h cutoff — but extend to 72h for agents with few entries so slow tasks aren't dropped
-  const cutoff = Date.now() - 72 * 60 * 60 * 1000;
+  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
 
   const entries = [];
   for (const line of lines) {
-    if (line.startsWith('[discord-audit]')) continue;
-
-    // Handle milliseconds: strip .sss from time before parsing
-    const tsLine = line.replace(/(\d{2}:\d{2}:\d{2})\.\d+([Z ])/, '$1$2');
-
     // Format A: [YYYY-MM-DD HH:MM UTC] [agent] [tag] message
-    let m = tsLine.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}:\d{2})(?:Z| UTC| ET| EST| EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
     // Format B: [YYYY-MM-DD HH:MM UTC] agent [tag] message (agent without brackets)
-    if (!m) m = tsLine.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}:\d{2})(?:Z| UTC| ET| EST| EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
-    // Format C: [YYYY-MM-DD HH:MM] agent [tag] message (seconds optional, no Z)
-    if (!m) m = tsLine.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2})(?::\d{2})?(?:Z| UTC| ET| EST| EDT)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC|[ ]ET|[ ]EST|[ ]EDT)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
     if (!m) continue;
 
     const [, date, time, agent, tag, message] = m;
-    const iso = date + 'T' + time + 'Z';
+    const secs = time.split(':').length === 2 ? ':00' : '';
+    const iso = date + 'T' + time + secs + 'Z';
     const ts = new Date(iso).getTime();
     if (isNaN(ts) || ts < cutoff) continue;
 
     const tagLower = tag.toLowerCase();
-    if (!tagLower.startsWith('done') && !tagLower.startsWith('needs') && !tagLower.startsWith('partial') && !tagLower.startsWith('acknowledged') && !tagLower.startsWith('alert') && !tagLower.startsWith('failed') && !tagLower.startsWith('error')) continue;
+    if (!tagLower.startsWith('done') && !tagLower.startsWith('needs') && !tagLower.startsWith('partial') && !tagLower.startsWith('acknowledged') && !tagLower.startsWith('alert') && !tagLower.startsWith('failed') && !tagLower.startsWith('error') && !tagLower.startsWith('task-') && !tagLower.startsWith('dispatched-') && !tagLower.startsWith('blocked')) continue;
 
     entries.push({ iso, ts, agent: agent.toLowerCase(), tag, message });
   }
@@ -251,38 +245,14 @@ function getCronHealthData() {
 function getDeployInfo() {
   const stagingPath = '/mnt/spike-storage/mission-control-staging';
   const workspacePath = '/home/node/.openclaw/workspace';
-  const DEPLOY_HISTORY = `${stagingPath}/deployHistory.json`;
   let info = { state: 'idle' };
-
-  // Primary: read deploy state from deployHistory.json (written by mc-deploy.sh)
   try {
-    if (existsSync(DEPLOY_HISTORY)) {
-      const history = JSON.parse(readFileSync(DEPLOY_HISTORY, 'utf8'));
-      if (Array.isArray(history) && history.length > 0) {
-        const latest = history[0];
-        if (latest.status === 'deployed' && latest.timestamp) {
-          info = { state: 'deployed', timestamp: latest.timestamp };
-          if (latest.sha)     info.commit  = latest.sha;
-          if (latest.branch)  info.branch  = latest.branch;
-          if (latest.message) info.message = latest.message;
-        }
-      }
+    const mtime = execSync(`find ${stagingPath}/index.html -type f 2>/dev/null | head -1 | xargs stat -c %Y 2>/dev/null`, { timeout: 3000 }).toString().trim();
+    if (mtime) {
+      const ts = parseInt(mtime) * 1000;
+      info = { state: 'deployed', timestamp: new Date(ts).toISOString() };
     }
-  } catch (e) {
-    console.warn('deployHistory read error:', e.message);
-  }
-
-  // Fallback: use index.html mtime if deployHistory doesn't exist or has no entry
-  if (info.state === 'idle') {
-    try {
-      const mtime = execSync(`find ${stagingPath}/index.html -type f 2>/dev/null | head -1 | xargs stat -c %Y 2>/dev/null`, { timeout: 3000 }).toString().trim();
-      if (mtime) {
-        const ts = parseInt(mtime) * 1000;
-        info = { state: 'deployed', timestamp: new Date(ts).toISOString() };
-      }
-    } catch {}
-  }
-
+  } catch {}
   // Capture git info from workspace
   try {
     const gitBranch = execSync(`cd ${workspacePath} && git rev-parse --abbrev-ref HEAD 2>/dev/null`, { timeout: 3000 }).toString().trim();
@@ -295,26 +265,80 @@ function getDeployInfo() {
   return info;
 }
 
-function buildBoardData(entries) {
-  // Deduplicate: group by normalized task text, keep the "best" tag per task.
-  // Best = done > in-progress > partial/acknowledged > needs
-  const TAG_PRIORITY = { done: 0, partial: 1, acknowledged: 2, needs: 3 };
-  const taskBest = new Map();
-  for (const e of entries) {
-    const key = e.message.slice(0, 80).replace(/\]\s*\[[^\]]+\]\s*/g, ']').replace(/\s+/g, ' ').trim();
-    const tagLower = e.tag.toLowerCase();
-    const primary = Object.keys(TAG_PRIORITY).find(t => tagLower.startsWith(t)) ?? 'needs';
-    const priority = TAG_PRIORITY[primary] ?? 4;
-    if (!taskBest.has(key) || priority < taskBest.get(key).priority) {
-      taskBest.set(key, { entry: e, priority });
+function updateDeployHistory(deployTimestamp, gitInfo = {}) {
+  let history = [];
+  if (existsSync(DEPLOY_HISTORY_PATH)) {
+    try {
+      history = JSON.parse(readFileSync(DEPLOY_HISTORY_PATH, 'utf8'));
+    } catch {}
+  }
+
+  // Only add if this deploy is new (not the latest entry)
+  if (deployTimestamp && history.length > 0 && history[0]?.timestamp === deployTimestamp) {
+    return history.slice(0, 10);
+  }
+
+  const entry = {
+    timestamp: deployTimestamp || new Date().toISOString(),
+    status: 'deployed',
+    trigger: 'manual',
+    branch: gitInfo.branch || null,
+    commit: gitInfo.commit || null,
+    message: gitInfo.message || null,
+  };
+
+  history.unshift(entry);
+
+  // Compute duration (time since previous deploy) for each entry
+  for (let i = 0; i < history.length; i++) {
+    if (i === 0) {
+      history[i].duration = null; // most recent — no "since previous"
+    } else {
+      const prev = new Date(history[i - 1].timestamp).getTime();
+      const curr = new Date(history[i].timestamp).getTime();
+      const diffMs = prev - curr;
+      const diffMins = Math.round(diffMs / 60000);
+      if (diffMins < 1) history[i].duration = '<1m';
+      else if (diffMins < 60) history[i].duration = diffMins + 'm';
+      else {
+        const h = Math.floor(diffMins / 60);
+        const m = diffMins % 60;
+        history[i].duration = m > 0 ? h + 'h ' + m + 'm' : h + 'h';
+      }
     }
   }
 
-  // Now build board columns from deduped entries
+  return history.slice(0, 10);
+}
+
+function buildBoardData(entries, tasks = []) {
   const queued = [];
   const inprogress = [];
   const done = [];
-  for (const { entry: e } of taskBest.values()) {
+
+  // Add tasks from tasks.json
+  for (const task of tasks) {
+    const item = {
+      id: task.id,
+      text: task.title,
+      agent: AGENT_DISPLAY[task.assignee] ?? task.assignee,
+      ts: task.updatedAt ? relativeTime(task.updatedAt) : 'earlier',
+      priority: task.priority || 'medium',
+      project: task.project,
+      isTask: true,
+    };
+
+    if (task.status === 'done') {
+      done.push(item);
+    } else if (task.status === 'in-progress') {
+      inprogress.push(item);
+    } else {
+      queued.push(item);
+    }
+  }
+
+  // Add log-derived entries (only if not already covered by a matching task)
+  for (const e of entries) {
     const msg = e.message;
     const item = {
       id: e.ts,
@@ -322,6 +346,7 @@ function buildBoardData(entries) {
       agent: AGENT_DISPLAY[e.agent] ?? e.agent,
       ts: relativeTime(e.iso),
     };
+
     const tagLower = e.tag.toLowerCase();
     if (tagLower.startsWith('done')) {
       done.push(item);
@@ -338,70 +363,123 @@ function buildBoardData(entries) {
 // --- Detect live agent state from recent log entries ---
 function detectAgentState(allEntries, agentKey) {
   const now = Date.now();
-  // 15 min window — agents are "working" if they had recent done/error activity
-  const CUTOFF_MS = 15 * 60 * 1000;
+  const CUTOFF_MS = 10 * 60 * 1000; // 10 minutes — wider window so dispatched entries survive between syncs
   const recent = allEntries.filter(e => {
     if (e.agent !== agentKey) return false;
     if (!e.iso) return false;
-    return (now - e.ts) < CUTOFF_MS;
+    return (now - new Date(e.iso).getTime()) < CUTOFF_MS;
   });
-
-  if (recent.length === 0) return { state: 'idle', stateSince: null };
 
   // Check for blocked/error first (highest priority)
-  const hasBlock = recent.some(e => e.tag.toLowerCase().includes('error') || e.tag.toLowerCase().includes('blocked'));
-  if (hasBlock) return { state: 'blocked', stateSince: recent[0].iso };
-
-  // Working if any recent done/partial/acknowledged entries
-  const hasWork = recent.some(e => {
-    const t = e.tag.toLowerCase();
-    return t.startsWith('done') || t.startsWith('partial') || t.startsWith('acknowledged') || t.startsWith('taken');
+  const hasBlock = recent.some(e => {
+    const tag = (e.tag || '').toLowerCase();
+    return tag.includes('blocked') || tag.includes('error');
   });
-  if (hasWork) return { state: 'working', stateSince: recent[0].iso };
+  if (hasBlock) return { state: 'blocked', stateSince: null };
 
-  return { state: 'idle', stateSince: recent[0].iso };
+  // Check for in-progress work
+  const hasWorking = recent.some(e => {
+    const tag = (e.tag || '').toLowerCase();
+    return tag.startsWith('acknowledged') || tag.startsWith('taken') || tag.startsWith('partial') || tag.startsWith('dispatched');
+  });
+  if (hasWorking) return { state: 'working', stateSince: null };
+
+  return { state: 'idle', stateSince: null };
 }
 
 // --- Build per-agent efficiency leaderboard ---
 function buildLeaderboard(logContent) {
-  const allParsed = parseLog(logContent);
+  const lines = logContent.split('\n').filter(l => l.trim());
+  const cutoff = Date.now() - 72 * 60 * 60 * 1000; // 72h — was 48h, widened to capture more task chains
 
-  const AGENT_LIST = ['spike', 'jet', 'faye', 'ein', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy', 'sanji', 'vicious', 'zoro', 'dispatch'];
-  const stats = {};
-  for (const a of AGENT_LIST) {
-    stats[a] = { completed: 0, lastDone: 0 };
+  // Parse all entries for task chains (supports both bracketed and unbracketed agent formats)
+  const allParsed = [];
+  for (const line of lines) {
+    // Format A: [YYYY-MM-DD HH:MM UTC] [agent] [tag] message  (bracketed agent)
+    let m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC)?\]\s+\[([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)/);
+    // Format B: [YYYY-MM-DD HH:MM UTC] agent [tag] message   (unbracketed agent — most entries)
+    if (!m) m = line.match(/^\[(\d{4}-\d{2}-\d{2})(?:[T ])(\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(?:Z|[ ]UTC)?\]\s+(\S+)\s+\[([^\]]+)\]\s+(.*)/);
+    if (!m) continue;
+    const [, date, time, agent, tag, message] = m;
+    const secs = time.split(':').length === 2 ? ':00' : '';
+    const iso = date + 'T' + time + secs + 'Z';
+    const ts = new Date(iso).getTime();
+    if (isNaN(ts) || ts < cutoff) continue;
+    const tagLower = tag.toLowerCase();
+    allParsed.push({ iso, ts, agent: agent.toLowerCase(), tag, tagLower, message });
   }
 
-  // Count [done] entries per agent (most log entries are standalone done markers, not ack→done chains)
+  // Group by task text (first 80 chars as key)
+  const taskMap = new Map();
   for (const e of allParsed) {
-    const t = e.tag.toLowerCase();
-    if (t.startsWith('done') || t.startsWith('partial') || t.startsWith('acknowledged')) {
-      if (stats[e.agent]) {
-        stats[e.agent].completed++;
-        if (e.ts > stats[e.agent].lastDone) stats[e.agent].lastDone = e.ts;
+    const key = e.message.slice(0, 80);
+    if (!taskMap.has(key)) taskMap.set(key, []);
+    taskMap.get(key).push(e);
+  }
+
+  // Per-agent stats
+  const stats = {};
+  // ein removed — retired 2026-04-10; sanji/vicious/zoro added (core ops crew)
+  const AGENT_LIST = ['spike', 'jet', 'faye', 'gren', 'ed', 'julia', 'rocco', 'punch', 'andy', 'sanji', 'vicious', 'zoro'];
+  for (const a of AGENT_LIST) {
+    stats[a] = { completed: 0, totalTimeMs: 0, blockers: 0, tasks: [] };
+  }
+
+  for (const [key, evts] of taskMap) {
+    evts.sort((a, b) => a.ts - b.ts);
+
+    let started = null;
+    let completed = null;
+    let owner = null;
+    let wasBlocked = false;
+
+    for (const e of evts) {
+      const tagLower = e.tagLower;
+
+      if (tagLower.startsWith('acknowledged') || tagLower.startsWith('taken')) {
+        if (!started) {
+          started = e;
+          owner = e.agent;
+        }
+      } else if (tagLower.startsWith('done') || tagLower.startsWith('partial')) {
+        // If there's no prior acknowledged entry, treat this done as a standalone task
+        // for the agent who posted it (crew often skips acknowledged step)
+        if (!started) {
+          started = e;
+          owner = e.agent;
+        }
+        if (!completed) {
+          completed = e;
+          if (owner && stats[owner]) {
+            const dur = completed.ts - started.ts;
+            stats[owner].completed++;
+            stats[owner].totalTimeMs += dur;
+            stats[owner].tasks.push({ dur, key });
+          }
+        }
+      } else if (tagLower.startsWith('blocked') || tagLower.includes('blocked')) {
+        wasBlocked = true;
+        if (owner && stats[owner]) stats[owner].blockers++;
       }
     }
   }
 
   const leaderboard = [];
   for (const [agentKey, s] of Object.entries(stats)) {
-    const hasActivity = s.completed > 0 || s.lastDone > 0;
+    const avgTime = s.completed > 0 ? Math.round(s.totalTimeMs / s.completed / 1000) : 0;
+    const efficiency = s.completed > 0 ? Math.round((s.completed / Math.max(1, s.completed + s.blockers)) * 100) : 0;
     leaderboard.push({
       agent: AGENT_DISPLAY[agentKey] ?? agentKey,
       agentKey,
       color: AGENT_COLORS[agentKey] ?? '#94a3b8',
       completed: s.completed,
-      avgTimeSec: 0,
-      blockers: 0,
-      efficiency: hasActivity ? 50 : 0, // placeholder — full chain tracking needs ack→done pairs
+      avgTimeSec: avgTime,
+      blockers: s.blockers,
+      efficiency,
     });
   }
 
-  // Sort: active agents first, then alphabetical
-  leaderboard.sort((a, b) => {
-    if (b.completed !== a.completed) return b.completed - a.completed;
-    return a.agent.localeCompare(b.agent);
-  });
+  leaderboard.sort((a, b) => b.efficiency - a.efficiency || b.completed - a.completed);
   return leaderboard;
 }
 
@@ -433,9 +511,10 @@ function getSystemStats() {
   return { cpu, memory, disk };
 }
 
-function buildJson(entries) {
+function buildJson(entries, tasks = []) {
   const stats = getSystemStats();
   const deploy = getDeployInfo();
+  const deployHistory = updateDeployHistory(deploy.timestamp, { branch: deploy.branch, commit: deploy.commit, message: deploy.message });
   const cronHealth = getCronHealthData();
   const cronErrorHistory = updateCronErrorHistory(cronHealth);
   // Attach error history samples to each cron job
@@ -476,23 +555,16 @@ function buildJson(entries) {
         efficiency: entry.efficiency,
         avgTimeSec: entry.avgTimeSec,
         blockers: entry.blockers,
-        lastActive: agentState.stateSince || null,
         ...agentState,
       };
     }),
     deploy: {
       ...deploy,
-      lastDeploy: deploy.timestamp || null,
-      history: (() => {
-        try {
-          const hist = JSON.parse(readFileSync('/mnt/spike-storage/mission-control-staging/deployHistory.json', 'utf8'));
-          return hist.map(d => ({
-            ...d,
-            duration: d.duration || null,
-            time: relativeTime(d.timestamp),
-          }));
-        } catch { return []; }
-      })(),
+      history: deployHistory.map(d => ({
+        ...d,
+        duration: d.duration || null,
+        time: relativeTime(d.timestamp),
+      })),
     },
     projects: [
       { id: 'trendtribe', name: 'TrendTribe',  color: '#7F77DD', health: 'green',  note: 'ProductHunt launch Apr 7' },
@@ -502,16 +574,29 @@ function buildJson(entries) {
       { id: 'artsite',    name: 'Art Site',    color: '#993556', health: 'green',  note: 'Maintained' },
     ],
     activity,
-    board: buildBoardData(allEntries),
+    board: buildBoardData(allEntries, tasks),
+    tasks,
     cron: cronHealth,
     errors: errorStream,
   };
 }
 
+// --- Read tasks from tasks.json ---
+function readTasks() {
+  try {
+    const raw = readFileSync(TASKS_FILE, 'utf8');
+    const data = JSON.parse(raw);
+    return Array.isArray(data.tasks) ? data.tasks : [];
+  } catch {
+    return [];
+  }
+}
+
 // --- Main ---
 const logContent = readFileSync(SHARED_LOG, 'utf8');
 const entries = parseLog(logContent);
-const json = buildJson(entries);
+const tasks   = readTasks();
+const json = buildJson(entries, tasks);
 const out = JSON.stringify(json, null, 2);
 
 writeFileSync(OUT_WORKSPACE, out, 'utf8');
@@ -522,8 +607,26 @@ if (existsSync('/mnt/spike-storage/mission-control-staging')) {
   console.log(`✓ Synced:  ${OUT_STAGING}`);
 }
 
+// Persist deploy history
+if (json.deploy.history?.length > 0) {
+  const historyOnly = json.deploy.history.map(d => ({
+    timestamp: d.timestamp,
+    status: d.status,
+    trigger: d.trigger,
+    duration: d.duration || null,
+  }));
+  writeFileSync(DEPLOY_HISTORY_PATH, JSON.stringify(historyOnly, null, 2), 'utf8');
+  console.log(`✓ Deploy history: ${historyOnly.length} entries`);
+
+  // Also copy to staging so nginx can serve it
+  const stagingDeployHistory = '/mnt/spike-storage/mission-control-staging/deployHistory.json';
+  writeFileSync(stagingDeployHistory, JSON.stringify(historyOnly, null, 2), 'utf8');
+  console.log(`✓ Deploy history synced to staging`);
+}
+
 console.log(`  Activity items: ${json.activity.length}`);
 console.log(`  Board: ${json.board.queued.length} queued | ${json.board.inprogress.length} in-progress | ${json.board.done.length} done`);
+console.log(`  Tasks: ${json.tasks.length} total`);
 console.log(`  Deploy: ${json.deploy.state}`);
 console.log(`  Cron jobs: ${json.cron.length}`);
 console.log(`  Errors: ${json.errors.length}`);
